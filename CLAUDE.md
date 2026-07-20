@@ -78,6 +78,27 @@ the relevant file at the start of any session touching that course.
   unlinks a page/assignment, doesn't delete the underlying content — use
   `delete_page` separately if the content itself should go.
 
+## MCP transport & server (canvas-api)
+- `canvas-api` runs as a **shared streamable-http server**, not per-client stdio.
+  One long-lived process at `http://127.0.0.1:8819/mcp` serves every client
+  (Claude Code + Claude Desktop) concurrently. Server code:
+  `C:\Users\cburk\canvas-mcp` (`python -m canvas_mcp.server --transport streamable-http`).
+- **Credentials are per-request via headers** in HTTP mode (`.env` token is
+  ignored). Clients send `X-Canvas-Token` and `X-Canvas-URL`. Configs reference
+  `${CANVAS_API_TOKEN}` (a machine env var) — never hardcode the token.
+- **Auto-start:** Windows logon task `CanvasMcpHttpServer` runs
+  `start_http_server_hidden.vbs` → `start_http_server.cmd` (windowless).
+  Log: `C:\Users\cburk\canvas-mcp\http_server.log`.
+- **Claude Code** connects via `.mcp.json` (`type: http`). **Claude Desktop**
+  connects via the `mcp-remote` stdio→HTTP bridge (`cmd /c npx -y mcp-remote`)
+  in `claude_desktop_config.json`. Restart Desktop after config changes.
+- **Revert to stdio:** restore `*.stdio.bak` next to each config, disable the
+  logon task (`schtasks /Change /TN CanvasMcpHttpServer /DISABLE`).
+- If a client shows no canvas-api tools, first check the server is listening
+  (`Get-NetTCPConnection -LocalPort 8819`); if not, run the logon task or the
+  `.vbs` launcher. A one-off `Event loop is closed` on the very first call after
+  a fresh stdio connect was the old failure mode — HTTP mode avoids it.
+
 ## Working style
 Corey doesn't want timeline estimates, sycophancy, or hedging. Be direct,
 concise, and willing to push back. Confirm before big structural or

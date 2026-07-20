@@ -17,3 +17,6 @@ Desktop.ini
 # Scratch / temp
 scratchpad/
 *.tmp
+
+# Local config backups (transport migration revert aids)
+*.stdio.bak
