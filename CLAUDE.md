@@ -27,10 +27,11 @@ the relevant file at the start of any session touching that course.
 - **No em dashes, ever** — they render as `&mdash;` in Canvas. Space-hyphen-space instead.
   Scan for literal Unicode `—`, not the HTML entity.
 - **No point values inside Criteria for Success boxes.**
-- Bullet lists inside the green Criteria for Success box: never let an `h3` be
+- Bullet lists inside the Criteria for Success box: never let an `h3` be
   immediately followed by a `ul` with no paragraph between them (breaks the
-  border). Use a wrapping `div`, not a table, and add an intro sentence before
-  each list.
+  border). Add an intro sentence before each list. The box itself **is** a
+  `<table>` (see Assignment template below) — don't swap it for a `div`, the
+  intro paragraph alone is the fix.
 - **Canvas HTML rules:** all styling inline (`<style>` tags are stripped);
   `<strong>` not `font-weight`; `<pre style="white-space: pre-wrap;">` for
   code; no inline SVG (stripped) — diagrams are uploaded image files
@@ -41,7 +42,21 @@ the relevant file at the start of any session touching that course.
   template) surface it and offer to merge/retire the old one rather than
   letting both persist silently.
 
-## Visual template (BIT221 standard, reference for all courses)
+## Assignment template (distinct from the page visual template below)
+Assignments use `<table>`-based boxes, not the div-based page callouts.
+Verified against live BIT221 content (2B - Configure Active Directory and DNS):
+- Purpose box: `<table style="background-color: #eaf4fb; border: 2px solid
+  #2980b9;">`, `<h3 style="color: #1a5276;">Purpose</h3>` — scenario
+  paragraph, then Course Learning Outcomes and Program Outcomes lists.
+- Criteria for Success box: `<table style="background-color: #eafaf1;
+  border: 2px solid #27ae60;">`, `<h3 style="color: #1e8449;">Criteria for
+  Success</h3>` — intro sentence, then one `<ul>` of grading criteria.
+- Screenshot-required marker: `<img src="https://img.icons8.com/carbon-copy/2x/camera.png"
+  alt="Screenshot required" width="25" height="25" loading="lazy">` after
+  any step needing one.
+- Inline hint: `<span style="background-color: #ffff00;"><strong>Hint:</strong></span>`.
+
+## Visual template (BIT221 standard, reference for all courses — lecture/resource pages)
 - Wrapper: `max-width: 860px`, `color: #2C2C2A`, system font stack.
 - Header card: beige `#F1EFE8` / border `#B4B2A9`, 8px radius.
 - Learning objectives: purple `#EEEDFE` / `#534AB7`, 2-col grid, checkmark tiles.
@@ -50,6 +65,11 @@ the relevant file at the start of any session touching that course.
 - Callouts: amber `#FAEEDA` / `#854F0B` (notes/best practice), blue
   `#E6F1FB` / `#185FA5` (info).
 - Code blocks: dark `#2C2C2A` background, Catppuccin-style syntax colors.
+- "Applied" section header (hands-on/code intro): dark variant, bg `#2C2C2A`,
+  left-border `#5DCAA5`, title text `#9FE1CB` — distinct from the light green
+  section-header bar above.
+- In-class activity steps: numbered rows, dark `#444441` number marker,
+  alternating `#ffffff` / `#F1EFE8` step backgrounds.
 - Section dividers: `border-top: 0.5px solid #D3D1C7; margin: 2.5rem 0`.
 - Page titles: topic-only, no "Week N |" prefix duplicated in the title bar
   (the breadcrumb subtitle carries that).

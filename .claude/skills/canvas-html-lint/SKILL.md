@@ -35,7 +35,7 @@ descriptions. Full HTML, not a summary — the rules below need the raw markup.
 | `<strong>` not `font-weight` | Inline `style="font-weight:` on non-`<strong>` tags | Project convention — use the semantic tag |
 | Code blocks | `<pre>` without `style="white-space: pre-wrap;"` | Long lines overflow/clip without wrapping |
 | No point values in Criteria for Success boxes | Numbers/"pts"/"points" inside the green criteria box content | Points belong in the rubric, not duplicated in prose |
-| Criteria box `h3`/`ul` adjacency | An `h3` immediately followed by a `ul` with no intervening `<p>` | Breaks the green box's border rendering — needs a wrapping `div` and an intro sentence before the list, never a table |
+| Criteria box `h3`/`ul` adjacency | An `h3` immediately followed by a `ul` with no intervening `<p>` | Breaks the box's border rendering — needs an intro sentence between the `<h3>` and `<ul>`. Verified against live BIT221 content: the box itself is a `<table>`, not a `div` — the fix is the intro paragraph, not swapping the container element |
 
 ## Step 4 — Report
 Group findings by page, each with the offending snippet and line/location

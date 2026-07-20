@@ -24,29 +24,45 @@ rewriting if there's any ambiguity in scope or intent — don't silently
 reinterpret what the assignment is testing.
 
 ## Step 2 — Template structure (exact order)
-1. **Purpose box** (blue callout, `#E6F1FB` / `#185FA5`) — Course Learning
-   Outcomes + Program Outcomes this assignment maps to. Never fabricate
-   PO/CLO language — pull it from verified Canvas content (syllabus, other
-   assignments in the course, or an explicit source Corey provides).
+Assignments use a distinct `<table>`-based box style — **not** the div-based
+lecture-page callouts from `visual-template-audit`. Confirmed against a live
+BIT221 assignment (2B - Configure Active Directory and DNS):
+
+1. **Purpose box** — a `<table style="background-color: #eaf4fb; border: 2px
+   solid #2980b9;">` with an `<h3 style="color: #1a5276;">Purpose</h3>`
+   heading, containing a scenario paragraph, then `<strong>Course Learning
+   Outcomes:</strong>` and `<strong>Program Outcomes:</strong>` each followed
+   by a `<ul>`. Never fabricate PO/CLO language — pull it from verified
+   Canvas content (syllabus, other assignments in the course, or an explicit
+   source Corey provides).
 2. **Task / Instructions** — step-by-step, grounded in the actual lab
    environment (VM names, IP scheme, tool versions) already established for
    this course. Include a prerequisites section if the task depends on prior
-   assignments' state.
-3. **Criteria for Success box** (green) — checklist of what's graded.
-   **Never list point values inside this box.**
+   assignments' state. Two recurring conventions found in live content:
+   - A small camera-icon marker after any step requiring a screenshot:
+     `<img src="https://img.icons8.com/carbon-copy/2x/camera.png" alt="Screenshot required" width="25" height="25" loading="lazy">`
+   - Inline hints highlighted with `<span style="background-color:
+     #ffff00;"><strong>Hint:</strong></span>` inside the relevant list item.
+3. **Criteria for Success box** — a `<table style="background-color:
+   #eafaf1; border: 2px solid #27ae60;">` with an `<h3 style="color:
+   #1e8449;">Criteria for Success</h3>` heading, an intro sentence
+   (`<p>`), then a single `<ul>` of grading criteria. **Never list point
+   values inside this box.**
 
 ## Step 3 — Known rendering bugs to avoid
 See `canvas-html-lint` for the complete mechanical rule set — these two are
 the highest-frequency violations specifically in assignment rebuilds:
 - If an `h3` is immediately followed by a `ul` with no paragraph between
-  them inside the green box, the bullet list breaks the border in Canvas.
-  Fix: wrap in a `div`, and add an intro sentence before every list inside
-  that box.
+  them, the bullet list breaks the box's rendering in Canvas. Live BIT221
+  content always has an intro `<p>` between the `<h3>` and the `<ul>` inside
+  both the Purpose and Criteria tables — keep that paragraph, don't drop it.
 - No em dashes (literal Unicode `—`) — use comma, colon, or restructure the
-  sentence.
+  sentence. Space-hyphen-space (` - `) is the correct substitute and is what
+  live content actually uses.
 
 All styling inline (`<style>` is stripped). `<strong>` not `font-weight`.
-`<pre style="white-space: pre-wrap;">` for any code/command blocks.
+`<pre style="white-space: pre-wrap;">` for any full code/command blocks;
+single inline commands can stay in `<code>` tags without the `<pre>` wrapper.
 
 ## Step 4 — Build and confirm
 Draft the full new HTML. Present the diagnosis and draft for approval before

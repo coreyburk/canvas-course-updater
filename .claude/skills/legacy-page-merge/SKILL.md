@@ -29,11 +29,25 @@ heading structure). If found, this is exactly the case CLAUDE.md flags:
 persist silently."
 
 ## Step 2 — Confirm scope
-Present which weeks/pages are affected and which pair (old page, current
-page) covers the same topic. Get sign-off on the merge plan before extracting
+Present which weeks/pages are affected. Two distinct cases exist, and mixing
+them up leads to unnecessary deletion or an unnecessary merge:
+- **Duplicate topic** — an old-style page and a current-template page cover
+  the same subject. This is the BIT351 precedent: merge + delete, Steps 3-6
+  below.
+- **Isolated old page, no current-style counterpart** — confirmed present in
+  BIT221 itself ("VM Backup & Recovery SOP": six-section boxed layout, 900px
+  wrapper, no header card/breadcrumb, plain code blocks — old-template, but
+  nothing else in the course covers VM export/import). There's nothing to
+  merge into. The correct fix is a straight **restyle in place**: rebuild the
+  page's HTML in the current template (per `visual-template-audit`),
+  preserving all of its content, then `edit_page_content` with the full
+  rebuilt HTML. Skip Steps 3-6 (extract/merge/rewire/delete) entirely — the
+  page keeps its identity, module position, and page_url.
+
+Get sign-off on which case applies and the resulting plan before extracting
 or writing anything.
 
-## Step 3 — Extract unique content from the old page
+## Step 3 — Extract unique content from the old page (duplicate-topic case only)
 Diff the old page's content against the current-template page's content by
 topic, not by section title. Identify what exists in the old page and is
 **not** already covered in the current page — this is the material that must
