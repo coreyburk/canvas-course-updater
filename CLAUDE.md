@@ -1,0 +1,84 @@
+# Canvas Course Updater — Standing Instructions
+
+## Purpose
+Corey is an instructor at Neumont University (cburk@neumont.edu), building and
+auditing courses in an Information Systems and Cybersecurity degree program via
+the Canvas MCP server (`canvas-api`). Courses in scope share the same Program
+Outcomes and the BIT221 visual/structural standard.
+
+## Courses
+| Code | Canvas ID | Title | Status |
+|---|---|---|---|
+| BIT221 | 3631198 | Server Administration I — Windows Server 2025 | Reference standard, largely built |
+| BIT281 | 3631199 | Hardware Systems | Rebuild complete |
+| PRO221 | 3631288 | Server Admin I — Project: Windows Server | Active week-by-week rebuild |
+| BIT351 | 3631200 | Virtual Systems: Proxmox VE | Active build |
+
+Per-course status, decisions, and history live in `courses/{CODE}.md`. Check
+the relevant file at the start of any session touching that course.
+
+## Non-negotiable standards (all courses)
+- **Canvas is the source of truth**, never an outline doc or prior memory.
+  When they diverge, fix the doc to match Canvas, not the reverse.
+- **Read actual source before writing.** Pull live page/assignment content
+  with `get_page_content` / `get_assignment_details` before rewriting —
+  never reconstruct from general knowledge.
+- **Fix issues at the source**, not around them.
+- **No em dashes, ever** — they render as `&mdash;` in Canvas. Space-hyphen-space instead.
+  Scan for literal Unicode `—`, not the HTML entity.
+- **No point values inside Criteria for Success boxes.**
+- Bullet lists inside the green Criteria for Success box: never let an `h3` be
+  immediately followed by a `ul` with no paragraph between them (breaks the
+  border). Use a wrapping `div`, not a table, and add an intro sentence before
+  each list.
+- **Canvas HTML rules:** all styling inline (`<style>` tags are stripped);
+  `<strong>` not `font-weight`; `<pre style="white-space: pre-wrap;">` for
+  code; no inline SVG (stripped) — diagrams are uploaded image files
+  referenced via `<img>`.
+- **Don't fabricate Program Outcome language** — source it from verified
+  Canvas content only.
+- If a course has two competing page styles (old-style tables vs. current
+  template) surface it and offer to merge/retire the old one rather than
+  letting both persist silently.
+
+## Visual template (BIT221 standard, reference for all courses)
+- Wrapper: `max-width: 860px`, `color: #2C2C2A`, system font stack.
+- Header card: beige `#F1EFE8` / border `#B4B2A9`, 8px radius.
+- Learning objectives: purple `#EEEDFE` / `#534AB7`, 2-col grid, checkmark tiles.
+- Section headers: green `#E1F5EE` / `#0F6E56` left-border bars.
+- Tables: dark header `#444441`, alternating `#ffffff` / `#F1EFE8` rows.
+- Callouts: amber `#FAEEDA` / `#854F0B` (notes/best practice), blue
+  `#E6F1FB` / `#185FA5` (info).
+- Code blocks: dark `#2C2C2A` background, Catppuccin-style syntax colors.
+- Section dividers: `border-top: 0.5px solid #D3D1C7; margin: 2.5rem 0`.
+- Page titles: topic-only, no "Week N |" prefix duplicated in the title bar
+  (the breadcrumb subtitle carries that).
+
+## Workflow
+- Confirm major structural decisions before executing (new page structures,
+  deleting/merging content, rubric point changes).
+- Keep new content unpublished until reviewed.
+- Verify current Canvas state (`list_pages`, `list_assignments`,
+  `get_course_structure`) before authoring in a session — don't assume prior
+  session state still holds.
+- Use `canvas-api` MCP tools for all direct edits, not HTML for manual pasting.
+
+## Known Canvas API limitations
+- `course_identifier` needs the numeric ID, not the course code string.
+- `update_assignment` / `edit_page_content` do full replacement — always
+  carry forward the complete current HTML, never a partial patch.
+- `points_possible` on quiz-backed assignments is derived from question
+  totals — cannot be changed via API, must edit in the Canvas UI.
+- Quiz titles/points/content: read-only via API, all edits manual.
+- `add_module_item` needs the assignment's `content_id`, not the module item ID.
+- Repositioning a module item: `update_module_item` with target position,
+  plus a separate call on the item it displaced. Don't re-call
+  `add_module_item` with a new position — creates a duplicate.
+- `delete_module` auto-removes its module items; `delete_module_item` only
+  unlinks a page/assignment, doesn't delete the underlying content — use
+  `delete_page` separately if the content itself should go.
+
+## Working style
+Corey doesn't want timeline estimates, sycophancy, or hedging. Be direct,
+concise, and willing to push back. Confirm before big structural or
+destructive actions; don't ask permission for routine, established-pattern work.
