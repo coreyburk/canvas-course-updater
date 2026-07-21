@@ -5,8 +5,14 @@ description: Use when Corey asks to rebuild, fix, standardize, or bring an assig
 
 # Assignment Template Rebuild
 
-Reference standard: any current BIT221 assignment (Purpose/Task/Criteria
-structure). Used previously for PRO221 1A/1B and PRO221 4B (WSUS).
+Reference standard: the three-box Purpose/Task/Criteria structure, decided
+2026-07-21 after comparing three divergent real implementations (BIT221: no
+Task box; BIT281: unstyled `<h3>Task</h3>` heading, div-based Criteria box;
+BIT351: styled Task box matching the Purpose/Criteria table pattern).
+BIT351's form is canonical — see Step 2. BIT221 and BIT281 assignments still
+need backfilling to this standard; treat any assignment missing the styled
+Task box, or using a div instead of a table for Criteria, as out of date,
+not as an acceptable alternate style.
 
 ## Step 0 — Gotchas
 Resolve the numeric course ID first. Read the assignment's actual current
@@ -25,8 +31,11 @@ reinterpret what the assignment is testing.
 
 ## Step 2 — Template structure (exact order)
 Assignments use a distinct `<table>`-based box style — **not** the div-based
-lecture-page callouts from `visual-template-audit`. Confirmed against a live
-BIT221 assignment (2B - Configure Active Directory and DNS):
+lecture-page callouts from `visual-template-audit`, and not a bare `<div>`
+either (BIT281's old Criteria box was a div — that's drift to fix, not a
+variant to preserve). Confirmed against live BIT221 (2B - Configure Active
+Directory and DNS) and BIT351 (1A - Proxmox VE Setup and Configuration)
+content:
 
 1. **Purpose box** — a `<table style="background-color: #eaf4fb; border: 2px
    solid #2980b9;">` with an `<h3 style="color: #1a5276;">Purpose</h3>`
@@ -39,7 +48,16 @@ BIT221 assignment (2B - Configure Active Directory and DNS):
    boxes do this well already ("the exact steps a junior infrastructure
    engineer follows," "mirrors decisions real infrastructure engineers make
    every day") and are a good model to match when writing or rebuilding one.
-2. **Task / Instructions** — step-by-step, grounded in the actual lab
+2. **Task box** — a `<table style="background-color: #fef9e7; border: 2px
+   solid #d4ac0d;">` with an `<h3 style="color: #9a7d0a;">Task</h3>`
+   heading, containing one concrete paragraph stating what the student will
+   build/configure/produce — distinct from Purpose's why-it-matters framing.
+   Keep it short (a sentence or two is fine even for a trivial assignment);
+   the value is giving the reader a why/what pair before the procedural
+   detail starts, not box length. This box was missing from BIT221 and
+   present only as an unstyled heading in BIT281 — add/restyle it as part of
+   any rebuild, don't skip it because the assignment predates the standard.
+3. **Detailed instructions** — step-by-step, grounded in the actual lab
    environment (VM names, IP scheme, tool versions) already established for
    this course. Include a prerequisites section if the task depends on prior
    assignments' state. Two recurring conventions found in live content:
@@ -47,11 +65,12 @@ BIT221 assignment (2B - Configure Active Directory and DNS):
      `<img src="https://img.icons8.com/carbon-copy/2x/camera.png" alt="Screenshot required" width="25" height="25" loading="lazy">`
    - Inline hints highlighted with `<span style="background-color:
      #ffff00;"><strong>Hint:</strong></span>` inside the relevant list item.
-3. **Criteria for Success box** — a `<table style="background-color:
+4. **Criteria for Success box** — a `<table style="background-color:
    #eafaf1; border: 2px solid #27ae60;">` with an `<h3 style="color:
    #1e8449;">Criteria for Success</h3>` heading, an intro sentence
    (`<p>`), then a single `<ul>` of grading criteria. **Never list point
-   values inside this box.**
+   values inside this box.** Must be a `<table>`, not a `<div>` — BIT281's
+   pre-standardization assignments used a div here; convert it when rebuilding.
 
 ## Step 3 — Known rendering bugs to avoid
 See `canvas-html-lint` for the complete mechanical rule set — these two are
@@ -67,18 +86,6 @@ the highest-frequency violations specifically in assignment rebuilds:
   buried in step-by-step instructional prose (e.g. "why update /etc/hosts"
   explanatory paragraphs) that a scan limited to the styled callout boxes
   would have missed entirely.
-
-## Cross-course template divergence — flagged, unresolved
-BIT351's assignments (confirmed on 1A, 2A) use a **third box** BIT221 does
-not have: an amber/gold "Task" box (`<table style="background-color:
-#fef9e7; border: 2px solid #d4ac0d;">`, `<h3 style="color: #9a7d0a;">
-Task</h3>`) inserted between Purpose and the detailed steps, holding a short
-plain-language task summary distinct from both the Purpose scenario and the
-step-by-step instructions. Per Corey (2026-07-21): "Not sure yet - flag it,
-decide later." Do **not** add this box to BIT221 assignments or remove it
-from BIT351's, and do not treat either course's current form as the
-canonical template until Corey decides. If rebuilding a BIT351 assignment,
-preserve its existing Task box as-is rather than collapsing it into Purpose.
 
 All styling inline (`<style>` is stripped). `<strong>` not `font-weight`.
 `<pre style="white-space: pre-wrap;">` for any full code/command blocks;

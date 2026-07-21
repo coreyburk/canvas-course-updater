@@ -44,10 +44,23 @@ the relevant file at the start of any session touching that course.
 
 ## Assignment template (distinct from the page visual template below)
 Assignments use `<table>`-based boxes, not the div-based page callouts.
-Verified against live BIT221 content (2B - Configure Active Directory and DNS):
+Canonical structure is three boxes — Purpose, Task, Criteria for Success —
+standardized 2026-07-21 on BIT351's implementation (the most complete of
+three divergent forms found across courses: BIT221 had no Task box, BIT281
+had an unstyled `<h3>Task</h3>` heading plus a div-based, not table-based,
+Criteria box). Verified against live BIT221 (2B - Configure Active Directory
+and DNS) and BIT351 (1A - Proxmox VE Setup and Configuration) content:
 - Purpose box: `<table style="background-color: #eaf4fb; border: 2px solid
   #2980b9;">`, `<h3 style="color: #1a5276;">Purpose</h3>` — scenario
-  paragraph, then Course Learning Outcomes and Program Outcomes lists.
+  paragraph (real-world framing, not just a restatement of the task), then
+  Course Learning Outcomes and Program Outcomes lists.
+- Task box: `<table style="background-color: #fef9e7; border: 2px solid
+  #d4ac0d;">`, `<h3 style="color: #9a7d0a;">Task</h3>` — one concrete
+  paragraph stating what the student will build/configure/produce, distinct
+  from Purpose's why-it-matters framing and from the detailed step-by-step
+  instructions that follow it. Keep it short even on trivial assignments
+  (a single sentence is fine); the value is the scanability of a why/what
+  pair before the procedural detail starts, not box length.
 - Criteria for Success box: `<table style="background-color: #eafaf1;
   border: 2px solid #27ae60;">`, `<h3 style="color: #1e8449;">Criteria for
   Success</h3>` — intro sentence, then one `<ul>` of grading criteria.
