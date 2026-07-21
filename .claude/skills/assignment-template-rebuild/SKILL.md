@@ -34,7 +34,11 @@ BIT221 assignment (2B - Configure Active Directory and DNS):
    Outcomes:</strong>` and `<strong>Program Outcomes:</strong>` each followed
    by a `<ul>`. Never fabricate PO/CLO language — pull it from verified
    Canvas content (syllabus, other assignments in the course, or an explicit
-   source Corey provides).
+   source Corey provides). The scenario paragraph should carry real-world
+   framing, not just restate the task mechanically — BIT351's live Purpose
+   boxes do this well already ("the exact steps a junior infrastructure
+   engineer follows," "mirrors decisions real infrastructure engineers make
+   every day") and are a good model to match when writing or rebuilding one.
 2. **Task / Instructions** — step-by-step, grounded in the actual lab
    environment (VM names, IP scheme, tool versions) already established for
    this course. Include a prerequisites section if the task depends on prior
@@ -58,7 +62,23 @@ the highest-frequency violations specifically in assignment rebuilds:
   both the Purpose and Criteria tables — keep that paragraph, don't drop it.
 - No em dashes (literal Unicode `—`) — use comma, colon, or restructure the
   sentence. Space-hyphen-space (` - `) is the correct substitute and is what
-  live content actually uses.
+  live content actually uses. Scan the **entire** assignment body, not just
+  the Purpose/Criteria boxes — a BIT351 review (2026-07-21) found em dashes
+  buried in step-by-step instructional prose (e.g. "why update /etc/hosts"
+  explanatory paragraphs) that a scan limited to the styled callout boxes
+  would have missed entirely.
+
+## Cross-course template divergence — flagged, unresolved
+BIT351's assignments (confirmed on 1A, 2A) use a **third box** BIT221 does
+not have: an amber/gold "Task" box (`<table style="background-color:
+#fef9e7; border: 2px solid #d4ac0d;">`, `<h3 style="color: #9a7d0a;">
+Task</h3>`) inserted between Purpose and the detailed steps, holding a short
+plain-language task summary distinct from both the Purpose scenario and the
+step-by-step instructions. Per Corey (2026-07-21): "Not sure yet - flag it,
+decide later." Do **not** add this box to BIT221 assignments or remove it
+from BIT351's, and do not treat either course's current form as the
+canonical template until Corey decides. If rebuilding a BIT351 assignment,
+preserve its existing Task box as-is rather than collapsing it into Purpose.
 
 All styling inline (`<style>` is stripped). `<strong>` not `font-weight`.
 `<pre style="white-space: pre-wrap;">` for any full code/command blocks;

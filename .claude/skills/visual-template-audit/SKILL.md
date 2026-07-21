@@ -37,7 +37,7 @@ week or at pre-semester QC.
 | Callouts | amber `#FAEEDA` / `#854F0B` (notes/best practice), blue `#E6F1FB` / `#185FA5` (info) | Wrong callout type/color for the content, or missing callout styling entirely |
 | Code blocks | dark `#2C2C2A` bg, Catppuccin-style syntax colors | Plain/unstyled `<pre>`, no syntax coloring |
 | "Applied" section header | dark variant: bg `#2C2C2A`, left-border `#5DCAA5`, title text `#9FE1CB` | Hands-on/code-intro sections using the plain light-green bar instead of this dark variant |
-| In-class activity steps | numbered rows: dark `#444441` number marker, alternating `#ffffff` / `#F1EFE8` step backgrounds | Activity/discussion steps not using the numbered-row layout (e.g. a plain `<ol>`) |
+| Numbered-row steps | numbered rows: dark `#444441` number marker, alternating `#ffffff` / `#F1EFE8` step backgrounds | Not limited to in-class activity/discussion steps — BIT351 also uses this component for explaining sequential technical processes (e.g. live-migration's Pre-copy/Stop-and-copy/Resume/Cleanup, or a backup/restore workflow's Backup/Failure/Restore/Verify). Flag any multi-step sequential explanation using a plain `<ol>` or prose instead of this component |
 | Section dividers | `border-top: 0.5px solid #D3D1C7; margin: 2.5rem 0` | Missing or inconsistent spacing between sections |
 | Page titles | topic-only, no "Week N \|" prefix | Redundant week prefix duplicating the breadcrumb subtitle |
 

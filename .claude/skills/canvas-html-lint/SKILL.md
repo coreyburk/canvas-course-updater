@@ -20,6 +20,12 @@ next re-renders — flag it anyway.
 ## Step 1 — Scope
 Ask (if not stated): one page, a list of pages, or the whole course? For
 whole-course, `list_pages` + `list_assignments`, then pull content for each.
+Scope includes the course outline page and non-lab/training assignments
+(LinkedIn Learning completion assignments, capstone/admin items), not just
+weekly lecture pages and "real lab" assignments — a BIT351 review
+(2026-07-21) found em-dash violations on the (unpublished) course outline
+page and on a LinkedIn Learning training assignment that a narrower scope
+would have skipped entirely.
 
 ## Step 2 — Pull ground truth
 `get_page_content` for pages, `get_assignment_details` for assignment
@@ -36,6 +42,7 @@ descriptions. Full HTML, not a summary — the rules below need the raw markup.
 | Code blocks | `<pre>` without `style="white-space: pre-wrap;"` | Long lines overflow/clip without wrapping |
 | No point values in Criteria for Success boxes | Numbers/"pts"/"points" inside the green criteria box content | Points belong in the rubric, not duplicated in prose |
 | Criteria box `h3`/`ul` adjacency | An `h3` immediately followed by a `ul` with no intervening `<p>` | Breaks the box's border rendering — needs an intro sentence between the `<h3>` and `<ul>`. Verified against live BIT221 content: the box itself is a `<table>`, not a `div` — the fix is the intro paragraph, not swapping the container element |
+| In-class activity answerable from page content | Any discussion/activity question whose answer isn't actually taught anywhere on the page | Not a markup bug, but a real, recurring content gap — found independently on BIT221 (Week 1 Page 3's "why does LDAP signing matter") and BIT351 (Week 1 Page 2's "No Valid Subscription" question) before either page's Security Considerations section existed. Check every activity question against the page's own body text, not just against general subject knowledge |
 
 ## Step 4 — Report
 Group findings by page, each with the offending snippet and line/location
