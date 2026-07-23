@@ -11,8 +11,15 @@ Outcomes and the BIT221 visual/structural standard.
 |---|---|---|---|
 | BIT221 | 3631198 | Server Administration I — Windows Server 2025 | Reference standard, largely built |
 | BIT281 | 3631199 | Hardware Systems | Rebuild complete |
-| PRO221 | 3631288 | Server Admin I — Project: Windows Server | Active week-by-week rebuild |
+| PRO221 | 3631288 | Server Admin I — Project: Windows Server | Week 4 complete, 2C/4B flagged |
 | BIT351 | 3631200 | Virtual Systems: Proxmox VE | Active build |
+
+## PRO221 Current Status (as of 2026-07-23)
+- **Week 4 audit complete:** Pages 3 & 4 created (RDS/MPIO, WSUS) and published
+- **2C (DSC Pull Server):** Unpublished, flagged NOT WORKING — needs vet/repair/deletion
+- **4B (WSUS):** Unpublished but complete — ready for publication decision
+- **OT1:** Keeping Windows Server 2019 File Services (no 2025 replacement available yet)
+- **Open decisions:** 2C status, 4B publish decision, optional Week 4 page reorder
 
 Per-course status, decisions, and history live in `courses/{CODE}.md`. Check
 the relevant file at the start of any session touching that course.
