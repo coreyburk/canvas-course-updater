@@ -219,9 +219,16 @@ preserved exactly as shown</pre>
 - Body text: 13.5px, line-height: 1.7
 - Section headers: 16px, strong weight
 - Code/pre text: 12px, monospace, white-space: pre-wrap
-- Always show expected outputs (what success looks like, step-by-step results)
-- Document common student errors with causes and fixes
-- Include security/operational implications where relevant
+
+**Operational Requirements (critical for instructor readiness):**
+- **Always show expected outputs** — what success looks like, command results, step-by-step results
+- **Document common student errors** with root causes and reproducible fix procedures
+- **Include troubleshooting decision trees** — flowchart-style diagnostic paths with actual PowerShell commands
+- **Include security/operational implications** — why certain approaches are risky, what could go wrong
+- **Document resource behavior edge cases** — limitations of built-in resources, misconceptions, when to use Script resource escape-hatch
+- **Include cross-week connections** — how prior weeks inform this week, how this week feeds forward
+- **Include strategic context** — when different approaches are appropriate (e.g., on-premises vs. cloud, push vs. pull)
+- **Include validation/testing procedures** — how to confirm assumptions (e.g., idempotence testing, connectivity verification)
 
 ---
 
