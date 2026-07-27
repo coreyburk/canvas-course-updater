@@ -11,15 +11,29 @@ Outcomes and the BIT221 visual/structural standard.
 |---|---|---|---|
 | BIT221 | 3631198 | Server Administration I — Windows Server 2025 | Reference standard, largely built |
 | BIT281 | 3631199 | Hardware Systems | Rebuild complete |
-| PRO221 | 3631288 | Server Admin I — Project: Windows Server | Week 4 complete, 2C/4B flagged |
+| PRO221 | 3631288 | Server Admin I — Project: Windows Server | Instructor module complete, 2026-07-27 |
 | BIT351 | 3631200 | Virtual Systems: Proxmox VE | Active build |
 
-## PRO221 Current Status (as of 2026-07-23)
-- **Week 4 audit complete:** Pages 3 & 4 created (RDS/MPIO, WSUS) and published
-- **2C (DSC Pull Server):** Unpublished, flagged NOT WORKING — needs vet/repair/deletion
-- **4B (WSUS):** Unpublished but complete — ready for publication decision
-- **OT1:** Keeping Windows Server 2019 File Services (no 2025 replacement available yet)
-- **Open decisions:** 2C status, 4B publish decision, optional Week 4 page reorder
+## PRO221 Current Status (as of 2026-07-27)
+- **Instructor module (position 1):** Unpublished "Course Outline and Lecture Notes (Not Published - Instructor Use Only)" created with course overview and 5 weekly lecture notes pages
+- **PRO221 Course Outline page:** 5-week topic breakdown, assignments, LinkedIn Learning resources, quizzes per week; certification note (AZ-900, AZ-104)
+- **Lecture notes (Weeks 1-5):** All unpublished instructor-only pages created with teaching context, misconceptions, lab setup, connections to prior/future weeks
+  - Week 1: Performance monitoring fundamentals, tool hierarchy, counter interpretation, baseline vs. threshold
+  - Week 2: IaC and DSC, compilation, push vs. pull modes, resource vocabulary
+  - Week 3: Container model, NLB architecture, security supply-chain risks
+  - Week 4: iSCSI, clustering quorum, MPIO, RDS, WSUS; resilience patterns
+  - Week 5: Azure fundamentals, cloud patterns, capstone guidance, certifications
+- **Student modules (positions 2-6):** All published, unchanged from prior audit
+- **Certifications module (position 7):** Published, unchanged
+- **Open decisions:** 2C (DSC Pull Server) status, 4B (WSUS) publish decision from 2026-07-23 remain pending
+
+<recent_updates>
+- Workflow: at the end of each Canvas Course Updater session (any work touching CLAUDE.md, courses/{CODE}.md, or repo content), remind Corey to commit changes and provide a suggested commit message. GitHub repo is public: https://github.com/coreyburk/canvas-course-updater, read via web_fetch (no write-back connector currently available on this Enterprise workspace).
+
+- PRO221 (Week 4 Complete, 2026-07-23): All 4 pages published: iSCSI (Page 1), Failover Clustering (Page 2), RDS/MPIO (Page 3), WSUS (Page 4). 2C unpublished/flagged NOT WORKING—needs vet/repair or deletion. 4B unpublished/ready—awaiting publish decision. All assignments conform to 3-box template. OT1 keeping Windows Server 2019 File Services (no 2025 replacement available). courses/PRO221.md and CLAUDE.md updated and committed 2026-07-23.
+
+- PRO221 (Instructor Module & Lecture Notes, 2026-07-27): Created unpublished "Course Outline and Lecture Notes (Not Published - Instructor Use Only)" module at position 1. Added PRO221 - Course Outline page (5-week overview with topics, assignments, training, quizzes per week, certification note). Created 5 comprehensive unpublished instructor lecture notes pages (Weeks 1-5) with teaching context, student misconceptions, lab setup guidance, and cross-week connections. All content grounded in published student-facing pages. Module structure follows BIT281 pattern. CLAUDE.md updated and committed 2026-07-27.
+</recent_updates>
 
 Per-course status, decisions, and history live in `courses/{CODE}.md`. Check
 the relevant file at the start of any session touching that course.
