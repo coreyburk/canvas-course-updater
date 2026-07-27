@@ -225,21 +225,24 @@ preserved exactly as shown</pre>
 
 ---
 
-## Step 6 — Word Count Target
+## Step 6 — Word Count Target (Minimum, Not Maximum)
 
-**Teaching Notes Pages:** 2000–3000 words per page (comprehensive, instructor-ready)
+**Teaching Notes Pages:** Minimum 2000 words per page. **No maximum.** Complexity determines length.
 
-**Breakdown:**
-- Learning Objectives: 100–150 words
-- Conceptual/Fundamentals: 600–900 words
-- Technical Procedures & Walkthroughs: 800–1200 words
-- Common Errors, Security, Decision Trees: 400–750 words
+**Guideline breakdown (minimums, not ceilings):**
+- Learning Objectives: 100–150 words minimum
+- Conceptual/Fundamentals: 600–900 words minimum
+- Technical Procedures & Walkthroughs: 800–1200 words minimum
+- Common Errors, Security, Decision Trees: 400–750 words minimum
 - Optional (Closing Summary): 100–200 words
 
-**Why this range:**
+**Why this approach:**
 - Instructors need depth to teach confidently and troubleshoot submissions
-- 2000+ words ensures content is grounded in specifics, not bullet points
-- Student-facing pages are shorter (1500–2000); teaching notes are richer
+- 2000+ word minimum ensures content is grounded in specifics, not bullet points
+- **If a topic is complex and needs more explanation, add all necessary detail**—don't truncate
+- If 4000 or 5000 words are required to cover expected outputs, edge cases, security implications, and troubleshooting thoroughly, that's correct
+- Completeness and clarity trump brevity
+- Student-facing pages are shorter (1500–2000); teaching notes are richer by design
 
 ---
 
@@ -260,7 +263,7 @@ preserved exactly as shown</pre>
 - ✗ Use em dashes or smart quotes
 - ✗ Invent new color schemes (stick to palette above)
 - ✗ Use `<style>` tags (all inline)
-- ✗ Exceed 3000 words (keep focused; split into separate pages if needed)
+- ✗ **Truncate content due to word count** — if a topic needs 4000+ words to explain thoroughly with all necessary detail, use all 4000+ words
 
 ### Flexible Elements
 - Number of sections (varies by topic)
