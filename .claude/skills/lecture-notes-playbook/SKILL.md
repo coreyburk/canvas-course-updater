@@ -311,7 +311,7 @@ Each major content section is wrapped in a full box. **Alternate colors** to dis
 
 ---
 
-### 3I. Teaching Notes vs. Student Pages — CRITICAL DISTINCTION
+## Step 4 — Teaching Notes vs. Student Pages — CRITICAL DISTINCTION
 
 **Teaching Notes** are instructor-facing, unpublished pages grounding classroom prep, troubleshooting, and curriculum coherence.
 
@@ -340,7 +340,7 @@ Each major content section is wrapped in a full box. **Alternate colors** to dis
 
 ---
 
-### 3J. Lab Walkthrough Standards — REQUIRED for Assignment-Heavy Topics
+## Step 5 — Lab Walkthrough Standards — REQUIRED for Assignment-Heavy Topics
 
 **Purpose:** Prepare instructors to grade, troubleshoot, and guide student submissions with concrete expectations.
 
@@ -371,7 +371,7 @@ Each major content section is wrapped in a full box. **Alternate colors** to dis
 
 ---
 
-### 3K. Content Depth & Word Count Guidelines
+## Step 6 — Content Depth & Word Count Guidelines
 
 **Teaching Notes Pages:** 2500–3500 words per page (comprehensive, instructor-focused)
 
@@ -397,7 +397,7 @@ Each major content section is wrapped in a full box. **Alternate colors** to dis
 
 ---
 
-## Step 4 — Color Reference (CRITICAL)
+## Step 7 — Color Reference (CRITICAL)
 
 | Element | Border | Background | Header BG | Text |
 |---------|--------|------------|-----------|------|
@@ -415,7 +415,7 @@ Each major content section is wrapped in a full box. **Alternate colors** to dis
 
 ---
 
-## Step 5 — Authoring Standards
+## Step 8 — Authoring Standards
 
 - No em dashes — use space-hyphen-space
 - No point values in Criteria boxes
@@ -426,7 +426,7 @@ Each major content section is wrapped in a full box. **Alternate colors** to dis
 
 ---
 
-## Step 6 — IDEMPOTENT Transformation Process
+## Step 9 — IDEMPOTENT Transformation Process
 
 **CRITICAL: This process is IDEMPOTENT. Running it multiple times on the same page produces the IDENTICAL canonical result. Use this for all pages regardless of their current state.**
 
@@ -564,6 +564,7 @@ HOMEWORK / Async
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 3.2 | 2026-07-27 | **Restructured Steps:** Moved Teaching Notes vs. Student Pages, Lab Walkthrough Standards, and Content Depth & Word Count from Step 3 subsections to standalone Steps 4, 5, 6 (reference material). Renumbered Color Reference (Step 7), Authoring Standards (Step 8), IDEMPOTENT Transformation Process (Step 9). |
 | 3.1 | 2026-07-27 | Added three new content standards subsections: Teaching Notes vs. Student Pages (naming, placement, scope); Lab Walkthrough Standards (expected outputs, common errors, security implications); Content Depth & Word Count (2500+ words for teaching notes, breakdown by section) |
 | 3.0 | 2026-07-23 | **MERGED spec + process into single source of truth** — eliminated duplication; comprehensive format definitions + workflow in one skill document |
 | 1.3 | 2026-07-23 | Refined header styling: removed left-border bars; headers wrapped in darker background shades for visual hierarchy; alternating content colors (green + warm tan) to distinguish adjacent sections; Reference Links now distinct light slate blue |

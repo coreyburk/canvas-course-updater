@@ -1,12 +1,55 @@
-# Skill: student-resource-pages
+---
+name: student-resource-pages
+description: Use when building Canvas pages for student-facing lecture, reference, or concept documentation (published pages in weekly course modules). Distinct from instructor teaching notes.
+---
 
-**Trigger:** When building Canvas course pages for student-facing lecture, reference, or concept documentation (published pages in weekly course modules)
+# Canvas Student Resource Pages Playbook
 
-**Scope:**
-- Create polished, focused reference pages for student learning and assignment support
-- Output: Published pages in student course modules (Week 1, Week 2, etc.)
-- Audience: Students (instructors can access, but student comprehension is primary)
-- NOT for: Instructor prep, troubleshooting guides, grading rubrics, facilitation notes
+**Version:** 1.0  
+**Last Updated:** 2026-07-27
+
+---
+
+## Overview
+
+Student resource pages are **published, student-facing** pages that support learning objectives and assignments. They differ fundamentally from instructor teaching notes in scope, audience, and content depth.
+
+---
+
+## Step 0 — Gotchas
+
+- Resolve course to numeric Canvas ID first
+- Always publish (unless explicitly marked instructor-only)
+- Place in course module by week (positions 2+), never in instructor-only module
+- No time estimates in headers
+- No em dashes (space-hyphen-space only)
+- Canvas strips `<style>` tags and inline SVG — all styling inline via `style=` attributes
+- No point values, rubric references, or grading criteria in content
+
+---
+
+## Step 1 — Student-Focused Scope
+
+Student pages are **1500–2000 words**, optimized for student comprehension and assignment support, NOT instructor preparation.
+
+**Content must include:**
+- Learning objectives (what students will do, not why instructors need to teach it)
+- Core concepts grounded in student examples (not instructor troubleshooting)
+- Practical procedures students can execute themselves
+- Real examples from student context (assignments, labs, real tools)
+- Security framed as "understand this risk," not "how to exploit this"
+
+**Content must NOT include:**
+- Why students struggle / instructor pedagogical notes
+- Expected output values for grading purposes
+- Common student errors (instructor reference, not student learning)
+- Troubleshooting decision trees (instructor-facing)
+- Grading rubrics or success criteria
+- Facilitation guides or discussion answers
+
+---
+
+## Step 2 — Page Naming & Placement
 
 **Naming convention:**
 `Week [N] | Page [#] - [Topic]`
@@ -14,113 +57,133 @@
 **Module placement:**
 - Published in course module (positions 2 onward)
 - Never in instructor-only module
-- Always indexed in course module structure
+- Grouped by week in course structure
 
 ---
 
-## Mandatory Sections
+## Step 3 — Per-Page Structure
 
-### 1. Learning Objectives (150-200 words)
-- 4-8 objectives using checkmark card-grid format (not bullet lists)
-- Each objective is a single, clear outcome: "students will be able to..."
-- Specific to this page's topic, not the entire week
-- Example: "Define Infrastructure as Code and explain why it replaces manual configuration at scale"
+Use the same canonical format as teaching notes (Header, Learning Objectives, Content Sections, Discussion Questions, References), but:
 
-### 2. Core Concepts / Why This Matters (700-900 words)
-- Grounded in student context: why does this matter to their role/career?
-- 3-5 key concepts, each with concrete examples
-- Use analogies students understand (relate to prior weeks or real-world scenarios they know)
-- Include a "big picture" section explaining how this fits into the broader course
-- Avoid jargon without definition
-- Every concept supported by a real example (not hypothetical)
+**Reduce scope by 40-50%:**
+- Learning Objectives: Same (100–150 words, 4-8 objectives)
+- Core Concepts: 400–600 words (vs. 600–900 for teaching notes)
+- Applied/Technical: 600–900 words (vs. 800–1200 for teaching notes)
+- Optional sections: Brief or omitted
 
-### 3. Applied / Technical (800-1200 words)
-- Step-by-step procedures with actual commands, UI paths, real syntax
-- Never use placeholders like `<server>` or `[example]` without a concrete instance nearby
-- Include expected output (what the screen/console should show on success)
-- Multiple examples: simple one first, then a more complex variant
-- Code blocks in `<pre style="white-space: pre-wrap;">` with literal blank lines, not styled spacers
-- Tables with real data, not example placeholders
+**Reframe all content for students:**
+- Examples: From student assignments, not grading scenarios
+- Procedures: Steps students execute, not instructor scaffolding
+- Security: "Understand why this matters" not "how to troubleshoot this"
+- Tone: Clear, accessible, encouraging — not directive
 
-### 4. Dependencies & Interactions (200-300 words)
-- What must be true for this concept to work?
-- What from prior weeks does this build on?
-- What could go wrong if dependencies aren't met?
-- Example: "Pushing a configuration to a remote node depends on PowerShell remoting already working"
-
-### 5. Security Considerations (300-400 words)
-- Framed as "understand this risk" not "how to exploit this"
-- Connect to real-world threats (data exposure, lateral movement, persistence)
-- Practical mitigations students can apply (encryption, access control, auditing)
-- Avoid scaremongering; be specific about threat models
-- Example: "DSC push mode rides on the same remoting channel that lateral movement attacks use"
-
-### 6. Reference Links (3-6 curated resources)
-- Microsoft Learn, official docs, MITRE ATT&CK (where relevant)
-- Link cards in 2-column grid, each 50-80 characters max
-- Only links that add significant value; don't pad with marginal resources
+**Skip these entirely:**
+- Teaching Agenda (instructor-only)
+- Why Students Struggle (instructor prep)
+- Expected output walkthroughs with real data (grading reference)
+- Troubleshooting decision trees
+- Lab success criteria (belongs in assignment, not page)
 
 ---
 
-## Optional Sections
+## Step 4 — Content Standards
 
-### In-Class Discussion Questions (3-5 questions)
-- Numbered list format (not cards)
-- Open-ended, encourages critical thinking
-- Should be answerable from this page + prior knowledge
-- Designed for 5-10 minute in-class discussion
+**Word count:** 1500–2000 total (tight, focused, readable)
 
-### What's Current (50-100 words)
-- Timestamp when written (e.g., "As of Windows Server 2025...")
-- Note if content applies to older/newer versions
-- Example: "The WindowsFeature resource taught here is fully supported in Windows Server 2016-2025"
+**Breakdown:**
+- Learning Objectives: 100–150 words
+- Core Concepts: 400–600 words
+- Applied/Technical: 600–900 words
+- Optional sections (Discussion, References): 200–350 words combined
 
----
+**Writing principles:**
+- Every concept grounded in student-executable example
+- Real data, never fabricated outputs
+- Real command syntax students actually use (not placeholders)
+- Direct, clear language (no instructor jargon unexplained)
+- Encourage questions; frame as reference, not directive
 
-## Content Standards
-
-**Length:** 1500-2000 words total (tight, focused, student-readable)
-
-**Audience lens:** Student preparing for assignment, lab, or certification. Not instructor prepping to teach. Not grader looking for rubric.
-
-**Examples:** 
-- All from student context (assignments, labs, real infrastructure)
-- All real data, never fabricated
-- All executable by students (use their tools, their access level)
-
-**What NOT to include:**
-- Teaching Agenda (instructor only)
-- "Why Students Struggle" / common misconceptions (instructor prep)
-- Expected output values for grading purposes
-- Troubleshooting decision trees (too instructor-focused for students)
-- Grading rubrics, rubric alignment, or success criteria (separate from learning content)
-- Instructor facilitation notes
-
-**Visual standards (per BIT221 canonical):**
-- No em dashes (use space-hyphen-space)
-- No inline SVG (upload as image if needed)
-- No `<style>` tags in head (inline styles only)
-- `<strong>` for bold (not font-weight)
-- Learning Objectives in checkmark card-grid (2 columns)
-- Tables: 1px solid borders on all cells, alternating row backgrounds
-- Code blocks: `<pre style="white-space: pre-wrap;">` with literal blank lines
-
-**Security framing:**
-- "This capability can be used by attackers for [threat]" ✅
-- "Here's how to exploit this" ❌
-- "Understanding this risk helps you recognize..." ✅
-- "Here's a step-by-step attack walkthrough" ❌
+**Visual standards:**
+- Same header/objectives/content boxes as teaching notes
+- Same color scheme (no modifications)
+- All tables with solid 1px black borders on all cells
+- No em dashes, no `<style>` tags, no inline SVG
 
 ---
 
-## Workflow
+## Step 5 — Optional Sections for Student Pages
 
-**Step 1:** Extract learning objectives from assignment, student context, and prior week content  
-**Step 2:** Draft core concepts with student-level examples (avoid instructor-only depth)  
-**Step 3:** Build applied/technical section from actual CLI/UI outputs (run it yourself)  
-**Step 4:** Add dependencies and security (student-aware framing)  
-**Step 5:** Curate reference links; remove marginal resources  
-**Step 6:** Publish in student course module (not instructor module)  
+**Discussion Questions** (rare, only if used in class):
+- 2–3 questions students can discuss in pairs/groups
+- Answerable from the page + prior knowledge
+- No "correct" answer — open-ended
+
+**What's Current** (if version-specific):
+- Flag what technology/version this covers
+- Example: "As of Windows Server 2025, the WindowsFeature resource..."
+
+**Looking Ahead** (if connecting to next topic):
+- Brief preview of how this connects to next week
+- Do NOT assign homework here — that's the assignment's job
+
+**Reference Links** (curated only):
+- 3–5 links maximum
+- Only resources that genuinely deepen understanding
+- Prefer official docs, Microsoft Learn, or primary sources
+
+---
+
+## Step 6 — Authoring Workflow
+
+1. **Extract learning objectives** from assignment and course outcomes
+2. **Draft core concepts** with student-level examples (NOT instructor depth)
+3. **Build applied/technical** section from actual CLI/UI outputs (run yourself, never fabricated)
+4. **Add optional sections** only if they serve student learning (not instructor prep)
+5. **Apply canonical styling** (same as teaching notes, Step 3)
+6. **Publish** (place in course module, not instructor-only)
+
+---
+
+## Critical Rules (DO NOT VIOLATE)
+
+### Must Have
+- ✓ Header box (week/topic, title, no publication status needed)
+- ✓ Learning Objectives (purple box with darker header background)
+- ✓ Core Concepts section (green or tan box)
+- ✓ Applied/Technical section (green or tan box, alternating color)
+- ✓ References (if applicable)
+
+### Must NOT Do
+- ✗ Include "Instructor Use Only" indicator (pages are published, student-facing)
+- ✗ Include Teaching Agenda (instructor-only)
+- ✗ Include expected output values for grading
+- ✗ Include common student errors (instructor reference)
+- ✗ Include troubleshooting decision trees
+- ✗ Include rubric alignment or grading criteria
+- ✗ Exceed 2000 words (keep focused and readable)
+- ✗ Use fabricated data or example outputs
+- ✗ Assume instructor audience in writing tone
+
+### Publishing
+- ✓ Always publish (don't leave unpublished by default)
+- ✓ Place in course module, position 2+
+- ✓ Not in instructor-only module
+
+---
+
+## Distinction from Teaching Notes
+
+| Aspect | Teaching Notes | Student Pages |
+|--------|---|---|
+| Audience | Instructors only | Students (primary) |
+| Published | No | Yes |
+| Module | Instructor-only | Course module by week |
+| Length | 2500–3500 words | 1500–2000 words |
+| Scope | Comprehensive, deep | Focused, essential only |
+| Example focus | Grading/troubleshooting | Student executable |
+| Common errors | Explained, listed | Not included |
+| Expected outputs | Real grading data | Not included |
+| Tone | Preparatory, diagnostic | Encouraging, accessible |
 
 ---
 
@@ -128,4 +191,4 @@
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 1.0 | 2026-07-27 | Initial skill definition — student-facing resource pages distinct from instructor teaching notes. Focus on student learning, not instructor prep. Mandatory sections: Learning Objectives, Core Concepts, Applied/Technical, Dependencies, Security, References. Optional: Discussion Questions, What's Current. |
+| 1.0 | 2026-07-27 | Initial specification — student resource pages distinct from instructor teaching notes. Focus on student learning, not instructor prep. Scope 1500–2000 words. No Teaching Agenda, no expected outputs for grading, no troubleshooting guides. |
