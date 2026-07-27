@@ -5,8 +5,8 @@ description: Use when Corey asks to convert legacy lecture notes into Canvas pag
 
 # Canvas Lecture Notes Playbook
 
-**Version:** 3.0 (Merged spec + process into single source of truth)  
-**Last Updated:** 2026-07-23
+**Version:** 3.1 
+**Last Updated:** 2026-07-27
 
 ---
 
@@ -311,6 +311,92 @@ Each major content section is wrapped in a full box. **Alternate colors** to dis
 
 ---
 
+### 3I. Teaching Notes vs. Student Pages — CRITICAL DISTINCTION
+
+**Teaching Notes** are instructor-facing, unpublished pages grounding classroom prep, troubleshooting, and curriculum coherence.
+
+**Student Pages** are published, student-facing resources for reference and self-study.
+
+| Attribute | Teaching Notes | Student Pages |
+|-----------|---|---|
+| **Naming** | `Teaching Notes - Week [N] - [Topic]` | `Week [N] \| Page [#] - [Topic]` |
+| **Publication** | Unpublished | Published |
+| **Module** | Instructor-only module (position 1) | Course module by week (positions 2+) |
+| **Audience** | Instructors only | Students + instructors |
+| **Scope** | 2500+ words; deep, comprehensive | 1500-2000 words; focused on learning objectives |
+| **Content** | Expected outputs, common errors, security implications, troubleshooting | Core concepts, procedures, examples, references |
+| **Header Status** | Include "Instructor Use Only - Not Published" indicator | No publication status needed |
+
+**When to create Teaching Notes:**
+- Lab-heavy assignments with 4+ scenarios (document expected output per scenario)
+- Topics with common misconceptions or failure modes (common student errors section)
+- Content with security or operational risk implications (weave security context throughout)
+- Synthesis or foundational weeks (teaching notes tie concepts together across multiple student pages)
+
+**Module placement rule:**
+- Create a dedicated unpublished instructor module at position 1: "Course Outline and Lecture Notes (Not Published - Instructor Use Only)"
+- Place all teaching notes AND course outline in this module
+- Keep student modules separate (position 2 onward)
+
+---
+
+### 3J. Lab Walkthrough Standards — REQUIRED for Assignment-Heavy Topics
+
+**Purpose:** Prepare instructors to grade, troubleshoot, and guide student submissions with concrete expectations.
+
+**Must include:**
+
+1. **Assignment summary** (what students will submit)
+   - Example: "A DCS export (CSV) showing at least 5-10 minutes of idle server performance data"
+
+2. **Expected output values** (real data, not fabricated)
+   - Source: Run the assignment yourself or document observed results from past student submissions
+   - Example: "Idle Windows Server 2025 baseline: CPU 5-15%, RAM 5-7 GB, Disk Queue 0-1"
+   - **CRITICAL:** Never invent values from general knowledge
+
+3. **Success criteria** (clear pass/fail indicators)
+   - Example: "DCS runs without errors, captures expected duration, shows idle-state values in CSV"
+
+4. **Common student errors** (2-4 typical mistakes with fixes)
+   - Format: **"Error: [What student does wrong]"** → **"Cause: [Why]"** → **"Fix: [Solution]"**
+   - Example: **"DCS won't start - Access Denied"** → **Cause: DCS requires admin rights** → **Fix: Run Performance Monitor as administrator**
+
+5. **Security/operational implications** (where applicable)
+   - Connect assignment output to real-world anomaly detection
+   - Example: "Cryptomining malware shows up as sustained CPU above baseline; a file server baseline of 10% that suddenly runs at 50% 24/7 is a red flag"
+
+6. **In-class demo walkthrough** (optional but recommended)
+   - Step-by-step of how you'd demonstrate the assignment in real-time
+   - Example: "Open both Task Manager and Resource Monitor side-by-side during Prime95"
+
+---
+
+### 3K. Content Depth & Word Count Guidelines
+
+**Teaching Notes Pages:** 2500–3500 words per page (comprehensive, instructor-focused)
+
+**Breakdown by section:**
+- **Learning Objectives:** 100–150 words (2–6 objectives, 1-2 sentences each)
+- **Fundamentals & Conceptual Architecture:** 600–900 words (3–5 key concepts with context and "why it matters")
+- **Technical Procedures & Configuration:** 800–1200 words (3–6 procedures with step-by-step clarity, real command/UI paths, not generic)
+- **Lab Walkthrough & Troubleshooting:** 700–1000 words (all 4+ scenarios covered with expected outputs, common errors, decision trees)
+- **Optional sections** (Discussion Guide, What's Current, Looking Ahead, Reference Links): 200–400 words combined
+
+**Why this depth:**
+- Instructors need enough detail to teach confidently, troubleshoot student submissions, and answer "why this matters" without leaving the page
+- 2500+ words ensures content is grounded in specifics, not generic bullet points
+- Student-facing pages stay tighter (1500–2000) to avoid cognitive overload; teaching notes provide the "teacher's expanded version"
+
+**Content standards:**
+- Every concept grounded in a concrete example or real-world scenario
+- All command-line examples use actual paths and syntax (not `<placeholder>`)
+- All expected outputs from actual lab runs (never fabricated)
+- All procedures tested or verified from source (never reconstructed from memory)
+- All tables have real data (not example placeholders)
+- All security or version-specific notes dated or version-stamped
+
+---
+
 ## Step 4 — Color Reference (CRITICAL)
 
 | Element | Border | Background | Header BG | Text |
@@ -478,6 +564,7 @@ HOMEWORK / Async
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 3.1 | 2026-07-27 | Added three new content standards subsections: Teaching Notes vs. Student Pages (naming, placement, scope); Lab Walkthrough Standards (expected outputs, common errors, security implications); Content Depth & Word Count (2500+ words for teaching notes, breakdown by section) |
 | 3.0 | 2026-07-23 | **MERGED spec + process into single source of truth** — eliminated duplication; comprehensive format definitions + workflow in one skill document |
 | 1.3 | 2026-07-23 | Refined header styling: removed left-border bars; headers wrapped in darker background shades for visual hierarchy; alternating content colors (green + warm tan) to distinguish adjacent sections; Reference Links now distinct light slate blue |
 | 1.2 | 2026-07-23 | Added full-box styling to ALL sections for visual consistency |
