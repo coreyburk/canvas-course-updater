@@ -1,321 +1,325 @@
 ---
 name: lecture-notes-playbook
-description: Use when Corey asks to convert legacy lecture notes into Canvas pages, build new lecture/resource pages for a course, or audit existing Canvas lecture pages against the standard template.
+description: Use when Corey asks build new lecture/resource pages for a course, to convert legacy lecture notes into Canvas pages, or audit existing Canvas lecture pages against the standard template.
 ---
-
 # Canvas Lecture Notes Playbook
-
 **Version:** 4.0  
-**Last Updated:** 2026-07-27  
-**Based on:** PRO221 Week 1 Teaching Notes (canonical simple, clean format)
+**Last Updated:** 2026-08-01  
+**Canonical Example:** Lecture Notes - PC History (BIT281 Canvas course)
+**Status:** LIVE — PC History is the authoritative format. All 21 BIT281 lecture notes will be remediated to this spec.
 
 ---
-
 ## Overview
+This document defines the canonical format for **instructor lecture notes** across Canvas courses. The format is grounded in the PC History lecture note: **clean, minimal, non-busy styling** that keeps focus on content, not visual decoration.
 
-This document defines the canonical format for **instructor lecture notes** across Canvas courses. The format is grounded in PRO221 Week 1's proven approach: **clean, minimal, non-busy styling** that keeps focus on content, not visual decoration.
-
-**Key principle:** Instructor notes should be easy to scan, not decorated. Content clarity trumps visual polish.
+**Key principle:** Instructor notes should be easy to scan, self-contained, and independent. Content clarity trumps visual polish. No cross-document references. No "Looking Ahead" sections.
 
 ---
-
 ## Step 0 — Universal Gotchas
-
 - Resolve the course to its numeric Canvas ID before any API call
 - Canvas strips `<style>` tags and raw `<svg>` — all styling inline via `style=` attributes
 - Pages created unpublished until approved
 - No em dashes (use space-hyphen-space instead)
 - Never reconstruct content from memory — pull actual source/verify external facts via WebSearch
+- Every lecture note is **independent and self-contained**. No references to other lecture notes or "Looking Ahead" sections.
 
 ---
+## Step 1 — Page Structure (CANONICAL FORMAT)
+Every lecture note page must follow this exact structure in this order.
 
-## Step 1 — Inventory the Source Material
-
-- Where do the notes live and how are they organized (by week/topic/section)?
-- Faithful conversion, full modernization, or skeleton-first?
-- How are content gaps handled — placeholders, drafted by Claude, or ignored?
-- What's the target version/scope?
-
----
-
-## Step 2 — Propose Page Structure Before Building
-
-- One page per topic, grouped by week, or grouped by week + theme (usually best — logical progression, but related topics consolidated)
-- Get sign-off on scope and session time before creating anything
-
----
-
-## Step 3 — Per-Page Structure (CANONICAL FORMAT)
-
-Every lecture note page must follow this exact structure in this order:
-
-### 3A. Header Card (Beige) — REQUIRED
-
-**Purpose:** Title, course context, and brief scope.
+### 1A. Header Card (Beige background) — REQUIRED
+**Purpose:** Title, week/topic context, publication status.
 
 ```html
-<div style="background: #F1EFE8; border: 2px solid #5F5E5A; border-radius: 8px; padding: 16px 20px; margin-bottom: 2.25rem;">
-  <p style="color: #2C2C2A; font-size: 20px; margin: 0 0 4px;"><strong>Teaching Notes - Week [N] - [Topic]</strong></p>
-  <p style="color: #5F5E5A; font-size: 13px; margin: 0;">[Course Code] Instructor Notes - [Brief scope: assignments covered, key themes]</p>
+<div style="background-color: #f1efe8; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; border: 1px solid #b4b2a9;">
+  <div style="font-size: 0.8rem; color: #6b6960; margin-bottom: 0.25rem;">Week [N] - [Topic Area]</div>
+  <h1 style="margin: 0 0 0.5rem 0; font-size: 1.6rem; color: #2c2c2a;">[Title]</h1>
+  <div style="margin-top: 0.75rem; font-size: 0.85rem; color: #854f0b; background-color: #faeeda; display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px;">Instructor Use Only - Not Published</div>
 </div>
 ```
 
 **Rules:**
-- Beige background: #F1EFE8
-- Medium-gray border: 2px solid #5F5E5A
-- Padding: 16px vertical, 20px horizontal
-- Title: 20px, strong, no top margin, 4px bottom margin
-- Subtitle: 13px, color #5F5E5A, no margin
-- Margin-bottom: 2.25rem (generous space before next section)
+- Background: #f1efe8 (beige)
+- Border: 1px solid #b4b2a9 (tan)
+- Border-radius: 8px
+- Padding: 1.5rem 2rem (generous)
+- Margin-bottom: 2rem
+- Week/topic line: 0.8rem, color #6b6960, margin-bottom 0.25rem
+- Title (h1): 1.6rem, color #2c2c2a, no top margin, 0.5rem bottom margin
+- Status badge: inline-block, background #faeeda, color #854f0b, padding 0.25rem 0.75rem, border-radius 4px, font-size 0.85rem, margin-top 0.75rem
+- **NO subtitle with course code or scope**
+- **NO cross-document references**
 
 ---
-
-### 3B. Learning Objectives (Purple) — REQUIRED
-
-**Purpose:** What students should understand by the end of the week/session.
+### 1B. Learning Objectives (Purple header, grid layout) — REQUIRED
+**Purpose:** What students should understand by the end of the week.
 
 ```html
-<div style="background: #EEEDFE; border-left: 4px solid #534AB7; padding: 10px 14px; margin-bottom: 1rem;">
-  <p style="margin: 0; font-size: 16px; color: #26215C;"><strong>Learning Objectives</strong></p>
+<div style="background-color: #eeedfe; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; border: 1px solid #534ab7;">
+  <div style="background-color: #ddd7f5; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px;">
+    <h2 style="margin: 0; font-size: 1.05rem; color: #534ab7;">Learning Objectives</h2>
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+    <div style="background-color: #ffffff; border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+      <span style="color: #534ab7; flex-shrink: 0;">✓</span>
+      <span>[Objective 1]</span>
+    </div>
+    <div style="background-color: #ffffff; border-radius: 6px; padding: 0.75rem 1rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+      <span style="color: #534ab7; flex-shrink: 0;">✓</span>
+      <span>[Objective 2]</span>
+    </div>
+    <!-- repeat for each objective -->
+  </div>
 </div>
-
-<p style="font-size: 13.5px; color: #2C2C2A; margin-bottom: 0.75rem;"><strong>By the end of this page, students should understand:</strong></p>
-
-<ul style="font-size: 13.5px; color: #2C2C2A; margin: 0 0 1rem; padding-left: 20px;">
-  <li style="margin-bottom: 6px;">Objective 1</li>
-  <li style="margin-bottom: 6px;">Objective 2</li>
-  <li style="margin-bottom: 6px;">Objective 3</li>
-</ul>
 ```
 
 **Rules:**
-- Header bar: light purple background #EEEDFE, left border 4px solid #534AB7
-- Header text: 16px, strong, color #26215C (dark purple)
-- Intro paragraph: 13.5px, strong lead-in ("By the end of...")
-- List: plain `<ul><li>` bullets, 13.5px, margin-bottom 6px per item
-- **NO checkmarks, NO grid layout, NO icons** — simple bullet list
-- Margin-bottom for entire section: 1rem
+- Outer div: background #eeedfe, border 1px solid #534ab7, border-radius 8px, padding 1.5rem 2rem, margin-bottom 2rem
+- Header bar inside: background #ddd7f5, padding 0.75rem 1rem, border-radius 4px, margin-bottom 1rem
+- Header h2: 1.05rem, color #534ab7, margin 0
+- Grid: 2 columns, gap 0.75rem
+- Grid items: white background, border-radius 6px, padding 0.75rem 1rem, display flex, align-items flex-start, gap 0.5rem
+- Checkmark span: color #534ab7, flex-shrink 0 (checkmark ✓, not an icon)
+- Objective text: no additional styling
+- **NO intro paragraph ("By the end of...")**
+- **NO numbered list**
+- **Grid layout with white cards is REQUIRED**
 
 ---
-
-### 3C. Content Sections (Light Green or Dark) — REQUIRED
-
-Content is organized into logical sections, each prefaced with a **left-border header bar**. Two color schemes:
-
-#### Light Green (Conceptual/Fundamentals)
+### 1C. Key Teaching Points (Blue header, flat bullet list) — REQUIRED
+**Purpose:** Actionable teaching points. Consolidation of old "Teaching Agenda" (CORE/DEPTH/HOMEWORK merged into one flat list).
 
 ```html
-<div style="background: #E1F5EE; border-left: 4px solid #0F6E56; padding: 10px 14px; margin-bottom: 1rem;">
-  <p style="margin: 0; font-size: 16px; color: #04342C;"><strong>Section Title</strong></p>
+<div style="background-color: #E6F1FB; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; border: 1px solid #2980b9;">
+  <div style="background-color: #d6e0f0; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px;">
+    <h2 style="margin: 0; font-size: 1.05rem; color: #185FA5;">Key Teaching Points</h2>
+  </div>
+  <ul style="margin: 0; padding-left: 1.25rem;">
+    <li>[Point 1]</li>
+    <li>[Point 2]</li>
+    <li>[Point 3]</li>
+    <!-- merged from old CORE, DEPTH, HOMEWORK into single flat list -->
+  </ul>
 </div>
-
-<p style="font-size: 13.5px; color: #2C2C2A; margin-bottom: 0.75rem;"><strong>Subsection Heading</strong></p>
-<p style="font-size: 13.5px; color: #2C2C2A; margin-bottom: 0.75rem;">Body text paragraph 1...</p>
-<p style="font-size: 13.5px; color: #2C2C2A; margin-bottom: 0.75rem;">Body text paragraph 2...</p>
 ```
 
-**Colors:**
-- Header background: #E1F5EE (light green)
-- Border-left: 4px solid #0F6E56 (dark green)
-- Header text: 16px, strong, color #04342C (very dark green)
-- Body text: 13.5px, color #2C2C2A, margin-bottom: 0.75rem per paragraph
-- **No background on body content** — white background only
+**Rules:**
+- Outer div: background #E6F1FB, border 1px solid #2980b9, border-radius 8px, padding 1.5rem 2rem, margin-bottom 2rem
+- Header bar inside: background #d6e0f0, padding 0.75rem 1rem, border-radius 4px, margin-bottom 1rem
+- Header h2: 1.05rem, color #185FA5, margin 0
+- List (ul): plain HTML `<ul><li>`, padding-left 1.25rem, margin 0
+- List items: no extra styling, no subsection headers
+- **NO "CORE (50 min)" or "DEPTH (If time permits)" subsections**
+- **NO "HOMEWORK / Async" subsection**
+- **Single flat bullet list only**
+- **Time references completely removed** (no "50 min", no "if time permits", etc.)
+- Merge CORE/DEPTH/HOMEWORK bullets into one consolidated list
 
 ---
-
-#### Dark (Technical Procedures & Lab Walkthrough)
+### 1D. Optional: Course Intro Notes (Green header, if present in Week 1) — CONDITIONAL
+**Purpose:** First-session housekeeping (Week 1 only, usually).
 
 ```html
-<div style="background: #2C2C2A; border-left: 4px solid #5DCAA5; padding: 10px 14px; margin-bottom: 1rem;">
-  <p style="margin: 0; font-size: 16px; color: #9FE1CB;"><strong>Technical Procedures & Configuration</strong></p>
+<div style="background-color: #e1f5ee; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; border: 1px solid #0F6E56;">
+  <div style="background-color: #c8ddd5; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px;">
+    <h2 style="margin: 0; font-size: 1.05rem; color: #0f6e56;">Course Intro Notes</h2>
+  </div>
+  <p style="margin: 1rem 0;"><strong>Points to cover first session:</strong></p>
+  <ul style="margin: 0 0 1.5rem 0; padding-left: 1.25rem;">
+    <li>[Point 1]</li>
+    <li>[Point 2]</li>
+  </ul>
+  <p>[Additional prose if needed]</p>
 </div>
+```
 
-<div style="background: #2C2C2A; border-radius: 6px; padding: 16px; border: 0.5px solid #3a3a4a; margin-bottom: 1rem;">
-  <p style="color: #9FE1CB; margin-bottom: 1rem;"><strong>Procedure: [Step-by-step title]</strong></p>
-  <p style="color: #cdd6f4; font-size: 13px; margin-bottom: 0.75rem;"><strong>Step 1:</strong> Description...</p>
-  <p style="color: #cdd6f4; font-size: 13px; margin-bottom: 0.75rem;"><strong>Step 2:</strong> Description...</p>
+**Rules:**
+- Background: #e1f5ee (light green)
+- Border: 1px solid #0F6E56 (dark green)
+- Header bar: background #c8ddd5, color #0f6e56
+- **Only in Week 1 or week 1 of a new course**
+- **Can be omitted if not relevant**
+
+---
+### 1E. Lecture Content Sections (Tan/amber or dark charcoal headers) — REQUIRED
+Content organized into logical sections, each with a left-border header bar. Two color schemes depending on content type.
+
+#### Light Tan/Amber (Conceptual/Fundamentals)
+```html
+<div style="background-color: #f5f0e8; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; border: 1px solid #d4a76a;">
+  <div style="background-color: #e5dcc8; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px;">
+    <h2 style="margin: 0; font-size: 1.05rem; color: #6b5d4f;">Lecture Content: [Section Title]</h2>
+  </div>
   
-  <pre style="white-space: pre-wrap; background: #1a1a19; padding: 10px; border-radius: 4px; color: #cdd6f4; font-size: 12px; margin-top: 0.5rem;">Expected output or code example
-goes here with literal formatting
-preserved exactly as shown</pre>
-</div>
-```
-
-**Colors:**
-- Header background: #2C2C2A (charcoal/near-black)
-- Border-left: 4px solid #5DCAA5 (teal/mint)
-- Header text: 16px, strong, color #9FE1CB (light teal)
-- Procedure block background: #2C2C2A (same as header)
-- Procedure title: color #9FE1CB, margin-bottom: 1rem
-- Step text: color #cdd6f4, font-size: 13px, margin-bottom: 0.75rem
-- Code/pre block background: #1a1a19 (darker), color #cdd6f4, font-size: 12px, padding: 10px
-
----
-
-### 3D. HR Dividers (Between Sections) — REQUIRED
-
-```html
-<hr style="border: none; border-top: 0.5px solid #D3D1C7; margin: 2.5rem 0 0;">
-```
-
-**Rules:**
-- Border: none (removes default browser border)
-- Border-top only: 0.5px solid #D3D1C7 (very light gray)
-- Margin: 2.5rem top (generous space before next section), 0 left/right, 0 bottom
-- Used between every major section to create visual breathing room
-
----
-
-### 3E. Closing Summary Card (Beige) — OPTIONAL
-
-```html
-<div style="background: #F1EFE8; border: 2px solid #5F5E5A; border-radius: 8px; padding: 16px;">
-  <p style="color: #2C2C2A; margin: 0 0 8px;"><strong>Summary: [Topic]</strong></p>
-  <p style="font-size: 13.5px; color: #2C2C2A; margin: 0;">Summary text...</p>
-</div>
-```
-
-**Rules:**
-- Same styling as header card (beige, 2px border)
-- Title: 0 top margin, 8px bottom margin
-- Body text: 13.5px, no margin
-
----
-
-## Step 4 — Color Reference (MINIMAL PALETTE)
-
-| Element | Color | Usage |
-|---------|-------|-------|
-| Overall text | #2C2C2A | All body text, headers |
-| Background (page) | white | Default |
-| Header cards (beige) | #F1EFE8 | Title/summary cards |
-| Header card border | #5F5E5A | 2px border on cards |
-| Learning Objectives header | #EEEDFE | Background of LO header bar |
-| Learning Objectives border | #534AB7 | Left border (4px) |
-| Learning Objectives text | #26215C | Text in LO header |
-| Conceptual section header bg | #E1F5EE | Light green background |
-| Conceptual section border | #0F6E56 | Left border (4px) |
-| Conceptual section text | #04342C | Text in header |
-| Technical section header bg | #2C2C2A | Dark charcoal background |
-| Technical section border | #5DCAA5 | Left border (4px, teal) |
-| Technical section text | #9FE1CB | Text in header (light teal) |
-| Code block bg | #1a1a19 | Pre/code block (darker) |
-| Code block text | #cdd6f4 | Text in code blocks |
-| HR divider | #D3D1C7 | Horizontal rule (very light gray) |
-| Subtitle text | #5F5E5A | Secondary text (header subtitles) |
-
-**Overall impression:** Limited, high-contrast palette. Beige/gray for structure, purple for objectives, green for concepts, dark charcoal for technical. No decorative colors.
-
----
-
-## Step 5 — Authoring Standards
-
-- No em dashes — use space-hyphen-space
-- No decorative icons, checkmarks, or visual flourishes
-- No background colors on body paragraphs (only section headers get color)
-- No nested styling (keep structure flat and readable in HTML)
-- All styling inline via `style=` attributes
-- Generous whitespace: 2.5rem between major sections, 1rem between subsections, 6px between list items
-- Body text: 13.5px, line-height: 1.7
-- Section headers: 16px, strong weight
-- Code/pre text: 12px, monospace, white-space: pre-wrap
-
-**Operational Requirements (critical for instructor readiness):**
-- **Always show expected outputs** — what success looks like, command results, step-by-step results
-- **Document common student errors** with root causes and reproducible fix procedures
-- **Include troubleshooting decision trees** — flowchart-style diagnostic paths with actual PowerShell commands
-- **Include security/operational implications** — why certain approaches are risky, what could go wrong
-- **Document resource behavior edge cases** — limitations of built-in resources, misconceptions, when to use Script resource escape-hatch
-- **Include cross-week connections** — how prior weeks inform this week, how this week feeds forward
-- **Include strategic context** — when different approaches are appropriate (e.g., on-premises vs. cloud, push vs. pull)
-- **Include validation/testing procedures** — how to confirm assumptions (e.g., idempotence testing, connectivity verification)
-
----
-
-## Step 6 — Word Count Target (Minimum, Not Maximum)
-
-**Teaching Notes Pages:** Minimum 2000 words per page. **No maximum.** Complexity determines length.
-
-**Guideline breakdown (minimums, not ceilings):**
-- Learning Objectives: 100–150 words minimum
-- Conceptual/Fundamentals: 600–900 words minimum
-- Technical Procedures & Walkthroughs: 800–1200 words minimum
-- Common Errors, Security, Decision Trees: 400–750 words minimum
-- Optional (Closing Summary): 100–200 words
-
-**Why this approach:**
-- Instructors need depth to teach confidently and troubleshoot submissions
-- 2000+ word minimum ensures content is grounded in specifics, not bullet points
-- **If a topic is complex and needs more explanation, add all necessary detail**—don't truncate
-- If 4000 or 5000 words are required to cover expected outputs, edge cases, security implications, and troubleshooting thoroughly, that's correct
-- Completeness and clarity trump brevity
-- Student-facing pages are shorter (1500–2000); teaching notes are richer by design
-
----
-
-## Critical Rules (DO NOT VIOLATE)
-
-### Must Have
-- ✓ Header card (beige, 2px border)
-- ✓ Learning Objectives (purple header bar with left border, plain bullet list)
-- ✓ Content sections with left-border header bars (light green OR dark charcoal, never nested)
-- ✓ HR dividers between major sections (2.5rem margin)
-- ✓ Expected outputs and common errors documented
-- ✓ All styling inline (no `<style>` tags)
-
-### Must NOT Do
-- ✗ Use nested divs for section headers (one header bar only, no "inner header")
-- ✗ Use checkmarks, icons, or grid layouts in learning objectives
-- ✗ Add background colors to body paragraphs (only section headers get color)
-- ✗ Use em dashes or smart quotes
-- ✗ Invent new color schemes (stick to palette above)
-- ✗ Use `<style>` tags (all inline)
-- ✗ **Truncate content due to word count** — if a topic needs 4000+ words to explain thoroughly with all necessary detail, use all 4000+ words
-
-### Flexible Elements
-- Number of sections (varies by topic)
-- Use of closing summary card (optional)
-- Whether to include both light green and dark sections (topic-dependent)
-- Specific subheading text (adjust for content)
-
----
-
-## Examples
-
-### Simple Section (Conceptual)
-
-```html
-<div style="background: #E1F5EE; border-left: 4px solid #0F6E56; padding: 10px 14px; margin-bottom: 1rem;">
-  <p style="margin: 0; font-size: 16px; color: #04342C;"><strong>Why This Matters for Instructors</strong></p>
-</div>
-
-<p style="font-size: 13.5px; color: #2C2C2A; margin-bottom: 0.75rem;"><strong>Conceptual Foundation</strong></p>
-<p style="font-size: 13.5px; color: #2C2C2A; margin-bottom: 0.75rem;">Students often think of baselines as a single number ("the CPU should be 10%"). Reality is more nuanced...</p>
-<p style="font-size: 13.5px; color: #2C2C2A; margin: 0;">Teaching moment: Show a real 10-minute baseline chart with normal variance...</p>
-
-<hr style="border: none; border-top: 0.5px solid #D3D1C7; margin: 2.5rem 0 0;">
-```
-
-### Procedure Section (Technical)
-
-```html
-<div style="background: #2C2C2A; border-left: 4px solid #5DCAA5; padding: 10px 14px; margin-bottom: 1rem;">
-  <p style="margin: 0; font-size: 16px; color: #9FE1CB;"><strong>Assignment 1A Walkthrough</strong></p>
-</div>
-
-<div style="background: #2C2C2A; border-radius: 6px; padding: 16px; border: 0.5px solid #3a3a4a; margin-bottom: 1rem;">
-  <p style="color: #9FE1CB; margin-bottom: 1rem;"><strong>Procedure 1: Setting up DCS Data Collector Set</strong></p>
-  <p style="color: #cdd6f4; font-size: 13px; margin-bottom: 0.75rem;"><strong>Step 1:</strong> Open Perfmon, create a new Data Collector Set...</p>
-  <p style="color: #cdd6f4; font-size: 13px; margin-bottom: 0.75rem;"><strong>Step 2:</strong> Add the following counters: Processor \% Processor Time, Memory \% Committed Bytes In Use, PhysicalDisk \Disk Queue Length</p>
+  <h3 style="color: #6b5d4f; margin-top: 0;">[Subsection Heading]</h3>
+  <p style="margin-bottom: 0.75rem;"><strong>Bold intro if needed</strong></p>
+  <p style="margin-bottom: 0.75rem;">Body paragraph 1...</p>
+  <p style="margin-bottom: 0.75rem;">Body paragraph 2...</p>
   
-  <pre style="white-space: pre-wrap; background: #1a1a19; padding: 10px; border-radius: 4px; color: #cdd6f4; font-size: 12px; margin-top: 0.5rem;">Expected output when students submit DCS export CSV:
-Timestamp,Processor,Memory,DiskQueue
-2026-07-27 09:00:00,15.2,45.3,0
-2026-07-27 09:00:10,18.5,46.1,1</pre>
+  <div style="background-color: #FAEEDA; padding: 12px 16px; margin: 12px 0; border-radius: 4px;">
+    <p style="margin: 0; font-size: 0.9rem;"><strong style="color: #854F0B;">Teaching note:</strong> [Practical classroom advice or common student misconception]</p>
+  </div>
 </div>
-
-<hr style="border: none; border-top: 0.5px solid #D3D1C7; margin: 2.5rem 0 0;">
 ```
+
+**Rules:**
+- Outer div: background #f5f0e8, border 1px solid #d4a76a, border-radius 8px, padding 1.5rem 2rem, margin-bottom 2rem
+- Header bar: background #e5dcc8, padding 0.75rem 1rem, border-radius 4px, margin-bottom 1rem
+- Header h2: 1.05rem, color #6b5d4f, margin 0
+- h3 subsections: color #6b5d4f, margin-top 0, margin-bottom 0.75rem (implied by paragraph margins)
+- Paragraphs: margin-bottom 0.75rem, no other styling
+- Teaching note boxes: background #FAEEDA, padding 12px 16px, margin 12px 0, border-radius 4px, color #854F0B for strong text, font-size 0.9rem
+
+#### Dark Charcoal (Technical Procedures, Discussion, Special Content)
+```html
+<div style="background-color: #2c2c2a; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; margin-top: 2.5rem; color: #f0ede8; border: 1px solid #5DCAA5;">
+  <div style="background-color: #1a1a1a; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px;">
+    <h2 style="margin: 0; font-size: 1.05rem; color: #9fe1cb;">The Story of Mel - Discussion Guide</h2>
+  </div>
+  
+  <p style="margin: 0 0 1rem 0;"><strong style="color: #9FE1CB;">What it is:</strong> [Description]</p>
+  <p style="margin: 0 0 1rem 0;"><strong style="color: #9FE1CB;">Why it matters:</strong> [Context]</p>
+  
+  <h3 style="color: #9FE1CB; border-top: 1px solid #444441; padding-top: 16px; margin-top: 16px; margin-bottom: 1rem;">Discussion Prompts</h3>
+  
+  <p style="margin: 0 0 0.5rem 0;"><strong style="color: #9FE1CB;">1. [Prompt question]?</strong></p>
+  <p style="margin: 0 0 1rem 0;">Expected answer: [Response guidance]</p>
+  
+  <p style="margin: 0 0 0.5rem 0;"><strong style="color: #9FE1CB;">2. [Prompt question]?</strong></p>
+  <p style="margin: 0;">[Response guidance]</p>
+</div>
+```
+
+**Rules:**
+- Outer div: background #2c2c2a, border 1px solid #5DCAA5, border-radius 8px, padding 1.5rem 2rem, margin-bottom 2rem, margin-top 2.5rem, color #f0ede8
+- Inner header bar: background #1a1a1a, padding 0.75rem 1rem, border-radius 4px, margin-bottom 1rem
+- Header h2: 1.05rem, color #9fe1cb, margin 0
+- Bold text/labels: color #9FE1CB (light teal)
+- Regular text: color #f0ede8 (light gray)
+- h3 subsections: color #9FE1CB, border-top 1px solid #444441, padding-top 16px, margin-top 16px, margin-bottom 1rem
+- Paragraphs: margin-bottom 1rem (or 0 for last), color #f0ede8
+
+---
+### 1F. What's Current (Amber background) — REQUIRED
+**Purpose:** Instructor context on current market/technology state, relevant to the topic.
+
+```html
+<div style="background-color: #faeeda; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; border: 1px solid #854F0B;">
+  <div style="background-color: #f0d4b8; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px;">
+    <p style="margin: 0; font-size: 0.8rem; color: #854f0b;"><strong>What's Current</strong></p>
+  </div>
+  <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+    <li><strong>[Topic (year range)]:</strong> [Current state, e.g., "AMD's Ryzen lines are competitive with Intel"]</li>
+    <li><strong>[Topic (year range)]:</strong> [Current state, e.g., "Apple's M-series processors are ARM-based"]</li>
+  </ul>
+</div>
+```
+
+**Rules:**
+- Background: #faeeda (pale amber)
+- Border: 1px solid #854F0B (amber)
+- Header bar: background #f0d4b8, padding 0.75rem 1rem, border-radius 4px, margin-bottom 1rem
+- Header p: 0.8rem, color #854f0b, no margin
+- List: font-size 0.9rem, padding-left 1.25rem, margin 0
+- List items: `<strong>[Topic (year range)]:</strong>` followed by description
+- **Grounded in specific years and real developments**
+- **Helps instructors answer "Is this still true?" and "What's changed?"**
+
+---
+### 1G. Reference Links (Light blue background) — REQUIRED
+**Purpose:** External links only (Wikipedia, official docs, forums, etc.). No internal Canvas cross-references.
+
+```html
+<div style="background-color: #e6f0f8; border-radius: 8px; padding: 1.5rem 2rem; border: 1px solid #a8c5db;">
+  <div style="background-color: #d6e0e8; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px;">
+    <p style="margin: 0; font-size: 0.8rem; color: #5a6f7f;"><strong>Reference Links</strong></p>
+  </div>
+  <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem;">
+    <li><a style="color: #185fa5;" href="[URL]">[Title]</a> - [Brief description]</li>
+    <li><a style="color: #185fa5;" href="[URL]">[Title]</a> - [Brief description]</li>
+  </ul>
+</div>
+```
+
+**Rules:**
+- Background: #e6f0f8 (light blue)
+- Border: 1px solid #a8c5db (blue)
+- Header bar: background #d6e0e8, padding 0.75rem 1rem, border-radius 4px, margin-bottom 1rem
+- Header p: 0.8rem, color #5a6f7f, no margin
+- List: font-size 0.9rem, padding-left 1.25rem, margin 0
+- Links: color #185fa5, no other styling
+- **External links only** (Wikipedia, official documentation, external resources)
+- **NO internal Canvas cross-references**
+- **NO "See also" or "Next page" links**
+
+---
+## Step 2 — Sections to REMOVE (v4.0 → v5.0)
+
+These sections must be **completely deleted** from all lecture notes:
+
+- **"Connects to:" / "Leads to:" lines in header** — No document cross-references
+- **"Student resource page:" references** — No cross-links to student-facing pages
+- **Entire "Looking Ahead" section** — No forward references to other notes
+- **"CORE (Must accomplish in 50 min)" subheader** — Merge into Key Teaching Points flat list
+- **"DEPTH (If time and energy permit)" subheader** — Integrate substantive content into Key Teaching Points; omit fluff
+- **"HOMEWORK / Async" subheader** — Remove entirely; assignments are in Canvas, not here
+- **Any cross-document references** (e.g., "See the CPU Architecture lecture")
+- **Any "Day 1", "Day 2", etc. time references** — No daily breakdown
+- **Time-box language** — "50 min", "if time permits", "before class", "after class"
+
+---
+## Step 3 — Inline Styles Only
+
+- All styling via `style=""` attributes
+- No `<style>` tags (Canvas strips them)
+- No `<script>` tags
+- All colors use hex codes from the palette below
+- Font families use system sans-serif: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`
+- No em dashes — use space-hyphen-space instead (`-` surrounded by spaces)
+
+---
+## Step 4 — Color Palette (CANONICAL)
+
+| Element | Background | Border/Text | Hex Codes |
+|---------|-----------|-----------|-----------|
+| Header card | Beige | Tan border | `#f1efe8` / `#b4b2a9` |
+| Status badge | Pale amber | Amber text | `#faeeda` / `#854f0b` |
+| Learning Objectives box | Light purple | Purple border | `#eeedfe` / `#534ab7` |
+| LO header bar | Medium purple | — | `#ddd7f5` |
+| LO objective cards | White | — | `#ffffff` |
+| Key Teaching Points box | Light blue | Blue border | `#E6F1FB` / `#2980b9` |
+| KTP header bar | Medium blue | — | `#d6e0f0` |
+| Lecture Content box | Light tan | Tan border | `#f5f0e8` / `#d4a76a` |
+| Content header bar | Tan | — | `#e5dcc8` |
+| Teaching note box | Pale amber | Amber border | `#FAEEDA` / `#854F0B` |
+| Discussion/Special box | Dark charcoal | Teal border | `#2c2c2a` / `#5DCAA5` |
+| Discussion header bar | Darker charcoal | — | `#1a1a1a` |
+| What's Current box | Pale amber | Amber border | `#faeeda` / `#854F0B` |
+| Current header bar | Medium amber | — | `#f0d4b8` |
+| Reference Links box | Light blue | Blue border | `#e6f0f8` / `#a8c5db` |
+| Reference header bar | Medium blue | — | `#d6e0e8` |
+| Body text | — | — | `#2c2c2a` (dark gray) |
+| Secondary text | — | — | `#5F5E5A` (medium gray) |
+| Light text (on dark) | — | — | `#f0ede8` (light gray) |
+| Bright text (on dark) | — | — | `#9fe1cb` (light teal) |
+
+---
+## Step 5 — Key Principles (v5.0)
+
+1. **Self-contained documents** — Each lecture note is independent. No cross-references to other notes.
+2. **No time constraints** — Remove all references to class duration, pacing, or "if time permits". Instructors use notes at their own pace.
+3. **Consolidated Key Teaching Points** — Merge old CORE/DEPTH/HOMEWORK into a single flat bullet list. No subsections or headers within the list.
+4. **Canvas first** — Notes live in Canvas. Assignments, due dates, and learning pathways are documented in Canvas, not in lecture notes.
+5. **Minimal decoration** — Clean, readable format. Content clarity trumps visual polish. No nested divs, no excessive color variation, no busy styling.
+6. **Instructor-facing only** — These are reference/prep documents for the instructor. Not student-facing materials. Tone is direct and practical.
+7. **No cross-document references** — No "See also", "Next page", "Looking Ahead", or "Connects to" lines. Each note stands alone.
+8. **Current market context required** — "What's Current" section grounds the note in reality. Helps instructors answer "Is this still true?" and stay relevant.
+
+---
+## Step 6 — Example: PC History (Live v4.0 Canonical Format)
+
+See `Lecture Notes - PC History` in BIT281 Canvas course for the authoritative example of v4.0 format.
+
 
 ---
 
@@ -323,6 +327,7 @@ Timestamp,Processor,Memory,DiskQueue
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 5.0 | 2026-08-01 | **Rewritten to match PC History canonical format.** Removed complex nested divs, time boxes (50 min), all cross-document references, "Looking Ahead" sections. Added Key Teaching Points (consolidated from old CORE/DEPTH/HOMEWORK). Added What's Current section (required). Cleaned up colors and simplified styling. Established absolute rule: no "Connects to", no "Student resource page", no time references, no daily breakdown. PC History is live example. |
 | 4.0 | 2026-07-27 | **Complete rewrite: Simple, clean format based on PRO221 Week 1.** Removed complex nested divs, grid layouts, checkmarks. Restored left-border header bars, plain bullet lists, generous whitespace. Minimal color palette. Emphasis on content clarity over visual decoration. This is the canonical format going forward. |
 | 3.2 | 2026-07-27 | Restructured Steps (moved teaching notes comparison, lab standards, word count to Steps 4-6). |
 | 3.1 | 2026-07-27 | Added three new content standards subsections. |
