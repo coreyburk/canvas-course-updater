@@ -34,6 +34,7 @@ This document defines the **universal rubric format** for all assignments across
 - ✅ **Rubrics align with assignment's Purpose/Task/Criteria boxes**
 - ✅ **Good level = 65-75% of Excellent points** (enables partial credit while staying clean)
 - ✅ **Rubrics marked "Reusable: Yes"** for consistency across similar assignments
+- ❌ **NEVER put point values in the assignment's Criteria for Success box** — Point values belong ONLY in the rubric, not in the assignment description. The Criteria box describes what success looks like WITHOUT listing points.
 - ❌ **Never use half-points** (10, 7, 0 is cleaner than 10, 6.5, 0)
 - ❌ **Never use 4+ performance levels** (3-level standard is universal)
 - ❌ **Never leave descriptions blank** (explain what each level looks like)
