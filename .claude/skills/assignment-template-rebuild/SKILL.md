@@ -22,12 +22,18 @@ full replacement: the entire HTML body must be reconstructed, not patched.
 
 ## Step 1 — Diagnose before rebuilding
 Compare the current assignment against the template below and list what's
-missing or wrong: no Purpose box, missing CLOs/POs, points listed inside the
-Criteria for Success box, broken bullet rendering, stale tech references
-(e.g. VMware where the course is Hyper-V-only, wrong Windows Server version),
-missing prerequisite/troubleshooting sections. Report the diagnosis before
-rewriting if there's any ambiguity in scope or intent — don't silently
-reinterpret what the assignment is testing.
+missing or wrong:
+- No Purpose box, missing CLOs/POs
+- **Deliverables section is AFTER Criteria box instead of BEFORE** ← COMMON BUG
+- **Point values embedded in Criteria box or criterion descriptions** like "(5 pts)" ← COMMON BUG
+- **Separate "Success looks like" statement after Criteria box** ← COMMON BUG
+- Broken bullet rendering
+- Stale tech references (e.g. VMware where the course is Hyper-V-only, wrong Windows Server version)
+- Missing prerequisite/troubleshooting sections
+
+Report the diagnosis before rewriting if there's any ambiguity in scope or
+intent — don't silently reinterpret what the assignment is testing. The three
+common bugs above have happened repeatedly; check for them specifically.
 
 ## Step 2 — Template structure (exact order)
 Assignments use a distinct `<table>`-based box style — **not** the div-based
@@ -36,6 +42,15 @@ either (BIT281's old Criteria box was a div — that's drift to fix, not a
 variant to preserve). Confirmed against live BIT221 (2B - Configure Active
 Directory and DNS) and BIT351 (1A - Proxmox VE Setup and Configuration)
 content:
+
+**CRITICAL: Element order is strict. Violations invalidate the assignment.**
+```
+1. Purpose box
+2. Task box  
+3. Detailed instructions
+4. Deliverables section (if assignment has explicit deliverables to list)
+5. Criteria for Success box ← FINAL ELEMENT (nothing comes after this)
+```
 
 1. **Purpose box** — a `<table style="background-color: #eaf4fb; border: 2px
    solid #2980b9;">` with an `<h3 style="color: #1a5276;">Purpose</h3>`
@@ -65,16 +80,37 @@ content:
      `<img src="https://img.icons8.com/carbon-copy/2x/camera.png" alt="Screenshot required" width="25" height="25" loading="lazy">`
    - Inline hints highlighted with `<span style="background-color:
      #ffff00;"><strong>Hint:</strong></span>` inside the relevant list item.
-4. **Criteria for Success box** — a `<table style="background-color:
+4. **Deliverables section** (plain HTML, not a box) — An optional section
+   listing what the student must submit (e.g., "Submit a bash script named
+   log_analyzer.sh, a CSV output file, and a README with setup notes"). This
+   section comes BEFORE the Criteria box. Use a simple heading and bulleted
+   list or paragraph. This is different from the Criteria box — it says what
+   to turn in, not how it will be graded.
+5. **Criteria for Success box** — a `<table style="background-color:
    #eafaf1; border: 2px solid #27ae60;">` with an `<h3 style="color:
    #1e8449;">Criteria for Success</h3>` heading, an intro sentence
-   (`<p>`), then a single `<ul>` of grading criteria. **Never list point
-   values inside this box.** Must be a `<table>`, not a `<div>` — BIT281's
-   pre-standardization assignments used a div here; convert it when rebuilding.
+   (`<p>`), then a single `<ul>` of grading criteria. **CRITICAL RULES:**
+   - **NEVER list point values inside this box** — points belong ONLY in the
+     Canvas rubric, never in assignment text
+   - **NEVER embed points inline** — "(5 pts)", "(3 pts)" inside criterion
+     descriptions are forbidden; describe WHAT is graded, not HOW MANY points
+   - **NEVER add "Success looks like" or other text after this box** — the
+     Criteria box itself is the success specification; don't duplicate it
+   - **MUST be a `<table>`, not a `<div>`** — BIT281's pre-standardization
+     assignments used a div here; convert it when rebuilding
+   - **MUST be the FINAL element** — nothing comes after the Criteria box
 
-## Step 3 — Known rendering bugs to avoid
-See `canvas-html-lint` for the complete mechanical rule set — these two are
-the highest-frequency violations specifically in assignment rebuilds:
+## Step 3 — Known rendering bugs and structural violations to avoid
+See `canvas-html-lint` for the complete mechanical rule set. These are the
+highest-frequency violations specifically in assignment rebuilds:
+
+**Structural Violations (found 2026-08-28 in BIT320):**
+- ✗ Deliverables section placed AFTER Criteria box (should be BEFORE)
+- ✗ Point values embedded in Criteria descriptions, e.g., "(5 pts)", "(3 pts)"
+- ✗ Separate "Success looks like" statement added after Criteria box
+→ These three bugs commonly appear together; check all three when auditing.
+
+**Rendering Bugs:**
 - If an `h3` is immediately followed by a `ul` with no paragraph between
   them, the bullet list breaks the box's rendering in Canvas. Live BIT221
   content always has an intro `<p>` between the `<h3>` and the `<ul>` inside
@@ -87,6 +123,7 @@ the highest-frequency violations specifically in assignment rebuilds:
   explanatory paragraphs) that a scan limited to the styled callout boxes
   would have missed entirely.
 
+**HTML/Styling Rules:**
 All styling inline (`<style>` is stripped). `<strong>` not `font-weight`.
 `<pre style="white-space: pre-wrap;">` for any full code/command blocks;
 single inline commands can stay in `<code>` tags without the `<pre>` wrapper.
