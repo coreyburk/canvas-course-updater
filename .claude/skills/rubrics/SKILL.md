@@ -26,7 +26,45 @@ This document defines the **universal rubric format** for all assignments across
 
 ---
 
-## Critical Rules (Do Not Violate)
+## Critical: Assignment Element Ordering & Point Placement
+
+**ENFORCED STRUCTURE:** All Canvas assignments must follow this exact element sequence. Violations of this structure invalidate the assignment layout.
+
+```
+1. Purpose Box (Blue table)
+   └─ Real-world scenario + learning outcomes
+2. Task Box (Yellow table)
+   └─ Concrete statement of deliverable
+3. Instructions (Plain HTML, no box)
+   └─ Step-by-step procedures with expected outputs
+4. Deliverables (Plain HTML, no box)
+   └─ Explicit list of what student must submit
+5. Criteria for Success Box (Green table)
+   └─ Grading criteria ONLY — NO point values
+   └─ NO additional "Success looks like" statement after this box
+   └─ THIS IS THE FINAL ELEMENT — nothing comes after this box
+```
+
+**Point Values Rule:**
+- ✅ Point values BELONG: In the Canvas rubric ONLY
+- ❌ Point values DO NOT BELONG: Anywhere in the assignment description
+- ❌ Point values DO NOT BELONG: Inside Criteria box (neither as separate lines nor inline like "(5 pts)")
+- ❌ Point values DO NOT BELONG: In separate "Success looks like" statements after Criteria box
+
+**Criteria Box is FINAL:**
+- ✅ Criteria for Success box must be the last element in the assignment
+- ❌ No Deliverables section AFTER the Criteria box
+- ❌ No "Success looks like" statement AFTER the Criteria box
+- ❌ No additional text, headers, or callouts AFTER the Criteria box
+
+**Why This Matters:**
+- Canvas rubric points are the authoritative grading specification
+- Assignment description should frame the task and criteria WITHOUT duplicating points
+- Visual structure is clear to students: read why (Purpose) → what to do (Task) → how to do it (Instructions) → what to turn in (Deliverables) → how we'll grade (Criteria box)
+
+---
+
+## Critical Rules for Rubrics (Do Not Violate)
 
 - ✅ **All rubrics use 3 performance levels:** Excellent, Good, Unacceptable
 - ✅ **Point values match assignment totals:** 25 pts, 50 pts, or 100 pts only
@@ -34,7 +72,10 @@ This document defines the **universal rubric format** for all assignments across
 - ✅ **Rubrics align with assignment's Purpose/Task/Criteria boxes**
 - ✅ **Good level = 65-75% of Excellent points** (enables partial credit while staying clean)
 - ✅ **Rubrics marked "Reusable: Yes"** for consistency across similar assignments
-- ❌ **NEVER put point values in the assignment's Criteria for Success box** — Point values belong ONLY in the rubric, not in the assignment description. The Criteria box describes what success looks like WITHOUT listing points.
+- ❌ **NEVER put point values in the assignment's Criteria for Success box** — Points belong ONLY in the rubric, not in assignment text
+- ❌ **NEVER embed points inline in criterion descriptions** — Examples: "(5 pts)", "(3 pts)", "(2 pts)" are forbidden. Criterion descriptions describe WHAT is graded, not HOW MANY points
+- ❌ **NEVER place Deliverables AFTER the Criteria box** — Deliverables come BEFORE; Criteria box is final element
+- ❌ **NEVER add "Success looks like" text after Criteria box** — The Criteria box itself is the success specification; don't duplicate it
 - ❌ **Never use half-points** (10, 7, 0 is cleaner than 10, 6.5, 0)
 - ❌ **Never use 4+ performance levels** (3-level standard is universal)
 - ❌ **Never leave descriptions blank** (explain what each level looks like)
