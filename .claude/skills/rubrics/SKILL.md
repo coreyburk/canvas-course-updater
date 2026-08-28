@@ -5,7 +5,7 @@ description: Use when creating, auditing, or rebuilding Canvas rubrics for all a
 
 # Neumont Canvas Rubrics Standard
 
-**Version:** 3.0  
+**Version:** 3.1  
 **Last Updated:** 2026-08-28  
 **Applies to:** All courses (BIT221, BIT281, BIT320, PRO221, BIT351, etc.)
 
