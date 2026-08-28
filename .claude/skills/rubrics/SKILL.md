@@ -91,19 +91,23 @@ Total Points: [25/50/100]
 Reusable: Yes
 
 Criterion 1: Well Formatted Document (X points, 15-20% of total)
+  Description: Submission is professionally formatted with clear identification, labeled deliverables, and organized sections.
   Excellent (X points) — Submission includes clear identification (name, course, assignment). All screenshots/outputs labeled. Professional formatting and organization.
   Good (X*0.70 points) — Submission includes most required information. Most screenshots labeled. Minor formatting issues.
   Unacceptable (0 points) — Missing identification or clear organization. Screenshots unlabeled. Unprofessional formatting.
 
 Criterion 2: [Primary Task/Deliverable] (Y points, distributed by effort)
+  Description: [What is being assessed? What skill or deliverable does this criterion measure?]
   Excellent (Y points) — [Complete, correct, demonstrates mastery of core skill]
   Good (Y*0.70 points) — [Mostly complete with minor gaps or minor issues]
   Unacceptable (0 points) — [Missing, broken, or demonstrates lack of understanding]
 
 Criterion 3: [Secondary Component/Verification] (Z points, distributed by effort)
+  Description: [What is being assessed?]
   [Same 3-level structure]
 
 Criterion 4+ (Optional for 50/100-pt): [Additional component by effort] (W points, distributed by effort)
+  Description: [What is being assessed?]
   [Same 3-level structure for additional criteria]
 ```
 
@@ -127,16 +131,19 @@ Total Points: 25
 Reusable: Yes
 
 Criterion 1: Well Formatted Document (4 points)
+  Description: Document is professionally formatted with clear student/course identification, organized sections, and labeled screenshots.
   Excellent (4) — Document includes name, course code, assignment name clearly labeled; all sections organized with titles; every screenshot has descriptive label
   Good (3) — Mostly includes required info; sections mostly titled; most screenshots labeled
   Unacceptable (0) — Missing clear identification or labels; disorganized structure
 
 Criterion 2: Environment Installation (10 points)
-  Excellent (10) — All three environments (Bash, Python, PowerShell) successfully installed and fully functional
+  Description: All three environments (Bash, Python, PowerShell) are successfully installed and operational.
+  Excellent (10) — All three environments successfully installed and fully functional; versions match or exceed requirements
   Good (7) — Two or more environments working; minor installation issues resolved or workarounds documented
   Unacceptable (0) — One or more environments not installed or non-functional
 
 Criterion 3: Verification & Testing (11 points)
+  Description: Version checks and test commands confirm that all environments are properly configured and ready for use.
   Excellent (11) — All version checks pass; test commands produce correct output in all environments; testing evidence clear
   Good (8) — Version checks pass for most environments; test commands mostly work with minor issues
   Unacceptable (0) — Version checks fail or test commands don't work; insufficient testing evidence
@@ -150,21 +157,25 @@ Total Points: 50
 Reusable: Yes
 
 Criterion 1: Well Formatted Document (8 points)
+  Description: Submission is professionally formatted with complete identification, organized sections, and labeled screenshots/outputs.
   Excellent (8) — Complete identification (name, course, assignment date); all sections clearly titled; every screenshot and output labeled with descriptive captions; professional formatting
   Good (6) — Most identification info present; sections mostly titled; most screenshots labeled
   Unacceptable (0) — Missing identification or labels; unclear section organization; disorganized
 
 Criterion 2: Script Functionality (15 points)
+  Description: Script executes successfully and correctly processes log data to produce an accurate summary.
   Excellent (15) — Script runs without errors; correctly processes all log entries; produces accurate summary; handles edge cases
   Good (11) — Script runs with minor issues; processes most log entries; summary mostly accurate
   Unacceptable (0) — Script doesn't run or produces incorrect results
 
 Criterion 3: Code Quality (14 points)
+  Description: Code is well-organized, readable, and demonstrates understanding of bash idioms and best practices.
   Excellent (14) — Well-commented; clear variable names; demonstrates language idioms and best practices; logic is easy to follow
   Good (10) — Good comments; clear logic; adequate code organization; minor improvements possible
   Unacceptable (0) — Minimal or no comments; poor readability; unclear logic
 
 Criterion 4: Deliverables & Output (13 points)
+  Description: All required files and outputs are provided and demonstrate successful task completion.
   Excellent (13) — Script, output file, and documentation all provided; output is professional and demonstrates task completion
   Good (9) — All deliverables present; output is complete but formatting could be clearer
   Unacceptable (0) — Missing deliverables or output doesn't demonstrate task completion
@@ -178,26 +189,31 @@ Total Points: 100
 Reusable: Yes
 
 Criterion 1: Well Formatted Document (16 points)
+  Description: Submission includes professional formatting, complete identification, organized sections, and clearly labeled all deliverables and evidence.
   Excellent (16) — Complete cover page with name, course, assignment, date; all sections clearly titled and organized; every screenshot/output labeled with descriptive caption; professional formatting throughout
   Good (11) — Cover page present; sections mostly titled; most screenshots labeled; minor formatting inconsistencies
   Unacceptable (0) — Missing cover page or critical info; unclear section organization; most screenshots unlabeled
 
 Criterion 2: Data Collection & Analysis (25 points)
+  Description: Performance metrics are collected over sufficient time period and analyzed to identify trends and capacity risks.
   Excellent (25) — Performance metrics collected over 24+ hours; trend analysis is thorough and accurate; capacity risks clearly identified; methodology well documented
   Good (18) — Metrics collected; analysis mostly accurate with minor gaps; most trends identified
   Unacceptable (0) — Data collection incomplete or analysis missing/inaccurate
 
 Criterion 3: Script Quality & Production Readiness (20 points)
+  Description: Code demonstrates language mastery with robust error handling, comprehensive logging, and production-quality standards.
   Excellent (20) — Code demonstrates language mastery; error handling robust; logging comprehensive; suitable for production deployment
   Good (14) — Good code quality; most error cases handled; adequate logging; minor refinements needed
   Unacceptable (0) — Poor code quality; minimal error handling or logging
 
 Criterion 4: Comparative Analysis (19 points)
+  Description: Analysis clearly compares tool and language choices, justifies selection, and thoughtfully examines trade-offs against alternatives.
   Excellent (19) — Clear comparison of tool/language choices; explains why selected tool is appropriate; identifies trade-offs thoughtfully; alternatives considered
   Good (13) — Good comparison of approach; tool selection rationale clear; most trade-offs mentioned
   Unacceptable (0) — No comparison or superficial analysis
 
 Criterion 5: Reflection & Insight (20 points)
+  Description: Reflection demonstrates deep understanding of challenges, paradigm differences, and personal learning from the capstone project.
   Excellent (20) — Thoughtful reflection on challenges, paradigm differences, and learnings; 250+ words; demonstrates deep understanding
   Good (14) — Adequate reflection on approach and choices; 150-250 words; shows competency
   Unacceptable (0) — Missing or minimal reflection (under 150 words)
