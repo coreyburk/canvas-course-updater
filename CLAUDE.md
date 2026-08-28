@@ -37,19 +37,9 @@ Outcomes and the BIT221 visual/structural standard.
 
 - BIT320 (Full Course Redesign, 2026-08-28): Restructured from disorganized 9-module layout to coherent 5-week course. Created 4 technology-agnostic course outcomes emphasizing tool selection (bash, PowerShell, Python equally balanced). Redesigned all 8 assignments with proper 3-box template formatting and recalibrated to 25/50/100 point scale. Week 1-4 structure: Week 1 all three languages (intro), Week 2 bash primary, Week 3 PowerShell primary, Week 4 Python primary (progressive, not scattered). Week 5 performance trending capstone with comparative analysis. Created sample_log.txt for Lab 1.3. All assignments published with proper due dates (Friday of each week, term starts Nov 9). Next: create 4 quizzes and reference pages.
 
-## BIT320 Current Status (as of 2026-08-28)
-- **Course Design:** 5-week structure replacing 9-module layout; technology-agnostic outcomes
-- **Point Scale:** 25 = simple/setup, 50 = medium, 100 = large/complex (grading ease + Canvas weighting)
-- **Assignments (8 total):**
-  - Week 1: Lab 1.1 (25) infrastructure setup, Lab 1.2 (25) system command, Lab 1.3 (100) log analysis comparative
-  - Week 2: Lab 2.1 (50) bash log summary
-  - Week 3: Lab 3.1 (100) PowerShell Event Log audit
-  - Week 4: Lab 4.1 (50) Python service monitoring, Lab 4.2 (25) scheduling, Lab 4.3 (50) production hardening (progressive)
-  - Week 5: Lab 5.1 (100) performance baseline & trending capstone
-  - Total: 525 pts
-- **Infrastructure:** Hyper-V (existing from BIT221) + WSL2 (new, lightweight)
-- **Training:** LinkedIn Learning (replaces 2005 textbook + outdated cookbook)
-- **Pending:** 4 quizzes (Week 1-4, specifications documented), reference pages (student/instructor)
+## BIT320 Current Status
+**See `courses/BIT320.md` for detailed status, pending work, and next steps.**
+(This file no longer duplicates course-specific information.)
 </recent_updates>
 
 Per-course status, decisions, and history live in `courses/{CODE}.md`. Check
