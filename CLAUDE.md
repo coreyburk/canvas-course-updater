@@ -11,6 +11,7 @@ Outcomes and the BIT221 visual/structural standard.
 |---|---|---|---|
 | BIT221 | 3631198 | Server Administration I — Windows Server 2025 | Reference standard, largely built |
 | BIT281 | 3631199 | Hardware Systems | Rebuild complete |
+| BIT320 | 3644698 | Shell and Administrative Scripting | Redesign complete, 2026-08-28 |
 | PRO221 | 3631288 | Server Admin I — Project: Windows Server | Instructor module complete, 2026-07-27 |
 | BIT351 | 3631200 | Virtual Systems: Proxmox VE | Active build |
 
@@ -33,6 +34,22 @@ Outcomes and the BIT221 visual/structural standard.
 - PRO221 (Week 4 Complete, 2026-07-23): All 4 pages published: iSCSI (Page 1), Failover Clustering (Page 2), RDS/MPIO (Page 3), WSUS (Page 4). 2C unpublished/flagged NOT WORKING—needs vet/repair or deletion. 4B unpublished/ready—awaiting publish decision. All assignments conform to 3-box template. OT1 keeping Windows Server 2019 File Services (no 2025 replacement available). courses/PRO221.md and CLAUDE.md updated and committed 2026-07-23.
 
 - PRO221 (Instructor Module & Lecture Notes, 2026-07-27): Created unpublished "Course Outline and Lecture Notes (Not Published - Instructor Use Only)" module at position 1. Added PRO221 - Course Outline page (5-week overview with topics, assignments, training, quizzes per week, certification note). Created 5 comprehensive unpublished instructor lecture notes pages (Weeks 1-5) with teaching context, student misconceptions, lab setup guidance, and cross-week connections. All content grounded in published student-facing pages. Module structure follows BIT281 pattern. CLAUDE.md updated and committed 2026-07-27.
+
+- BIT320 (Full Course Redesign, 2026-08-28): Restructured from disorganized 9-module layout to coherent 5-week course. Created 4 technology-agnostic course outcomes emphasizing tool selection (bash, PowerShell, Python equally balanced). Redesigned all 8 assignments with proper 3-box template formatting and recalibrated to 25/50/100 point scale. Week 1-4 structure: Week 1 all three languages (intro), Week 2 bash primary, Week 3 PowerShell primary, Week 4 Python primary (progressive, not scattered). Week 5 performance trending capstone with comparative analysis. Created sample_log.txt for Lab 1.3. All assignments published with proper due dates (Friday of each week, term starts Nov 9). Next: create 4 quizzes and reference pages.
+
+## BIT320 Current Status (as of 2026-08-28)
+- **Course Design:** 5-week structure replacing 9-module layout; technology-agnostic outcomes
+- **Point Scale:** 25 = simple/setup, 50 = medium, 100 = large/complex (grading ease + Canvas weighting)
+- **Assignments (8 total):**
+  - Week 1: Lab 1.1 (25) infrastructure setup, Lab 1.2 (25) system command, Lab 1.3 (100) log analysis comparative
+  - Week 2: Lab 2.1 (50) bash log summary
+  - Week 3: Lab 3.1 (100) PowerShell Event Log audit
+  - Week 4: Lab 4.1 (50) Python service monitoring, Lab 4.2 (25) scheduling, Lab 4.3 (50) production hardening (progressive)
+  - Week 5: Lab 5.1 (100) performance baseline & trending capstone
+  - Total: 525 pts
+- **Infrastructure:** Hyper-V (existing from BIT221) + WSL2 (new, lightweight)
+- **Training:** LinkedIn Learning (replaces 2005 textbook + outdated cookbook)
+- **Pending:** 4 quizzes (Week 1-4, specifications documented), reference pages (student/instructor)
 </recent_updates>
 
 Per-course status, decisions, and history live in `courses/{CODE}.md`. Check

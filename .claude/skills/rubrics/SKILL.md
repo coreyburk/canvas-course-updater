@@ -1,287 +1,279 @@
 ---
 name: rubrics
-description: Use when creating, auditing, or rebuilding Canvas rubrics for technical and research assignments in PRO221. Defines standard format, point distribution, performance levels, and reusable templates.
+description: Use when creating, auditing, or rebuilding Canvas rubrics for all assignments across all courses. Defines universal point distribution standard (25/50/100 scale), 3-level performance format (Excellent/Good/Unacceptable), grading criteria patterns, and reusable rubric templates.
 ---
 
-# Canvas Rubrics Playbook for PRO221
+# Neumont Canvas Rubrics Standard
 
-**Version:** 2.0  
-**Last Updated:** 2026-08-27  
-**Based on:** Established 3-level rubric standard across BIT221, BIT281, PRO221, BIT351
+**Version:** 3.0  
+**Last Updated:** 2026-08-28  
+**Applies to:** All courses (BIT221, BIT281, BIT320, PRO221, BIT351, etc.)
 
 ---
 
 ## Overview
 
-This document defines the **canonical rubric format** for all assignments across the Information Systems curriculum. All rubrics use a consistent **3-level standard** (Excellent/Good/Unacceptable) for simplicity, consistency, and ease of grading.
+This document defines the **universal rubric format** for all assignments across all Neumont courses. All rubrics use two foundational standards:
 
-**Key principle:** 3 levels apply to ALL assignment types. Simple assignments use binary (Full Credit/No Credit) only when pass/fail is the only meaningful distinction. All other assignments—regardless of complexity—use the 3-level scale with clear performance descriptions.
+1. **Point Allocation:** All assignments use the 25/50/100 scale (see assignment-standards SKILL)
+   - Simple = 25 pts
+   - Medium = 50 pts
+   - Large = 100 pts
 
----
+2. **Performance Levels:** All rubrics use a consistent **3-level standard** (Excellent/Good/Unacceptable) for simplicity, consistency, and ease of grading.
 
-## Step 0 — Gotchas
-
-- Rubrics must be reusable (enabled in Canvas) for consistency across similar assignment types
-- Point values in rubric must match assignment's total points possible
-- Performance levels must have clear descriptions (not just names like "Excellent")
-- Minor criteria (formatting) should be 4-10% of total points; major technical criteria 30-60% each
-- Never use half-points (like 7.5) unless explicitly necessary for the grading scale
-- All rubrics must align with the assignment's Purpose/Task/Criteria boxes
-- Rubrics are NOT stored in the SKILL itself—this SKILL defines the *format*, not the content
+**Key principle:** 3 levels apply to ALL assignments. The same rubric structure works whether the assignment is 25 pts or 100 pts—only the point values and criterion emphasis change.
 
 ---
 
-## Step 1 — Assignment Type Classification
+## Critical Rules (Do Not Violate)
 
-All assignments use **3 performance levels** (Excellent/Good/Unacceptable). Classify by complexity to determine number of criteria and point distribution:
-
-### **Type A: Simple/Completion Assignments** (Exception: Binary only)
-- **Examples:** Watch training video, submit screenshot, discussion post, quiz
-- **Characteristics:** Pass/fail, no partial credit needed
-- **Rubric:** 1 criterion, 2 levels (Full Credit or No Credit)
-- **Point range:** Usually 5-15 points
-- **Time to complete:** < 1 hour
-
-### **Type B+: All Other Assignments** (3 Levels: Excellent/Good/Unacceptable)
-- **Examples:** Single labs, multi-scenario labs, research papers, design documentation, analysis reports
-- **Characteristics:** Any assignment where partial credit is meaningful
-- **Rubric:** 3-6 criteria, 3 performance levels per criterion (Excellent, Good, Unacceptable)
-- **Point range:** 15-150 points
-- **Time to complete:** 1+ hours
-- **Partial credit:** "Good" level captures 60-80% of criterion points; allows for partial work while maintaining clear expectations
+- ✅ **All rubrics use 3 performance levels:** Excellent, Good, Unacceptable
+- ✅ **Point values match assignment totals:** 25 pts, 50 pts, or 100 pts only
+- ✅ **Performance levels have clear descriptions** (not just names like "Excellent")
+- ✅ **Rubrics align with assignment's Purpose/Task/Criteria boxes**
+- ✅ **Good level = 65-75% of Excellent points** (enables partial credit while staying clean)
+- ✅ **Rubrics marked "Reusable: Yes"** for consistency across similar assignments
+- ❌ **Never use half-points** (10, 7, 0 is cleaner than 10, 6.5, 0)
+- ❌ **Never use 4+ performance levels** (3-level standard is universal)
+- ❌ **Never leave descriptions blank** (explain what each level looks like)
 
 ---
 
-## Step 2 — Rubric Structure Template by Type
+## Core Principle: Point Distribution = Effort Distribution
 
-### **Type A: Simple/Completion (Binary — Exception)**
+**Every criterion's point value should reflect the actual effort required to complete or assess that criterion.** This is a guideline, not a formula—each assignment is different, and effort varies by criterion type and context.
+
+- A criterion representing 15% of the work gets ~15% of points
+- A criterion representing 35% of the work gets ~35% of points  
+- A criterion representing 25% of the work gets ~25% of points
+- Use professional judgment; don't force-fit a model when the actual effort distribution differs
+
+**Well Formatted Document (Criterion 1) receives elevated weight (15-20%) to reinforce documentation and professional communication skills.**
+
+---
+
+## Rubric Structure by Point Total
+
+All rubrics use 3-5 criteria with Excellent/Good/Unacceptable levels. Point distribution varies by assignment, but follows this guidance:
+
+### **25-Point Assignments (Simple)**
+- **Number of criteria:** 3 (Well Formatted + 2 task-specific)
+- **Well Formatted Document:** 3-4 pts (12-16%, typically 4 pts)
+- **Primary task/verification:** 10-11 pts (40-44%)
+- **Secondary task/verification:** 10-12 pts (40-48%)
+- **Good level:** 65-75% of Excellent per criterion
+- **Example:** Environment setup, simple verification, basic completion tasks
+
+### **50-Point Assignments (Medium)**
+- **Number of criteria:** 4 (Well Formatted + 3 task-specific)
+- **Well Formatted Document:** 8 pts (16%, reinforces documentation importance)
+- **Remaining criteria:** Distributed by actual effort (typically 14-16 pts each for 3-4 criteria)
+- **Good level:** 65-75% of Excellent per criterion
+- **Example:** Single-system labs, moderate analysis tasks, skill-building work
+
+### **100-Point Assignments (Large)**
+- **Number of criteria:** 5-6 (Well Formatted + 4-5 task-specific)
+- **Well Formatted Document:** 15-16 pts (15-16%, reinforces documentation importance)
+- **Remaining criteria:** Distributed by actual effort (typically 18-22 pts each for 4-5 criteria)
+- **Good level:** 65-75% of Excellent per criterion
+- **Example:** Multi-component labs, capstones, complex analysis with reflection
+
+---
+
+## Universal Rubric Template (All Assignments, All Sizes)
+
+Every rubric follows this structure: **Well Formatted Document ALWAYS as Criterion 1**, followed by task-specific criteria. All use Excellent/Good/Unacceptable levels.
 
 ```
 Rubric Name: [Assignment Name]
-Total Points: [X]
+Total Points: [25/50/100]
 Reusable: Yes
 
-Criterion 1: [Task Name] (X points)
-  Level 1: Full Credit (X points) — Task completed and submitted
-  Level 2: No Credit (0 points) — Task not completed or not submitted
+Criterion 1: Well Formatted Document (X points, 15-20% of total)
+  Excellent (X points) — Submission includes clear identification (name, course, assignment). All screenshots/outputs labeled. Professional formatting and organization.
+  Good (X*0.70 points) — Submission includes most required information. Most screenshots labeled. Minor formatting issues.
+  Unacceptable (0 points) — Missing identification or clear organization. Screenshots unlabeled. Unprofessional formatting.
+
+Criterion 2: [Primary Task/Deliverable] (Y points, distributed by effort)
+  Excellent (Y points) — [Complete, correct, demonstrates mastery of core skill]
+  Good (Y*0.70 points) — [Mostly complete with minor gaps or minor issues]
+  Unacceptable (0 points) — [Missing, broken, or demonstrates lack of understanding]
+
+Criterion 3: [Secondary Component/Verification] (Z points, distributed by effort)
+  [Same 3-level structure]
+
+Criterion 4+ (Optional for 50/100-pt): [Additional component by effort] (W points, distributed by effort)
+  [Same 3-level structure for additional criteria]
 ```
 
-**Example: Online Training Completion**
-```
-Total Points: 15
-Reusable: Yes
-
-Criterion 1: Training Completion Screenshot (15 points)
-  Full Credit (15 points) — Screenshot shows course completion
-  No Credit (0 points) — Screenshot missing or doesn't show completion
-```
+**Point calculation:**
+- Well Formatted Document gets 15-20% of total (reinforces documentation skills)
+- Remaining points distributed proportionally to actual criterion effort (not equal chunks)
+- Good level = 65-75% of Excellent points per criterion (use 0.70 multiplier for clean numbers)
+- Example: Excellent = 20 pts → Good = 14 pts
+- Example: Excellent = 8 pts → Good = 5-6 pts (60-75% range)
+- Example 25-pt breakdown: Well Formatted (4 pts, 16%) + Task 1 (10 pts, 40%) + Task 2 (11 pts, 44%)
 
 ---
 
-### **Type B+: All Other Assignments (3 Levels — Standard)**
+## Examples by Point Total
 
-**ALWAYS structure with Well Formatted Document as Criterion 1:**
+### Example 1: 25-Point Assignment (Simple — Environment Setup)
 
 ```
-Rubric Name: [Assignment Name]
-Total Points: [X]
+Rubric: Lab 1.1 — Infrastructure Setup
+Total Points: 25
 Reusable: Yes
 
-Criterion 1: Well Formatted Document (X points, 8-10% of total)
-  Excellent (X points) — Cover page with name, course, assignment; all sections titled; all screenshots labeled
-  Good (X*0.70 points) — Cover page present with minor gaps; sections mostly titled; most screenshots labeled
-  Unacceptable (0 points) — Missing cover page; unclear organization; screenshots unlabeled
+Criterion 1: Well Formatted Document (4 points)
+  Excellent (4) — Document includes name, course code, assignment name clearly labeled; all sections organized with titles; every screenshot has descriptive label
+  Good (3) — Mostly includes required info; sections mostly titled; most screenshots labeled
+  Unacceptable (0) — Missing clear identification or labels; disorganized structure
 
-Criterion 2: [Major technical element or component 1] (Y points, 25-35% of total)
-  Excellent (Y points) — [Full completion description]
-  Good (Y*0.70 points) — [60-80% completion description]
-  Unacceptable (0 points) — [Missing or failed description]
+Criterion 2: Environment Installation (10 points)
+  Excellent (10) — All three environments (Bash, Python, PowerShell) successfully installed and fully functional
+  Good (7) — Two or more environments working; minor installation issues resolved or workarounds documented
+  Unacceptable (0) — One or more environments not installed or non-functional
 
-Criterion 3: [Major technical element or component 2] (Y points, 25-35% of total)
-  [Same 3-level structure]
-
-Criterion 4: [Major technical element, analysis, or verification] (Z points, 20-35% of total, optional)
-  [Same 3-level structure]
+Criterion 3: Verification & Testing (11 points)
+  Excellent (11) — All version checks pass; test commands produce correct output in all environments; testing evidence clear
+  Good (8) — Version checks pass for most environments; test commands mostly work with minor issues
+  Unacceptable (0) — Version checks fail or test commands don't work; insufficient testing evidence
 ```
 
-**Example 1: Single IIS Configuration Lab (75 points)**
+### Example 2: 50-Point Assignment (Medium — Hands-On Lab)
+
 ```
-Total Points: 75
+Rubric: Lab 2.1 — Log Summary Script
+Total Points: 50
 Reusable: Yes
 
 Criterion 1: Well Formatted Document (8 points)
-  Excellent (8) — Cover page with name, course, assignment; all sections titled; all screenshots labeled
-  Good (6) — Cover page present with minor info missing; sections mostly titled; most screenshots labeled
-  Unacceptable (0) — Missing cover page; unclear organization; screenshots unlabeled
+  Excellent (8) — Complete identification (name, course, assignment date); all sections clearly titled; every screenshot and output labeled with descriptive captions; professional formatting
+  Good (6) — Most identification info present; sections mostly titled; most screenshots labeled
+  Unacceptable (0) — Missing identification or labels; unclear section organization; disorganized
 
-Criterion 2: IIS Installation & Role (22 points)
-  Excellent (22) — IIS installed, Web Server role configured, default website running
-  Good (16) — IIS installed and role mostly configured, minor website issues
-  Unacceptable (0) — IIS not installed or non-functional
+Criterion 2: Script Functionality (15 points)
+  Excellent (15) — Script runs without errors; correctly processes all log entries; produces accurate summary; handles edge cases
+  Good (11) — Script runs with minor issues; processes most log entries; summary mostly accurate
+  Unacceptable (0) — Script doesn't run or produces incorrect results
 
-Criterion 3: Website Configuration (22 points)
-  Excellent (22) — Custom website created with correct bindings, custom content deployed, functional
-  Good (16) — Website created with partial bindings or incomplete content
-  Unacceptable (0) — No custom website or non-functional
+Criterion 3: Code Quality (14 points)
+  Excellent (14) — Well-commented; clear variable names; demonstrates language idioms and best practices; logic is easy to follow
+  Good (10) — Good comments; clear logic; adequate code organization; minor improvements possible
+  Unacceptable (0) — Minimal or no comments; poor readability; unclear logic
 
-Criterion 4: Verification & Testing (23 points)
-  Excellent (23) — Site accessible locally and remotely, all features working correctly
-  Good (17) — Site accessible with minor accessibility or functionality issues
-  Unacceptable (0) — Site not accessible or major functionality broken
+Criterion 4: Deliverables & Output (13 points)
+  Excellent (13) — Script, output file, and documentation all provided; output is professional and demonstrates task completion
+  Good (9) — All deliverables present; output is complete but formatting could be clearer
+  Unacceptable (0) — Missing deliverables or output doesn't demonstrate task completion
 ```
 
-**Example 2: Multi-Scenario Lab - Proxmox Datacenter Manager (100 points)**
+### Example 3: 100-Point Assignment (Large — Complex Lab with Comparative Analysis)
+
 ```
+Rubric: Lab 5.1 — Performance Baseline & Trending Capstone
 Total Points: 100
 Reusable: Yes
 
-Criterion 1: Well Formatted Document (10 points)
-  Excellent (10) — Cover page complete; infrastructure diagram with labels; all sections titled; every screenshot captioned; troubleshooting log included
-  Good (7) — Cover page present with minor gaps; diagram present but some labels missing; most sections titled; most screenshots captioned
-  Unacceptable (0) — Missing cover page; no diagram; unclear organization; screenshots unlabeled
+Criterion 1: Well Formatted Document (16 points)
+  Excellent (16) — Complete cover page with name, course, assignment, date; all sections clearly titled and organized; every screenshot/output labeled with descriptive caption; professional formatting throughout
+  Good (11) — Cover page present; sections mostly titled; most screenshots labeled; minor formatting inconsistencies
+  Unacceptable (0) — Missing cover page or critical info; unclear section organization; most screenshots unlabeled
 
-Criterion 2: PDM Deployment & Configuration (30 points)
-  Excellent (30) — PDM deployed with correct specs; hostname, IP, DNS, gateway verified; updates applied; network communication verified; remotes added with proper authentication
-  Good (22) — PDM deployed with minor config gaps; most verification completed; remotes added but 1-2 verification steps incomplete
-  Unacceptable (0) — PDM not installed or non-functional; remotes not added; critical configuration missing
+Criterion 2: Data Collection & Analysis (25 points)
+  Excellent (25) — Performance metrics collected over 24+ hours; trend analysis is thorough and accurate; capacity risks clearly identified; methodology well documented
+  Good (18) — Metrics collected; analysis mostly accurate with minor gaps; most trends identified
+  Unacceptable (0) — Data collection incomplete or analysis missing/inaccurate
 
-Criterion 3: Centralized Management & Operations (30 points)
-  Excellent (30) — Dashboard displays combined resources; search tested and documented; custom view created with meaningful organization; lifecycle operations tested; management plane experiment completed
-  Good (22) — Dashboard functional with most resources visible; search tested but sparse documentation; custom view basic; operations mostly tested; experiment partially completed
-  Unacceptable (0) — Dashboard non-functional; search not tested; no custom view; operations not tested; experiment not attempted
+Criterion 3: Script Quality & Production Readiness (20 points)
+  Excellent (20) — Code demonstrates language mastery; error handling robust; logging comprehensive; suitable for production deployment
+  Good (14) — Good code quality; most error cases handled; adequate logging; minor refinements needed
+  Unacceptable (0) — Poor code quality; minimal error handling or logging
 
-Criterion 4: Analysis & Critical Thinking (30 points)
-  Excellent (30) — Management plane questions answered with clear reasoning; comparison table complete with detailed functional differences; datacenter analysis addresses all dimensions and identifies thoughtful disadvantages
-  Good (22) — Management plane questions answered with good understanding; comparison table mostly complete with some detail lacking; analysis covers most dimensions
-  Unacceptable (0) — Questions not answered or inaccurate; comparison table superficial or missing; analysis missing or minimal critical thinking
+Criterion 4: Comparative Analysis (19 points)
+  Excellent (19) — Clear comparison of tool/language choices; explains why selected tool is appropriate; identifies trade-offs thoughtfully; alternatives considered
+  Good (13) — Good comparison of approach; tool selection rationale clear; most trade-offs mentioned
+  Unacceptable (0) — No comparison or superficial analysis
+
+Criterion 5: Reflection & Insight (20 points)
+  Excellent (20) — Thoughtful reflection on challenges, paradigm differences, and learnings; 250+ words; demonstrates deep understanding
+  Good (14) — Adequate reflection on approach and choices; 150-250 words; shows competency
+  Unacceptable (0) — Missing or minimal reflection (under 150 words)
 ```
 
 ---
 
-## Step 3 — Performance Level Descriptions (3-Level Standard)
+## Performance Level Descriptions (3-Level Standard)
 
-Use these descriptions as starting points, customizing for your specific criteria. All criteria use three levels: Excellent, Good, and Unacceptable.
+Use these as templates when writing criterion descriptions. All criteria use three levels: Excellent, Good, and Unacceptable.
 
 **Excellent Level:**
-- "All requirements met and working correctly"
-- "Thorough understanding demonstrated"
-- "No significant gaps or errors"
-- "Clearly documented with comprehensive evidence"
-- "Goes beyond basic requirements or shows exceptional depth"
+- All core requirements met and working correctly
+- Demonstrates thorough understanding or mastery
+- No significant gaps or errors
+- Clearly documented with comprehensive evidence
+- Shows competency in the criterion's focus area
 
-**Good Level (65-80% of criterion points):**
-- "Most requirements met with minor gaps"
-- "Core functionality working but some refinement or edge cases missed"
-- "Mostly documented, 1-2 items lack detail"
-- "Demonstrates solid understanding with room for improvement"
-- "Acceptable work with clear demonstration of competency"
+**Good Level (65-75% of criterion points):**
+- Most requirements met with minor gaps or issues
+- Core functionality working; some refinement or edge cases unaddressed
+- Mostly documented; 1-2 areas lack detail
+- Demonstrates solid competency with room for improvement
+- Acceptable work quality
 
 **Unacceptable Level:**
-- "Requirements not met"
-- "Doesn't work or fundamentally broken"
-- "Not attempted or not submitted"
-- "Critical misunderstandings or missing core elements"
-- "Insufficient evidence of competency in this criterion"
+- Requirements not met or fundamentally broken
+- Does not work or not attempted/submitted
+- Critical gaps or misunderstandings evident
+- Insufficient evidence of competency
+- Does not meet minimum threshold
 
 ---
 
-## Step 4 — Point Distribution Standards
-
-**Type A (Simple, binary):**
-- Single criterion: 100% of total points
-
-**Type B+ (All others, 3 levels):**
-- Documentation/Planning/Minor element: 4-15% of total points
-- Major element 1: 20-40% of total points
-- Major element 2: 20-40% of total points
-- Major element 3 or Verification (optional): 15-35% of total points
-
-**Good-level point calculation (65-75% scale):**
-- For simplicity, use 70% of Excellent points for the Good level
-- Example: Excellent = 20 points → Good = 14 points
-- Example: Excellent = 30 points → Good = 21 points
-
----
-
-## Step 5 — Reusable Rubric Strategy
-
-### **Standard Criterion: Well Formatted Document** (Appears in most rubrics, 8-10% of total points)
-
-**Criterion Description:** Submit a well formatted document which includes your name, course information, and assignment information on a cover page or title section. Your document must have clear sections with titles and descriptions and every screenshot must be labeled.
-
-**Rating Descriptions:**
-- **Excellent:** Document includes complete cover page with name, course code, assignment name, and date; all sections clearly titled and organized; every screenshot has descriptive caption or label
-- **Good:** Cover page present but missing 1-2 pieces of info; sections mostly titled and organized with minor gaps; most screenshots labeled
-- **Unacceptable:** Missing cover page or critical info; unclear section organization; screenshots not labeled or poorly labeled
-
----
-
-### **Assignment Type Patterns** (all use 3 levels):
-
-### **Single-Service Lab** (e.g., IIS, AD setup)
-- Well Formatted Document (8-10%)
-- Installation & Configuration (30-40%)
-- Testing & Verification (25-35%)
-- Optional: Advanced features or troubleshooting (15-25%)
-
-### **Multi-Scenario Lab** (e.g., Proxmox, Performance Monitoring)
-- Well Formatted Document (10%)
-- Scenario/Component 1 (25-30%)
-- Scenario/Component 2 (25-30%)
-- Scenario/Component 3 or Analysis (25-35%)
-
-### **Infrastructure/Clustering Labs** (IaC, HA, Clustering)
-- Well Formatted Document (10%)
-- Installation/Deployment (25-30%)
-- Configuration (30-35%)
-- Testing/Failover Verification (25-30%)
-
-### **Research Papers** (Containers, architecture, analysis)
-- Well Formatted Document (10%)
-- Content Depth & Accuracy (25-35%)
-- Organization & Clarity (20-25%)
-- Critical Analysis & Insight (25-35%)
-
----
-
-## Step 6 — Alignment with Assignment Content
+## Alignment with Assignment Content
 
 Before finalizing a rubric, verify it aligns with the assignment's Purpose/Task/Criteria boxes:
 
 **Checklist:**
-- ✓ All major criteria from the assignment's "Criteria for Success" box appear in the rubric
+- ✓ Well Formatted Document is always Criterion 1 (15-20% of points)
+- ✓ All major criteria from assignment's "Criteria for Success" box appear in rubric
 - ✓ Rubric doesn't grade on criteria NOT mentioned in the assignment
-- ✓ Performance levels match what students can reasonably expect to understand from assignment description
-- ✓ Point distribution reflects the emphasis in the assignment instructions
-- ✓ Partial-credit levels are achievable with the effort implied by the assignment scope
+- ✓ Performance levels match what students can reasonably expect from assignment description
+- ✓ Point distribution reflects actual effort for each criterion
+- ✓ Partial-credit levels (Good level) are achievable with reasonable effort
 
 ---
 
 ## Critical Rules (DO NOT VIOLATE)
 
 ### Must Have
-- ✓ **All rubrics use 3 levels** (Excellent/Good/Unacceptable) except Type A (binary)
-- ✓ **"Well Formatted Document" is ALWAYS Criterion 1** (unless the assignment is Type A binary)
-- ✓ Clear performance-level descriptions (not just level names — explain what "Excellent" looks like)
-- ✓ Point values that sum exactly to the assignment's total points
-- ✓ Rubric marked "Reusable: Yes" (assignments with identical expectations can share rubrics)
-- ✓ Alignment with assignment's Criteria for Success box
-- ✓ Good level at 65-75% of Excellent points (enables 60-80% partial credit)
+- ✓ **All rubrics use 3 levels:** Excellent, Good, Unacceptable (no exceptions)
+- ✓ **"Well Formatted Document" is ALWAYS Criterion 1** (15-20% of total points, reinforces documentation skills)
+- ✓ **Clear performance-level descriptions** (not just level names — explain what "Excellent" looks like, when work is "Good," when it's "Unacceptable")
+- ✓ **Point values sum exactly to assignment total** (25, 50, or 100 only)
+- ✓ **Point distribution matches actual criterion effort** (guideline, not formula; adjust per context)
+- ✓ **Rubric marked "Reusable: Yes"** (identical assignments can share rubrics)
+- ✓ **Good level at 65-75% of Excellent points** (enables partial credit cleanly; use 0.70 multiplier for simplicity)
+- ✓ **Alignment with assignment's Criteria for Success box** (don't grade on criteria not mentioned in assignment)
 
 ### Must NOT Do
-- ✗ Use 4 or more performance levels (3-level standard is binding)
-- ✗ Use 4-level templates or "Satisfactory" level (removed in v2.0)
-- ✗ Create overly-detailed criteria that duplicate assignment instructions (rubric grades *how well*, instructions explain *what to do*)
-- ✗ Leave performance-level descriptions blank or vague ("Good work" is not specific enough)
-- ✗ Grade on formatting as heavily as technical content (4-10% max unless assignment emphasizes it)
+- ✗ Use 4 or more performance levels (3-level standard is universal)
+- ✗ Use "Satisfactory," "Developing," or other 4+ level variants
+- ✗ Put Well Formatted Document anywhere except Criterion 1
+- ✗ Reduce Well Formatted Document below 15% (undoes documentation reinforcement goal)
+- ✗ Leave performance-level descriptions blank or vague ("Good work" is insufficient)
+- ✗ Create duplicate criterion "Documentation & Deliverables" (absorbed into Well Formatted Document)
+- ✗ Grade on formatting more heavily than actual competency (Well Formatted is max 20%, not a majority)
 - ✗ Mark rubrics as non-reusable if similar assignments could use them
 - ✗ Use half-points unless unavoidable (10, 7, 0 is cleaner than 10, 6.5, 0)
 
 ### Flexible Elements
-- Number of criteria (3-5 is typical; 6 maximum)
-- Specific point values and percentages (follow distribution guidelines but adapt to context)
-- Exact wording of performance levels (customize for technical accuracy and clarity)
-- Whether to break criteria into sub-criteria or keep them flat (both work if clear)
+- **Number of criteria:** 3-5 is typical (Well Formatted + 2-4 task-specific)
+- **Specific point values and percentages:** Follow structural guidelines but adjust to match actual criterion effort
+- **Exact wording of performance levels:** Customize for technical accuracy and clarity to students
+- **Criterion names and descriptions:** Adapt to assignment specifics, but structure always follows Well Formatted first
 
 ---
 
@@ -335,5 +327,7 @@ Criterion 4: Critical Analysis & Insight (15 points)
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 2.0 | 2026-08-27 | **BREAKING CHANGE:** Standardized on 3-level rubric format (Excellent/Good/Unacceptable) for ALL assignment types except Type A (binary). Removed 4-level variants and "Satisfactory" level. Consolidated Type C and D into single Type B+ template. Simplified point distribution to 65-75% scale for "Good" level. Updated examples and reusable patterns. Type A remains binary (Full Credit/No Credit) for pass/fail assignments only. |
-| 1.0 | 2026-07-27 | Initial specification based on PRO221 audit. Four assignment types (Simple, Moderate, Complex, Research) with templates and guidelines. Introduced variable level counts (2/3/4) based on complexity. |
+| 3.1 | 2026-08-28 | **REFINEMENT:** Elevated Well Formatted Document weight to 15-20% (from 8-10%) to reinforce documentation and professional communication skills. Rewrote Core Principle section to emphasize effort-based distribution (guideline, not formula). Simplified structure to remove old Step 3-6 sections. Updated all three examples (25/50/100-pt) to reflect new Well Formatted Document weighting. Clarified Critical Rules to remove Type A/B+ references and strengthen documentation requirement. |
+| 3.0 | 2026-08-28 | **MAJOR REVISION:** Integrated 25/50/100 point allocation standard into rubric specification. Removed all Type A/B/C/D designations. Unified all assignments under single 3-level format (Excellent/Good/Unacceptable). Point distribution now tied to assignment complexity (25/50/100 pts). Simplified examples to align with new point scale. Applies to ALL courses (BIT221, BIT281, BIT320, PRO221, BIT351). |
+| 2.0 | 2026-08-27 | Standardized on 3-level rubric format (Excellent/Good/Unacceptable) for most assignment types. Removed 4-level variants. Simplified point distribution to 65-75% scale for "Good" level. |
+| 1.0 | 2026-07-27 | Initial specification based on PRO221 audit. Multiple assignment types with variable rubric structures. |
