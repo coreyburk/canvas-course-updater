@@ -15,18 +15,6 @@ Outcomes and the BIT221 visual/structural standard.
 | PRO221 | 3631288 | Server Admin I — Project: Windows Server | Instructor module complete, 2026-07-27 |
 | BIT351 | 3631200 | Virtual Systems: Proxmox VE | Active build |
 
-## PRO221 Current Status (as of 2026-07-27)
-- **Instructor module (position 1):** Unpublished "Course Outline and Lecture Notes (Not Published - Instructor Use Only)" created with course overview and 5 weekly lecture notes pages
-- **PRO221 Course Outline page:** 5-week topic breakdown, assignments, LinkedIn Learning resources, quizzes per week; certification note (AZ-900, AZ-104)
-- **Lecture notes (Weeks 1-5):** All unpublished instructor-only pages created with teaching context, misconceptions, lab setup, connections to prior/future weeks
-  - Week 1: Performance monitoring fundamentals, tool hierarchy, counter interpretation, baseline vs. threshold
-  - Week 2: IaC and DSC, compilation, push vs. pull modes, resource vocabulary
-  - Week 3: Container model, NLB architecture, security supply-chain risks
-  - Week 4: iSCSI, clustering quorum, MPIO, RDS, WSUS; resilience patterns
-  - Week 5: Azure fundamentals, cloud patterns, capstone guidance, certifications
-- **Student modules (positions 2-6):** All published, unchanged from prior audit
-- **Certifications module (position 7):** Published, unchanged
-- **Open decisions:** 2C (DSC Pull Server) status, 4B (WSUS) publish decision from 2026-07-23 remain pending
 
 <recent_updates>
 - Workflow: at the end of each Canvas Course Updater session (any work touching CLAUDE.md, courses/{CODE}.md, or repo content), remind Corey to commit changes and provide a suggested commit message. GitHub repo is public: https://github.com/coreyburk/canvas-course-updater, read via web_fetch (no write-back connector currently available on this Enterprise workspace).
@@ -35,15 +23,15 @@ Outcomes and the BIT221 visual/structural standard.
 
 - PRO221 (Instructor Module & Lecture Notes, 2026-07-27): Created unpublished "Course Outline and Lecture Notes (Not Published - Instructor Use Only)" module at position 1. Added PRO221 - Course Outline page (5-week overview with topics, assignments, training, quizzes per week, certification note). Created 5 comprehensive unpublished instructor lecture notes pages (Weeks 1-5) with teaching context, student misconceptions, lab setup guidance, and cross-week connections. All content grounded in published student-facing pages. Module structure follows BIT281 pattern. CLAUDE.md updated and committed 2026-07-27.
 
-- BIT320 (Full Course Redesign, 2026-08-28): Restructured from disorganized 9-module layout to coherent 5-week course. Created 4 technology-agnostic course outcomes emphasizing tool selection (bash, PowerShell, Python equally balanced). Redesigned all 8 assignments with proper 3-box template formatting and recalibrated to 25/50/100 point scale. Week 1-4 structure: Week 1 all three languages (intro), Week 2 bash primary, Week 3 PowerShell primary, Week 4 Python primary (progressive, not scattered). Week 5 performance trending capstone with comparative analysis. Created sample_log.txt for Lab 1.3. All assignments published with proper due dates (Friday of each week, term starts Nov 9). Next: create 4 quizzes and reference pages.
-
-## BIT320 Current Status
-**See `courses/BIT320.md` for detailed status, pending work, and next steps.**
-(This file no longer duplicates course-specific information.)
+- BIT320 (Full Course Redesign, 2026-08-28): Restructured from disorganized 9-module layout to coherent 5-week course. Created 4 technology-agnostic course outcomes emphasizing tool selection (bash, PowerShell, Python equally balanced). Redesigned all 8 assignments with proper 3-box template formatting and recalibrated to 25/50/100 point scale. Week 1-4 structure: Week 1 all three languages (intro), Week 2 bash primary, Week 3 PowerShell primary, Week 4 Python primary (progressive, not scattered). Week 5 performance trending capstone with comparative analysis. Created sample_log.txt for Lab 1.3. All assignments published with proper due dates (Friday of each week, term starts Nov 9). Updated rubrics SKILL (v3.1) with effort-based distribution.
+- PRO221 (Week 4 Complete, 2026-07-23): All 4 pages published: iSCSI (Page 1), Failover Clustering (Page 2), RDS/MPIO (Page 3), WSUS (Page 4). 2C unpublished/flagged NOT WORKING—needs vet/repair or deletion. 4B unpublished/ready—awaiting publish decision. All assignments conform to 3-box template. OT1 keeping Windows Server 2019 File Services (no 2025 replacement available). courses/PRO221.md and CLAUDE.md updated and committed 2026-07-23. See courses/PRO221.md for current status.
 </recent_updates>
 
-Per-course status, decisions, and history live in `courses/{CODE}.md`. Check
-the relevant file at the start of any session touching that course.
+## Course Status
+
+**⚠️ IMPORTANT:** Per-course status, decisions, pending work, and history live in `courses/{CODE}.md` 
+(e.g., `courses/BIT320.md`, `courses/PRO221.md`). Check the relevant file at the start of any session 
+touching that course. Do NOT duplicate course-specific information in CLAUDE.md.
 
 ## Non-negotiable standards (all courses)
 - **Canvas is the source of truth**, never an outline doc or prior memory.
