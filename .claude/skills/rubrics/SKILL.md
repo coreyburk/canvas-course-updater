@@ -22,7 +22,7 @@ This document defines the **universal rubric format** for all assignments across
 
 2. **Performance Levels:** All rubrics use a consistent **3-level standard** (Excellent/Good/Unacceptable) for simplicity, consistency, and ease of grading.
 
-**Key principle:** 3 levels apply to ALL assignments. The same rubric structure works whether the assignment is 25 pts or 100 pts—only the point values and criterion emphasis change.
+**Key principle:** 3 levels apply to ALL assignments. The same rubric structure works whether the assignment is 25 pts or 100 pts - only the point values and criterion emphasis change.
 
 ---
 
@@ -40,9 +40,9 @@ This document defines the **universal rubric format** for all assignments across
 4. Deliverables (Plain HTML, no box)
    └─ Explicit list of what student must submit
 5. Criteria for Success Box (Green table)
-   └─ Grading criteria ONLY — NO point values
+   └─ Grading criteria ONLY  -  NO point values
    └─ NO additional "Success looks like" statement after this box
-   └─ THIS IS THE FINAL ELEMENT — nothing comes after this box
+   └─ THIS IS THE FINAL ELEMENT  -  nothing comes after this box
 ```
 
 **Point Values Rule:**
@@ -72,10 +72,10 @@ This document defines the **universal rubric format** for all assignments across
 - ✅ **Rubrics align with assignment's Purpose/Task/Criteria boxes**
 - ✅ **Good level = 65-75% of Excellent points** (enables partial credit while staying clean)
 - ✅ **Rubrics marked "Reusable: Yes"** for consistency across similar assignments
-- ❌ **NEVER put point values in the assignment's Criteria for Success box** — Points belong ONLY in the rubric, not in assignment text
-- ❌ **NEVER embed points inline in criterion descriptions** — Examples: "(5 pts)", "(3 pts)", "(2 pts)" are forbidden. Criterion descriptions describe WHAT is graded, not HOW MANY points
-- ❌ **NEVER place Deliverables AFTER the Criteria box** — Deliverables come BEFORE; Criteria box is final element
-- ❌ **NEVER add "Success looks like" text after Criteria box** — The Criteria box itself is the success specification; don't duplicate it
+- ❌ **NEVER put point values in the assignment's Criteria for Success box**  -  Points belong ONLY in the rubric, not in assignment text
+- ❌ **NEVER embed points inline in criterion descriptions**  -  Examples: "(5 pts)", "(3 pts)", "(2 pts)" are forbidden. Criterion descriptions describe WHAT is graded, not HOW MANY points
+- ❌ **NEVER place Deliverables AFTER the Criteria box**  -  Deliverables come BEFORE; Criteria box is final element
+- ❌ **NEVER add "Success looks like" text after Criteria box**  -  The Criteria box itself is the success specification; don't duplicate it
 - ❌ **Never use half-points** (10, 7, 0 is cleaner than 10, 6.5, 0)
 - ❌ **Never use 4+ performance levels** (3-level standard is universal)
 - ❌ **Never leave descriptions blank** (explain what each level looks like)
@@ -84,7 +84,7 @@ This document defines the **universal rubric format** for all assignments across
 
 ## Core Principle: Point Distribution = Effort Distribution
 
-**Every criterion's point value should reflect the actual effort required to complete or assess that criterion.** This is a guideline, not a formula—each assignment is different, and effort varies by criterion type and context.
+**Every criterion's point value should reflect the actual effort required to complete or assess that criterion.** This is a guideline, not a formula - each assignment is different, and effort varies by criterion type and context.
 
 - A criterion representing 15% of the work gets ~15% of points
 - A criterion representing 35% of the work gets ~35% of points  
@@ -134,15 +134,15 @@ Reusable: Yes
 
 Criterion 1: Well Formatted Document (X points, 15-20% of total)
   Description: Submission is professionally formatted with clear identification, labeled deliverables, and organized sections.
-  Excellent (X points) — Submission includes clear identification (name, course, assignment). All screenshots/outputs labeled. Professional formatting and organization.
-  Good (X*0.70 points) — Submission includes most required information. Most screenshots labeled. Minor formatting issues.
-  Unacceptable (0 points) — Missing identification or clear organization. Screenshots unlabeled. Unprofessional formatting.
+  Excellent (X points)  -  Submission includes clear identification (name, course, assignment). All screenshots/outputs labeled. Professional formatting and organization.
+  Good (X*0.70 points)  -  Submission includes most required information. Most screenshots labeled. Minor formatting issues.
+  Unacceptable (0 points)  -  Missing identification or clear organization. Screenshots unlabeled. Unprofessional formatting.
 
 Criterion 2: [Primary Task/Deliverable] (Y points, distributed by effort)
   Description: [What is being assessed? What skill or deliverable does this criterion measure?]
-  Excellent (Y points) — [Complete, correct, demonstrates mastery of core skill]
-  Good (Y*0.70 points) — [Mostly complete with minor gaps or minor issues]
-  Unacceptable (0 points) — [Missing, broken, or demonstrates lack of understanding]
+  Excellent (Y points)  -  [Complete, correct, demonstrates mastery of core skill]
+  Good (Y*0.70 points)  -  [Mostly complete with minor gaps or minor issues]
+  Unacceptable (0 points)  -  [Missing, broken, or demonstrates lack of understanding]
 
 Criterion 3: [Secondary Component/Verification] (Z points, distributed by effort)
   Description: [What is being assessed?]
@@ -165,100 +165,100 @@ Criterion 4+ (Optional for 50/100-pt): [Additional component by effort] (W point
 
 ## Examples by Point Total
 
-### Example 1: 25-Point Assignment (Simple — Environment Setup)
+### Example 1: 25-Point Assignment (Simple  -  Environment Setup)
 
 ```
-Rubric: Lab 1.1 — Infrastructure Setup
+Rubric: Lab 1.1  -  Infrastructure Setup
 Total Points: 25
 Reusable: Yes
 
 Criterion 1: Well Formatted Document (4 points)
   Description: Document is professionally formatted with clear student/course identification, organized sections, and labeled screenshots.
-  Excellent (4) — Document includes name, course code, assignment name clearly labeled; all sections organized with titles; every screenshot has descriptive label
-  Good (3) — Mostly includes required info; sections mostly titled; most screenshots labeled
-  Unacceptable (0) — Missing clear identification or labels; disorganized structure
+  Excellent (4)  -  Document includes name, course code, assignment name clearly labeled; all sections organized with titles; every screenshot has descriptive label
+  Good (3)  -  Mostly includes required info; sections mostly titled; most screenshots labeled
+  Unacceptable (0)  -  Missing clear identification or labels; disorganized structure
 
 Criterion 2: Environment Installation (10 points)
   Description: All three environments (Bash, Python, PowerShell) are successfully installed and operational.
-  Excellent (10) — All three environments successfully installed and fully functional; versions match or exceed requirements
-  Good (7) — Two or more environments working; minor installation issues resolved or workarounds documented
-  Unacceptable (0) — One or more environments not installed or non-functional
+  Excellent (10)  -  All three environments successfully installed and fully functional; versions match or exceed requirements
+  Good (7)  -  Two or more environments working; minor installation issues resolved or workarounds documented
+  Unacceptable (0)  -  One or more environments not installed or non-functional
 
 Criterion 3: Verification & Testing (11 points)
   Description: Version checks and test commands confirm that all environments are properly configured and ready for use.
-  Excellent (11) — All version checks pass; test commands produce correct output in all environments; testing evidence clear
-  Good (8) — Version checks pass for most environments; test commands mostly work with minor issues
-  Unacceptable (0) — Version checks fail or test commands don't work; insufficient testing evidence
+  Excellent (11)  -  All version checks pass; test commands produce correct output in all environments; testing evidence clear
+  Good (8)  -  Version checks pass for most environments; test commands mostly work with minor issues
+  Unacceptable (0)  -  Version checks fail or test commands don't work; insufficient testing evidence
 ```
 
-### Example 2: 50-Point Assignment (Medium — Hands-On Lab)
+### Example 2: 50-Point Assignment (Medium  -  Hands-On Lab)
 
 ```
-Rubric: Lab 2.1 — Log Summary Script
+Rubric: Lab 2.1  -  Log Summary Script
 Total Points: 50
 Reusable: Yes
 
 Criterion 1: Well Formatted Document (8 points)
   Description: Submission is professionally formatted with complete identification, organized sections, and labeled screenshots/outputs.
-  Excellent (8) — Complete identification (name, course, assignment date); all sections clearly titled; every screenshot and output labeled with descriptive captions; professional formatting
-  Good (6) — Most identification info present; sections mostly titled; most screenshots labeled
-  Unacceptable (0) — Missing identification or labels; unclear section organization; disorganized
+  Excellent (8)  -  Complete identification (name, course, assignment date); all sections clearly titled; every screenshot and output labeled with descriptive captions; professional formatting
+  Good (6)  -  Most identification info present; sections mostly titled; most screenshots labeled
+  Unacceptable (0)  -  Missing identification or labels; unclear section organization; disorganized
 
 Criterion 2: Script Functionality (15 points)
   Description: Script executes successfully and correctly processes log data to produce an accurate summary.
-  Excellent (15) — Script runs without errors; correctly processes all log entries; produces accurate summary; handles edge cases
-  Good (11) — Script runs with minor issues; processes most log entries; summary mostly accurate
-  Unacceptable (0) — Script doesn't run or produces incorrect results
+  Excellent (15)  -  Script runs without errors; correctly processes all log entries; produces accurate summary; handles edge cases
+  Good (11)  -  Script runs with minor issues; processes most log entries; summary mostly accurate
+  Unacceptable (0)  -  Script doesn't run or produces incorrect results
 
 Criterion 3: Code Quality (14 points)
   Description: Code is well-organized, readable, and demonstrates understanding of bash idioms and best practices.
-  Excellent (14) — Well-commented; clear variable names; demonstrates language idioms and best practices; logic is easy to follow
-  Good (10) — Good comments; clear logic; adequate code organization; minor improvements possible
-  Unacceptable (0) — Minimal or no comments; poor readability; unclear logic
+  Excellent (14)  -  Well-commented; clear variable names; demonstrates language idioms and best practices; logic is easy to follow
+  Good (10)  -  Good comments; clear logic; adequate code organization; minor improvements possible
+  Unacceptable (0)  -  Minimal or no comments; poor readability; unclear logic
 
 Criterion 4: Deliverables & Output (13 points)
   Description: All required files and outputs are provided and demonstrate successful task completion.
-  Excellent (13) — Script, output file, and documentation all provided; output is professional and demonstrates task completion
-  Good (9) — All deliverables present; output is complete but formatting could be clearer
-  Unacceptable (0) — Missing deliverables or output doesn't demonstrate task completion
+  Excellent (13)  -  Script, output file, and documentation all provided; output is professional and demonstrates task completion
+  Good (9)  -  All deliverables present; output is complete but formatting could be clearer
+  Unacceptable (0)  -  Missing deliverables or output doesn't demonstrate task completion
 ```
 
-### Example 3: 100-Point Assignment (Large — Complex Lab with Comparative Analysis)
+### Example 3: 100-Point Assignment (Large  -  Complex Lab with Comparative Analysis)
 
 ```
-Rubric: Lab 5.1 — Performance Baseline & Trending Capstone
+Rubric: Lab 5.1  -  Performance Baseline & Trending Capstone
 Total Points: 100
 Reusable: Yes
 
 Criterion 1: Well Formatted Document (16 points)
   Description: Submission includes professional formatting, complete identification, organized sections, and clearly labeled all deliverables and evidence.
-  Excellent (16) — Complete cover page with name, course, assignment, date; all sections clearly titled and organized; every screenshot/output labeled with descriptive caption; professional formatting throughout
-  Good (11) — Cover page present; sections mostly titled; most screenshots labeled; minor formatting inconsistencies
-  Unacceptable (0) — Missing cover page or critical info; unclear section organization; most screenshots unlabeled
+  Excellent (16)  -  Complete cover page with name, course, assignment, date; all sections clearly titled and organized; every screenshot/output labeled with descriptive caption; professional formatting throughout
+  Good (11)  -  Cover page present; sections mostly titled; most screenshots labeled; minor formatting inconsistencies
+  Unacceptable (0)  -  Missing cover page or critical info; unclear section organization; most screenshots unlabeled
 
 Criterion 2: Data Collection & Analysis (25 points)
   Description: Performance metrics are collected over sufficient time period and analyzed to identify trends and capacity risks.
-  Excellent (25) — Performance metrics collected over 24+ hours; trend analysis is thorough and accurate; capacity risks clearly identified; methodology well documented
-  Good (18) — Metrics collected; analysis mostly accurate with minor gaps; most trends identified
-  Unacceptable (0) — Data collection incomplete or analysis missing/inaccurate
+  Excellent (25)  -  Performance metrics collected over 24+ hours; trend analysis is thorough and accurate; capacity risks clearly identified; methodology well documented
+  Good (18)  -  Metrics collected; analysis mostly accurate with minor gaps; most trends identified
+  Unacceptable (0)  -  Data collection incomplete or analysis missing/inaccurate
 
 Criterion 3: Script Quality & Production Readiness (20 points)
   Description: Code demonstrates language mastery with robust error handling, comprehensive logging, and production-quality standards.
-  Excellent (20) — Code demonstrates language mastery; error handling robust; logging comprehensive; suitable for production deployment
-  Good (14) — Good code quality; most error cases handled; adequate logging; minor refinements needed
-  Unacceptable (0) — Poor code quality; minimal error handling or logging
+  Excellent (20)  -  Code demonstrates language mastery; error handling robust; logging comprehensive; suitable for production deployment
+  Good (14)  -  Good code quality; most error cases handled; adequate logging; minor refinements needed
+  Unacceptable (0)  -  Poor code quality; minimal error handling or logging
 
 Criterion 4: Comparative Analysis (19 points)
   Description: Analysis clearly compares tool and language choices, justifies selection, and thoughtfully examines trade-offs against alternatives.
-  Excellent (19) — Clear comparison of tool/language choices; explains why selected tool is appropriate; identifies trade-offs thoughtfully; alternatives considered
-  Good (13) — Good comparison of approach; tool selection rationale clear; most trade-offs mentioned
-  Unacceptable (0) — No comparison or superficial analysis
+  Excellent (19)  -  Clear comparison of tool/language choices; explains why selected tool is appropriate; identifies trade-offs thoughtfully; alternatives considered
+  Good (13)  -  Good comparison of approach; tool selection rationale clear; most trade-offs mentioned
+  Unacceptable (0)  -  No comparison or superficial analysis
 
 Criterion 5: Reflection & Insight (20 points)
   Description: Reflection demonstrates deep understanding of challenges, paradigm differences, and personal learning from the capstone project.
-  Excellent (20) — Thoughtful reflection on challenges, paradigm differences, and learnings; 250+ words; demonstrates deep understanding
-  Good (14) — Adequate reflection on approach and choices; 150-250 words; shows competency
-  Unacceptable (0) — Missing or minimal reflection (under 150 words)
+  Excellent (20)  -  Thoughtful reflection on challenges, paradigm differences, and learnings; 250+ words; demonstrates deep understanding
+  Good (14)  -  Adequate reflection on approach and choices; 150-250 words; shows competency
+  Unacceptable (0)  -  Missing or minimal reflection (under 150 words)
 ```
 
 ---
@@ -309,7 +309,7 @@ Before finalizing a rubric, verify it aligns with the assignment's Purpose/Task/
 ### Must Have
 - ✓ **All rubrics use 3 levels:** Excellent, Good, Unacceptable (no exceptions)
 - ✓ **"Well Formatted Document" is ALWAYS Criterion 1** (15-20% of total points, reinforces documentation skills)
-- ✓ **Clear performance-level descriptions** (not just level names — explain what "Excellent" looks like, when work is "Good," when it's "Unacceptable")
+- ✓ **Clear performance-level descriptions** (not just level names  -  explain what "Excellent" looks like, when work is "Good," when it's "Unacceptable")
 - ✓ **Point values sum exactly to assignment total** (25, 50, or 100 only)
 - ✓ **Point distribution matches actual criterion effort** (guideline, not formula; adjust per context)
 - ✓ **Rubric marked "Reusable: Yes"** (identical assignments can share rubrics)
@@ -337,15 +337,15 @@ Before finalizing a rubric, verify it aligns with the assignment's Purpose/Task/
 
 ## Examples
 
-### Example 1: Type A (Simple Training, Binary — Exception)
+### Example 1: Type A (Simple Training, Binary  -  Exception)
 ```
 Rubric: LinkedIn Learning Training Submission
 Total Points: 10
 Reusable: Yes
 
 Criterion 1: Training Completion (10 points)
-  Full Credit (10) — Completion certificate or screenshot submitted showing course finished
-  No Credit (0) — No certificate/screenshot or doesn't show completion
+  Full Credit (10)  -  Completion certificate or screenshot submitted showing course finished
+  No Credit (0)  -  No certificate/screenshot or doesn't show completion
 ```
 
 ### Example 2: Type B+ (Research Paper, 3 Levels)
@@ -355,29 +355,29 @@ Total Points: 50
 Reusable: Yes
 
 Criterion 1: Well Formatted Document (5 points)
-  Excellent (5) — Title page with name, course, assignment; clear sections with titles; professional formatting
-  Good (3) — Title page present but incomplete; sections mostly clear; minor formatting issues
-  Unacceptable (0) — Missing title page; unclear organization; poor formatting
+  Excellent (5)  -  Title page with name, course, assignment; clear sections with titles; professional formatting
+  Good (3)  -  Title page present but incomplete; sections mostly clear; minor formatting issues
+  Unacceptable (0)  -  Missing title page; unclear organization; poor formatting
 
 Criterion 2: Content Depth & Accuracy (15 points)
-  Excellent (15) — Covers isolation, images, registries, orchestration with accurate technical detail
-  Good (11) — Covers most topics; minor accuracy or depth issues
-  Unacceptable (0) — Incomplete or inaccurate treatment
+  Excellent (15)  -  Covers isolation, images, registries, orchestration with accurate technical detail
+  Good (11)  -  Covers most topics; minor accuracy or depth issues
+  Unacceptable (0)  -  Incomplete or inaccurate treatment
 
 Criterion 3: Organization & Clarity (15 points)
-  Excellent (15) — Logical structure, clear paragraphs, flows naturally from topic to topic
-  Good (11) — Mostly organized; some transitions could be smoother
-  Unacceptable (0) — Confusing structure, hard to follow
+  Excellent (15)  -  Logical structure, clear paragraphs, flows naturally from topic to topic
+  Good (11)  -  Mostly organized; some transitions could be smoother
+  Unacceptable (0)  -  Confusing structure, hard to follow
 
 Criterion 4: Critical Analysis & Insight (15 points)
-  Excellent (15) — Analyzes when containers are useful, compares to alternatives, identifies trade-offs
-  Good (11) — Good analysis of container benefits and use cases
-  Unacceptable (0) — Mostly descriptive with no analysis
+  Excellent (15)  -  Analyzes when containers are useful, compares to alternatives, identifies trade-offs
+  Good (11)  -  Good analysis of container benefits and use cases
+  Unacceptable (0)  -  Mostly descriptive with no analysis
 ```
 
-### Example 3: Type B+ (Single Lab, 3 Levels) — See Step 2 Example 1 above
+### Example 3: Type B+ (Single Lab, 3 Levels)  -  See Step 2 Example 1 above
 
-### Example 4: Type B+ (Multi-Scenario Lab, 3 Levels) — See Step 2 Example 2 above
+### Example 4: Type B+ (Multi-Scenario Lab, 3 Levels)  -  See Step 2 Example 2 above
 
 ---
 
