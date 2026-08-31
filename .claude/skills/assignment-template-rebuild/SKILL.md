@@ -139,3 +139,39 @@ a like-for-like template fix. `update_assignment` with the complete HTML.
 ## Step 5  -  Report
 State what was kept, what was changed, and any gaps that still need Corey's
 input (e.g. missing PO language, an unconfirmed prerequisite course).
+
+---
+
+## Assignment Naming Convention
+
+**Pattern: Keep titles SHORT and CLEAR. Let the Purpose/Task boxes carry the detail.**
+
+```
+Format: Lab X.Y: [Core Task Name]
+NOT: Lab X.Y: [Core Task Name] - [Descriptor/Focus/Language]
+```
+
+**Good titles (short, scannable):**
+- Lab 1.1: Infrastructure Setup
+- Lab 1.3: Log Analysis Starter
+- Lab 2.1: Log Summary Script
+- Lab 3.1: Windows Event Log Audit
+- Lab 4.1: Service Monitoring in Python
+- Lab 5.1: Performance Baseline & Trending
+
+**Avoid (verbose, cluttered):**
+- Lab 1.1: Infrastructure Setup - Environment Verification
+- Lab 1.3: Log Analysis Starter - Comparative Language Approaches
+- Lab 3.1: Windows Event Log Audit - PowerShell Object Pipeline Analysis
+
+**Why short titles?**
+- Canvas course page is easier to scan
+- Full context belongs in Purpose/Task boxes where students actually read it
+- Students see the task name and click to read full description
+- Consistency across courses regardless of focus/language/tool
+
+**Where does the detail go?**
+1. **Title:** Core task concept (Lab X.Y: What)
+2. **Purpose box:** Why it matters, real-world context, learning outcomes
+3. **Task box:** Concrete statement of what student will produce
+4. **Instructions:** How to do it, including tool/language specifics
