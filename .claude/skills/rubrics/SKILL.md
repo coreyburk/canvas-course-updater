@@ -290,6 +290,56 @@ Use these as templates when writing criterion descriptions. All criteria use thr
 
 ---
 
+## Code Quality Scoring Progression (BIT320 2-Credit Constraint)
+
+Since BIT320 is only 2 credits with 20 contact hours, code quality must be scored **progressively**, not all-or-nothing. Build competency across 5 weeks rather than requiring mastery in Week 1.
+
+### Progressive Rubric Addition: "Code Fundamentals" Criterion
+
+**Add this criterion to every BIT320 lab rubric** (Labs 1.2 - 5.1) at 10-12% of points (independent from "Well Formatted Document"). Score on:
+
+**Week 1-2: Functions & Loops Foundation**
+- Excellent (10 pts): Script uses 2-3 functions to organize logic; loops used to iterate over data; code is not all procedural
+- Good (7 pts): Functions present but could be better organized; loop present but basic; some procedural code remains
+- Unacceptable (0 pts): No functions defined; no loops used; entirely procedural
+
+**Week 3-4: Error Handling & Recovery**
+- Excellent (10 pts): Functions + loops + try/except or error checks on all external calls; graceful failure; meaningful error messages
+- Good (7 pts): Some error handling present; most external calls validated; 1-2 unchecked operations
+- Unacceptable (0 pts): No error handling; crashes on input errors; silent failures
+
+**Week 5: Production Patterns & Testing**
+- Excellent (10 pts): Functions + loops + error handling + logging with timestamps + evidence of testing multiple scenarios; code is production-ready
+- Good (7 pts): All elements present; logging minimal or incomplete; tested on happy path only
+- Unacceptable (0 pts): Missing logging or testing; error handling incomplete
+
+### Rubric Template (add to all BIT320 labs)
+
+```
+Criterion X: Code Fundamentals (10 points, 10-12% of total)
+  Description: [Use description from week's progression above]
+  Excellent (10) — [Week-appropriate standards met]
+  Good (7) — [Week-appropriate, partial implementation]
+  Unacceptable (0) — [Missing critical elements]
+```
+
+### Why Progressive, Not All-In-Week-1?
+
+- **2-credit constraint:** Students can't master advanced error handling and testing while learning 3 new languages simultaneously
+- **Building competency:** Functions first (Week 1-2) → error handling (Week 3-4) → production patterns (Week 5)
+- **Rubric clarity:** Instructors know exactly what to score each week; students know expectations scale with their experience
+- **Scaffolding:** Each week's new assignment builds on prior weeks' code fundamentals
+
+### Implementation Note
+
+When creating rubrics for BIT320 labs:
+1. Keep "Well Formatted Document" as Criterion 1 (15-16 pts, 15-20%)
+2. Add "Code Fundamentals" as Criterion 2 (10 pts, 10-12%)
+3. Remaining criteria (3-5): Task-specific (60-70%)
+4. Total should match assignment points (25, 50, or 100)
+
+---
+
 ## Alignment with Assignment Content
 
 Before finalizing a rubric, verify it aligns with the assignment's Purpose/Task/Criteria boxes:
