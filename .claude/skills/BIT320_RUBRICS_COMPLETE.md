@@ -20,6 +20,9 @@ description: Complete rubric specifications for all 8 BIT320 labs (1.1-5.1). Use
 **Criteria (3 total = 25 pts):**
 
 ### Criterion 1: Well Formatted Document (5 pts, 20%)
+**Description:** Submission is professionally formatted with clear identification, organized sections, and labeled deliverables showing attention to professional communication.
+
+**Rating Levels:**
 - **Excellent (5):** Submission includes complete identification (name, course, assignment). All screenshots labeled with clear, descriptive captions. Setup notes well-organized, professional formatting.
 - **Good (3):** Submission includes most required identification. Most screenshots labeled. Setup notes present with minor formatting issues.
 - **Unacceptable (0):** Missing identification or clear organization. Screenshots unlabeled. Setup notes unclear or unprofessional.
