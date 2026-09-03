@@ -389,15 +389,15 @@ Copy the criterion information directly into Canvas UI:
 | Unacceptable | 0 | Minimal functions/loops/error handling. |
 
 ### Criterion 3: Escalating Alerts & Alerting Mechanism (15 pts, 30%)
-**Canvas Description Field:** Alerts fire correctly after specified failure count, include service name and failure details with log context, testing evidence shows alerts fired during test run, and alerts integrate with email or Slack.
+**Canvas Description Field:** Alerts fire correctly after specified failure count, write to log file and console, include service name and failure details with log context, testing evidence shows alerts firing, and optional HTML dashboard demonstrates alert status visualization.
 
 **Canvas Rating Levels:**
 
 | Level | Points | Rating Description |
 |-------|--------|-------------------|
-| Excellent | 15 | Alerts fire correctly after specified failure count (3 failures = first alert, 5+ = escalation). Alert includes service name, failure details, log context. Testing evidence shows alert fired during test run. Alerts go to email or Slack (documented). |
-| Good | 10 | Alert mechanism present; fires after repeated failures; most context included; implementation could be cleaner. |
-| Unacceptable | 0 | No alert mechanism or alerts don't fire. |
+| Excellent | 15 | Alerts fire correctly after specified failure count (3 failures = first alert, 5+ = escalation). Alerts written to log file with timestamps AND printed to console (ALERT and ESCALATION clearly marked). Alert includes service name, failure details, log context. Testing evidence shows alert fired during test run. Optional: HTML dashboard (alerts.html) generated with color-coded severity (yellow = alert, red = escalation). |
+| Good | 10 | Alert mechanism present (file and/or console); fires after repeated failures; most context included; implementation could be cleaner; HTML dashboard not attempted. |
+| Unacceptable | 0 | No alert mechanism or alerts don't fire; no file or console output of alerts. |
 
 ### Criterion 4: Cross-Platform Monitoring & Integration (12 pts, 24%)
 **Canvas Description Field:** Script queries both Windows Server VMs and WSL2 Linux services, generates unified report showing status of both platforms, and handles platform-specific errors appropriately.
