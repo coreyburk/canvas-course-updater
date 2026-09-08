@@ -1,9 +1,17 @@
 ---
 name: course-structure-pages
-description: Standard formats for Course Outline (instructor), Instructor Notes (5 weeks), and Student Resource Pages by topic. Based on BIT281/BIT221/PRO221 models.
+description: Orchestration guide for building complete course structure pages. Use the three component skills in sequence: course-outline, lecture-notes-playbook, student-resource-pages. Based on BIT281/BIT221/PRO221 models.
 ---
 
-# Course Structure Pages — Standard Formats
+# Course Structure Pages — Orchestration Guide
+
+Use these three existing skills in sequence to build a complete course:
+
+1. **course-outline** — Creates instructor-only Course Outline page (unpublished, position 1 module)
+2. **lecture-notes-playbook** — Creates 5 Instructor Notes pages (one per week, unpublished, in position 1 module)
+3. **student-resource-pages** — Creates 1-3 Student Resource Pages per week (published, in weekly modules)
+
+This guide shows how they fit together in a course structure.
 
 ## Module Organization (BIT281 Model)
 
