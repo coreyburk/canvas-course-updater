@@ -9,11 +9,12 @@ Outcomes and the BIT221 visual/structural standard.
 ## Courses
 | Code | Canvas ID | Title | Status |
 |---|---|---|---|
-| BIT221 | 3631198 | Server Administration I — Windows Server 2025 | Reference standard, largely built |
-| BIT281 | 3631199 | Hardware Systems | Rebuild complete |
-| BIT320 | 3644698 | Shell and Administrative Scripting | Redesign complete, 2026-08-28 |
-| PRO221 | 3631288 | Server Admin I — Project: Windows Server | Instructor module complete, 2026-07-27 |
-| BIT351 | 3631200 | Virtual Systems: Proxmox VE | Active build |
+| BIT221 | 3631198 | Server Administration I — Windows Server 2025 | ✅ Complete (2026-09-08) |
+| BIT281 | 3631199 | Hardware Systems | ✅ Complete (2026-09-03) |
+| BIT320 | 3644698 | Shell and Administrative Scripting | ✅ Complete (2026-09-08) |
+| PRO221 | 3631288 | Server Admin I — Project: Windows Server | ✅ Complete (2026-09-03) |
+| BIT351 | 3631200 | Virtual Systems: Proxmox VE | ✅ Complete (2026-09-03) |
+| PRO352 | 3631317 | Virtualization Project: Proxmox (Multi-cluster) | ✅ Complete (2026-09-03) |
 
 
 <recent_updates>
