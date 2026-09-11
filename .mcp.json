@@ -1,11 +1,13 @@
 {
   "mcpServers": {
     "canvas-api": {
-      "type": "http",
-      "url": "http://127.0.0.1:8819/mcp",
-      "headers": {
-        "X-Canvas-Token": "${CANVAS_API_TOKEN}",
-        "X-Canvas-URL": "https://lms.neumont.edu/api/v1"
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "canvas_mcp.server"],
+      "cwd": "C:\\Users\\cburk\\canvas-mcp",
+      "env": {
+        "CANVAS_API_TOKEN": "${CANVAS_API_TOKEN}",
+        "CANVAS_API_URL": "https://lms.neumont.edu/api/v1"
       }
     }
   }
