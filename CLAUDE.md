@@ -132,25 +132,22 @@ and DNS) and BIT351 (1A - Proxmox VE Setup and Configuration) content:
   `delete_page` separately if the content itself should go.
 
 ## MCP transport & server (canvas-api)
-- `canvas-api` runs as a **shared streamable-http server**, not per-client stdio.
-  One long-lived process at `http://127.0.0.1:8819/mcp` serves every client
-  (Claude Code + Claude Desktop) concurrently. Server code:
-  `C:\Users\cburk\canvas-mcp` (`python -m canvas_mcp.server --transport streamable-http`).
-- **Credentials are per-request via headers** in HTTP mode (`.env` token is
-  ignored). Clients send `X-Canvas-Token` and `X-Canvas-URL`. Configs reference
-  `${CANVAS_API_TOKEN}` (a machine env var) — never hardcode the token.
-- **Auto-start:** Windows logon task `CanvasMcpHttpServer` runs
-  `start_http_server_hidden.vbs` → `start_http_server.cmd` (windowless).
-  Log: `C:\Users\cburk\canvas-mcp\http_server.log`.
-- **Claude Code** connects via `.mcp.json` (`type: http`). **Claude Desktop**
-  connects via the `mcp-remote` stdio→HTTP bridge (`cmd /c npx -y mcp-remote`)
-  in `claude_desktop_config.json`. Restart Desktop after config changes.
-- **Revert to stdio:** restore `*.stdio.bak` next to each config, disable the
-  logon task (`schtasks /Change /TN CanvasMcpHttpServer /DISABLE`).
-- If a client shows no canvas-api tools, first check the server is listening
-  (`Get-NetTCPConnection -LocalPort 8819`); if not, run the logon task or the
-  `.vbs` launcher. A one-off `Event loop is closed` on the very first call after
-  a fresh stdio connect was the old failure mode — HTTP mode avoids it.
+- `canvas-api` runs via **stdio directly** from `C:\Users\cburk\canvas-mcp`.
+  Each client (Claude Code, Claude Desktop) spawns its own canvas-mcp process.
+- **Server code:** `C:\Users\cburk\canvas-mcp` — all MCP tools resolve from here.
+- **Configuration:**
+  - Claude Code: `.mcp.json` points to `C:\Users\cburk\canvas-mcp` with command
+    `python -m canvas_mcp.server` (stdio transport, no HTTP).
+  - Claude Desktop: `claude_desktop_config.json` points to `C:\Users\cburk\canvas-mcp`
+    with same command.
+- **Credentials:** Read from `.env` file in the canvas-mcp directory
+  (`CANVAS_API_TOKEN`, `CANVAS_API_URL`). Credentials are NOT per-request headers.
+- **If canvas-api tools are missing or fail to connect:**
+  1. Verify `.env` exists in `C:\Users\cburk\canvas-mcp` with valid token and URL.
+  2. Check that `.mcp.json` (Claude Code) and `claude_desktop_config.json`
+     (Claude Desktop) point to the correct command and directory.
+  3. Restart Claude Code or Claude Desktop.
+  4. Do NOT use HTTP server mode (it is unreliable and was deprecated).
 
 ## Working style
 Corey doesn't want timeline estimates, sycophancy, or hedging. Be direct,
