@@ -18,6 +18,8 @@ Outcomes and the BIT221 visual/structural standard.
 
 
 <recent_updates>
+- BIT320 (Lab Notes Complete, 2026-09-11): Created comprehensive Lab Notes Playbook (v1.0 SKILL) for BIT281-format student guidance pages. Published Lab 1.2 Notes (System Command Execution & Output Processing) with left-border boxes and language-specific HOW-TO patterns (bash, PowerShell, Python). Complete Lab Notes coverage: Lab 1.1 (no notes, setup-only), Lab 1.2 (published 2026-09-11), Lab 1.3 (bash patterns), Lab 2.1 (PowerShell objects), Lab 3.1 (Python data structures), Lab 4.1 (tool selection framework), Lab 5.1 (event log analysis). All follow BIT281 five-section format with 4px color-coded left-border boxes. See courses/BIT320.md for full status.
+
 - Workflow: at the end of each Canvas Course Updater session (any work touching CLAUDE.md, courses/{CODE}.md, or repo content), remind Corey to commit changes and provide a suggested commit message. GitHub repo is public: https://github.com/coreyburk/canvas-course-updater, read via web_fetch (no write-back connector currently available on this Enterprise workspace).
 
 - PRO221 (Week 4 Complete, 2026-07-23): All 4 pages published: iSCSI (Page 1), Failover Clustering (Page 2), RDS/MPIO (Page 3), WSUS (Page 4). 2C unpublished/flagged NOT WORKING—needs vet/repair or deletion. 4B unpublished/ready—awaiting publish decision. All assignments conform to 3-box template. OT1 keeping Windows Server 2019 File Services (no 2025 replacement available). courses/PRO221.md and CLAUDE.md updated and committed 2026-07-23.
