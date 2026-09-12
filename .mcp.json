@@ -4,11 +4,7 @@
       "type": "stdio",
       "command": "python",
       "args": ["-m", "canvas_mcp.server"],
-      "cwd": "C:\\Users\\cburk\\canvas-mcp",
-      "env": {
-        "CANVAS_API_TOKEN": "${CANVAS_API_TOKEN}",
-        "CANVAS_API_URL": "https://lms.neumont.edu/api/v1"
-      }
+      "cwd": "C:\\Users\\cburk\\canvas-mcp"
     }
   }
 }
