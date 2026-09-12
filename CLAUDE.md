@@ -11,13 +11,15 @@ Outcomes and the BIT221 visual/structural standard.
 |---|---|---|---|
 | BIT221 | 3631198 | Server Administration I — Windows Server 2025 | ✅ Complete (2026-09-08) |
 | BIT281 | 3631199 | Hardware Systems | ✅ Complete (2026-09-03) |
-| BIT320 | 3644698 | Shell and Administrative Scripting | ✅ Complete (2026-09-08) |
+| BIT320 | 3644698 | Shell and Administrative Scripting | ✅ Complete (2026-09-12) |
 | PRO221 | 3631288 | Server Admin I — Project: Windows Server | ✅ Complete (2026-09-03) |
 | BIT351 | 3631200 | Virtual Systems: Proxmox VE | ✅ Complete (2026-09-03) |
 | PRO352 | 3631317 | Virtualization Project: Proxmox (Multi-cluster) | ✅ Complete (2026-09-03) |
 
 
 <recent_updates>
+- BIT320 (Course Complete, 2026-09-12): Fixed Canvas API stability (HTTP server on port 8819). Verified all 15 instructor lecture notes correctly aligned with sequential language mastery structure (Bash → PowerShell → Python → Tool Selection → Monitoring). Updated Week 2 lecture note titles to reflect PowerShell focus (were incorrectly labeled as Bash). Updated module week headers to match course structure. Cleaned stale PaymentService Crisis scenario from documentation. Updated Course Outline page to clearly describe sequential language mastery pedagogy. All 7 labs, 15 instructor lecture notes, 6+ student resource pages, 10 training assignments complete and aligned. Course ready for instruction.
+
 - BIT320 (Lab Notes Complete, 2026-09-11): Created comprehensive Lab Notes Playbook (v1.0 SKILL) for BIT281-format student guidance pages. Published Lab 1.2 Notes (System Command Execution & Output Processing) with left-border boxes and language-specific HOW-TO patterns (bash, PowerShell, Python). Complete Lab Notes coverage: Lab 1.1 (no notes, setup-only), Lab 1.2 (published 2026-09-11), Lab 1.3 (bash patterns), Lab 2.1 (PowerShell objects), Lab 3.1 (Python data structures), Lab 4.1 (tool selection framework), Lab 5.1 (event log analysis). All follow BIT281 five-section format with 4px color-coded left-border boxes. See courses/BIT320.md for full status.
 
 - Workflow: at the end of each Canvas Course Updater session (any work touching CLAUDE.md, courses/{CODE}.md, or repo content), remind Corey to commit changes and provide a suggested commit message. GitHub repo is public: https://github.com/coreyburk/canvas-course-updater, read via web_fetch (no write-back connector currently available on this Enterprise workspace).
