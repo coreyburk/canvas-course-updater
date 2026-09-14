@@ -1,10 +1,8 @@
 {
   "mcpServers": {
     "canvas-api": {
-      "type": "stdio",
-      "command": "python",
-      "args": ["-m", "canvas_mcp.server"],
-      "cwd": "C:\\Users\\cburk\\canvas-mcp"
+      "type": "http",
+      "url": "http://localhost:8819"
     }
   }
 }
