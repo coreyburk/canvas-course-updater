@@ -71,21 +71,40 @@ standardized 2026-07-21 on BIT351's implementation (the most complete of
 three divergent forms found across courses: BIT221 had no Task box, BIT281
 had an unstyled `<h3>Task</h3>` heading plus a div-based, not table-based,
 Criteria box). Verified against live BIT221 (2B - Configure Active Directory
-and DNS) and BIT351 (1A - Proxmox VE Setup and Configuration) content:
-- Purpose box: `<table style="background-color: #eaf4fb; border: 2px solid
-  #2980b9;">`, `<h3 style="color: #1a5276;">Purpose</h3>` — scenario
+and DNS) and BIT351 (1A - Proxmox VE Setup and Configuration) content.
+
+**HTML Table Structure (Correct Format — Updated 2026-09-13):**
+All assignment boxes use proper table structure with `border-collapse: collapse;`
+and `<td>` padding instead of `cellpadding`. This ensures consistent rendering
+across browsers and Canvas versions:
+
+```html
+<table style="background-color: #eaf4fb; width: 100%; border-collapse: collapse; border: 2px solid #2980b9;">
+    <tbody>
+        <tr>
+            <td style="padding: 20px;">
+                <!-- Content here -->
+            </td>
+        </tr>
+    </tbody>
+</table>
+```
+
+**Box Specifications:**
+- Purpose box: `<table style="background-color: #eaf4fb; width: 100%; border-collapse: collapse; border: 2px solid #2980b9;">`, 
+  `<h3 style="color: #1a5276; margin-top: 0;">Purpose</h3>` — scenario
   paragraph (real-world framing, not just a restatement of the task), then
   Course Learning Outcomes and Program Outcomes lists.
-- Task box: `<table style="background-color: #fef9e7; border: 2px solid
-  #d4ac0d;">`, `<h3 style="color: #9a7d0a;">Task</h3>` — one concrete
+- Task box: `<table style="background-color: #fef9e7; width: 100%; border-collapse: collapse; margin-top: 15px; border: 2px solid #d4ac0d;">`, 
+  `<h3 style="color: #9a7d0a; margin-top: 0;">Task</h3>` — one concrete
   paragraph stating what the student will build/configure/produce, distinct
   from Purpose's why-it-matters framing and from the detailed step-by-step
   instructions that follow it. Keep it short even on trivial assignments
   (a single sentence is fine); the value is the scanability of a why/what
   pair before the procedural detail starts, not box length.
-- Criteria for Success box: `<table style="background-color: #eafaf1;
-  border: 2px solid #27ae60;">`, `<h3 style="color: #1e8449;">Criteria for
-  Success</h3>` — intro sentence, then one `<ul>` of grading criteria.
+- Criteria for Success box: `<table style="background-color: #eafaf1; width: 100%; border-collapse: collapse; margin-top: 15px; border: 2px solid #27ae60;">`, 
+  `<h3 style="color: #1e8449; margin-top: 0;">Criteria for Success</h3>` — intro sentence, 
+  then one `<ul>` of grading criteria.
 - Screenshot-required marker: `<img src="https://img.icons8.com/carbon-copy/2x/camera.png"
   alt="Screenshot required" width="25" height="25" loading="lazy">` after
   any step needing one.

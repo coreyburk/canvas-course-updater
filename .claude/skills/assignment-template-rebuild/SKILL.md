@@ -52,8 +52,26 @@ content:
 5. Criteria for Success box ← FINAL ELEMENT (nothing comes after this)
 ```
 
-1. **Purpose box**  -  a `<table style="background-color: #eaf4fb; border: 2px
-   solid #2980b9;">` with an `<h3 style="color: #1a5276;">Purpose</h3>`
+**HTML Table Structure (Correct Format — Updated 2026-09-13):**
+All assignment boxes use proper table structure with `border-collapse: collapse;`
+and `<td>` padding instead of `cellpadding`. This ensures consistent rendering:
+
+```html
+<table style="background-color: #eaf4fb; width: 100%; border-collapse: collapse; border: 2px solid #2980b9;">
+    <tbody>
+        <tr>
+            <td style="padding: 20px;">
+                <h3 style="color: #1a5276; margin-top: 0;">Purpose</h3>
+                <!-- Content here -->
+            </td>
+        </tr>
+    </tbody>
+</table>
+```
+
+1. **Purpose box**  -  a `<table style="background-color: #eaf4fb; width: 100%; 
+   border-collapse: collapse; border: 2px solid #2980b9;">` with `<tbody><tr><td style="padding: 20px;">`,
+   then `<h3 style="color: #1a5276; margin-top: 0;">Purpose</h3>`
    heading, containing a scenario paragraph, then `<strong>Course Learning
    Outcomes:</strong>` and `<strong>Program Outcomes:</strong>` each followed
    by a `<ul>`. Never fabricate PO/CLO language  -  pull it from verified
@@ -63,8 +81,9 @@ content:
    boxes do this well already ("the exact steps a junior infrastructure
    engineer follows," "mirrors decisions real infrastructure engineers make
    every day") and are a good model to match when writing or rebuilding one.
-2. **Task box**  -  a `<table style="background-color: #fef9e7; border: 2px
-   solid #d4ac0d;">` with an `<h3 style="color: #9a7d0a;">Task</h3>`
+2. **Task box**  -  a `<table style="background-color: #fef9e7; width: 100%; 
+   border-collapse: collapse; margin-top: 15px; border: 2px solid #d4ac0d;">` 
+   with `<tbody><tr><td style="padding: 20px;">`, then `<h3 style="color: #9a7d0a; margin-top: 0;">Task</h3>`
    heading, containing one concrete paragraph stating what the student will
    build/configure/produce  -  distinct from Purpose's why-it-matters framing.
    Keep it short (a sentence or two is fine even for a trivial assignment);
@@ -87,8 +106,9 @@ content:
    list or paragraph. This is different from the Criteria box  -  it says what
    to turn in, not how it will be graded.
 5. **Criteria for Success box**  -  a `<table style="background-color:
-   #eafaf1; border: 2px solid #27ae60;">` with an `<h3 style="color:
-   #1e8449;">Criteria for Success</h3>` heading, an intro sentence
+   #eafaf1; width: 100%; border-collapse: collapse; margin-top: 15px; border: 2px solid #27ae60;">` 
+   with `<tbody><tr><td style="padding: 20px;">`, then `<h3 style="color:
+   #1e8449; margin-top: 0;">Criteria for Success</h3>` heading, an intro sentence
    (`<p>`), then a single `<ul>` of grading criteria. **CRITICAL RULES:**
    - **NEVER list point values inside this box**  -  points belong ONLY in the
      Canvas rubric, never in assignment text
