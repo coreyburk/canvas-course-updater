@@ -145,8 +145,11 @@ Left-border only, no full background decoration
 background: #1e293b, color: #e2e8f0
 padding: 16-20px, border-radius: 6px
 font-family: 'Courier New', monospace, font-size: 0.85-0.9rem
-line-height: 1.4-1.6, overflow-x: auto
+Multi-line sequences: <pre> with white-space: pre-wrap; and line-height: 1.8-2.0
+Single command lines: <div> with nested <span> elements and arrow descriptions
+overflow-x: auto for horizontal scrolling
 Command prompts in #94a3b8 (muted color)
+CRITICAL: Use <pre> for actual line breaks, not <div> with display:block spans
 ```
 
 **Tables:**
@@ -231,13 +234,34 @@ Both formats can coexist in the same course. New pages can use Format 2 while le
 - Max-width wrapping div for all page content
 
 ### Code Block HTML Template (Format 2)
+
+**For multi-command sequences with descriptions (RECOMMENDED):**
+```html
+<pre style="background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 6px; 
+            font-family: 'Courier New', monospace; font-size: 0.85rem; 
+            line-height: 1.8; margin-bottom: 24px; overflow-x: auto; 
+            white-space: pre-wrap;">! Comment or label
+Device(config)# command1
+Device(config)# command2
+Device(config)# command3</pre>
+```
+
+**CRITICAL:** Use `<pre>` with `white-space: pre-wrap;` for any block with multiple commands on separate lines. Actual newline characters in the HTML render as line breaks. Line-height should be 1.8-2.0 for readability with multiple lines.
+
+**For single inline commands with prompt highlighting:**
 ```html
 <div style="background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 6px; 
             font-family: 'Courier New', monospace; font-size: 0.85rem; 
             line-height: 1.4; margin-bottom: 24px; overflow-x: auto;">
-  <!-- code here, use <span style="color: #94a3b8;"> for prompts -->
+  <span style="color: #94a3b8;">Device(config)#</span> <strong style="color: #e2e8f0;">command</strong>
+  <span style="display: block; color: #6b6b6b; font-size: 0.8rem; margin-left: 32px; margin-bottom: 8px;">→ Description of what this command does</span>
 </div>
 ```
+
+**When to use each:**
+- `<pre>` with `white-space: pre-wrap`: Multi-line command sequences, config examples, scripts (each line is a separate command)
+- `<div>` with nested spans: Single commands with arrow descriptions, teaching-point examples
+- **Never use `<div>` with `display: block` spans to simulate line breaks** — Canvas rendering is inconsistent. Always use `<pre>` for actual line breaks.
 
 ### Callout Box Template (Format 2 - Blue)
 ```html
