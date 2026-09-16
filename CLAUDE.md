@@ -18,6 +18,8 @@ Outcomes and the BIT221 visual/structural standard.
 
 
 <recent_updates>
+- BIT320 (Lab 5.2 Resource Pages Restored, 2026-09-15): Fixed critical pedagogical balance in three final-project resource pages (Options A/B/C). Previous iteration had stripped instructional content to reduce "essay length"—creating lean deliverables but leaving students with no guidance. Restored all three pages with: (1) Learning Objectives, (2) detailed "What to Build" sections, (3) Language Trade-offs comparison tables, (4) Getting Started Code examples (Bash/PowerShell/Python), (5) Common Pitfalls guidance, (6) "What Excellent Looks Like" standards. Submission format remains lean: ONE Word document per option with script/output/screenshots/200-300-word reflection. Result: comprehensive student guidance + practical consolidated deliverables. Lesson: "streamline submission requirements" ≠ "remove instructional content"; balance essential for 2-credit courses.
+
 - ITH216 (Week 6 EIGRP Pages Prepared, 2026-09-15): Prepared two comprehensive Week 6 student resource pages (Format 2 Modern Minimal), ready for Canvas publication once API connection restored:
   - **Page 1 - EIGRP Fundamentals and Configuration** (1800+ words): EIGRP protocol overview, AS numbers, neighbor discovery (Hello/hold timers/K values), metric calculation, basic configuration, verification commands, troubleshooting Layer 1-3 diagnostics
   - **Page 2 - EIGRP Advanced Topics and Troubleshooting** (2100+ words): Named mode configuration, metric manipulation, path control, summarization, redistribution with loop prevention, neighbor formation diagnosis, DUAL algorithm, convergence optimization
