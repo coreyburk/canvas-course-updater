@@ -431,6 +431,57 @@ Criterion 4: Critical Analysis & Insight (15 points)
 
 ---
 
+## Creating Rubrics in Canvas
+
+**⚠️ LIMITATION:** The Canvas API `create_rubric` endpoint is disabled (known bug returning 500 errors). Rubrics must be created via the Canvas web UI.
+
+### Required Format for Manual Creation
+
+When delegating rubric creation to the user, provide specifications in this exact format:
+
+```
+RUBRIC NAME: [Assignment Name] ([Total Points] pts)
+Reusable: Yes
+
+CRITERION [N]: [Criterion Name]
+  Criterion Description: [What students see — what is being assessed]
+  
+  Rating: Excellent
+  Points: [X]
+  Description: [Instructor grading guidance — what excellent looks like]
+  
+  Rating: Good
+  Points: [X × 0.70, rounded] (approximately 70% of Excellent)
+  Description: [Instructor grading guidance — what good looks like]
+  
+  Rating: Unacceptable
+  Points: 0
+  Description: [Instructor grading guidance — what unacceptable looks like]
+
+[Repeat for each criterion]
+
+TOTAL POINTS: [Sum of Excellent ratings across all criteria]
+```
+
+### Steps to Create in Canvas
+
+1. Navigate to **Course → Assignments → [Select Assignment]**
+2. Scroll to **Rubric** section → Click **Add Rubric**
+3. Enter **Rubric Name** and check **Reusable: Yes**
+4. For each criterion:
+   - Click **Add Criterion**
+   - Enter Criterion Name and Description
+   - Click **Add Rating** for each level (Excellent, Good, Unacceptable)
+   - Enter Rating Name, Points, and Description
+5. Click **Create Rubric**
+6. Verify in assignment and test as student view
+
+### Reference Implementation
+
+See **Example 2: Lab 1.3 (assignment 40249335)** in the Lab 1.3 assignment for a completed rubric following this standard.
+
+---
+
 ## Changelog
 
 | Version | Date | Changes |
