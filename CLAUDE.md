@@ -18,6 +18,8 @@ Outcomes and the BIT221 visual/structural standard.
 
 
 <recent_updates>
+- **CRITICAL FIX: Canvas API CONNECTION_CLOSED Root Cause Identified & Fixed (2026-09-16)**: Investigated persistent CONNECTION_CLOSED errors in canvas-api MCP server. **Root cause:** `uv.lock` file pinned fastmcp 3.1.1, which violates pyproject.toml constraint `fastmcp>=2.14.0,<3`. fastmcp 3.x is incompatible with canvas-mcp, causing ImportError on server startup. **Fix applied:** (1) Deleted uv.lock to remove bad dependency pin, (2) Recreated venv with `pip install --force-reinstall 'fastmcp<3'`, downgrading to fastmcp 2.14.7, (3) Verified Canvas API token validation passes. **Result:** CONNECTION_CLOSED should no longer occur. **Prevention:** Documented constraint issue in CLAUDE.md under "MCP transport & server" section. If uv.lock regenerates with fastmcp 3.x, the fix is to delete it and use pip to enforce the <3 constraint. **Note:** This was a recurring issue from yesterday's fix being undone by uv.lock every session.
+
 - BIT320 (Lab 5.2 Resource Pages — Cleanup & Balance Restored, 2026-09-16): Fixed critical issues with three final-project resource pages (Options A/B/C). (1) Restored instructional content: learning objectives, detailed "What to Build" sections, language trade-offs tables, getting-started code examples (Bash/PowerShell/Python), common pitfalls, "What Excellent Looks Like" standards. (2) Deleted 15 unpublished duplicate pages created during iterations (5 per option: -2/-3/-4 versions + old "Week 5 |" naming). Now have ONE published version per option. Submission format remains lean: ONE Word document per option with script/output/screenshots/200-300-word reflection. Result: comprehensive student guidance + practical consolidated deliverables + clean Canvas structure. Lesson: "streamline submission requirements" ≠ "remove instructional content"; balance + cleanup both essential.
 
 - ITH216 (Week 6 EIGRP Pages Prepared, 2026-09-15): Prepared two comprehensive Week 6 student resource pages (Format 2 Modern Minimal), ready for Canvas publication once API connection restored:
@@ -189,6 +191,13 @@ across browsers and Canvas versions:
      (Claude Desktop) point to the correct command and directory.
   3. Restart Claude Code or Claude Desktop.
   4. Do NOT use HTTP server mode (it is unreliable and was deprecated).
+
+- **⚠️ CRITICAL: fastmcp version constraint (2026-09-16 discovery)**
+  - canvas-mcp `pyproject.toml` specifies `fastmcp>=2.14.0,<3` (fastmcp 2.x only)
+  - fastmcp 3.x is INCOMPATIBLE with canvas-mcp — causes `ImportError: cannot import name 'IdentityAssertionParams'` and CONNECTION_CLOSED in Claude Code
+  - **Root cause:** `uv.lock` was generated with fastmcp 3.1.1, violating the <3 constraint. When the venv is recreated (or when Claude Code spawns the MCP server), it pulls from uv.lock which pins the broken version.
+  - **Solution:** Delete `uv.lock` and regenerate with `uv sync` to respect the <3 constraint, OR manually reinstall with `pip install --force-reinstall 'fastmcp<3'`
+  - **Prevention:** Keep `uv.lock` out of the repo if it can't be auto-enforced, or ensure any dependency updates respect the pyproject.toml constraint
 
 ## Working style
 Corey doesn't want timeline estimates, sycophancy, or hedging. Be direct,
