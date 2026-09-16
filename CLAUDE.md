@@ -18,6 +18,8 @@ Outcomes and the BIT221 visual/structural standard.
 
 
 <recent_updates>
+- ITH216 (Week 5 Page 2 Complete, 2026-09-15): Expanded Page 2 (PPP Configuration and WAN Link Management) from minimal to 3500+ words with all five enrichment areas: CHAP Authentication with MD5 hashing and real debug output, PAP vs. CHAP security comparison (real attack scenario showing 5-minute detection vs. never), Compression Algorithms (Predictor 60-70% text, Stacker 50-80% text) with real T1 email link calculation showing $7,200/year upgrade deferral savings, Multilink PPP (RFC 1990) fragmentation with automatic failover, Comprehensive Troubleshooting (Layer 1 physical, Layer 2 LCP/CHAP, Layer 3 IPCP), Security Hardening (key rotation, attack detection, syslog logging), Infrastructure Dependencies, Real-World Context, and seven RFC references. Page 2 now achieves parity with Page 1 depth. Formatted per Format 2 (Modern Minimal). IMPORTANT LESSON: Discovered critical Canvas API behavior—edit_page_content replaces entire page, does not append. Sending 6+ incremental updates wasted tokens thinking they'd accumulate; only last update persisted. Updated CLAUDE.md to document this limitation and prevent repeat waste.
+
 - BIT320 (Course Complete, 2026-09-12): Fixed Canvas API stability (HTTP server on port 8819). Verified all 15 instructor lecture notes correctly aligned with sequential language mastery structure (Bash → PowerShell → Python → Tool Selection → Monitoring). Updated Week 2 lecture note titles to reflect PowerShell focus (were incorrectly labeled as Bash). Updated module week headers to match course structure. Cleaned stale PaymentService Crisis scenario from documentation. Updated Course Outline page to clearly describe sequential language mastery pedagogy. All 7 labs, 15 instructor lecture notes, 6+ student resource pages, 10 training assignments complete and aligned. Course ready for instruction.
 
 - BIT320 (Lab Notes Complete, 2026-09-11): Created comprehensive Lab Notes Playbook (v1.0 SKILL) for BIT281-format student guidance pages. Published Lab 1.2 Notes (System Command Execution & Output Processing) with left-border boxes and language-specific HOW-TO patterns (bash, PowerShell, Python). Complete Lab Notes coverage: Lab 1.1 (no notes, setup-only), Lab 1.2 (published 2026-09-11), Lab 1.3 (bash patterns), Lab 2.1 (PowerShell objects), Lab 3.1 (Python data structures), Lab 4.1 (tool selection framework), Lab 5.1 (event log analysis). All follow BIT281 five-section format with 4px color-coded left-border boxes. See courses/BIT320.md for full status.
@@ -139,6 +141,13 @@ across browsers and Canvas versions:
 
 ## Known Canvas API limitations
 - `course_identifier` needs the numeric ID, not the course code string.
+- **⚠️ CRITICAL: `edit_page_content` REPLACES ENTIRE PAGE** — Every call to `edit_page_content` 
+  completely replaces the page content. DO NOT send multiple partial updates expecting them 
+  to accumulate — only the last update persists, all previous content is lost. **ALWAYS build 
+  the complete page HTML as one monolithic block and send in a SINGLE API call.** Lesson learned 
+  2026-09-15 ITH216 expansion: sending 6+ incremental updates (thinking they'd stack) wasted 
+  tokens and subscription cost, resulting in only the final update persisting. Always verify 
+  the complete HTML includes all sections before sending.
 - `update_assignment` / `edit_page_content` do full replacement — always
   carry forward the complete current HTML, never a partial patch.
 - `points_possible` on quiz-backed assignments is derived from question
