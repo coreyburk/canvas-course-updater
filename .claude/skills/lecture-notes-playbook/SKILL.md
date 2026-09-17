@@ -14,6 +14,13 @@ This document defines the canonical format for **instructor lecture notes** acro
 
 **Key principle:** Instructor notes should be easy to scan, self-contained, and independent. Content clarity trumps visual polish. No cross-document references. No "Looking Ahead" sections.
 
+**CRITICAL SCOPE NOTE (Updated 2026-09-17):** 
+- **DO NOT limit lecture notes to one page per week.** Create multiple pages per week as needed.
+- Pages should be organized by **topic complexity and depth**, not by calendar week alone.
+- A single week may warrant 3-6+ comprehensive pages depending on assignment scope, tools covered, and learning objectives.
+- **Example:** Week 1 of BIT360 (SysInternals & InfoSec) could span: InfoSec Fundamentals (1 page), Process Explorer Deep Dive (1 page), Network Monitoring (1 page), Event Logging & Forensics (1 page), Virtualization Setup (1 page), Assignment Hands-On Guidance (1-2 pages).
+- **Comprehensive coverage is the goal.** Ample content ensures instructors have materials to teach thoroughly and students have depth to learn from.
+
 ---
 ## Step 0 — Universal Gotchas
 - Resolve the course to its numeric Canvas ID before any API call

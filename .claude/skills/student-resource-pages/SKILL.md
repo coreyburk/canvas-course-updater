@@ -30,7 +30,15 @@ Student resource pages are **published, student-facing** pages that support lear
 
 ## Step 1 — Student-Focused Scope
 
-Student pages are **1500–2000 words**, optimized for student comprehension and assignment support, NOT instructor preparation.
+Student pages are **1500–2000 words per topic**, optimized for student comprehension and assignment support, NOT instructor preparation.
+
+**CRITICAL SCOPE NOTE (Updated 2026-09-17):**
+- **DO NOT limit student resource pages to one page per week.** Create multiple pages per week by topic as needed.
+- Pages should be organized by **topic granularity**, not by week alone.
+- A single week may warrant **2-4+ comprehensive resource pages** depending on topic complexity and assignment scope.
+- **Example:** Week 1 of BIT360 could span: InfoSec Overview (1 page), Process Explorer Guide (1 page), Network Monitoring with TCPView (1 page), Sysmon Event Logging (1 page), Virtualization Setup Guide (1 page).
+- **Comprehensive coverage is the goal.** Each topic deserves depth sufficient for students to master it independently before attempting assignments.
+- Pages within the same week should cross-reference each other naturally but remain independently readable.
 
 **Content must include:**
 - Learning objectives (what students will do, not why instructors need to teach it)
@@ -38,6 +46,7 @@ Student pages are **1500–2000 words**, optimized for student comprehension and
 - Practical procedures students can execute themselves
 - Real examples from student context (assignments, labs, real tools)
 - Security framed as "understand this risk," not "how to exploit this"
+- Step-by-step walkthroughs with expected outputs
 
 **Content must NOT include:**
 - Why students struggle / instructor pedagogical notes

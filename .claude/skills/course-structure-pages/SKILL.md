@@ -8,19 +8,25 @@ description: Orchestration guide for building complete course structure pages. U
 Use these three existing skills in sequence to build a complete course:
 
 1. **course-outline** — Creates instructor-only Course Outline page (unpublished, position 1 module)
-2. **lecture-notes-playbook** — Creates 5 Instructor Notes pages (one per week, unpublished, in position 1 module)
-3. **student-resource-pages** — Creates 1-3 Student Resource Pages per week (published, in weekly modules)
+2. **lecture-notes-playbook** — Creates **comprehensive Instructor Notes pages** (multiple pages per week as needed for depth, unpublished, in position 1 module)
+3. **student-resource-pages** — Creates **comprehensive Student Resource Pages** (multiple pages per week by topic, published, in weekly modules)
 
 This guide shows how they fit together in a course structure.
 
-## Module Organization (BIT281 Model)
+**IMPORTANT (Updated 2026-09-17):** 
+- Instructor Notes should span **3-6+ pages per week** depending on topic complexity and assignment scope
+- Student Resource Pages should span **2-5+ pages per week** depending on learning objectives and tool/concept depth
+- **Do not limit to one page per week.** Comprehensive coverage ensures instructors have ample material and students can master topics independently.
+
+## Module Organization (BIT281 Model, Updated for Multi-Page Coverage)
 
 **Module 1 (Position 1): Instructor-Only Module**
 - **Name:** "Course Outline and Lecture Notes (Not Published - Instructor Use Only)"
 - **Published:** NO
 - **Contents:**
   - 1 Course Outline page (unpublished)
-  - 5 Instructor Notes pages (one per week, unpublished)
+  - **Multiple Instructor Notes pages per week** (3-6+ pages depending on topic complexity and depth needed, unpublished)
+    - Example Week 1 (BIT360): 5-6 pages covering InfoSec Fundamentals, Process Explorer, Network Monitoring, Event Logging, Forensics, Virtualization Setup
   - Optional: other instructor resources
 
 **Modules 2-6+ (Positions 2+): Weekly Student Modules**
@@ -28,7 +34,8 @@ This guide shows how they fit together in a course structure.
 - **Published:** YES
 - **Contents:**
   - Subheader: "Resources" (if topic pages exist)
-  - 1-3 Student Resource Pages (by topic)
+  - **Multiple Student Resource Pages per week by topic** (2-5+ pages depending on learning objectives and concept depth)
+    - Example Week 1 (BIT360): 4-5 pages covering InfoSec Overview, Process Explorer Guide, Network Monitoring Guide, Sysmon/Event Logging, Virtualization Setup
   - Subheader: "Assignments"
   - Lab assignments
   - Subheader: "Training"
