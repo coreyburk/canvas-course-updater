@@ -42,18 +42,21 @@ Student pages are **1500–2000 words per topic**, optimized for student compreh
 
 **Content must include:**
 - Learning objectives (what students will do, not why instructors need to teach it)
+- "Why This Matters" section (motivation, relevance to career/assignments)
 - Core concepts grounded in student examples (not instructor troubleshooting)
-- Practical procedures students can execute themselves
-- Real examples from student context (assignments, labs, real tools)
-- Security framed as "understand this risk," not "how to exploit this"
-- Step-by-step walkthroughs with expected outputs
+- Practical procedures students can execute themselves (step-by-step numbered tables)
+- Real-world narratives with specific details (timestamps, process names, event IDs, incident timelines)
+- Worked examples showing correct approach (before/after comparisons, code snippets, screenshots)
+- Comparison tables (trade-offs between options: VirtualBox vs. Hyper-V, risk levels, approaches)
+- Common mistakes section (3-5+ detailed mistakes with "Why It's Wrong" and "How to Fix" guidance)
+- Troubleshooting tables for labs/procedures (Problem/Cause/Solution format)
+- Security framed as "understand this risk" or "recognize this pattern," not "how to exploit this"
 
 **Content must NOT include:**
 - Why students struggle / instructor pedagogical notes
-- Expected output values for grading purposes
-- Common student errors (instructor reference, not student learning)
-- Troubleshooting decision trees (instructor-facing)
-- Grading rubrics or success criteria
+- Expected output values for grading purposes (only for learning context)
+- Teaching Agenda or instructor facilitation guides
+- Grading rubrics or success criteria (those belong in assignments)
 - Facilitation guides or discussion answers
 
 ---
@@ -97,13 +100,14 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 
 ## Step 4 — Content Standards
 
-**Word count:** 1500–2000 total (tight, focused, readable)
+**Word count:** 2500–4500+ total (matches assignment complexity — simple tools: 2500-3000, complex labs: 3500-4500+)
 
-**Breakdown:**
-- Learning Objectives: 100–150 words
-- Core Concepts: 400–600 words
-- Applied/Technical: 600–900 words
-- Optional sections (Discussion, References): 200–350 words combined
+**Breakdown (for complex assignments):**
+- Learning Objectives: 150–200 words (5-6 objectives)
+- Why This Matters: 200–300 words (motivation/relevance)
+- Core Concepts with procedures: 1500–2500 words (includes step-by-step tables, comparison tables, examples)
+- Common Mistakes table: 500–800 words (3-5+ detailed mistakes with fixes)
+- References: 200–300 words
 
 **Writing principles:**
 - Every concept grounded in student-executable example
@@ -157,21 +161,22 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 
 ### Must Have
 - ✓ Header box (week/topic, title, no publication status needed)
-- ✓ Learning Objectives (purple box with darker header background)
-- ✓ Core Concepts section (green or tan box)
-- ✓ Applied/Technical section (green or tan box, alternating color)
-- ✓ References (if applicable)
+- ✓ Learning Objectives (purple box with darker header background, 5-6 objectives)
+- ✓ Why This Matters section (green header, student-focused motivation)
+- ✓ Core Concepts section(s) with step-by-step procedures (tan boxes, 1500-2500 words)
+- ✓ Real-world examples with specific details (timestamps, event IDs, process names)
+- ✓ Common Mistakes section (3-5+ entries with fixes, table or narrative format)
+- ✓ Troubleshooting section for labs/procedures (Problem/Cause/Solution table)
+- ✓ References (curated, 3-5 links maximum)
 
 ### Must NOT Do
 - ✗ Include "Instructor Use Only" indicator (pages are published, student-facing)
 - ✗ Include Teaching Agenda (instructor-only)
-- ✗ Include expected output values for grading
-- ✗ Include common student errors (instructor reference)
-- ✗ Include troubleshooting decision trees
-- ✗ Include rubric alignment or grading criteria
-- ✗ Exceed 2000 words (keep focused and readable)
-- ✗ Use fabricated data or example outputs
+- ✗ Include grading rubrics or success criteria (belongs in assignment)
+- ✗ Include fabricated data or example outputs (use real tool output, real incident details)
+- ✗ Use vague "students learn from mistakes" pedagogy (be specific about what/why/how)
 - ✗ Assume instructor audience in writing tone
+- ✗ Limit to 2000 words when assignment complexity warrants depth (see word count guidance above)
 
 ### Publishing
 - ✓ Always publish (don't leave unpublished by default)
@@ -187,12 +192,14 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 | Audience | Instructors only | Students (primary) |
 | Published | No | Yes |
 | Module | Instructor-only | Course module by week |
-| Length | 2500–3500 words | 1500–2000 words |
-| Scope | Comprehensive, deep | Focused, essential only |
-| Example focus | Grading/troubleshooting | Student executable |
-| Common errors | Explained, listed | Not included |
-| Expected outputs | Real grading data | Not included |
-| Tone | Preparatory, diagnostic | Encouraging, accessible |
+| Length | 2500–4000 words | 2500–4500+ words (matched to complexity) |
+| Scope | Comprehensive, deep | Depth matched to assignment requirements |
+| Procedures | Teaching approach | Step-by-step tables students execute |
+| Examples | Industry case studies | Real-world narratives with specific details |
+| Common mistakes | For instructor awareness | 3-5+ entries with "Why/How to Fix" |
+| Troubleshooting | Decision trees (instructor) | Problem/Cause/Solution tables (student) |
+| Expected outputs | Real grading data | Real tool/system outputs (learning context) |
+| Tone | Preparatory, diagnostic | Encouraging, practical, accessible |
 
 ---
 
@@ -200,4 +207,5 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.1 | 2026-09-17 | **MAJOR UPDATE based on BIT360 Week 1 creation.** Revised word count to 2500-4500+ (previously 1500-2000). Added required sections: "Why This Matters" (motivation), step-by-step procedure tables, comparison tables, real-world incident narratives with timestamps/event IDs, detailed common mistakes (3-5+ entries), troubleshooting tables (Problem/Cause/Solution). Shifted from prescriptive length limits to complexity-matched depth. Updated comparison table vs. Teaching Notes to reflect new depth parity. These changes reflect learnings from creating three 3500-4500 word pages that provide sufficient detail for independent student learning. |
 | 1.0 | 2026-07-27 | Initial specification — student resource pages distinct from instructor teaching notes. Focus on student learning, not instructor prep. Scope 1500–2000 words. No Teaching Agenda, no expected outputs for grading, no troubleshooting guides. |
