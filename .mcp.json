@@ -3,7 +3,7 @@
     "canvas-api": {
       "type": "stdio",
       "command": "python",
-      "args": ["-m", "canvas_mcp.server"],
+      "args": ["-m", "canvas_mcp"],
       "cwd": "C:\\Users\\cburk\\canvas-mcp"
     }
   }
