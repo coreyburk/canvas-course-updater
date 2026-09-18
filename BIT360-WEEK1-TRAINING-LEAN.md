@@ -81,15 +81,10 @@
    - Understand risk assessment concepts and frameworks
    
 ### **Week 1 (In Class + Async)**
-2. **Read:** Week 1 Student Page 1.1 (InfoSec Fundamentals & Risk Assessment) (1-1.5 hours)
-   - Apply risk management concepts to ACIO framework
-   - Learn CIA triad and threat modeling
-   
-3. **Read:** Week 1 Student Page 1.2 (SysInternals Tools) (1-1.5 hours)
-   - Study tool workflows and examples
-   
-4. **Read:** Week 1 Student Page 1.3 (Lab Setup) (1 hour)
-   - Reference during Hyper-V setup
+2. **Read:** Week 1 Student Pages (1-1.5 hours total)
+   - Page 1.1: InfoSec Fundamentals & Risk Assessment (apply risk concepts to ACIO framework, CIA triad)
+   - Page 1.2: SysInternals Tools (tool workflows and examples)
+   - Page 1.3: Lab Setup (reference during Hyper-V setup)
 
 5. **Do Assignments:**
    - **1A: SysInternals** — Apply tools from Page 1.2 (2-3 hours)
@@ -102,9 +97,9 @@
 | Metric | Overloaded Approach | Lean Approach |
 |--------|---|---|
 | **Training Video Time** | 4.5-5 hours | 1h 38m |
-| **Reading Time** | 2-3 hours (textbook) | 3-4 hours (interactive Canvas pages) |
+| **Reading Time** | 2-3 hours (textbook) | 1-1.5 hours (Canvas pages) |
 | **Assignment Time** | 5-8 hours | 5-8 hours |
-| **Total Student Workload** | 11.5-16 hours | 9.5-13.5 hours |
+| **Total Student Workload** | 11.5-16 hours | **8-11 hours** |
 | **Resource Redundancy** | Video + textbook + Canvas pages | Video + Canvas pages only |
 | **Cognitive Load** | High (overwhelming) | Moderate (manageable) |
 | **Engagement** | Lower (passive reading) | Higher (interactive Canvas + video + hands-on) |
@@ -152,9 +147,9 @@ For students who want **deeper risk management context**, offer as optional:
 ## Week 1 Revised Time Summary
 
 **Training:** 1h 38m video (replace textbook Module 1)
-**Reading:** 3-4 hours (comprehensive Canvas pages—higher engagement than textbook)
+**Reading:** 1-1.5 hours (scan + study three Canvas pages: ~11,000 words total)
 **Assignments:** 5-8 hours (non-negotiable, multi-hour labs)
-**Total:** 9.5-13.5 hours (sustainable workload)
+**Total:** 8-11 hours (sustainable workload)
 
 **Per class meeting:** ~2.5-3.5 hours outside class (typical for 5.3-hour/week course)
 
