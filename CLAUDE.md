@@ -205,6 +205,14 @@ across browsers and Canvas versions:
   - **Root cause:** `uv.lock` was generated with fastmcp 3.1.1, violating the <3 constraint. When the venv is recreated (or when Claude Code spawns the MCP server), it pulls from uv.lock which pins the broken version.
   - **Solution:** Delete `uv.lock` and regenerate with `uv sync` to respect the <3 constraint, OR manually reinstall with `pip install --force-reinstall 'fastmcp<3'`
 
+- **⚠️ CRITICAL: Event loop closure during server startup (2026-09-23 discovery, FIX COMMITTED)**
+  - **Symptom:** "Event loop is closed" error on ALL Canvas API requests (even simple list_courses)
+  - **Root cause:** `src/canvas_mcp/server.py` called `asyncio.run(_validate_token())` during startup to validate Canvas credentials early. This creates a NEW event loop, runs the validation function, and IMMEDIATELY closes the loop when the function exits. When `mcp.run()` starts afterward, it tries to create/use the already-closed event loop, causing all requests to fail with "Event loop is closed."
+  - **Why it appeared:** Validating credentials at startup seemed like a good safety check, but `asyncio.run()` by design creates and closes an event loop for that one function. FastMCP's `mcp.run()` creates and manages its OWN event loop — the early `asyncio.run()` closure corrupted this lifecycle.
+  - **Fix (committed 2026-09-23 b7905af):** Removed early token validation from `server.py` lines 276-290. Let the server validate credentials on **first request** instead. This allows `mcp.run()` to initialize a fresh event loop without prior closure corruption. Trade-off: credential errors now surface on first API call (not startup), but this is acceptable — better a working server than one that fails on all requests.
+  - **Prevention:** **Never call `asyncio.run()` before `mcp.run()` in the same startup process.** If startup validation is needed in future, do it WITHIN the event loop that `mcp.run()` creates, not before. FastMCP manages the event loop; external `asyncio.run()` calls will corrupt it.
+  - **Debugging reference:** Symptom appears on the SECOND tool call (first one may succeed if it's simple enough), because the error propagates inconsistently depending on timing.
+
 - **⚠️ ARCHITECTURAL LIMITATION: Concurrent Canvas API connections (2026-09-16 discovery)**
   - **Problem:** stdio MCP is designed for 1:1 client-to-process connections (NOT multiplexing). Running two Claude Code windows simultaneously causes both to spawn separate `canvas-mcp` processes that fight over the same Canvas API credentials.
   - **Symptom:** `CONNECTION_CLOSED` errors when multiple contexts are active
