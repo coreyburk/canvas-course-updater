@@ -2,8 +2,8 @@
   "mcpServers": {
     "canvas-api": {
       "type": "stdio",
-      "command": "python",
-      "args": ["-m", "canvas_mcp"],
+      "command": "C:\\Users\\cburk\\canvas-mcp\\.venv\\Scripts\\python.exe",
+      "args": ["C:\\Users\\cburk\\canvas-mcp\\run_server.py"],
       "cwd": "C:\\Users\\cburk\\canvas-mcp"
     }
   }
