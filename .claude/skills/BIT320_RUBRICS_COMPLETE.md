@@ -52,7 +52,7 @@ Copy the criterion information directly into Canvas UI:
 
 ---
 
-## Lab 1.2: System Command Execution (25 points)
+## Lab 1.2: Functions, Loops, and Error Handling (25 points)
 
 **Status:** UPDATE REQUIRED - Add Code Fundamentals criterion
 
