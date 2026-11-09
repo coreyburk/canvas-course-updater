@@ -23,3 +23,7 @@ scratchpad/
 
 # Copyrighted course textbooks - kept locally, never published
 textbooks/
+
+# Stray working files
+notes_current.html
+*.working.html
