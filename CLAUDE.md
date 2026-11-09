@@ -156,7 +156,12 @@ across browsers and Canvas versions:
   reading the `[CODE]` context lines from a dry run and confirming none is part
   of an actual command; it disables the `<pre>` integrity check by design, so
   verify separately. Page titles are never renamed, since a slug change breaks
-  links. On Windows prefix with `PYTHONIOENCODING=utf-8` - but note that
+  links - though note that a slug only moves if the NEW title normalizes
+  differently. Canvas strips an em dash from a slug exactly as it does a
+  hyphen, so swapping one for the other leaves the slug untouched; verified on
+  BIT320's `quiz-specifications-to-be-created` (2026-11-09). Check the slug
+  before assuming a rename is unsafe. On Windows prefix with
+  `PYTHONIOENCODING=utf-8` - but note that
   `python -I` silently ignores that, because isolated mode implies `-E`. Reads
   credentials from the canvas-mcp `.env`.
 - `tools/audit_canvas_pages.py` - page coverage audit. Course ID is hardcoded;
