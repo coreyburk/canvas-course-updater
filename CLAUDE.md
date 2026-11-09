@@ -16,6 +16,7 @@ Outcomes and the BIT221 visual/structural standard.
 | PRO221 | 3631288 | Server Admin I - Project: Windows Server | ✅ Complete (2026-09-03) |
 | BIT351 | 3631200 | Virtual Systems: Proxmox VE | ✅ Complete (2026-09-03) |
 | PRO352 | 3631317 | Virtualization Project: Proxmox (Multi-cluster) | ✅ Complete (2026-09-03) |
+| ITH216 | 3646987 | Networking II | ✅ Complete (2026-09-16) |
 
 ## Course Status
 
@@ -172,6 +173,12 @@ across browsers and Canvas versions:
   plus a separate call on the item it displaced. Don't re-call
   `add_module_item` with a new position - creates a duplicate.
 - **Module item repositioning is unreliable via `position`** (2026-11-07): Setting an item's `position` to a target index frequently reorders OTHER items unpredictably - in one case it moved the Quiz subheader above Resources. Setting several items to the same target position in sequence made it worse. **Reliable technique:** rebuild the tail of the module by setting each item's `position` to the LAST index, one call per item, in the desired final order. Every item lands at the end in turn, so the final sequence is exactly the order you issued the calls in. Always verify with `list_module_items` afterwards; do not assume the reorder did what you asked.
+- **A post-write re-fetch can return stale content** (2026-11-09): reading an
+  item back immediately after a successful PUT sometimes returns the PRE-write
+  body, so a verification step can report a false failure. Seen on BIT360
+  "Lecture Notes - Week 9.2": the re-fetch said 2 em dashes remained, while an
+  independent read moments later showed 0 and the write had in fact landed.
+  Re-check independently before treating a post-write verification as a failure.
 - `delete_module` auto-removes its module items; `delete_module_item` only
   unlinks a page/assignment, doesn't delete the underlying content - use
   `delete_page` separately if the content itself should go.
