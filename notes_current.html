@@ -1,0 +1,154 @@
+<div style="max-width: 900px; color: #2c2c2a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6;">
+
+    <div style="background-color: #eaf4fb; border-left: 4px solid #2980b9; padding: 1.5rem; margin-bottom: 2.5rem;">
+        <h2 style="color: #1a5276; margin-top: 0;">Why Functions, Loops and Error Handling Matter</h2>
+        <p style="margin: 0;">A script that works once on your machine and a script someone can maintain are different things. Functions give the work a name, loops stop you repeating yourself, and error handling decides what happens when a path is missing or a command fails at 3 AM with nobody watching. This lab asks you to build the same small report three times so you can see how each language expresses those three ideas, because the differences are real and you will choose between them for the rest of the course.</p>
+    </div>
+
+    <div style="background-color: #eeedfe; border-left: 4px solid #534AB7; padding: 1.5rem; margin-bottom: 2.5rem;">
+        <h2 style="color: #26215c; margin-top: 0;">What You Are Being Graded On</h2>
+        <p style="margin-bottom: 1.5rem;">Three scripts, one in each language, each gathering system information. The scripts are the vehicle; the four requirements below are what the rubric actually looks for.</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 0;">
+            <div style="background-color: #f8f6fe; border-radius: 6px; padding: 1rem; border-left: 3px solid #534AB7;">
+                <h3 style="color: #534ab7; margin-top: 0; font-size: 1rem;">Functions</h3>
+                <p style="margin: 0; font-size: 0.95rem;">At least two or three per script, with descriptive names. The test is whether the main body reads as a list of intentions rather than a wall of commands.</p>
+            </div>
+            <div style="background-color: #f8f6fe; border-radius: 6px; padding: 1rem; border-left: 3px solid #534AB7;">
+                <h3 style="color: #534ab7; margin-top: 0; font-size: 1rem;">Loops</h3>
+                <p style="margin: 0; font-size: 0.95rem;">Each script must iterate over a collection rather than repeating the same block with different values. A list of paths is the obvious candidate.</p>
+            </div>
+            <div style="background-color: #f8f6fe; border-radius: 6px; padding: 1rem; border-left: 3px solid #534AB7;">
+                <h3 style="color: #534ab7; margin-top: 0; font-size: 1rem;">Error Handling</h3>
+                <p style="margin: 0; font-size: 0.95rem;">Handle at least one real failure, such as a path that does not exist or a command that fails. Check before you use a result, and say something useful when it is not there.</p>
+            </div>
+            <div style="background-color: #f8f6fe; border-radius: 6px; padding: 1rem; border-left: 3px solid #534AB7;">
+                <h3 style="color: #534ab7; margin-top: 0; font-size: 1rem;">Comments</h3>
+                <p style="margin: 0; font-size: 0.95rem;">One line above each function saying what it does. Cheap to write and the first thing a reader looks for.</p>
+            </div>
+            <div style="background-color: #f8f6fe; border-radius: 6px; padding: 1rem; border-left: 3px solid #534AB7;">
+                <h3 style="color: #534ab7; margin-top: 0; font-size: 1rem;">Three Screenshots</h3>
+                <p style="margin: 0; font-size: 0.95rem;">Each script running successfully and producing its report. Label which is which.</p>
+            </div>
+            <div style="background-color: #f8f6fe; border-radius: 6px; padding: 1rem; border-left: 3px solid #534AB7;">
+                <h3 style="color: #534ab7; margin-top: 0; font-size: 1rem;">The Written Comparison</h3>
+                <p style="margin: 0; font-size: 0.95rem;">100 to 150 words on four dimensions: function syntax, loop behavior, error handling, and which language felt most natural. Answer all four.</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: #e6f1fb; border-left: 4px solid #185FA5; padding: 1.5rem; margin-bottom: 2.5rem;">
+        <h2 style="color: #185fa5; margin-top: 0;">The Same Three Ideas in Three Languages</h2>
+        <p style="margin: 0 0 1.5rem 0;">These are patterns to adapt, not the script you are writing. Get each pattern working on its own at the command line first.</p>
+
+        <h3 style="color: #185fa5; margin: 1.5rem 0 0.75rem 0;">Bash</h3>
+        <pre style="background-color: #2c2c2a; color: #e8e8e8; padding: 0.75rem; border-radius: 3px; font-size: 0.9rem; margin: 0 0 0.75rem 0; overflow-x: auto; white-space: pre-wrap;"># A function: no parameter list, arguments arrive as $1, $2 ...
+# Returned DATA goes to stdout and the caller captures it.
+describe_thing() {
+  local name="$1"
+  echo "value for $name"
+}
+
+RESULT=$(describe_thing "example")
+
+# A loop over an array
+items=("first" "second" "third")
+for item in "${items[@]}"; do
+  echo "checking $item"
+done
+
+# Error handling: test before you use, and provide a fallback
+if [ -d "$path" ]; then
+  echo "  $path: $(du -sh "$path" 2&gt;/dev/null || echo 'N/A')"
+else
+  echo "  $path: ERROR - not accessible"
+fi</pre>
+        <p style="margin: 0 0 1rem 0; font-size: 0.95rem;"><strong>Key:</strong> <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">return</code> in bash sets an exit status between 0 and 255, not a value, so a function returns data by echoing it. Declare function variables <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">local</code> or they are global and will overwrite your caller's variables. <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">||</code> runs the right-hand side only when the left-hand side fails, which is the shortest error handler bash offers.</p>
+
+        <h3 style="color: #185fa5; margin: 1.5rem 0 0.75rem 0;">PowerShell</h3>
+        <pre style="background-color: #2c2c2a; color: #e8e8e8; padding: 0.75rem; border-radius: 3px; font-size: 0.9rem; margin: 0 0 0.75rem 0; overflow-x: auto; white-space: pre-wrap;"># A function: Verb-Noun naming, typed parameters
+function Get-ThingDescription {
+  param([string]$Name)
+  "value for $Name"
+}
+
+$Result = Get-ThingDescription -Name "example"
+
+# A loop over an array
+$items = @("first", "second", "third")
+foreach ($item in $items) {
+  Write-Host "checking $item"
+}
+
+# Error handling: test first, and catch what can still throw
+if (Test-Path -Path $path) {
+  try {
+    # work that might fail
+  }
+  catch {
+    Write-Host "  $path : ERROR - $($_.Exception.Message)"
+  }
+}
+else {
+  Write-Host "  $path : ERROR - path not found"
+}</pre>
+        <p style="margin: 0 0 1rem 0; font-size: 0.95rem;"><strong>Key:</strong> Any value a PowerShell function leaves on the pipeline becomes its output, so an unassigned expression is effectively a return. Inside a double-quoted string, reaching a property needs <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">$( )</code> around it, which is why the catch block above wraps the exception message that way. <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">Test-Path</code> is the cheap guard; try/catch is for what you cannot test in advance.</p>
+
+        <h3 style="color: #185fa5; margin: 1.5rem 0 0.75rem 0;">Python</h3>
+        <pre style="background-color: #2c2c2a; color: #e8e8e8; padding: 0.75rem; border-radius: 3px; font-size: 0.9rem; margin: 0 0 0.75rem 0; overflow-x: auto; white-space: pre-wrap;">import os
+from pathlib import Path
+
+# A function: named parameters, explicit return, docstring
+def describe_thing(name):
+    """Return a short description of the named thing."""
+    return f"value for {name}"
+
+result = describe_thing("example")
+
+# A loop over a list
+for item in ["first", "second", "third"]:
+    print(f"checking {item}")
+
+# Error handling: catch the specific exception you expect
+for path in paths:
+    try:
+        if path.exists():
+            print(f"  {path}: ...")
+        else:
+            print(f"  {path}: ERROR - path not found")
+    except PermissionError:
+        print(f"  {path}: ERROR - permission denied")</pre>
+        <p style="margin: 0 0 1rem 0; font-size: 0.95rem;"><strong>Key:</strong> A Python function with no <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">return</code> gives back None, and the error surfaces later somewhere confusing, so be explicit. Name the exception you expect rather than catching everything, because a bare except swallows your own typos too. Note that this lab needs no subprocess: <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">platform</code>, <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">os</code> and <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">pathlib</code> get the system information directly, which is faster and avoids parsing text.</p>
+    </div>
+
+    <div style="background-color: #fef9e7; border-left: 4px solid #854F0B; padding: 1.5rem; margin-bottom: 2.5rem;">
+        <h2 style="color: #854f0b; margin-top: 0;">Key Challenge: Three Philosophies of Failure</h2>
+        <p style="margin: 0 0 1rem 0;">The hardest part of this lab is not writing three functions. It is that the three languages disagree about what should happen when something goes wrong, and that disagreement is exactly what your written comparison is asking about.</p>
+
+        <p style="margin: 0 0 1rem 0;"><strong>Bash assumes you are watching.</strong> A failed command prints to stderr and the script carries on to the next line. Nothing stops. You find out by checking the exit status yourself, which is what <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">||</code> and <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">if [ $? -eq 0 ]</code> are doing. The cost is that forgetting to check is silent.</p>
+
+        <p style="margin: 0 0 1rem 0;"><strong>PowerShell splits errors in two.</strong> Some stop the command, most do not, and only the first kind reaches a catch block. This surprises nearly everyone: a perfectly sensible try/catch can sit there doing nothing while a red error prints. If you want a cmdlet failure to be catchable, you generally have to ask for it with <code style="background-color: #f0f0f0; padding: 0.15rem 0.4rem; border-radius: 3px;">-ErrorAction Stop</code>. You will meet this properly in Week 2; for now, notice when it happens.</p>
+
+        <p style="margin: 0 0 1rem 0;"><strong>Python stops by default.</strong> An unhandled exception ends the script and prints a traceback naming the file and line. It is the loudest of the three, which makes it the easiest to debug and the least forgiving if you wanted the script to continue.</p>
+
+        <p style="margin: 0;"><strong>Try this deliberately.</strong> Add a path to your list that does not exist, run all three scripts, and watch what each one does. One will carry on quietly, one may print red and continue anyway, and one will stop unless you caught it. That single experiment gives you most of your written comparison, grounded in something you actually observed rather than something you read.</p>
+    </div>
+
+    <div style="background-color: #eafaf1; border-left: 4px solid #27ae60; padding: 1.5rem;">
+        <h2 style="color: #1e8449; margin-top: 0;">Your Workflow: Build Each Script Incrementally</h2>
+        <ol style="margin: 0; padding-left: 1.5rem;">
+            <li><strong>Confirm your three environments</strong> - bash, PowerShell and Python should each run a one-line hello before you write anything real. Lab 1.1 set these up.</li>
+            <li><strong>Create the scripts directory</strong> - keep all three scripts together so the comparison at the end is easy.</li>
+            <li><strong>Write one bash function</strong> - something that returns a single value, such as the hostname. Call it and print the result. Nothing else yet.</li>
+            <li><strong>Add a second and third function</strong> - the rubric asks for two or three. Give each a comment line before you move on, while you still remember what it does.</li>
+            <li><strong>Add the loop</strong> - iterate over a list of paths rather than writing the same block three times. This is the requirement people most often miss.</li>
+            <li><strong>Add the failure case</strong> - put a path in the list that does not exist and make the script say so clearly instead of printing a raw error.</li>
+            <li><strong>Assemble the bash report</strong> - call your functions from the main body, redirect the output to a file, and take your screenshot.</li>
+            <li><strong>Port it to PowerShell</strong> - same three functions, same loop, same failure case. Notice where the structure maps across cleanly and where it does not.</li>
+            <li><strong>Port it to Python</strong> - same again. By now the third one should be quick, because you are translating a design rather than inventing one.</li>
+            <li><strong>Run all three side by side</strong> - confirm the reports say the same things, and capture the remaining screenshots.</li>
+            <li><strong>Run the failure experiment</strong> - break a path on purpose in all three and write down what each one did. This is your evidence.</li>
+            <li><strong>Write the comparison</strong> - 100 to 150 words covering all four dimensions: functions, loops, error handling, and which felt most natural. Cite what you observed in step 11.</li>
+        </ol>
+    </div>
+
+</div>
