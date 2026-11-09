@@ -27,3 +27,5 @@ textbooks/
 # Stray working files
 notes_current.html
 *.working.html
+*_current.html
+*_new.html
