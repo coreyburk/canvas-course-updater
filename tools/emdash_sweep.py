@@ -21,8 +21,8 @@ Safety:
     which can break links. Fix those by hand, deliberately.
 
 Usage:
-    python emdash_sweep.py --course 3644698              # dry run
-    python emdash_sweep.py --course 3644698 --apply      # write
+    python tools/emdash_sweep.py --course 3644698          # dry run
+    python tools/emdash_sweep.py --course 3644698 --apply  # write
 
 On Windows, prefix with PYTHONIOENCODING=utf-8 so the console can print context.
 

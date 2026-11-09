@@ -179,8 +179,8 @@ Last Updated: 2026-09-18
 ## Related Resources
 
 - [BIT360 Week 1 Student Pages](https://lms.neumont.edu/courses/3644702/pages) — InfoSec Fundamentals, SysInternals Tools, Lab Setup
-- [Training Assignment Playbook SKILL](./.claude/skills/training-assignment-playbook.md) — Template for future training assignments
-- [BIT360 Week 1 Lean Training Approach](./BIT360-WEEK1-TRAINING-LEAN.md) — Context on video selection and workload balance
+- [Training Assignment Playbook SKILL](../../.claude/skills/training-assignment-playbook/SKILL.md) — Template for future training assignments
+- [BIT360 Week 1 Lean Training Approach](./WEEK1-TRAINING-LEAN.md) — Context on video selection and workload balance
 
 ---
 

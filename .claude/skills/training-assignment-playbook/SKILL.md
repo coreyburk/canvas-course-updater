@@ -1,3 +1,8 @@
+---
+name: training-assignment-playbook
+description: Use when Corey asks to create or revise a LinkedIn Learning training assignment (e.g. "create the Week 6 training assignment", "add training for BIT360 Week 8"). Covers selecting courses that align with both the textbook module and the weekly lab, runtime targets, point values, and the standard assignment description template.
+---
+
 # Training Assignment Playbook
 **Version:** 1.0  
 **Created:** 2026-09-18  

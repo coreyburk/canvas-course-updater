@@ -1,3 +1,8 @@
+---
+name: lab-notes-playbook
+description: Use when Corey asks to write, review, or audit Lab Notes - the published, student-facing scaffolding pages that accompany a hands-on lab assignment (e.g. "write the Lab 3.1 Notes", "review Lab 1.2 Notes against the lab"). Five-section BIT281 left-border format; teaches the HOW-TO without spoiling lab answers.
+---
+
 # Canvas Lab Notes Playbook
 
 **Version:** 1.0  

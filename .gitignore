@@ -20,3 +20,6 @@ scratchpad/
 
 # Local config backups (transport migration revert aids)
 *.stdio.bak
+
+# Copyrighted course textbooks - kept locally, never published
+textbooks/
