@@ -1,0 +1,10 @@
+2026-09-01 08:00:01 | INFO  | auth-service  | Service started
+2026-09-01 08:14:22 | ERROR | auth-service  | Failed login for svc_backup
+2026-09-01 09:02:10 | WARN  | db-connector  | Slow query detected
+2026-09-01 09:30:55 | ERROR | db-connector  | Connection pool exhausted
+2026-09-01 10:11:00 | ERROR | auth-service  | Failed login for svc_backup
+2026-09-01 11:45:13 | INFO  | scheduler     | Job queued
+2026-09-01 12:00:00 | ERROR | db-connector  | Connection pool exhausted
+2026-09-01 13:22:41 | ERROR | auth-service  | Token validation failed
+2026-09-01 18:05:09 | INFO  | scheduler     | Job completed
+2026-09-01 20:01:00 | ERROR | scheduler     | Job timed out
