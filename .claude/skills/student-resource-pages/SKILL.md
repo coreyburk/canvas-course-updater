@@ -16,19 +16,19 @@ Student resource pages are **published, student-facing** pages that support lear
 
 ---
 
-## Step 0 — Gotchas
+## Step 0 - Gotchas
 
 - Resolve course to numeric Canvas ID first
 - Always publish (unless explicitly marked instructor-only)
 - Place in course module by week (positions 2+), never in instructor-only module
 - No time estimates in headers
 - No em dashes (space-hyphen-space only)
-- Canvas strips `<style>` tags and inline SVG — all styling inline via `style=` attributes
+- Canvas strips `<style>` tags and inline SVG - all styling inline via `style=` attributes
 - No point values, rubric references, or grading criteria in content
 
 ---
 
-## Step 1 — Student-Focused Scope
+## Step 1 - Student-Focused Scope
 
 Student pages are **1500–2000 words per topic**, optimized for student comprehension and assignment support, NOT instructor preparation.
 
@@ -61,7 +61,7 @@ Student pages are **1500–2000 words per topic**, optimized for student compreh
 
 ---
 
-## Step 2 — Page Naming & Placement
+## Step 2 - Page Naming & Placement
 
 **Naming convention:**
 `Week [N] | Page [#] - [Topic]`
@@ -73,7 +73,7 @@ Student pages are **1500–2000 words per topic**, optimized for student compreh
 
 ---
 
-## Step 3 — Per-Page Structure
+## Step 3 - Per-Page Structure
 
 Use the same canonical format as teaching notes (Header, Learning Objectives, Content Sections, Discussion Questions, References), but:
 
@@ -87,7 +87,7 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 - Examples: From student assignments, not grading scenarios
 - Procedures: Steps students execute, not instructor scaffolding
 - Security: "Understand why this matters" not "how to troubleshoot this"
-- Tone: Clear, accessible, encouraging — not directive
+- Tone: Clear, accessible, encouraging - not directive
 
 **Skip these entirely:**
 - Teaching Agenda (instructor-only)
@@ -98,9 +98,9 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 
 ---
 
-## Step 4 — Content Standards
+## Step 4 - Content Standards
 
-**Word count:** 2500–4500+ total (matches assignment complexity — simple tools: 2500-3000, complex labs: 3500-4500+)
+**Word count:** 2500–4500+ total (matches assignment complexity - simple tools: 2500-3000, complex labs: 3500-4500+)
 
 **Breakdown (for complex assignments):**
 - Learning Objectives: 150–200 words (5-6 objectives)
@@ -124,12 +124,12 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 
 ---
 
-## Step 5 — Optional Sections for Student Pages
+## Step 5 - Optional Sections for Student Pages
 
 **Discussion Questions** (rare, only if used in class):
 - 2–3 questions students can discuss in pairs/groups
 - Answerable from the page + prior knowledge
-- No "correct" answer — open-ended
+- No "correct" answer - open-ended
 
 **What's Current** (if version-specific):
 - Flag what technology/version this covers
@@ -137,7 +137,7 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 
 **Looking Ahead** (if connecting to next topic):
 - Brief preview of how this connects to next week
-- Do NOT assign homework here — that's the assignment's job
+- Do NOT assign homework here - that's the assignment's job
 
 **Reference Links** (curated only):
 - 3–5 links maximum
@@ -146,7 +146,7 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 
 ---
 
-## Step 6 — Authoring Workflow
+## Step 6 - Authoring Workflow
 
 1. **Extract learning objectives** from assignment and course outcomes
 2. **Draft core concepts** with student-level examples (NOT instructor depth)
@@ -208,4 +208,4 @@ Use the same canonical format as teaching notes (Header, Learning Objectives, Co
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.1 | 2026-09-17 | **MAJOR UPDATE based on BIT360 Week 1 creation.** Revised word count to 2500-4500+ (previously 1500-2000). Added required sections: "Why This Matters" (motivation), step-by-step procedure tables, comparison tables, real-world incident narratives with timestamps/event IDs, detailed common mistakes (3-5+ entries), troubleshooting tables (Problem/Cause/Solution). Shifted from prescriptive length limits to complexity-matched depth. Updated comparison table vs. Teaching Notes to reflect new depth parity. These changes reflect learnings from creating three 3500-4500 word pages that provide sufficient detail for independent student learning. |
-| 1.0 | 2026-07-27 | Initial specification — student resource pages distinct from instructor teaching notes. Focus on student learning, not instructor prep. Scope 1500–2000 words. No Teaching Agenda, no expected outputs for grading, no troubleshooting guides. |
+| 1.0 | 2026-07-27 | Initial specification - student resource pages distinct from instructor teaching notes. Focus on student learning, not instructor prep. Scope 1500–2000 words. No Teaching Agenda, no expected outputs for grading, no troubleshooting guides. |

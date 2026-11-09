@@ -1,6 +1,6 @@
 ---
 name: bit320-rubrics-complete
-description: Complete rubric specifications for all 8 BIT320 labs (1.1-5.1). Includes criterion names, descriptions, and all rating levels. Ready for Canvas UI entry—no cross-referencing needed.
+description: Complete rubric specifications for all 8 BIT320 labs (1.1-5.1). Includes criterion names, descriptions, and all rating levels. Ready for Canvas UI entry - no cross-referencing needed.
 ---
 
 # BIT320 Complete Rubric Specifications
@@ -497,7 +497,7 @@ Copy the criterion information directly into Canvas UI:
 
 | Lab | Well Formatted | Code Fundamentals | Task-Specific | Total |
 |-----|---|---|---|---|
-| 1.1 | 5 (20%) | — | 20 (80%) | 25 |
+| 1.1 | 5 (20%) | - | 20 (80%) | 25 |
 | 1.2 | 4 (16%) | 8 (32%) | 13 (52%) | 25 |
 | 1.3 | 16 (16%) | 10 (10%) | 74 (74%) | 100 |
 | 2.1 | 8 (16%) | 8 (16%) | 34 (68%) | 50 |

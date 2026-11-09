@@ -261,7 +261,7 @@ Device(config)# command3</pre>
 **When to use each:**
 - `<pre>` with `white-space: pre-wrap`: Multi-line command sequences, config examples, scripts (each line is a separate command)
 - `<div>` with nested spans: Single commands with arrow descriptions, teaching-point examples
-- **Never use `<div>` with `display: block` spans to simulate line breaks** — Canvas rendering is inconsistent. Always use `<pre>` for actual line breaks.
+- **Never use `<div>` with `display: block` spans to simulate line breaks** - Canvas rendering is inconsistent. Always use `<pre>` for actual line breaks.
 
 ### Callout Box Template (Format 2 - Blue)
 ```html

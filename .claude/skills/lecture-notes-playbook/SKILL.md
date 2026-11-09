@@ -6,7 +6,7 @@ description: Use when Corey asks build new lecture/resource pages for a course, 
 **Version:** 4.0  
 **Last Updated:** 2026-08-01  
 **Canonical Example:** Lecture Notes - PC History (BIT281 Canvas course)
-**Status:** LIVE — PC History is the authoritative format. All 21 BIT281 lecture notes will be remediated to this spec.
+**Status:** LIVE - PC History is the authoritative format. All 21 BIT281 lecture notes will be remediated to this spec.
 
 ---
 ## Overview
@@ -22,19 +22,19 @@ This document defines the canonical format for **instructor lecture notes** acro
 - **Comprehensive coverage is the goal.** Ample content ensures instructors have materials to teach thoroughly and students have depth to learn from.
 
 ---
-## Step 0 — Universal Gotchas
+## Step 0 - Universal Gotchas
 - Resolve the course to its numeric Canvas ID before any API call
-- Canvas strips `<style>` tags and raw `<svg>` — all styling inline via `style=` attributes
+- Canvas strips `<style>` tags and raw `<svg>` - all styling inline via `style=` attributes
 - Pages created unpublished until approved
 - No em dashes (use space-hyphen-space instead)
-- Never reconstruct content from memory — pull actual source/verify external facts via WebSearch
+- Never reconstruct content from memory - pull actual source/verify external facts via WebSearch
 - Every lecture note is **independent and self-contained**. No references to other lecture notes or "Looking Ahead" sections.
 
 ---
-## Step 1 — Page Structure (CANONICAL FORMAT)
+## Step 1 - Page Structure (CANONICAL FORMAT)
 Every lecture note page must follow this exact structure in this order.
 
-### 1A. Header Card (Beige background) — REQUIRED
+### 1A. Header Card (Beige background) - REQUIRED
 **Purpose:** Title, week/topic context, publication status.
 
 ```html
@@ -58,7 +58,7 @@ Every lecture note page must follow this exact structure in this order.
 - **NO cross-document references**
 
 ---
-### 1B. Learning Objectives (Purple header, grid layout) — REQUIRED
+### 1B. Learning Objectives (Purple header, grid layout) - REQUIRED
 **Purpose:** What students should understand by the end of the week.
 
 ```html
@@ -93,7 +93,7 @@ Every lecture note page must follow this exact structure in this order.
 - **Grid layout with white cards is REQUIRED**
 
 ---
-### 1C. Key Teaching Points (Blue header, flat bullet list) — REQUIRED
+### 1C. Key Teaching Points (Blue header, flat bullet list) - REQUIRED
 **Purpose:** Actionable teaching points. Consolidation of old "Teaching Agenda" (CORE/DEPTH/HOMEWORK merged into one flat list).
 
 ```html
@@ -123,7 +123,7 @@ Every lecture note page must follow this exact structure in this order.
 - Merge CORE/DEPTH/HOMEWORK bullets into one consolidated list
 
 ---
-### 1D. Optional: Course Intro Notes (Green header, if present in Week 1) — CONDITIONAL
+### 1D. Optional: Course Intro Notes (Green header, if present in Week 1) - CONDITIONAL
 **Purpose:** First-session housekeeping (Week 1 only, usually).
 
 ```html
@@ -148,7 +148,7 @@ Every lecture note page must follow this exact structure in this order.
 - **Can be omitted if not relevant**
 
 ---
-### 1E. Lecture Content Sections (Tan/amber or dark charcoal headers) — REQUIRED
+### 1E. Lecture Content Sections (Tan/amber or dark charcoal headers) - REQUIRED
 Content organized into logical sections, each with a left-border header bar. Two color schemes depending on content type.
 
 #### Light Tan/Amber (Conceptual/Fundamentals)
@@ -207,7 +207,7 @@ Content organized into logical sections, each with a left-border header bar. Two
 - Paragraphs: margin-bottom 1rem (or 0 for last), color #f0ede8
 
 ---
-### 1F. What's Current (Amber background) — REQUIRED
+### 1F. What's Current (Amber background) - REQUIRED
 **Purpose:** Instructor context on current market/technology state, relevant to the topic.
 
 ```html
@@ -233,7 +233,7 @@ Content organized into logical sections, each with a left-border header bar. Two
 - **Helps instructors answer "Is this still true?" and "What's changed?"**
 
 ---
-### 1G. Reference Links (Light blue background) — REQUIRED
+### 1G. Reference Links (Light blue background) - REQUIRED
 **Purpose:** External links only (Wikipedia, official docs, forums, etc.). No internal Canvas cross-references.
 
 ```html
@@ -260,70 +260,70 @@ Content organized into logical sections, each with a left-border header bar. Two
 - **NO "See also" or "Next page" links**
 
 ---
-## Step 2 — Sections to REMOVE (v4.0 → v5.0)
+## Step 2 - Sections to REMOVE (v4.0 → v5.0)
 
 These sections must be **completely deleted** from all lecture notes:
 
-- **"Connects to:" / "Leads to:" lines in header** — No document cross-references
-- **"Student resource page:" references** — No cross-links to student-facing pages
-- **Entire "Looking Ahead" section** — No forward references to other notes
-- **"CORE (Must accomplish in 50 min)" subheader** — Merge into Key Teaching Points flat list
-- **"DEPTH (If time and energy permit)" subheader** — Integrate substantive content into Key Teaching Points; omit fluff
-- **"HOMEWORK / Async" subheader** — Remove entirely; assignments are in Canvas, not here
+- **"Connects to:" / "Leads to:" lines in header** - No document cross-references
+- **"Student resource page:" references** - No cross-links to student-facing pages
+- **Entire "Looking Ahead" section** - No forward references to other notes
+- **"CORE (Must accomplish in 50 min)" subheader** - Merge into Key Teaching Points flat list
+- **"DEPTH (If time and energy permit)" subheader** - Integrate substantive content into Key Teaching Points; omit fluff
+- **"HOMEWORK / Async" subheader** - Remove entirely; assignments are in Canvas, not here
 - **Any cross-document references** (e.g., "See the CPU Architecture lecture")
-- **Any "Day 1", "Day 2", etc. time references** — No daily breakdown
-- **Time-box language** — "50 min", "if time permits", "before class", "after class"
+- **Any "Day 1", "Day 2", etc. time references** - No daily breakdown
+- **Time-box language** - "50 min", "if time permits", "before class", "after class"
 
 ---
-## Step 3 — Inline Styles Only
+## Step 3 - Inline Styles Only
 
 - All styling via `style=""` attributes
 - No `<style>` tags (Canvas strips them)
 - No `<script>` tags
 - All colors use hex codes from the palette below
 - Font families use system sans-serif: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`
-- No em dashes — use space-hyphen-space instead (`-` surrounded by spaces)
+- No em dashes - use space-hyphen-space instead (`-` surrounded by spaces)
 
 ---
-## Step 4 — Color Palette (CANONICAL)
+## Step 4 - Color Palette (CANONICAL)
 
 | Element | Background | Border/Text | Hex Codes |
 |---------|-----------|-----------|-----------|
 | Header card | Beige | Tan border | `#f1efe8` / `#b4b2a9` |
 | Status badge | Pale amber | Amber text | `#faeeda` / `#854f0b` |
 | Learning Objectives box | Light purple | Purple border | `#eeedfe` / `#534ab7` |
-| LO header bar | Medium purple | — | `#ddd7f5` |
-| LO objective cards | White | — | `#ffffff` |
+| LO header bar | Medium purple | - | `#ddd7f5` |
+| LO objective cards | White | - | `#ffffff` |
 | Key Teaching Points box | Light blue | Blue border | `#E6F1FB` / `#2980b9` |
-| KTP header bar | Medium blue | — | `#d6e0f0` |
+| KTP header bar | Medium blue | - | `#d6e0f0` |
 | Lecture Content box | Light tan | Tan border | `#f5f0e8` / `#d4a76a` |
-| Content header bar | Tan | — | `#e5dcc8` |
+| Content header bar | Tan | - | `#e5dcc8` |
 | Teaching note box | Pale amber | Amber border | `#FAEEDA` / `#854F0B` |
 | Discussion/Special box | Dark charcoal | Teal border | `#2c2c2a` / `#5DCAA5` |
-| Discussion header bar | Darker charcoal | — | `#1a1a1a` |
+| Discussion header bar | Darker charcoal | - | `#1a1a1a` |
 | What's Current box | Pale amber | Amber border | `#faeeda` / `#854F0B` |
-| Current header bar | Medium amber | — | `#f0d4b8` |
+| Current header bar | Medium amber | - | `#f0d4b8` |
 | Reference Links box | Light blue | Blue border | `#e6f0f8` / `#a8c5db` |
-| Reference header bar | Medium blue | — | `#d6e0e8` |
-| Body text | — | — | `#2c2c2a` (dark gray) |
-| Secondary text | — | — | `#5F5E5A` (medium gray) |
-| Light text (on dark) | — | — | `#f0ede8` (light gray) |
-| Bright text (on dark) | — | — | `#9fe1cb` (light teal) |
+| Reference header bar | Medium blue | - | `#d6e0e8` |
+| Body text | - | - | `#2c2c2a` (dark gray) |
+| Secondary text | - | - | `#5F5E5A` (medium gray) |
+| Light text (on dark) | - | - | `#f0ede8` (light gray) |
+| Bright text (on dark) | - | - | `#9fe1cb` (light teal) |
 
 ---
-## Step 5 — Key Principles (v5.0)
+## Step 5 - Key Principles (v5.0)
 
-1. **Self-contained documents** — Each lecture note is independent. No cross-references to other notes.
-2. **No time constraints** — Remove all references to class duration, pacing, or "if time permits". Instructors use notes at their own pace.
-3. **Consolidated Key Teaching Points** — Merge old CORE/DEPTH/HOMEWORK into a single flat bullet list. No subsections or headers within the list.
-4. **Canvas first** — Notes live in Canvas. Assignments, due dates, and learning pathways are documented in Canvas, not in lecture notes.
-5. **Minimal decoration** — Clean, readable format. Content clarity trumps visual polish. No nested divs, no excessive color variation, no busy styling.
-6. **Instructor-facing only** — These are reference/prep documents for the instructor. Not student-facing materials. Tone is direct and practical.
-7. **No cross-document references** — No "See also", "Next page", "Looking Ahead", or "Connects to" lines. Each note stands alone.
-8. **Current market context required** — "What's Current" section grounds the note in reality. Helps instructors answer "Is this still true?" and stay relevant.
+1. **Self-contained documents** - Each lecture note is independent. No cross-references to other notes.
+2. **No time constraints** - Remove all references to class duration, pacing, or "if time permits". Instructors use notes at their own pace.
+3. **Consolidated Key Teaching Points** - Merge old CORE/DEPTH/HOMEWORK into a single flat bullet list. No subsections or headers within the list.
+4. **Canvas first** - Notes live in Canvas. Assignments, due dates, and learning pathways are documented in Canvas, not in lecture notes.
+5. **Minimal decoration** - Clean, readable format. Content clarity trumps visual polish. No nested divs, no excessive color variation, no busy styling.
+6. **Instructor-facing only** - These are reference/prep documents for the instructor. Not student-facing materials. Tone is direct and practical.
+7. **No cross-document references** - No "See also", "Next page", "Looking Ahead", or "Connects to" lines. Each note stands alone.
+8. **Current market context required** - "What's Current" section grounds the note in reality. Helps instructors answer "Is this still true?" and stay relevant.
 
 ---
-## Step 6 — Example: PC History (Live v4.0 Canonical Format)
+## Step 6 - Example: PC History (Live v4.0 Canonical Format)
 
 See `Lecture Notes - PC History` in BIT281 Canvas course for the authoritative example of v4.0 format.
 

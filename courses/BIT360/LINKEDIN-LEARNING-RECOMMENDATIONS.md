@@ -101,7 +101,7 @@
 
 ## Recommended Week 1 Video Learning Schedule
 
-### **Option A: Focused Path (Replaces Textbook — 4-5 hours)**
+### **Option A: Focused Path (Replaces Textbook - 4-5 hours)**
 
 1. **Cybersecurity Fundamentals Learning Path** (1-2 hours)
    - Basic security concepts and vulnerabilities
@@ -112,14 +112,14 @@
 3. **Cybersecurity Foundations: Governance, Risk, and Compliance (GRC)** (1-2 hours)
    - Security policies and governance structures
    
-4. **SSCP Cert Prep: 4 Incident Response and Recovery** (1 hour — focus on BC/DR sections)
+4. **SSCP Cert Prep: 4 Incident Response and Recovery** (1 hour - focus on BC/DR sections)
    - Business continuity and disaster recovery planning
 
 **Total Viewing Time:** 4.5-6 hours (can be spread across Week 1)
 
 ---
 
-### **Option B: Comprehensive Path (Deep Learning — 8-10 hours)**
+### **Option B: Comprehensive Path (Deep Learning - 8-10 hours)**
 
 **Complete all courses from Option A, plus:**
 

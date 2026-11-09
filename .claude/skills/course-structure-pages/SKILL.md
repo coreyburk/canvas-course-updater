@@ -3,13 +3,13 @@ name: course-structure-pages
 description: Orchestration guide for building complete course structure pages. Use the three component skills in sequence: course-outline, lecture-notes-playbook, student-resource-pages. Based on BIT281/BIT221/PRO221 models.
 ---
 
-# Course Structure Pages — Orchestration Guide
+# Course Structure Pages - Orchestration Guide
 
 Use these three existing skills in sequence to build a complete course:
 
-1. **course-outline** — Creates instructor-only Course Outline page (unpublished, position 1 module)
-2. **lecture-notes-playbook** — Creates **comprehensive Instructor Notes pages** (multiple pages per week as needed for depth, unpublished, in position 1 module)
-3. **student-resource-pages** — Creates **comprehensive Student Resource Pages** (multiple pages per week by topic, published, in weekly modules)
+1. **course-outline** - Creates instructor-only Course Outline page (unpublished, position 1 module)
+2. **lecture-notes-playbook** - Creates **comprehensive Instructor Notes pages** (multiple pages per week as needed for depth, unpublished, in position 1 module)
+3. **student-resource-pages** - Creates **comprehensive Student Resource Pages** (multiple pages per week by topic, published, in weekly modules)
 
 This guide shows how they fit together in a course structure.
 
@@ -71,7 +71,7 @@ This guide shows how they fit together in a course structure.
 
 **One page per week. Format:**
 
-### Week N — [Topic]
+### Week N - [Topic]
 
 **Learning Objectives:**
 - [Objective 1]

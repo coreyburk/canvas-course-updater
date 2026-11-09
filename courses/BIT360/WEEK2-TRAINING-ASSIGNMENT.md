@@ -68,12 +68,12 @@ After completing this training, students will:
 
 Submissions are evaluated on:
 
-1. **Training Completion (20 pts)** — Module is fully completed (100% progress in LinkedIn Learning)
-2. **Course Identification (15 pts)** — Screenshot clearly shows course title "The New Age of Risk Management Strategy for Business"
-3. **Completion Evidence (15 pts)** — Screenshot displays completion indicator (100% progress, checkmark, or badge)
-4. **Image Quality (15 pts)** — Screenshot is clear and readable with minimum 800x600 resolution
-5. **Account Verification (10 pts)** — Screenshot includes identifying information linking to student's LinkedIn account
-6. **Timeliness (5 pts)** — Submission completed and uploaded before assignment due date
+1. **Training Completion (20 pts)** - Module is fully completed (100% progress in LinkedIn Learning)
+2. **Course Identification (15 pts)** - Screenshot clearly shows course title "The New Age of Risk Management Strategy for Business"
+3. **Completion Evidence (15 pts)** - Screenshot displays completion indicator (100% progress, checkmark, or badge)
+4. **Image Quality (15 pts)** - Screenshot is clear and readable with minimum 800x600 resolution
+5. **Account Verification (10 pts)** - Screenshot includes identifying information linking to student's LinkedIn account
+6. **Timeliness (5 pts)** - Submission completed and uploaded before assignment due date
 
 **Total: 80 points**
 
@@ -82,10 +82,10 @@ Submissions are evaluated on:
 ## Alignment to Course Content
 
 **Module 2 Objectives Addressed:**
-- ✅ Planning for Organizational Readiness — Strategic risk assessment from business perspective
-- ✅ Contingency Planning — Understanding which functions are critical to protect
-- ✅ Cost vs. Benefits — Strategic thinking about resource allocation and trade-offs
-- ✅ Organizational Analysis — Understanding assets, vulnerabilities, interdependencies
+- ✅ Planning for Organizational Readiness - Strategic risk assessment from business perspective
+- ✅ Contingency Planning - Understanding which functions are critical to protect
+- ✅ Cost vs. Benefits - Strategic thinking about resource allocation and trade-offs
+- ✅ Organizational Analysis - Understanding assets, vulnerabilities, interdependencies
 
 **Week 2 Assignment Context:**
 - **2A (Organizational Diagram):** Students map their organization's structure and critical functions (informed by strategic risk thinking)
@@ -114,7 +114,7 @@ Submissions are evaluated on:
 1. Announce training in class or email
 2. Recommend: "Watch this training before working on Assignment 2A and 2B"
 3. Emphasize: Strategic risk thinking informs organizational analysis and case study evaluation
-4. Note duration: Only 1h 28m — manageable alongside 2A and 2B assignments
+4. Note duration: Only 1h 28m - manageable alongside 2A and 2B assignments
 
 **Grading Workflow:**
 1. Check submission for screenshot completeness

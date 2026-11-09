@@ -52,7 +52,7 @@ content:
 5. Criteria for Success box ← FINAL ELEMENT (nothing comes after this)
 ```
 
-**HTML Table Structure (Correct Format — Updated 2026-09-13):**
+**HTML Table Structure (Correct Format - Updated 2026-09-13):**
 All assignment boxes use proper table structure with `border-collapse: collapse;`
 and `<td>` padding instead of `cellpadding`. This ensures consistent rendering:
 
