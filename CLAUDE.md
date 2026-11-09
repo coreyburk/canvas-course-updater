@@ -147,10 +147,18 @@ across browsers and Canvas versions:
 ### Tools
 - `tools/emdash_sweep.py --course <id>` - finds and fixes literal em dashes in
   assignment names/descriptions and page bodies. Dry run by default, `--apply`
-  writes. Skips any item with an em dash inside `<pre>`, never renames pages
-  (a slug change breaks links), and re-fetches after each write to confirm the
-  em dash count dropped and the `<pre>` balance held. On Windows prefix with
-  `PYTHONIOENCODING=utf-8`. Reads credentials from the canvas-mcp `.env`.
+  writes. Hits are handled **individually**: prose is fixed even when the same
+  item has another em dash inside a `<pre>` block, and the one inside `<pre>`
+  is reported and left. After each write it re-fetches and compares the item's
+  `<pre>` blocks against the originals, so damage to a code sample is reported
+  as `PRE CHANGED` rather than discovered later.
+  `--include-pre` also rewrites em dashes inside code blocks. Only use it after
+  reading the `[CODE]` context lines from a dry run and confirming none is part
+  of an actual command; it disables the `<pre>` integrity check by design, so
+  verify separately. Page titles are never renamed, since a slug change breaks
+  links. On Windows prefix with `PYTHONIOENCODING=utf-8` - but note that
+  `python -I` silently ignores that, because isolated mode implies `-E`. Reads
+  credentials from the canvas-mcp `.env`.
 - `tools/audit_canvas_pages.py` - page coverage audit. Course ID is hardcoded;
   edit before reuse.
 

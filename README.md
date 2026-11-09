@@ -53,8 +53,21 @@ its URL slug and can break inbound links. After each write it re-fetches the
 item and prints the remaining em dash count alongside a `<pre>` open/close
 balance check, so damage to a code block would be visible immediately.
 
+Hits are handled individually: prose is fixed even when the same item has
+another em dash inside a code block, and that one is reported and left. Pass
+`--include-pre` to rewrite code blocks too, but only after reading the `[CODE]`
+context lines from a dry run and confirming none is part of a real command.
+
 On Windows, prefix with `PYTHONIOENCODING=utf-8` or the console encoder fails
-while printing context.
+while printing context. Note that `python -I` ignores it, since isolated mode
+implies `-E`.
+
+```bash
+python tools/test_emdash_sweep.py
+```
+
+Covers the behavior that matters: code blocks survive byte-for-byte unless
+`--include-pre` is explicitly set.
 
 ## Setup
 
