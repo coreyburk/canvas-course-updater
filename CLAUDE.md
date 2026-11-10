@@ -181,6 +181,13 @@ across browsers and Canvas versions:
 - `points_possible` on quiz-backed assignments is derived from question
   totals - cannot be changed via API, must edit in the Canvas UI.
 - Quiz titles/points/content: read-only via API, all edits manual.
+- **Rubrics ARE writable via the API** (verified 2026-11-09 on a throwaway rubric, created, updated and deleted). Title, points, criterion descriptions, long descriptions and rating
+  levels can all be changed with `PUT /courses/:id/rubrics/:rubric_id` using form-encoded
+  `rubric[criteria][N][...]` parameters. The read-only rule above applies to quizzes, not
+  rubrics; nothing had ever established that rubrics were read-only. Quiz **due dates** are
+  also settable (`PUT /courses/:id/quizzes/:id` with `quiz[due_at]`), just not their titles,
+  points or questions. Caveat: a rubric that already has assessments against it may refuse
+  edits, so check for submissions before changing one mid-term.
 - `add_module_item` needs the assignment's `content_id`, not the module item ID.
 - Repositioning a module item: `update_module_item` with target position,
   plus a separate call on the item it displaced. Don't re-call
