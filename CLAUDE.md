@@ -132,6 +132,58 @@ across browsers and Canvas versions:
   Never commit credentials, student data, or copyrighted course material.
   Textbooks live in `textbooks/`, which is gitignored.
 
+## Session cost & context hygiene
+Measured 2026-11-10 from the Claude Code session transcripts in
+`~/.claude/projects/D--GitHub-Repos-Canvas-Course-Updater/`. Durable, not a
+one-off: Canvas work is unusually expensive per request and the cause is
+structural.
+
+- **Cache reads are ~95% of the bill.** Every API call re-reads the whole
+  conversation from cache and that read is billed. Cost therefore scales with
+  *context size per request*, not with how many requests you make. Nov 10 used
+  201 requests and cost ~$69; Sep 17 used 485 requests and cost ~$12.
+- **Split sessions by task.** Average context per request was ~125k in
+  September and ~580k on Nov 9-10, a 4.6x swing on the same kind of work. A
+  session carrying 500k+ tokens is paying rent on scrollback it no longer
+  needs. Start a fresh session (or `/clear`) between separable units - between
+  two week pages, between a course audit and the rewrite it produced.
+- **Why Canvas work bloats fast:** `edit_page_content` requires the complete
+  page HTML in one call (see Known Canvas API limitations), `get_page_content`
+  pulls full bodies, and the ~100 `canvas-api` tool definitions plus skills and
+  memory files add roughly 45k of fixed overhead to every single request.
+- **Rank models by cache-read price, not headline price.** Cache reads are
+  70-85% of the bill on this workload, so the usual "$ per MTok input/output"
+  comparison ranks models wrongly. Repriced today's actual token mix
+  (118.6M cache read / 0.73M write / 0.31M output) against live pricing
+  fetched 2026-11-10:
+
+  | Model | Cache read $/MTok | Cost for that day |
+  |---|---|---|
+  | Opus 5 | $0.50 | $71.67 |
+  | Fable 5.2 | $0.20 | $43.49 |
+  | Opus 5.5 | $0.20 | $33.61 |
+  | Sonnet 5 | $0.20 | $28.67 |
+  | Sonnet 5.5 | $0.10 | $16.80 |
+  | Haiku 5.5 (>100k prompt) | $0.05 | $7.17 |
+
+  **Never Opus 5** - Opus 5.5 beats it on every axis. Default to **Sonnet 5.5**
+  for template-driven production work (page builds, HTML rewrites, em dash
+  sweeps). Reach for **Opus 5.5** when the judgment matters more than the
+  volume: course structure decisions, audits, resolving competing page styles.
+  Opus 5.5 effort defaults to `medium` where Opus 5 ran `high`.
+- **Re-check the ranking when a new model ships, not on a calendar.** The
+  cache-read *multiplier* has been improving per generation (0.1x of base input
+  on Opus 5 and earlier, 0.05x on Opus 5.5 / Sonnet 5.5, 0.025x on Fable), so
+  each release can reshuffle the order for this workload even when headline
+  prices look similar. Live source:
+  `https://platform.claude.com/docs/en/about-claude/pricing.md`. The pricing
+  table bundled in the `claude-api` skill is a cached snapshot - fetch the page
+  rather than trusting it. Haiku 5.5 is priced by prompt length and these
+  sessions always exceed 100k, so it always bills at the higher row.
+- **The usage chart is dated in UTC**, so a billing day runs 5:00 PM MST to
+  5:00 PM MST. Today's bar is mostly last night's work - check the hours before
+  concluding a given day was expensive.
+
 ## Repo layout
 | Path | Holds |
 |---|---|
@@ -166,6 +218,15 @@ across browsers and Canvas versions:
   credentials from the canvas-mcp `.env`.
 - `tools/audit_canvas_pages.py` - page coverage audit. Course ID is hardcoded;
   edit before reuse.
+- `tools/model_cost_check.py [--day YYYY-MM-DD] [--days N] [--billed X]` -
+  reprices the tokens Claude Code actually used (read from the local
+  transcripts, subagents included) on every current model, with pricing
+  fetched live from Anthropic's pricing page. Read-only, no Canvas calls, and
+  it refuses to run on remembered prices if the fetch fails. Run it when a new
+  model ships or spend looks off. Days are UTC billing days, matching the
+  console chart. Calibrated 2026-11-10: on three completed days it landed
+  within 3% of the chart's bars. It is a ceiling on savings, since token
+  counts and retries differ per model.
 
 ## Known Canvas API limitations
 - `course_identifier` needs the numeric ID, not the course code string.
