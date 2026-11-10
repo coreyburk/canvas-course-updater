@@ -45,8 +45,35 @@ All three were executed before publication.
 deliberate and is what makes a monitor usable from Task Scheduler or cron. A
 student script that always exits 0 is worth a comment.
 
-## Structural issue flagged
+## The duplicate final, resolved 2026-11-09
 
-Lab 5.1 Option C and Lab 5.2 are the same project: both Windows event log
-analysis, both 100 points, both due 2026-12-10. Either retire Lab 5.2 or drop
-Option C from Lab 5.1. Not resolved as of 2026-11-09.
+Lab 5.2 covered the same Windows event log analysis as Option C, for the same
+100 points on the same due date. It is now renamed `RETIRED - Lab 5.2`, carries
+a banner explaining why, and stays unpublished and in no module. Kept rather
+than deleted so its history and rubric remain available.
+
+**Its export script moved to the Option C page first, because Option C needed
+it.** Option C asks which of System, Security and Application is most active,
+but its own snippet exported only System and Application. That question was
+unanswerable from the data students were told to collect.
+
+`Export-EventLogs.ps1` here is the migrated script.
+
+## The encoding bug in that script
+
+As published it contained one tick character, U+2713, in a progress message.
+Saved as UTF-8 without a byte order mark, which is the VS Code and Notepad
+default, and run under Windows PowerShell 5.1, those bytes are read as the
+system codepage and the tick becomes a left smart quote. PowerShell accepts
+smart quotes as string delimiters, so the script opens a string that never
+closes and fails with:
+
+```
+The string is missing the terminator: ".
+```
+
+pointing at a line that is perfectly fine. It works in PowerShell 7, which
+assumes UTF-8, so it looks machine-dependent rather than wrong.
+
+Verified: with a BOM it parses, without one it does not, and after replacing
+the tick with `[OK]` it parses either way. The copy here is pure ASCII.
