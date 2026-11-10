@@ -188,6 +188,12 @@ across browsers and Canvas versions:
   also settable (`PUT /courses/:id/quizzes/:id` with `quiz[due_at]`), just not their titles,
   points or questions. Caveat: a rubric that already has assessments against it may refuse
   edits, so check for submissions before changing one mid-term.
+- **A rubric PUT that omits criteria does NOT destroy them** (verified 2026-11-09 on a
+  throwaway with three criteria: a title-only PUT left all three and the point total
+  intact). So renaming a rubric is safe on its own. Changing one criterion is not proven
+  safe as a partial send, so resend every criterion with its full ratings when editing one.
+- Rubric `long_description` values are stored as HTML, so an apostrophe comes back as
+  `&#39;`. That is correct and renders properly; it is not double-escaping.
 - `add_module_item` needs the assignment's `content_id`, not the module item ID.
 - Repositioning a module item: `update_module_item` with target position,
   plus a separate call on the item it displaced. Don't re-call
