@@ -1,79 +1,57 @@
-# Lab 5.1 Final Project - Instructor Reference Implementations
+# Lab 5.1 Final Project - System Health Report
 
-Lab 5.1 lets students pick one of three options and any of three languages, so
-there are nine legitimate shapes a correct submission can take. These are not
-the answer; they are one worked example per option, so a grader can see what
-complete looks like. **Expect correct work that looks nothing like these.**
+One project, three languages. Every student builds the same thing: a script
+that reads their own exported Windows Event Logs and prints a system health
+report. They choose bash, PowerShell or Python, and justify the choice.
 
-Published to the instructor-only module on 2026-11-09 as
-"Lab 5.1 Answer Keys and Grading Guide - All Three Options".
+| File | What it is |
+|---|---|
+| `Export-EventLogs.ps1` | Provided to students. Exports 7 days of System, Security and Application logs to three CSVs. Everyone runs this regardless of language. |
+| `system_health_report.py` | Instructor reference implementation. Python, because it is shortest to read. |
+| `retired/` | The two discarded options, kept for reference. |
 
-| File | Option | Language |
-|---|---|---|
-| `Option_A_monitor.ps1` | Service health monitoring and auto-remediation | PowerShell |
-| `Option_B_audit.ps1` | Configuration compliance auditing | PowerShell |
-| `Option_C_analyze.py` | Windows event log analysis | Python |
+## Why one project rather than three
 
-`services.json` and `baseline.json` are the config files A and B read.
+The course's theme is choosing the right tool, and the **language** choice
+delivers that. Students have written the same kind of script in all three
+languages and justify their pick in the rubric's Tool Selection criterion.
 
-## Verified
+A second axis of choice, between three different projects, added no pedagogical
+value and created two problems:
 
-All three were executed before publication.
+1. **Unequal load.** Counting new interfaces, demands beyond the spine labs, and
+   artefacts produced, the service-monitoring and compliance-auditing options
+   carried roughly 2.3 times the event-log option's complexity. Only the
+   event-log project was a slight progression from the spine labs.
+2. **It was not a free choice.** Querying Windows services, firewall rules or
+   security settings from WSL bash means shelling out to `powershell.exe`. The
+   other two options quietly forced PowerShell, so a student who concluded in
+   Lab 4.1 that Python suited them would have had to abandon that conclusion.
 
-- **Option A** ran against a real service list on Windows, correctly reporting
-  two running services and flagging a non-existent one. Use `-DryRun` to
-  exercise every path without touching a service. **Limit:** the recovery
-  branch was exercised in dry run, not against a genuinely failed service.
-- **Option B** audited a six-item baseline and reported 83.3 percent compliance
-  with the one critical deviation named.
-- **Option C** parsed three synthetic CSV exports and answered all five
-  questions including the hourly error histogram.
+## Why this project is language-neutral, verified
 
-## The one thing each option is really testing
+The exported CSV has commas and quotes inside the Message column, so `awk -F,`
+sees five or six fields on a row that should have four. That looks fatal for
+bash, but **all five report items read fields 1 to 3** (Timestamp, Level,
+Source) and the commas only appear in field 4. Plain awk extracts Source
+correctly on every row, and the counting pipeline from the spine labs gives the
+right answer. Tested, not assumed.
 
-- **A: the verify step.** A restart command returning without error does not
-  mean the service came up. Re-checking afterwards is the requirement students
-  most often miss.
-- **B: that the baseline is data.** If changing the standard means editing the
-  script, they wrote a checklist with extra steps rather than an audit tool.
-- **C: timestamp parsing.** Windows exports dates in a locale-dependent format,
-  so a format string that worked for one student may fail for another.
+## The report the script must produce
 
-## Note on exit codes
+1. Which log is busiest: System, Security or Application.
+2. The error rate: errors, warnings and informational counts, with percentages.
+3. The worst error sources, ranked.
+4. Errors grouped by hour of the day.
+5. Two or three sentences on whether the machine looks healthy.
 
-`Option_A_monitor.ps1` exits non-zero when a service is left unhealthy. That is
-deliberate and is what makes a monitor usable from Task Scheduler or cron. A
-student script that always exits 0 is worth a comment.
+The first four come out of the data. The fifth is the student's own, and it is
+where you find out whether they understand what they built.
 
-## The duplicate final, resolved 2026-11-09
+## Known trap in the export script
 
-Lab 5.2 covered the same Windows event log analysis as Option C, for the same
-100 points on the same due date. It is now renamed `RETIRED - Lab 5.2`, carries
-a banner explaining why, and stays unpublished and in no module. Kept rather
-than deleted so its history and rubric remain available.
-
-**Its export script moved to the Option C page first, because Option C needed
-it.** Option C asks which of System, Security and Application is most active,
-but its own snippet exported only System and Application. That question was
-unanswerable from the data students were told to collect.
-
-`Export-EventLogs.ps1` here is the migrated script.
-
-## The encoding bug in that script
-
-As published it contained one tick character, U+2713, in a progress message.
-Saved as UTF-8 without a byte order mark, which is the VS Code and Notepad
-default, and run under Windows PowerShell 5.1, those bytes are read as the
-system codepage and the tick becomes a left smart quote. PowerShell accepts
-smart quotes as string delimiters, so the script opens a string that never
-closes and fails with:
-
-```
-The string is missing the terminator: ".
-```
-
-pointing at a line that is perfectly fine. It works in PowerShell 7, which
-assumes UTF-8, so it looks machine-dependent rather than wrong.
-
-Verified: with a BOM it parses, without one it does not, and after replacing
-the tick with `[OK]` it parses either way. The copy here is pure ASCII.
+It is pure ASCII now, deliberately. It previously contained one `U+2713` tick,
+which under Windows PowerShell 5.1 reading a BOM-less UTF-8 file decoded into a
+left smart quote, which PowerShell treats as a string delimiter. The script
+failed with "the string is missing the terminator" pointing at a line that was
+fine, and worked in PowerShell 7, so it looked machine-specific. Keep it ASCII.
