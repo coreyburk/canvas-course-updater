@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "type": "service",
+      "name": "W32Time",
+      "expected": "Running",
+      "impact": "Critical"
+    },
+    {
+      "type": "service",
+      "name": "Spooler",
+      "expected": "Running",
+      "impact": "Minor"
+    },
+    {
+      "type": "service",
+      "name": "NoSuchServiceXYZ",
+      "expected": "Running",
+      "impact": "Critical"
+    },
+    {
+      "type": "path",
+      "name": "C:\\Windows\\System32",
+      "expected": "present",
+      "impact": "Critical"
+    },
+    {
+      "type": "path",
+      "name": "C:\\DefinitelyNotHere",
+      "expected": "absent",
+      "impact": "Minor"
+    },
+    {
+      "type": "process",
+      "name": "explorer",
+      "expected": "running",
+      "impact": "Minor"
+    }
+  ]
+}
