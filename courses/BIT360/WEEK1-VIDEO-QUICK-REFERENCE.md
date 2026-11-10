@@ -9,7 +9,7 @@
 
 ## Quick Video Selection Guide
 
-### ✅ MUST WATCH (Core Content — 4.5-5 hours total)
+### ✅ MUST WATCH (Core Content - 4.5-5 hours total)
 
 | Video Course | Duration | Watch When | Why |
 |---|---|---|---|
@@ -22,7 +22,7 @@
 
 ---
 
-### ⭐ OPTIONAL BUT RECOMMENDED (Supplemental — 3-5 hours)
+### ⭐ OPTIONAL BUT RECOMMENDED (Supplemental - 3-5 hours)
 
 | Video Course | Duration | Use For | Why |
 |---|---|---|---|
@@ -36,21 +36,21 @@
 **Note:** This is a 5-day week with 4 class days. Videos are self-paced; watch within indicated day or before start of week.
 
 **Before Monday Class:**
-- Watch **Cybersecurity Fundamentals Learning Path** (1-2 hours) — covers basic security, vulnerabilities, threats
+- Watch **Cybersecurity Fundamentals Learning Path** (1-2 hours) - covers basic security, vulnerabilities, threats
   
 **By Tuesday Class:**
-- Watch **IT and Cybersecurity Risk Management Essential Training** (1h 38m) — covers risk assessment
+- Watch **IT and Cybersecurity Risk Management Essential Training** (1h 38m) - covers risk assessment
   
 **By Wednesday Class:**
-- Watch **Cybersecurity Foundations: GRC** (1-2 hours) — covers policies, governance, compliance
+- Watch **Cybersecurity Foundations: GRC** (1-2 hours) - covers policies, governance, compliance
   
 **By Thursday Class:**
-- Watch **SSCP Cert Prep: BC/DR** sections (1 hour) — covers contingency planning
+- Watch **SSCP Cert Prep: BC/DR** sections (1 hour) - covers contingency planning
 
 **Assignment Work (All Week):**
-- **1A: SysInternals** — Apply monitoring concepts from Cybersecurity Fundamentals
-- **1B: Hyper-V Setup** — Apply disaster recovery concepts from SSCP course
-- **Module 1 Quiz** — Based on all four video courses (replaces textbook-based quiz)
+- **1A: SysInternals** - Apply monitoring concepts from Cybersecurity Fundamentals
+- **1B: Hyper-V Setup** - Apply disaster recovery concepts from SSCP course
+- **Module 1 Quiz** - Based on all four video courses (replaces textbook-based quiz)
 
 ---
 
@@ -157,7 +157,7 @@
 
 - **Video not loading?** Check internet connection; refresh page; try a different browser
 - **Need captions?** Enable CC (Closed Captions) button in video player
-- **Can't find a course?** Contact Neumont IT — your institution may have custom course selection
+- **Can't find a course?** Contact Neumont IT - your institution may have custom course selection
 - **Want transcript?** Some LinkedIn Learning courses offer downloadable transcripts
 
 ---

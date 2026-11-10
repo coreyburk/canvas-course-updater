@@ -2,7 +2,7 @@
 **Version:** 1.0  
 **Last Updated:** 2026-09-17  
 **Canonical Example:** Week 1 | Student Page 1 - Log File Fundamentals (BIT320)  
-**Status:** LIVE — BIT320 pages are the authoritative format for student-facing resources.
+**Status:** LIVE - BIT320 pages are the authoritative format for student-facing resources.
 
 ---
 ## Overview
@@ -19,20 +19,20 @@ This document defines the canonical format for **student resource pages** across
 - **Content depth scales with assignment complexity.** Pages supporting single tools/concepts: 2,500-3,000 words. Pages supporting multi-step assignments or complex labs: 3,500-4,500+ words.
 
 ---
-## Step 0 — Universal Gotchas
+## Step 0 - Universal Gotchas
 - Resolve the course to its numeric Canvas ID before any API call
-- Canvas strips `<style>` tags and raw `<svg>` — all styling inline via `style=` attributes
+- Canvas strips `<style>` tags and raw `<svg>` - all styling inline via `style=` attributes
 - Pages created unpublished until approved
 - No em dashes (use space-hyphen-space instead)
-- Never reconstruct content from memory — pull actual source/verify external facts via WebSearch
+- Never reconstruct content from memory - pull actual source/verify external facts via WebSearch
 - Every student page is **self-contained and independent.** No references to other pages or cross-course links.
 - **Tone:** Clear, encouraging, practical. Assume students are learning for the first time.
 
 ---
-## Step 1 — Page Structure (CANONICAL FORMAT)
+## Step 1 - Page Structure (CANONICAL FORMAT)
 Every student resource page must follow this exact structure in this order.
 
-### 1A. Header Card (Beige background) — REQUIRED
+### 1A. Header Card (Beige background) - REQUIRED
 **Purpose:** Title, week/topic context, purpose statement.
 
 ```html
@@ -50,11 +50,11 @@ Every student resource page must follow this exact structure in this order.
 - Margin-bottom: 2rem
 - Week/topic line: 0.8rem, color #6b6960, margin-bottom 0.25rem
 - Title (h1): 1.6rem, color #2c2c2a, no top margin, 0.5rem bottom margin
-- **NO "Instructor Use Only" badge** — This is student-facing
+- **NO "Instructor Use Only" badge** - This is student-facing
 - **NO cross-document references**
 
 ---
-### 1B. Learning Objectives (Purple header, grid layout) — REQUIRED
+### 1B. Learning Objectives (Purple header, grid layout) - REQUIRED
 **Purpose:** What students will be able to do after this page.
 
 Use same format as instructor notes (purple #eeedfe, 2-column grid, checkmarks). Text should be student-centric: "Understand", "Apply", "Build", "Recognize" rather than "Master" or "Contextualize."
@@ -77,8 +77,8 @@ Use same format as instructor notes (purple #eeedfe, 2-column grid, checkmarks).
 **Rules:** Same as instructor notes (2-column grid, white cards, checkmarks, no intro paragraph).
 
 ---
-### 1C. Why This Matters (Green header) — REQUIRED
-**Purpose:** Motivate students — explain relevance to their career, assignments, or broader context.
+### 1C. Why This Matters (Green header) - REQUIRED
+**Purpose:** Motivate students - explain relevance to their career, assignments, or broader context.
 
 ```html
 <div style="background-color: #e1f5ee; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; border: 1px solid #0F6E56;">
@@ -96,10 +96,10 @@ Use same format as instructor notes (purple #eeedfe, 2-column grid, checkmarks).
 - **This is THE motivational section.** Answer: "Why should I care about this?"
 - Tie to assignments, real-world scenarios, or career relevance
 - Keep to 1-2 paragraphs (concise)
-- **NOT instructor context** — Student perspective only
+- **NOT instructor context** - Student perspective only
 
 ---
-### 1D. Core Concepts / Getting Started (Tan header, content sections) — REQUIRED
+### 1D. Core Concepts / Getting Started (Tan header, content sections) - REQUIRED
 Content organized into logical sections. Use light tan/amber (same as instructor lecture content sections).
 
 ```html
@@ -130,14 +130,14 @@ Content organized into logical sections. Use light tan/amber (same as instructor
 - h3 subsections: color #6b5d4f, margin-top 0
 - Paragraphs: margin-bottom 0.75rem
 - Pro tip boxes: background #FAEEDA, padding 12px 16px, margin 12px 0, border-radius 4px, color #854F0B for strong text
-- **REQUIRED: Include worked examples, real-world scenarios, code snippets, or screenshots** — Don't just explain concepts
-- **REQUIRED: Use step-by-step tables** — Numbered procedures with specific instructions
-- **REQUIRED: Use comparison tables** — Show trade-offs, differences between approaches
-- **REQUIRED: Use "Pro tip" and "Common mistake" boxes** — Practical student guidance embedded throughout
+- **REQUIRED: Include worked examples, real-world scenarios, code snippets, or screenshots** - Don't just explain concepts
+- **REQUIRED: Use step-by-step tables** - Numbered procedures with specific instructions
+- **REQUIRED: Use comparison tables** - Show trade-offs, differences between approaches
+- **REQUIRED: Use "Pro tip" and "Common mistake" boxes** - Practical student guidance embedded throughout
 - **Length:** Develop sections fully. Simple concepts: 1-2 subsections. Complex procedures: 3-6 subsections with multiple examples each.
 
 ---
-### 1E. Common Mistakes / Pitfalls (Dark charcoal background or table format) — REQUIRED
+### 1E. Common Mistakes / Pitfalls (Dark charcoal background or table format) - REQUIRED
 Can use either narrative format OR table format (preferred for complex assignments):
 
 **Narrative format:**
@@ -180,7 +180,7 @@ Can use either narrative format OR table format (preferred for complex assignmen
 - **Optional: Cross-reference to earlier sections** where students can review if they make these mistakes
 
 ---
-### 1F. Reference Links (Light blue background) — REQUIRED
+### 1F. Reference Links (Light blue background) - REQUIRED
 ```html
 <div style="background-color: #e6f0f8; border-radius: 8px; padding: 1.5rem 2rem; border: 1px solid #a8c5db;">
   <div style="background-color: #d6e0e8; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px;">
@@ -195,7 +195,7 @@ Can use either narrative format OR table format (preferred for complex assignmen
 **Rules:** Same as instructor notes (external links only, no Canvas cross-references).
 
 ---
-## Step 2 — Student Page vs. Instructor Lecture Notes
+## Step 2 - Student Page vs. Instructor Lecture Notes
 
 | Aspect | Instructor Lecture Notes | Student Resource Pages |
 |--------|------------------------|----------------------|
@@ -211,47 +211,47 @@ Can use either narrative format OR table format (preferred for complex assignmen
 | **Length** | 2500-4000 words (comprehensive) | 2500-4500+ words (depth matches assignment complexity) |
 
 ---
-## Step 3 — Inline Styles Only (Same as Instructor Notes)
+## Step 3 - Inline Styles Only (Same as Instructor Notes)
 - All styling via `style=""` attributes
 - No `<style>` tags (Canvas strips them)
 - No `<script>` tags
 - All colors use hex codes from palette below
 - Font families use system sans-serif
-- No em dashes — use space-hyphen-space instead
+- No em dashes - use space-hyphen-space instead
 
 ---
-## Step 4 — Color Palette (CANONICAL — Same as Instructor Notes)
+## Step 4 - Color Palette (CANONICAL - Same as Instructor Notes)
 Use exact same palette as instructor lecture notes (beige headers, purple objectives, green "Why This Matters", tan content, amber tips, charcoal special sections, blue reference links).
 
 ---
-## Step 5 — Key Principles
+## Step 5 - Key Principles
 
-1. **Self-contained and independent** — Students should understand this page without reading others.
-2. **Motivation first** — "Why This Matters" appears early (after objectives) to keep students engaged.
-3. **Depth over breadth** — One topic done thoroughly with multiple examples beats many topics done shallowly.
-4. **Worked examples required** — Don't just explain concepts; show:
+1. **Self-contained and independent** - Students should understand this page without reading others.
+2. **Motivation first** - "Why This Matters" appears early (after objectives) to keep students engaged.
+3. **Depth over breadth** - One topic done thoroughly with multiple examples beats many topics done shallowly.
+4. **Worked examples required** - Don't just explain concepts; show:
    - Real-world narratives with specific details (timestamps, process names, IP addresses, event IDs)
    - Step-by-step procedures in numbered tables with explicit instructions
    - Before/after comparisons showing correct vs. incorrect approaches
    - Code blocks, screenshots, or configuration examples
-5. **Comparison tables for trade-offs** — Help students choose between options (VirtualBox vs. Hyper-V, risk levels, approaches)
-6. **Assignment-aligned content** — Content directly supports the week's assignment(s) with enough detail to complete them independently.
-7. **Troubleshooting sections for labs/procedures** — Table format with Problem/Cause/Solution for common failures.
-8. **Encouraging tone** — Assume some students are struggling; be supportive and practical.
-9. **No instructor context** — No "teaching notes," "common misconceptions," "what's current," or "for instructors only." Save those for instructor lectures.
-10. **Common mistakes as learning tool** — 3-5+ detailed mistakes (not just 2-3). Explain WHY each is wrong and HOW to fix it specifically.
-11. **Length = complexity** — Pages supporting simple tools (single learning objective): 2,500-3,000 words. Pages supporting multi-step labs or complex concepts: 3,500-4,500+ words.
+5. **Comparison tables for trade-offs** - Help students choose between options (VirtualBox vs. Hyper-V, risk levels, approaches)
+6. **Assignment-aligned content** - Content directly supports the week's assignment(s) with enough detail to complete them independently.
+7. **Troubleshooting sections for labs/procedures** - Table format with Problem/Cause/Solution for common failures.
+8. **Encouraging tone** - Assume some students are struggling; be supportive and practical.
+9. **No instructor context** - No "teaching notes," "common misconceptions," "what's current," or "for instructors only." Save those for instructor lectures.
+10. **Common mistakes as learning tool** - 3-5+ detailed mistakes (not just 2-3). Explain WHY each is wrong and HOW to fix it specifically.
+11. **Length = complexity** - Pages supporting simple tools (single learning objective): 2,500-3,000 words. Pages supporting multi-step labs or complex concepts: 3,500-4,500+ words.
 
 ---
-## Step 6 — Examples (CANONICAL)
+## Step 6 - Examples (CANONICAL)
 
 **BIT320 (Simpler assignment, single tool focus):**
-- `Week 1 | Student Page 1 - Log File Fundamentals` — ~2,500 words, single Linux tool, basic procedures
+- `Week 1 | Student Page 1 - Log File Fundamentals` - ~2,500 words, single Linux tool, basic procedures
 
 **BIT360 Week 1 (Complex assignments, multiple topics):**
-- `Week 1.1 Student Guide: InfoSec Fundamentals & Risk Assessment` — 3,500+ words, CIA triad, ACIO framework, risk matrix, assignment walkthrough with common mistakes table
-- `Week 1.2 Student Guide: SysInternals Tools Hands-On` — 3,500+ words, three tools, detailed procedures, real incident narrative with timestamps, common mistakes table
-- `Week 1.3 Student Guide: Lab Environment Setup` — 4,000+ words, hypervisor comparison table, step-by-step VM creation, snapshot strategy, troubleshooting table with 5 scenarios, optimization tips
+- `Week 1.1 Student Guide: InfoSec Fundamentals & Risk Assessment` - 3,500+ words, CIA triad, ACIO framework, risk matrix, assignment walkthrough with common mistakes table
+- `Week 1.2 Student Guide: SysInternals Tools Hands-On` - 3,500+ words, three tools, detailed procedures, real incident narrative with timestamps, common mistakes table
+- `Week 1.3 Student Guide: Lab Environment Setup` - 4,000+ words, hypervisor comparison table, step-by-step VM creation, snapshot strategy, troubleshooting table with 5 scenarios, optimization tips
 
 **Key takeaway:** Pages supporting complex assignments that span multiple tools/concepts should be 3,500-4,500+ words with abundant tables, examples, and troubleshooting guidance.
 

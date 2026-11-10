@@ -1,8 +1,13 @@
+---
+name: training-assignment-playbook
+description: Use when Corey asks to create or revise a LinkedIn Learning training assignment (e.g. "create the Week 6 training assignment", "add training for BIT360 Week 8"). Covers selecting courses that align with both the textbook module and the weekly lab, runtime targets, point values, and the standard assignment description template.
+---
+
 # Training Assignment Playbook
 **Version:** 1.0  
 **Created:** 2026-09-18  
 **Template Source:** ITH216 "Online Training 8A: Wireless Networking Essential Training" (assignment 40329330)  
-**Status:** LIVE — Use for all LinkedIn Learning training assignments
+**Status:** LIVE - Use for all LinkedIn Learning training assignments
 
 ---
 
@@ -20,7 +25,7 @@ Training assignments bridge LinkedIn Learning videos to course learning objectiv
 
 ## Template Structure (Fixed Order)
 
-### 1. Purpose Box (Blue — #eaf4fb / #2980b9)
+### 1. Purpose Box (Blue - #eaf4fb / #2980b9)
 
 **HTML:**
 ```html
@@ -60,7 +65,7 @@ Training assignments bridge LinkedIn Learning videos to course learning objectiv
 
 ---
 
-### 2. Task Box (Yellow — #fef9e7 / #d4ac0d)
+### 2. Task Box (Yellow - #fef9e7 / #d4ac0d)
 
 **HTML:**
 ```html
@@ -83,7 +88,7 @@ Training assignments bridge LinkedIn Learning videos to course learning objectiv
 - **Margin-top:** 15px (space from Purpose box)
 - **Header h3:** color #9a7d0a, margin-top 0
 - **Task paragraph:** ONE sentence stating video title, duration, brief topics, and deliverable (screenshot)
-- **Keep it concise** — this is the "what" not the "how"
+- **Keep it concise** - this is the "what" not the "how"
 
 ---
 
@@ -183,7 +188,7 @@ Training assignments bridge LinkedIn Learning videos to course learning objectiv
 
 ---
 
-### 7. Criteria for Success Box (Green — #eafaf1 / #27ae60)
+### 7. Criteria for Success Box (Green - #eafaf1 / #27ae60)
 
 **HTML:**
 ```html

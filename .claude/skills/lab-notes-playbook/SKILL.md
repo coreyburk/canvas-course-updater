@@ -1,3 +1,8 @@
+---
+name: lab-notes-playbook
+description: Use when Corey asks to write, review, or audit Lab Notes - the published, student-facing scaffolding pages that accompany a hands-on lab assignment (e.g. "write the Lab 3.1 Notes", "review Lab 1.2 Notes against the lab"). Five-section BIT281 left-border format; teaches the HOW-TO without spoiling lab answers.
+---
+
 # Canvas Lab Notes Playbook
 
 **Version:** 1.0  
@@ -15,19 +20,19 @@ Lab Notes are **published, student-facing** pages that scaffold learning for han
 
 ---
 
-## Step 0 — Gotchas
+## Step 0 - Gotchas
 
 - Lab Notes are **published and student-facing** (unlike instructor lecture notes)
 - Place in the course module at the appropriate week, **not in instructor-only module**
-- No em dashes — use space-hyphen-space instead
+- No em dashes - use space-hyphen-space instead
 - Use left-border boxes (BIT281 style), not full-border boxes
 - Code examples must be **generalizable** (show the pattern, not the answer)
 - Never show expected output from actual student data
-- Canvas strips `<style>` tags and inline SVG — all styling via `style=""` attributes
+- Canvas strips `<style>` tags and inline SVG - all styling via `style=""` attributes
 
 ---
 
-## Step 1 — Scope: Guidance, Not Answers
+## Step 1 - Scope: Guidance, Not Answers
 
 Lab Notes answer: **"How do I do this?"** not **"What's the answer?"**
 
@@ -49,7 +54,7 @@ Lab Notes answer: **"How do I do this?"** not **"What's the answer?"**
 
 ---
 
-## Step 2 — Structure: BIT281 Lab Notes Format
+## Step 2 - Structure: BIT281 Lab Notes Format
 
 All Lab Notes follow this exact structure with left-border boxes:
 
@@ -72,7 +77,7 @@ All Lab Notes follow this exact structure with left-border boxes:
 
 ---
 
-## Step 3 — Visual Template (Left-Border Boxes)
+## Step 3 - Visual Template (Left-Border Boxes)
 
 All sections use left-border (not full border) styling:
 
@@ -116,7 +121,7 @@ cut -d',' -f2 system.csv | sort | uniq -c
 
 ---
 
-## Step 4 — Content Structure by Section
+## Step 4 - Content Structure by Section
 
 ### Section 1: Why This Matters (Blue Border)
 
@@ -137,8 +142,8 @@ cut -d',' -f2 system.csv | sort | uniq -c
 **Content:** Use grid cards (2-column layout) to break down each lab goal/question. Show what each one asks, but NOT the answer.
 
 **Example:** 
-- "Question 1: Event Type Distribution — How many errors, warnings, and information events occurred? This shows whether errors dominate your log."
-- "Question 2: Percentage Breakdown — What percentage of events are errors vs. warnings? Percentages reveal whether your error rate is typical."
+- "Question 1: Event Type Distribution - How many errors, warnings, and information events occurred? This shows whether errors dominate your log."
+- "Question 2: Percentage Breakdown - What percentage of events are errors vs. warnings? Percentages reveal whether your error rate is typical."
 
 **Length:** 1-2 sentences per card; 6-8 cards total
 
@@ -227,7 +232,7 @@ level_counts = Counter(event['Level'] for event in events)
 
 ---
 
-## Step 5 — Writing Principles
+## Step 5 - Writing Principles
 
 ### Teach the Pattern, Not the Answer
 
@@ -264,7 +269,7 @@ Suggest manual verification steps:
 
 ---
 
-## Step 6 — Alignment with Assignment
+## Step 6 - Alignment with Assignment
 
 Before publishing Lab Notes, verify alignment:
 
@@ -308,11 +313,11 @@ Before publishing Lab Notes, verify alignment:
 **Reference:** Lab 5.1 Notes: Windows Event Log Analysis (BIT320, Sept 2026)
 
 **Structure:**
-1. **Why This Matters** (blue) — Context on system administration and logs
-2. **Five Investigation Questions** (purple grid) — What each question asks
-3. **Language-Specific HOW-TO** (light blue) — Bash/PowerShell/Python patterns for CSV parsing
-4. **Key Challenge** (amber) — Timestamp parsing with syntax hints
-5. **Workflow** (green) — 8-step sequence from "run script" to "test all files"
+1. **Why This Matters** (blue) - Context on system administration and logs
+2. **Five Investigation Questions** (purple grid) - What each question asks
+3. **Language-Specific HOW-TO** (light blue) - Bash/PowerShell/Python patterns for CSV parsing
+4. **Key Challenge** (amber) - Timestamp parsing with syntax hints
+5. **Workflow** (green) - 8-step sequence from "run script" to "test all files"
 
 **Key Feature:** Shows HOW to extract columns and parse timestamps without showing actual event counts
 

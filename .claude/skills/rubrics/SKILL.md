@@ -318,9 +318,9 @@ Since BIT320 is only 2 credits with 20 contact hours, code quality must be score
 ```
 Criterion X: Code Fundamentals (10 points, 10-12% of total)
   Description: [Use description from week's progression above]
-  Excellent (10) — [Week-appropriate standards met]
-  Good (7) — [Week-appropriate, partial implementation]
-  Unacceptable (0) — [Missing critical elements]
+  Excellent (10) - [Week-appropriate standards met]
+  Good (7) - [Week-appropriate, partial implementation]
+  Unacceptable (0) - [Missing critical elements]
 ```
 
 ### Why Progressive, Not All-In-Week-1?
@@ -444,19 +444,19 @@ RUBRIC NAME: [Assignment Name] ([Total Points] pts)
 Reusable: Yes
 
 CRITERION [N]: [Criterion Name]
-  Criterion Description: [What students see — what is being assessed]
+  Criterion Description: [What students see - what is being assessed]
   
   Rating: Excellent
   Points: [X]
-  Description: [Instructor grading guidance — what excellent looks like]
+  Description: [Instructor grading guidance - what excellent looks like]
   
   Rating: Good
   Points: [X × 0.70, rounded] (approximately 70% of Excellent)
-  Description: [Instructor grading guidance — what good looks like]
+  Description: [Instructor grading guidance - what good looks like]
   
   Rating: Unacceptable
   Points: 0
-  Description: [Instructor grading guidance — what unacceptable looks like]
+  Description: [Instructor grading guidance - what unacceptable looks like]
 
 [Repeat for each criterion]
 

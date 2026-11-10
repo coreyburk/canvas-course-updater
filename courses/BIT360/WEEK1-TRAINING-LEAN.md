@@ -1,7 +1,7 @@
 # BIT360 Week 1: Lean Training Approach
 ## Replace Textbook Reading with Focused LinkedIn Learning Video
 
-**Guiding Principle:** Students already have comprehensive written guidance (3,500-4,500 word student resource pages). Training videos should be minimal, focused, and directly support the assignments — not duplicate what's already published.
+**Guiding Principle:** Students already have comprehensive written guidance (3,500-4,500 word student resource pages). Training videos should be minimal, focused, and directly support the assignments - not duplicate what's already published.
 
 ---
 
@@ -12,8 +12,8 @@
 - Split among: instruction, lab setup, demo, Q&A, office hours
 
 **Assignment Time (Non-Trivial):**
-- **1A: SysInternals** — Process Explorer, TCPView, Event Log analysis (2-3 hours)
-- **1B: Hyper-V + 4 VMs** — Installation, configuration, snapshots, network setup (3-5 hours)
+- **1A: SysInternals** - Process Explorer, TCPView, Event Log analysis (2-3 hours)
+- **1B: Hyper-V + 4 VMs** - Installation, configuration, snapshots, network setup (3-5 hours)
 - **Total Assignment Time:** 5-8 hours minimum
 
 **Available Training Time:** 2-3 hours maximum (doesn't exceed 25% of weekly load)
@@ -87,8 +87,8 @@
    - Page 1.3: Lab Setup (reference during Hyper-V setup)
 
 5. **Do Assignments:**
-   - **1A: SysInternals** — Apply tools from Page 1.2 (2-3 hours)
-   - **1B: Hyper-V Setup** — Use Page 1.3 + risk assessment from Page 1.1 (3-5 hours)
+   - **1A: SysInternals** - Apply tools from Page 1.2 (2-3 hours)
+   - **1B: Hyper-V Setup** - Use Page 1.3 + risk assessment from Page 1.1 (3-5 hours)
 
 ---
 

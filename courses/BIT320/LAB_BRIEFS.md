@@ -1,4 +1,4 @@
-# BIT320 — Detailed Lab Briefs & Rubrics
+# BIT320 - Detailed Lab Briefs & Rubrics
 
 **Course:** Shell and Administrative Scripting (2 credits, 5 weeks)  
 **Canvas ID:** 3644698
@@ -20,7 +20,7 @@
 
 # WEEK 1: Log Analysis Fundamentals
 
-## Lab 1.1: "Log Analysis Starter" — Comparative Language Approaches
+## Lab 1.1: "Log Analysis Starter" - Comparative Language Approaches
 
 **Learning Objectives:**
 - Outcome #1: Automate analysis of text-based system data
@@ -96,14 +96,14 @@ Your goal: Extract meaningful patterns from each log type, generate a summary re
 **Notes:**
 - Focus on getting one language working well rather than rushing all three
 - Sample data files will be provided in Canvas
-- If you hit a language syntax issue, post in discussion forum or attend office hours—don't give up
+- If you hit a language syntax issue, post in discussion forum or attend office hours - don't give up
 - This lab foreshadows Week 3 (where you'll do deep security analysis); notice which language shines for text work
 
 ---
 
 # WEEK 2: Scripting Fundamentals
 
-## Lab 2.1: "Log Summary Script" — Process Data and Generate Reports
+## Lab 2.1: "Log Summary Script" - Process Data and Generate Reports
 
 **Learning Objectives:**
 - Outcome #1: Automate data processing workflows with scripts
@@ -112,7 +112,7 @@ Your goal: Extract meaningful patterns from each log type, generate a summary re
 
 **Scenario:**
 
-Your organization's help desk receives tickets daily. They need an automated summary of application error logs—what types of errors occurred, how many, and which ones are priority. Right now they manually parse logs every morning (30 minutes per day).
+Your organization's help desk receives tickets daily. They need an automated summary of application error logs - what types of errors occurred, how many, and which ones are priority. Right now they manually parse logs every morning (30 minutes per day).
 
 Your task: Build a script that reads an error log, categorizes errors by type and severity, and generates a daily summary report they can email to stakeholders.
 
@@ -167,7 +167,7 @@ Your task: Build a script that reads an error log, categorizes errors by type an
    - Document differences in approach
 
 **Test Data Provided:**
-- `sample_errors.log` — 500 entries, mixed levels, realistic error messages
+- `sample_errors.log` - 500 entries, mixed levels, realistic error messages
 
 **Time Budget:**
 - Primary language: 3-4 hours
@@ -187,7 +187,7 @@ Your task: Build a script that reads an error log, categorizes errors by type an
 | **Bonus: Comparative lab** | +15 | Same criteria as primary script; comparison shows understanding of language strengths/weaknesses |
 
 **Notes:**
-- This is your first real "data processing" script—the foundation for Week 3
+- This is your first real "data processing" script - the foundation for Week 3
 - If you get stuck on data parsing, review the LinkedIn Learning resources for your chosen language
 - Test with provided sample data; once working, you could use this on real logs
 - Think about: "What would make this script more useful?" (This informs Week 4 planning)
@@ -196,7 +196,7 @@ Your task: Build a script that reads an error log, categorizes errors by type an
 
 # WEEK 3: Data Processing & Text Handling
 
-## Lab 3.1: "Security Audit Report" — Deep Log Analysis & Reporting
+## Lab 3.1: "Security Audit Report" - Deep Log Analysis & Reporting
 
 **Learning Objectives:**
 - Outcome #2: Process large datasets to extract security-relevant insights
@@ -215,7 +215,7 @@ Right now, they manually review Event Log exports. You're building the automated
 
 **Requirements:**
 
-1. **Primary Implementation: Bash** (This is where bash shines—text processing is its native strength)
+1. **Primary Implementation: Bash** (This is where bash shines - text processing is its native strength)
    - Read Windows Event Log export (CSV format) OR Linux auth log
    - Parse failure reasons, usernames, timestamps
    - Use grep/awk/sort/uniq for analysis (demonstrate bash power)
@@ -291,7 +291,7 @@ Right now, they manually review Event Log exports. You're building the automated
 
 **Notes:**
 - This is the capstone of Weeks 1-2 skills; you're ready for this
-- Bash is the right tool here—see why?
+- Bash is the right tool here - see why?
 - Security insights matter: A good report reveals actionable patterns, not just stats
 - If you add comparisons, you'll see how each language approaches the same problem differently
 - This skillset is directly applicable: audit reports like this are real work in any infrastructure team
@@ -383,7 +383,7 @@ The script will eventually be scheduled to run every 5 minutes (Week 4.2), but f
 | **Documentation** | 2 | Error handling and reflection are thoughtful; show understanding of real-world failure modes |
 
 **Notes:**
-- This is your first script with error handling—take it seriously
+- This is your first script with error handling - take it seriously
 - Real services fail for real reasons; anticipate them
 - Logging matters: Future you will need to know what happened and why
 - Next week you'll schedule this; make sure it's robust enough for unattended execution
@@ -403,7 +403,7 @@ The script will eventually be scheduled to run every 5 minutes (Week 4.2), but f
 
 # WEEK 5: Administration Automation Project
 
-## Lab 5.1: "Administration Automation Project" — Capstone Integration
+## Lab 5.1: "Administration Automation Project" - Capstone Integration
 
 **Learning Objectives:**
 - Outcome #1: Automate a complete, realistic server administration workflow
@@ -517,7 +517,7 @@ Choose one real system administration task you've been thinking about in Weeks 1
 | **Bonus: Peer code review** | +10 | Thorough review; constructive feedback; identifies 2-3 real improvements; thoughtful critique |
 
 **Notes:**
-- This is your capstone for BIT320—make it something you're proud of
+- This is your capstone for BIT320 - make it something you're proud of
 - Real code, real problem, real solution
 - If you want to use this in your job or portfolio, build it to that standard
 - Peer review teaches you to think critically about code quality

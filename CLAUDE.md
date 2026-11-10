@@ -1,4 +1,4 @@
-# Canvas Course Updater — Standing Instructions
+# Canvas Course Updater - Standing Instructions
 
 ## Purpose
 Corey is an instructor at Neumont University (cburk@neumont.edu), building and
@@ -9,86 +9,46 @@ Outcomes and the BIT221 visual/structural standard.
 ## Courses
 | Code | Canvas ID | Title | Status |
 |---|---|---|---|
-| BIT221 | 3631198 | Server Administration I — Windows Server 2025 | ✅ Complete (2026-09-08) |
+| BIT221 | 3631198 | Server Administration I - Windows Server 2025 | ✅ Complete (2026-09-08) |
 | BIT281 | 3631199 | Hardware Systems | ✅ Complete (2026-09-03) |
 | BIT320 | 3644698 | Shell and Administrative Scripting | ✅ Complete (2026-09-12) |
 | BIT360 | 3644702 | Applied Systems Operations & Disaster Recovery | 🔧 Remediation in progress (Week 1 first, 2026-10-07) - see courses/BIT360-2026.md |
-| PRO221 | 3631288 | Server Admin I — Project: Windows Server | ✅ Complete (2026-09-03) |
+| PRO221 | 3631288 | Server Admin I - Project: Windows Server | ✅ Complete (2026-09-03) |
 | BIT351 | 3631200 | Virtual Systems: Proxmox VE | ✅ Complete (2026-09-03) |
 | PRO352 | 3631317 | Virtualization Project: Proxmox (Multi-cluster) | ✅ Complete (2026-09-03) |
-
-
-<recent_updates>
-- **BIT360 Weeks 6-10 LinkedIn Learning Training Assignments: Created (2026-10-05)**: Completed all 5 training assignments for Weeks 6-10. Verified LinkedIn Learning courses aligned with BOTH textbook modules AND weekly lab assignments. **Assignments created:** Week 6 (ID 40386640 - Learning Splunk, 1h 54m, 95pts, due 2026-11-07), Week 7 (ID 40386641 - Root Cause Analysis, 46m, 50pts, due 2026-11-14), Week 8 (ID 40386643 - Build Your First DRP, 1h 3m, 50pts, due 2026-11-28), Week 9 (ID 40386644 - Cybersecurity Threat Landscape, 1h 7m, 55pts, due 2026-11-28), Week 10 (ID 40386646 - Cyber Crisis Management with NIST CSF 2.0, 55m, 50pts, due 2026-12-04). All unpublished for instructor review. **Canvas API Connectivity:** Fixed CONNECTION_CLOSED error—root cause was missing canvas_mcp package installation in venv. Solution: ran `pip install -e .` to install canvas_mcp in editable mode. Verified fastmcp 2.14.7 (correct <3 constraint), event loop fix applied, .env credentials valid. Canvas API now fully functional. **Course Completion:** All 10 weeks of BIT360 now have complete coverage: 30 student resource pages (Weeks 1-10), 10 lab assignments (Weeks 1-10), 9 training assignments (Weeks 1-10, Week 1 has no training assignment), 12 quizzes (Modules 1-12). See courses/BIT360-2026.md for full status.
-
-- **BIT360 Weeks 7-10 Student Resource Pages: Alignment Rewrite Completed (2026-09-24)**: Created 12 comprehensive student resource pages for Weeks 7-10 following textbook content and aligning with Assignment 7A-10A. **Pages created:** Week 7 (Forensic Investigation & Evidence Handling, System Recovery & Hardening, Root Cause Analysis & After-Action Review), Week 8 (DRP & BCP Fundamentals, Recovery Strategies & Technical Redundancy, Communication Planning & Implementation), Week 9 (Business Continuity Operations, Supply Chain Resilience & Vendor Management, Current Threat Landscape & Emerging Tactics), Week 10 (Crisis Leadership & Executive Decision-Making, Crisis Communication & Stakeholder Management, International Standards & Regulatory Compliance). **Format:** All 12 pages follow canonical Week 1.1 styling (3500-4000 words each, light background #f9f9f9 with blue left-border #2563eb learning objectives, 6 learning objectives, "Why This Matters", core concepts with procedures, real examples with specific details, comparison/decision tables, common mistakes 3-5+ with fixes, references to official sources). All pages unpublished to Canvas for instructor review. **Status:** BIT360 Weeks 1-10 COMPLETE (30 pages total: 3 published Week 1, 27 unpublished Weeks 2-10). Course alignment audit fully addressed. See courses/BIT360-2026.md for detailed status per week.
-
-- **BIT360 Week 6 Student Resource Pages: Alignment Rewrite Completed (2026-09-23)**: Created 3 comprehensive student resource pages for Week 6 following textbook Module 7 (SIEM/Security Information & Event Management) content, NOT prior IR-focused misaligned pages. **Pages created:** (1) Week 6 | Page 1 - SIEM Architecture and Log Collection Fundamentals (3500+ words), (2) Week 6 | Page 2 - Detection Rules, Event Correlation, and Alert Tuning (3500+ words), (3) Week 6 | Page 3 - Splunk Hands-On and Incident Investigation (3500+ words). All unpublished to Canvas for instructor review. **Naming correction:** Followed student-resource-pages SKILL playbook v1.0 naming convention `Week [N] | Page [#] - [Topic]` (NOT `[N].[#] -` or `[N].[#]:` from prior incorrect attempt). **Format:** All pages follow canonical Week 1.1 styling (light background #f9f9f9 with blue left-border #2563eb learning objectives), include learning objectives (6), "Why This Matters", core concepts with procedures, real examples with specific details (event IDs, timestamps, process names), comparison tables, troubleshooting tables, common mistakes (3-5+ with fixes), and references. **Critical lesson:** USE THE SKILL—playbook defines naming convention, canonical format, scope, required sections, and content standards. Prior attempt violated naming convention and format guidance. Playbook ensures consistency across weeks and clarity for students. **Status:** Week 6 complete and aligned with textbook. Weeks 7-10 (12 pages total) follow same pattern in subsequent sessions. See courses/BIT360-2026.md for updated status.
-
-- **BIT360 Course Alignment Audit & Rewrite Plan (2026-09-23)**: Discovered critical misalignment between textbook content and student resource pages for Weeks 6-10. **Problem:** Student pages created for Weeks 6-10 teach IR response phases, forensics/malware analysis, specific threat types, compliance/regulatory, and program management—but textbook actually covers Detection Systems + Response Strategies (Weeks 6), Recovery + Investigations (Week 7), Disaster Recovery (Week 8), Business Continuity (Week 9), and Crisis Management + International Standards (Week 10). **Impact:** Students read Module 10 (Disaster Recovery) but study pages on ransomware/data breaches; assignments align with textbook but student resources don't support them. **Decision:** Rewrite Weeks 6-10 student pages to align with textbook modules (Option A). Weeks 1-5 are properly aligned and require no changes. **Plan:** (1) Rewrite 15 student resource pages (3 per week, Weeks 6-10) to match textbook content, (2) Keep assignments as-is (already well-aligned), (3) Search for training that reinforces actual textbook topics. **Status:** Plan documented in CLAUDE.md. Next step: create student pages for Weeks 6-10 following BIT360 canonical format. See courses/BIT360-2026.md for detailed audit findings.
-
-- **Documentation Reorganization: Year-Versioned Course Files (2026-09-17)**: Renamed course documentation files to use year-versioning for clarity and history preservation. `BIT360-IncidentResponse.md` → `BIT360-2026.md` (current Incident Response & Cyber Forensics course), and `BIT360.md` → `BIT360-2025.md` (archived Server Admin & Disaster Recovery). Prevents naming confusion when the same course code is reused in different years with different content.
-
-- **BIT360 (Week 6 Complete — Incident Response Recovery & Post-Incident, 2026-09-17)**: Created all 6 comprehensive Week 6 instructor lecture notes pages for BIT360 (Incident Response & Cyber Forensics, Canvas ID 3644702). Pages created unpublished and ready for review. Week 6 covers final IR phases (Containment through Post-Incident Review): (1) Containment Strategies and Active Incident Isolation—network/host-level tactics, type-specific strategies, preventing counter-actions. (2) Eradication and System Remediation—three approaches (rebuild/patch/accept), malware checklist, persistence hunting, scale management. (3) Recovery and Business Continuity—RTO/RPO, recovery phases, backup/DR design, 3-2-1 rule. (4) Post-Incident Review and Lessons Learned—blameless culture, PIR components (timeline/root-cause/control assessment), actionable improvements, meeting facilitation. (5) Crisis Communication and Stakeholder Management—stakeholder map, internal/external communication, regulatory notification, war room coordination, six principles. (6) Real-World Recovery Cases and Current Incident Trends—case studies (Equifax/Exchange/Colonial Pipeline), current threats (RaaS/supply chain/cloud/AI/nation-state), staying current, IR maturity model. All pages follow v4.0 canonical format: purple objectives (6 checkmarks), color-coded sections, tables, 2-4K words, verified links. Created documentation: courses/BIT360-2026.md. **CRITICAL LESSON (from Week 4-5 recovery):** Canvas API `edit_page_content` REPLACES entire page; no partial updates. Empty parameter = total deletion. Prevention: all subsequent pages created with complete HTML in single API calls. Weeks 1-5 previously completed. Weeks 7-10 pending (estimated 24-30 additional pages). See courses/BIT360-2026.md for full status.
-
-- **ARCHITECTURAL DISCOVERY: Concurrent Canvas API Contexts Cause CONNECTION_CLOSED (2026-09-16)**: Diagnosed persistent CONNECTION_CLOSED errors when two Claude Code windows are open simultaneously. **Root cause:** stdio MCP design is 1:1 (single client per process), but multiple Claude sessions each spawn their own `canvas-mcp` subprocess. Both subprocesses attempt to use the same Canvas API credentials, causing race conditions and credential conflicts. **Why HTTP was "unreliable":** Same concurrent-connection issue—multiple clients → race conditions → intermittent failures. Switching to stdio didn't fix concurrency; it just eliminated the symptom by forcing single-client usage. **Workaround:** Close extra Claude Code windows; keep only ONE active session using Canvas API at a time. **Prevention:** Documented architectural limitation in CLAUDE.md "MCP transport & server" section with explanation and future-improvement notes. Sequential usage is the intended pattern.
-
-- **CRITICAL FIX: Canvas API CONNECTION_CLOSED Root Cause Identified & Fixed (2026-09-16)**: Investigated persistent CONNECTION_CLOSED errors in canvas-api MCP server. **Root cause:** `uv.lock` file pinned fastmcp 3.1.1, which violates pyproject.toml constraint `fastmcp>=2.14.0,<3`. fastmcp 3.x is incompatible with canvas-mcp, causing ImportError on server startup. **Fix applied:** (1) Deleted uv.lock to remove bad dependency pin, (2) Recreated venv with `pip install --force-reinstall 'fastmcp<3'`, downgrading to fastmcp 2.14.7, (3) Verified Canvas API token validation passes. **Result:** CONNECTION_CLOSED should no longer occur. **Prevention:** Documented constraint issue in CLAUDE.md under "MCP transport & server" section. If uv.lock regenerates with fastmcp 3.x, the fix is to delete it and use pip to enforce the <3 constraint. **Note:** This was a recurring issue from yesterday's fix being undone by uv.lock every session.
-
-- BIT320 (Lab 5.2 Resource Pages — Cleanup & Balance Restored, 2026-09-16): Fixed critical issues with three final-project resource pages (Options A/B/C). (1) Restored instructional content: learning objectives, detailed "What to Build" sections, language trade-offs tables, getting-started code examples (Bash/PowerShell/Python), common pitfalls, "What Excellent Looks Like" standards. (2) Deleted 15 unpublished duplicate pages created during iterations (5 per option: -2/-3/-4 versions + old "Week 5 |" naming). Now have ONE published version per option. Submission format remains lean: ONE Word document per option with script/output/screenshots/200-300-word reflection. Result: comprehensive student guidance + practical consolidated deliverables + clean Canvas structure. Lesson: "streamline submission requirements" ≠ "remove instructional content"; balance + cleanup both essential.
-
-- ITH216 (Week 6 EIGRP Pages Prepared, 2026-09-15): Prepared two comprehensive Week 6 student resource pages (Format 2 Modern Minimal), ready for Canvas publication once API connection restored:
-  - **Page 1 - EIGRP Fundamentals and Configuration** (1800+ words): EIGRP protocol overview, AS numbers, neighbor discovery (Hello/hold timers/K values), metric calculation, basic configuration, verification commands, troubleshooting Layer 1-3 diagnostics
-  - **Page 2 - EIGRP Advanced Topics and Troubleshooting** (2100+ words): Named mode configuration, metric manipulation, path control, summarization, redistribution with loop prevention, neighbor formation diagnosis, DUAL algorithm, convergence optimization
-  - Both pages prepared as HTML in scratchpad (week6_page1.html, week6_page2.html) ✅
-  - **Blocker:** Canvas API MCP server CONNECTION_CLOSED despite process restart; retry publication when connection restored
-  - **Estimated effort to publish:** 5 minutes once API reconnects (canvas-api create_page tool)
-
-- BIT320 (Lab 5.2 Created — Final Project with Student Choice, 2026-09-16): Created NEW Lab 5.2 assignment offering three equal student-choice final project options (100 pts each, shared rubric). Lab 5.1 kept as original (Windows Event Log Analysis). Students complete EITHER Lab 5.1 OR Lab 5.2 (one assignment, not both). Lab 5.2 options: (A) Service Health Monitoring & Auto-Remediation (proactive operations—detects failures, attempts recovery), (B) Configuration Management & Compliance Auditing (infrastructure-as-code—audit against baseline configuration), (C) Windows Event Log Analysis (reactive analytics—same scenario as original Lab 5.1). All three graded on same rubric (Script Quality, Analysis/Reporting, Tool Selection, Documentation at 25 pts each). Created three comprehensive published resource pages (Option A, B, C) with detailed guidance, code examples, getting started sections, and "what excellent looks like." Lab 5.2 assignment (ID: 40341273) links to resource pages. Reinforces course theme: "choose the right tool for the task." Students select based on career interest. Canvas API verified working. courses/BIT320.md updated to reflect dual-assignment structure.
-
-- ITH216 (Week 5 Page 2 Complete, 2026-09-15): Expanded Page 2 (PPP Configuration and WAN Link Management) from minimal to 3500+ words with all five enrichment areas: CHAP Authentication with MD5 hashing and real debug output, PAP vs. CHAP security comparison (real attack scenario showing 5-minute detection vs. never), Compression Algorithms (Predictor 60-70% text, Stacker 50-80% text) with real T1 email link calculation showing $7,200/year upgrade deferral savings, Multilink PPP (RFC 1990) fragmentation with automatic failover, Comprehensive Troubleshooting (Layer 1 physical, Layer 2 LCP/CHAP, Layer 3 IPCP), Security Hardening (key rotation, attack detection, syslog logging), Infrastructure Dependencies, Real-World Context, and seven RFC references. Page 2 now achieves parity with Page 1 depth. Formatted per Format 2 (Modern Minimal). IMPORTANT LESSON: Discovered critical Canvas API behavior—edit_page_content replaces entire page, does not append. Sending 6+ incremental updates wasted tokens thinking they'd accumulate; only last update persisted. Updated CLAUDE.md to document this limitation and prevent repeat waste.
-
-- BIT320 (Course Complete, 2026-09-12): Fixed Canvas API stability (HTTP server on port 8819). Verified all 15 instructor lecture notes correctly aligned with sequential language mastery structure (Bash → PowerShell → Python → Tool Selection → Monitoring). Updated Week 2 lecture note titles to reflect PowerShell focus (were incorrectly labeled as Bash). Updated module week headers to match course structure. Cleaned stale PaymentService Crisis scenario from documentation. Updated Course Outline page to clearly describe sequential language mastery pedagogy. All 7 labs, 15 instructor lecture notes, 6+ student resource pages, 10 training assignments complete and aligned. Course ready for instruction.
-
-- BIT320 (Lab Notes Complete, 2026-09-11): Created comprehensive Lab Notes Playbook (v1.0 SKILL) for BIT281-format student guidance pages. Published Lab 1.2 Notes (System Command Execution & Output Processing) with left-border boxes and language-specific HOW-TO patterns (bash, PowerShell, Python). Complete Lab Notes coverage: Lab 1.1 (no notes, setup-only), Lab 1.2 (published 2026-09-11), Lab 1.3 (bash patterns), Lab 2.1 (PowerShell objects), Lab 3.1 (Python data structures), Lab 4.1 (tool selection framework), Lab 5.1 (event log analysis). All follow BIT281 five-section format with 4px color-coded left-border boxes. See courses/BIT320.md for full status.
-
-- Workflow: at the end of each Canvas Course Updater session (any work touching CLAUDE.md, courses/{CODE}.md, or repo content), remind Corey to commit changes and provide a suggested commit message. GitHub repo is public: https://github.com/coreyburk/canvas-course-updater, read via web_fetch (no write-back connector currently available on this Enterprise workspace).
-
-- PRO221 (Week 4 Complete, 2026-07-23): All 4 pages published: iSCSI (Page 1), Failover Clustering (Page 2), RDS/MPIO (Page 3), WSUS (Page 4). 2C unpublished/flagged NOT WORKING—needs vet/repair or deletion. 4B unpublished/ready—awaiting publish decision. All assignments conform to 3-box template. OT1 keeping Windows Server 2019 File Services (no 2025 replacement available). courses/PRO221.md and CLAUDE.md updated and committed 2026-07-23.
-
-- PRO221 (Instructor Module & Lecture Notes, 2026-07-27): Created unpublished "Course Outline and Lecture Notes (Not Published - Instructor Use Only)" module at position 1. Added PRO221 - Course Outline page (5-week overview with topics, assignments, training, quizzes per week, certification note). Created 5 comprehensive unpublished instructor lecture notes pages (Weeks 1-5) with teaching context, student misconceptions, lab setup guidance, and cross-week connections. All content grounded in published student-facing pages. Module structure follows BIT281 pattern. CLAUDE.md updated and committed 2026-07-27.
-
-- BIT320 (Course Structure Pages, 2026-09-08): Created instructor-only module (position 1, unpublished) "Course Outline and Lecture Notes (Not Published - Instructor Use Only)" with 6 pages: (1) Course Outline (no point duplication—rubrics are authoritative source), (2-6) Five comprehensive unpublished Instructor Notes pages (Weeks 1-5) following v4.0 canonical format (header, learning objectives, key teaching points, course intro notes, lecture content sections, what's current, reference links). Created 6 published student resource pages: Week 1 (2 pages: Log File Fundamentals, Command Execution and Output Processing), Week 2 (Variables and Functions in Bash), Week 3 (sed and awk Text Processing), Week 4 (Error Handling in Python), Week 5 (Tool Selection and Performance Analysis). All pages 1500-2000 words, student-facing scope. Canvas API server verified running at port 8819. All pages follow BIT221 visual template and employ space-hyphen-space instead of em dashes. Target 7-10 student pages met at 6. See courses/BIT320.md for current status.
-
-- PRO221 (Week 4 Complete, 2026-07-23): All 4 pages published: iSCSI (Page 1), Failover Clustering (Page 2), RDS/MPIO (Page 3), WSUS (Page 4). 2C unpublished/flagged NOT WORKING—needs vet/repair or deletion. 4B unpublished/ready—awaiting publish decision. All assignments conform to 3-box template. OT1 keeping Windows Server 2019 File Services (no 2025 replacement available). courses/PRO221.md and CLAUDE.md updated and committed 2026-07-23. See courses/PRO221.md for current status.
-</recent_updates>
+| ITH216 | 3646987 | Networking II | ✅ Complete (2026-09-16) |
 
 ## Course Status
 
-**⚠️ IMPORTANT:** Per-course status, decisions, pending work, and history live in `courses/{CODE}.md` 
-(e.g., `courses/BIT320.md`, `courses/PRO221.md`). Check the relevant file at the start of any session 
+**⚠️ IMPORTANT:** Per-course status, decisions, pending work, and history live in `courses/{CODE}.md`
+(e.g., `courses/BIT320.md`, `courses/PRO221.md`). Check the relevant file at the start of any session
 touching that course. Do NOT duplicate course-specific information in CLAUDE.md.
+
+**Session history** lives in [CHANGELOG.md](CHANGELOG.md), not in this file.
+Log new work there, newest first. Durable technical findings (API behavior,
+template rules, transport issues) belong in the relevant section below instead,
+so they stay in context every session.
 
 ## Non-negotiable standards (all courses)
 - **Canvas is the source of truth**, never an outline doc or prior memory.
   When they diverge, fix the doc to match Canvas, not the reverse.
 - **Read actual source before writing.** Pull live page/assignment content
-  with `get_page_content` / `get_assignment_details` before rewriting —
+  with `get_page_content` / `get_assignment_details` before rewriting -
   never reconstruct from general knowledge.
 - **Fix issues at the source**, not around them.
-- **No em dashes, ever** — they render as `&mdash;` in Canvas. Space-hyphen-space instead.
+- **No em dashes, ever** - they render as `&mdash;` in Canvas. Space-hyphen-space instead.
   Scan for literal Unicode `—`, not the HTML entity.
 - **No point values inside Criteria for Success boxes.**
 - Bullet lists inside the Criteria for Success box: never let an `h3` be
   immediately followed by a `ul` with no paragraph between them (breaks the
   border). Add an intro sentence before each list. The box itself **is** a
-  `<table>` (see Assignment template below) — don't swap it for a `div`, the
+  `<table>` (see Assignment template below) - don't swap it for a `div`, the
   intro paragraph alone is the fix.
 - **Canvas HTML rules:** all styling inline (`<style>` tags are stripped);
   `<strong>` not `font-weight`; `<pre style="white-space: pre-wrap;">` for
-  code; no inline SVG (stripped) — diagrams are uploaded image files
+  code; no inline SVG (stripped) - diagrams are uploaded image files
   referenced via `<img>`.
-- **Don't fabricate Program Outcome language** — source it from verified
+- **Don't fabricate Program Outcome language** - source it from verified
   Canvas content only.
 - If a course has two competing page styles (old-style tables vs. current
   template) surface it and offer to merge/retire the old one rather than
@@ -96,14 +56,14 @@ touching that course. Do NOT duplicate course-specific information in CLAUDE.md.
 
 ## Assignment template (distinct from the page visual template below)
 Assignments use `<table>`-based boxes, not the div-based page callouts.
-Canonical structure is three boxes — Purpose, Task, Criteria for Success —
+Canonical structure is three boxes - Purpose, Task, Criteria for Success -
 standardized 2026-07-21 on BIT351's implementation (the most complete of
 three divergent forms found across courses: BIT221 had no Task box, BIT281
 had an unstyled `<h3>Task</h3>` heading plus a div-based, not table-based,
 Criteria box). Verified against live BIT221 (2B - Configure Active Directory
 and DNS) and BIT351 (1A - Proxmox VE Setup and Configuration) content.
 
-**HTML Table Structure (Correct Format — Updated 2026-09-13):**
+**HTML Table Structure (Correct Format - Updated 2026-09-13):**
 All assignment boxes use proper table structure with `border-collapse: collapse;`
 and `<td>` padding instead of `cellpadding`. This ensures consistent rendering
 across browsers and Canvas versions:
@@ -121,26 +81,26 @@ across browsers and Canvas versions:
 ```
 
 **Box Specifications:**
-- Purpose box: `<table style="background-color: #eaf4fb; width: 100%; border-collapse: collapse; border: 2px solid #2980b9;">`, 
-  `<h3 style="color: #1a5276; margin-top: 0;">Purpose</h3>` — scenario
+- Purpose box: `<table style="background-color: #eaf4fb; width: 100%; border-collapse: collapse; border: 2px solid #2980b9;">`,
+  `<h3 style="color: #1a5276; margin-top: 0;">Purpose</h3>` - scenario
   paragraph (real-world framing, not just a restatement of the task), then
   Course Learning Outcomes and Program Outcomes lists.
-- Task box: `<table style="background-color: #fef9e7; width: 100%; border-collapse: collapse; margin-top: 15px; border: 2px solid #d4ac0d;">`, 
-  `<h3 style="color: #9a7d0a; margin-top: 0;">Task</h3>` — one concrete
+- Task box: `<table style="background-color: #fef9e7; width: 100%; border-collapse: collapse; margin-top: 15px; border: 2px solid #d4ac0d;">`,
+  `<h3 style="color: #9a7d0a; margin-top: 0;">Task</h3>` - one concrete
   paragraph stating what the student will build/configure/produce, distinct
   from Purpose's why-it-matters framing and from the detailed step-by-step
   instructions that follow it. Keep it short even on trivial assignments
   (a single sentence is fine); the value is the scanability of a why/what
   pair before the procedural detail starts, not box length.
-- Criteria for Success box: `<table style="background-color: #eafaf1; width: 100%; border-collapse: collapse; margin-top: 15px; border: 2px solid #27ae60;">`, 
-  `<h3 style="color: #1e8449; margin-top: 0;">Criteria for Success</h3>` — intro sentence, 
+- Criteria for Success box: `<table style="background-color: #eafaf1; width: 100%; border-collapse: collapse; margin-top: 15px; border: 2px solid #27ae60;">`,
+  `<h3 style="color: #1e8449; margin-top: 0;">Criteria for Success</h3>` - intro sentence,
   then one `<ul>` of grading criteria.
 - Screenshot-required marker: `<img src="https://img.icons8.com/carbon-copy/2x/camera.png"
   alt="Screenshot required" width="25" height="25" loading="lazy">` after
   any step needing one.
 - Inline hint: `<span style="background-color: #ffff00;"><strong>Hint:</strong></span>`.
 
-## Visual template (BIT221 standard, reference for all courses — lecture/resource pages)
+## Visual template (BIT221 standard, reference for all courses - lecture/resource pages)
 - Wrapper: `max-width: 860px`, `color: #2C2C2A`, system font stack.
 - Header card: beige `#F1EFE8` / border `#B4B2A9`, 8px radius.
 - Learning objectives: purple `#EEEDFE` / `#534AB7`, 2-col grid, checkmark tiles.
@@ -150,7 +110,7 @@ across browsers and Canvas versions:
   `#E6F1FB` / `#185FA5` (info).
 - Code blocks: dark `#2C2C2A` background, Catppuccin-style syntax colors.
 - "Applied" section header (hands-on/code intro): dark variant, bg `#2C2C2A`,
-  left-border `#5DCAA5`, title text `#9FE1CB` — distinct from the light green
+  left-border `#5DCAA5`, title text `#9FE1CB` - distinct from the light green
   section-header bar above.
 - In-class activity steps: numbered rows, dark `#444441` number marker,
   alternating `#ffffff` / `#F1EFE8` step backgrounds.
@@ -163,36 +123,96 @@ across browsers and Canvas versions:
   deleting/merging content, rubric point changes).
 - Keep new content unpublished until reviewed.
 - Verify current Canvas state (`list_pages`, `list_assignments`,
-  `get_course_structure`) before authoring in a session — don't assume prior
+  `get_course_structure`) before authoring in a session - don't assume prior
   session state still holds.
 - Use `canvas-api` MCP tools for all direct edits, not HTML for manual pasting.
+- At the end of any session touching `CLAUDE.md`, `courses/`, or repo content,
+  remind Corey to commit and suggest a commit message.
+- **The GitHub repo is public** (https://github.com/coreyburk/canvas-course-updater).
+  Never commit credentials, student data, or copyrighted course material.
+  Textbooks live in `textbooks/`, which is gitignored.
+
+## Repo layout
+| Path | Holds |
+|---|---|
+| `CLAUDE.md` | Standing rules. Durable findings belong here, not in the changelog. |
+| `CHANGELOG.md` | Session history, newest first. |
+| `courses/{CODE}.md` | Per-course status, decisions, pending work. Authoritative. |
+| `courses/{CODE}/` | Per-course reference material (lab briefs, audits, training docs). |
+| `tools/` | Reusable scripts, safe against any course. |
+| `archive/scripts/` | Spent one-off scripts. Course IDs hardcoded, read before reuse. |
+| `quizzes/{CODE}/` | Quiz XML for manual Canvas import. |
+| `textbooks/` | Gitignored. Copyrighted, local only. |
+
+### Tools
+- `tools/emdash_sweep.py --course <id>` - finds and fixes literal em dashes in
+  assignment names/descriptions and page bodies. Dry run by default, `--apply`
+  writes. Hits are handled **individually**: prose is fixed even when the same
+  item has another em dash inside a `<pre>` block, and the one inside `<pre>`
+  is reported and left. After each write it re-fetches and compares the item's
+  `<pre>` blocks against the originals, so damage to a code sample is reported
+  as `PRE CHANGED` rather than discovered later.
+  `--include-pre` also rewrites em dashes inside code blocks. Only use it after
+  reading the `[CODE]` context lines from a dry run and confirming none is part
+  of an actual command; it disables the `<pre>` integrity check by design, so
+  verify separately. Page titles are never renamed, since a slug change breaks
+  links - though note that a slug only moves if the NEW title normalizes
+  differently. Canvas strips an em dash from a slug exactly as it does a
+  hyphen, so swapping one for the other leaves the slug untouched; verified on
+  BIT320's `quiz-specifications-to-be-created` (2026-11-09). Check the slug
+  before assuming a rename is unsafe. On Windows prefix with
+  `PYTHONIOENCODING=utf-8` - but note that
+  `python -I` silently ignores that, because isolated mode implies `-E`. Reads
+  credentials from the canvas-mcp `.env`.
+- `tools/audit_canvas_pages.py` - page coverage audit. Course ID is hardcoded;
+  edit before reuse.
 
 ## Known Canvas API limitations
 - `course_identifier` needs the numeric ID, not the course code string.
-- **⚠️ CRITICAL: `edit_page_content` REPLACES ENTIRE PAGE** — Every call to `edit_page_content` 
-  completely replaces the page content. DO NOT send multiple partial updates expecting them 
-  to accumulate — only the last update persists, all previous content is lost. **ALWAYS build 
-  the complete page HTML as one monolithic block and send in a SINGLE API call.** Lesson learned 
-  2026-09-15 ITH216 expansion: sending 6+ incremental updates (thinking they'd stack) wasted 
-  tokens and subscription cost, resulting in only the final update persisting. Always verify 
+- **⚠️ CRITICAL: `edit_page_content` REPLACES ENTIRE PAGE** - Every call to `edit_page_content`
+  completely replaces the page content. DO NOT send multiple partial updates expecting them
+  to accumulate - only the last update persists, all previous content is lost. **ALWAYS build
+  the complete page HTML as one monolithic block and send in a SINGLE API call.** Lesson learned
+  2026-09-15 ITH216 expansion: sending 6+ incremental updates (thinking they'd stack) wasted
+  tokens and subscription cost, resulting in only the final update persisting. Always verify
   the complete HTML includes all sections before sending.
-- `update_assignment` / `edit_page_content` do full replacement — always
+- `update_assignment` / `edit_page_content` do full replacement - always
   carry forward the complete current HTML, never a partial patch.
 - `points_possible` on quiz-backed assignments is derived from question
-  totals — cannot be changed via API, must edit in the Canvas UI.
+  totals - cannot be changed via API, must edit in the Canvas UI.
 - Quiz titles/points/content: read-only via API, all edits manual.
+- **Rubrics ARE writable via the API** (verified 2026-11-09 on a throwaway rubric, created, updated and deleted). Title, points, criterion descriptions, long descriptions and rating
+  levels can all be changed with `PUT /courses/:id/rubrics/:rubric_id` using form-encoded
+  `rubric[criteria][N][...]` parameters. The read-only rule above applies to quizzes, not
+  rubrics; nothing had ever established that rubrics were read-only. Quiz **due dates** are
+  also settable (`PUT /courses/:id/quizzes/:id` with `quiz[due_at]`), just not their titles,
+  points or questions. Caveat: a rubric that already has assessments against it may refuse
+  edits, so check for submissions before changing one mid-term.
+- **A rubric PUT that omits criteria does NOT destroy them** (verified 2026-11-09 on a
+  throwaway with three criteria: a title-only PUT left all three and the point total
+  intact). So renaming a rubric is safe on its own. Changing one criterion is not proven
+  safe as a partial send, so resend every criterion with its full ratings when editing one.
+- Rubric `long_description` values are stored as HTML, so an apostrophe comes back as
+  `&#39;`. That is correct and renders properly; it is not double-escaping.
 - `add_module_item` needs the assignment's `content_id`, not the module item ID.
 - Repositioning a module item: `update_module_item` with target position,
   plus a separate call on the item it displaced. Don't re-call
-  `add_module_item` with a new position — creates a duplicate.
+  `add_module_item` with a new position - creates a duplicate.
+- **Module item repositioning is unreliable via `position`** (2026-11-07): Setting an item's `position` to a target index frequently reorders OTHER items unpredictably - in one case it moved the Quiz subheader above Resources. Setting several items to the same target position in sequence made it worse. **Reliable technique:** rebuild the tail of the module by setting each item's `position` to the LAST index, one call per item, in the desired final order. Every item lands at the end in turn, so the final sequence is exactly the order you issued the calls in. Always verify with `list_module_items` afterwards; do not assume the reorder did what you asked.
+- **A post-write re-fetch can return stale content** (2026-11-09): reading an
+  item back immediately after a successful PUT sometimes returns the PRE-write
+  body, so a verification step can report a false failure. Seen on BIT360
+  "Lecture Notes - Week 9.2": the re-fetch said 2 em dashes remained, while an
+  independent read moments later showed 0 and the write had in fact landed.
+  Re-check independently before treating a post-write verification as a failure.
 - `delete_module` auto-removes its module items; `delete_module_item` only
-  unlinks a page/assignment, doesn't delete the underlying content — use
+  unlinks a page/assignment, doesn't delete the underlying content - use
   `delete_page` separately if the content itself should go.
 
 ## MCP transport & server (canvas-api)
 - `canvas-api` runs via **stdio directly** from `C:\Users\cburk\canvas-mcp`.
   Each client (Claude Code, Claude Desktop) spawns its own canvas-mcp process.
-- **Server code:** `C:\Users\cburk\canvas-mcp` — all MCP tools resolve from here.
+- **Server code:** `C:\Users\cburk\canvas-mcp` - all MCP tools resolve from here.
 - **Configuration:**
   - Claude Code: `.mcp.json` points to `C:\Users\cburk\canvas-mcp` with command
     `python -m canvas_mcp.server` (stdio transport, no HTTP).
@@ -209,15 +229,15 @@ across browsers and Canvas versions:
 
 - **⚠️ CRITICAL: fastmcp version constraint (2026-09-16 discovery)**
   - canvas-mcp `pyproject.toml` specifies `fastmcp>=2.14.0,<3` (fastmcp 2.x only)
-  - fastmcp 3.x is INCOMPATIBLE with canvas-mcp — causes `ImportError: cannot import name 'IdentityAssertionParams'` and CONNECTION_CLOSED in Claude Code
+  - fastmcp 3.x is INCOMPATIBLE with canvas-mcp - causes `ImportError: cannot import name 'IdentityAssertionParams'` and CONNECTION_CLOSED in Claude Code
   - **Root cause:** `uv.lock` was generated with fastmcp 3.1.1, violating the <3 constraint. When the venv is recreated (or when Claude Code spawns the MCP server), it pulls from uv.lock which pins the broken version.
   - **Solution:** Delete `uv.lock` and regenerate with `uv sync` to respect the <3 constraint, OR manually reinstall with `pip install --force-reinstall 'fastmcp<3'`
 
 - **⚠️ CRITICAL: Event loop closure during server startup (2026-09-23 discovery, FIX COMMITTED)**
   - **Symptom:** "Event loop is closed" error on ALL Canvas API requests (even simple list_courses)
   - **Root cause:** `src/canvas_mcp/server.py` called `asyncio.run(_validate_token())` during startup to validate Canvas credentials early. This creates a NEW event loop, runs the validation function, and IMMEDIATELY closes the loop when the function exits. When `mcp.run()` starts afterward, it tries to create/use the already-closed event loop, causing all requests to fail with "Event loop is closed."
-  - **Why it appeared:** Validating credentials at startup seemed like a good safety check, but `asyncio.run()` by design creates and closes an event loop for that one function. FastMCP's `mcp.run()` creates and manages its OWN event loop — the early `asyncio.run()` closure corrupted this lifecycle.
-  - **Fix (committed 2026-09-23 b7905af):** Removed early token validation from `server.py` lines 276-290. Let the server validate credentials on **first request** instead. This allows `mcp.run()` to initialize a fresh event loop without prior closure corruption. Trade-off: credential errors now surface on first API call (not startup), but this is acceptable — better a working server than one that fails on all requests.
+  - **Why it appeared:** Validating credentials at startup seemed like a good safety check, but `asyncio.run()` by design creates and closes an event loop for that one function. FastMCP's `mcp.run()` creates and manages its OWN event loop - the early `asyncio.run()` closure corrupted this lifecycle.
+  - **Fix (committed 2026-09-23 b7905af):** Removed early token validation from `server.py` lines 276-290. Let the server validate credentials on **first request** instead. This allows `mcp.run()` to initialize a fresh event loop without prior closure corruption. Trade-off: credential errors now surface on first API call (not startup), but this is acceptable - better a working server than one that fails on all requests.
   - **Prevention:** **Never call `asyncio.run()` before `mcp.run()` in the same startup process.** If startup validation is needed in future, do it WITHIN the event loop that `mcp.run()` creates, not before. FastMCP manages the event loop; external `asyncio.run()` calls will corrupt it.
   - **Debugging reference:** Symptom appears on the SECOND tool call (first one may succeed if it's simple enough), because the error propagates inconsistently depending on timing.
 
@@ -225,9 +245,9 @@ across browsers and Canvas versions:
   - **Problem:** stdio MCP is designed for 1:1 client-to-process connections (NOT multiplexing). Running two Claude Code windows simultaneously causes both to spawn separate `canvas-mcp` processes that fight over the same Canvas API credentials.
   - **Symptom:** `CONNECTION_CLOSED` errors when multiple contexts are active
   - **Root cause:** Each context spawns its own subprocess; both attempt Canvas API calls using the same token; race conditions and credential conflicts result
-  - **Why HTTP was "unreliable":** The HTTP server mode had the same problem—multiple simultaneous clients connecting to one server caused concurrency conflicts (race conditions, dropped connections, incomplete responses). When switched to stdio, the problem appeared "fixed" because single-context workflows eliminated the conflict scenario.
+  - **Why HTTP was "unreliable":** The HTTP server mode had the same problem - multiple simultaneous clients connecting to one server caused concurrency conflicts (race conditions, dropped connections, incomplete responses). When switched to stdio, the problem appeared "fixed" because single-context workflows eliminated the conflict scenario.
   - **Workaround:** Keep only ONE active Claude Code window using Canvas API at a time. Close extra windows before Canvas operations. Sequential (not concurrent) usage is the intended pattern.
-  - **Do NOT attempt:** Running HTTP server mode to "fix" this—it's deprecated precisely because it had the same underlying issue.
+  - **Do NOT attempt:** Running HTTP server mode to "fix" this - it's deprecated precisely because it had the same underlying issue.
   - **Future improvement:** Would require a proper connection pooling layer or API proxy with request serialization, but not worth the complexity for single-developer use.
   - **Prevention:** Keep `uv.lock` out of the repo if it can't be auto-enforced, or ensure any dependency updates respect the pyproject.toml constraint
 

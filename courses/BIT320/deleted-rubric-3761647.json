@@ -1,0 +1,82 @@
+{
+  "id": 3761647,
+  "title": "stepping script",
+  "context_id": 3644698,
+  "context_type": "Course",
+  "points_possible": 25.0,
+  "reusable": false,
+  "public": false,
+  "read_only": false,
+  "free_form_criterion_comments": true,
+  "hide_score_total": false,
+  "data": [
+    {
+      "id": "_8760",
+      "description": "Allowed constructs",
+      "long_description": "The script uses ONLY the echo command, while loops, string ${...} and math operators $((...)).",
+      "points": 10.0,
+      "mastery_points": null,
+      "ignore_for_scoring": null,
+      "title": "Allowed constructs",
+      "criterion_use_range": null,
+      "ratings": [
+        {
+          "description": "Full Marks",
+          "long_description": null,
+          "id": "_9888",
+          "criterion_id": "_8760",
+          "points": 10.0
+        },
+        {
+          "description": "No Marks",
+          "long_description": null,
+          "id": "_4670",
+          "criterion_id": "_8760",
+          "points": 0.0
+        }
+      ]
+    },
+    {
+      "id": "_6131",
+      "description": "It works",
+      "long_description": "The script functions as designed and demonstrated in the example.",
+      "points": 15.0,
+      "mastery_points": null,
+      "ignore_for_scoring": null,
+      "title": "It works",
+      "criterion_use_range": null,
+      "ratings": [
+        {
+          "description": "Full Marks",
+          "long_description": null,
+          "id": "_2225",
+          "criterion_id": "_6131",
+          "points": 15.0
+        },
+        {
+          "description": "No Marks",
+          "long_description": null,
+          "id": "_7183",
+          "criterion_id": "_6131",
+          "points": 0.0
+        }
+      ]
+    }
+  ],
+  "rating_order": "descending",
+  "button_display": "numeric",
+  "associations": [
+    {
+      "id": 7594178,
+      "rubric_id": 3761647,
+      "association_type": "Course",
+      "association_id": 3644698,
+      "use_for_grading": false,
+      "summary_data": null,
+      "purpose": "unknown",
+      "hide_score_total": null,
+      "hide_points": false,
+      "hide_outcome_results": false
+    }
+  ]
+}

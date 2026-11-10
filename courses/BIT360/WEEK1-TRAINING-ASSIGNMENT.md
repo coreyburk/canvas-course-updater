@@ -72,12 +72,12 @@ After completing this training, students will:
 
 Submissions are evaluated on:
 
-1. **Training Completion (20 pts)** — Module is fully completed (100% progress in LinkedIn Learning)
-2. **Course Identification (15 pts)** — Screenshot clearly shows course title "IT and Cybersecurity Risk Management Essential Training"
-3. **Completion Evidence (15 pts)** — Screenshot displays completion indicator (100% progress, checkmark, or badge)
-4. **Image Quality (15 pts)** — Screenshot is clear and readable with minimum 800x600 resolution
-5. **Account Verification (10 pts)** — Screenshot includes identifying information linking to student's LinkedIn account
-6. **Timeliness (5 pts)** — Submission completed and uploaded before assignment due date
+1. **Training Completion (20 pts)** - Module is fully completed (100% progress in LinkedIn Learning)
+2. **Course Identification (15 pts)** - Screenshot clearly shows course title "IT and Cybersecurity Risk Management Essential Training"
+3. **Completion Evidence (15 pts)** - Screenshot displays completion indicator (100% progress, checkmark, or badge)
+4. **Image Quality (15 pts)** - Screenshot is clear and readable with minimum 800x600 resolution
+5. **Account Verification (10 pts)** - Screenshot includes identifying information linking to student's LinkedIn account
+6. **Timeliness (5 pts)** - Submission completed and uploaded before assignment due date
 
 **Total: 80 points**
 
@@ -85,7 +85,7 @@ Submissions are evaluated on:
 
 ## Grading Logic
 
-- **80 pts (100%):** Submission meets all criteria — course completed, clear screenshot, identifiable student, submitted on time
+- **80 pts (100%):** Submission meets all criteria - course completed, clear screenshot, identifiable student, submitted on time
 - **65-79 pts (81-99%):** Submission mostly complete but missing minor detail (e.g., slightly blurry image, account info barely visible, slightly late submission)
 - **50-64 pts (63-80%):** Submission incomplete or hard to verify (e.g., course title not visible, progress not clear)
 - **Below 50 pts:** No valid proof of completion or not submitted
@@ -95,9 +95,9 @@ Submissions are evaluated on:
 ## Alignment to Course Content
 
 **Module 1 Objectives Addressed:**
-- ✅ Information Security — Understanding risk as core security concern
-- ✅ Risk Management — Frameworks and decision-making for risk prioritization
-- ✅ Contingency Planning — Risk assessment informs planning decisions
+- ✅ Information Security - Understanding risk as core security concern
+- ✅ Risk Management - Frameworks and decision-making for risk prioritization
+- ✅ Contingency Planning - Risk assessment informs planning decisions
 
 **Week 1 Assignment Context:**
 - **1A (SysInternals):** Hands-on tool practice
@@ -178,9 +178,9 @@ Last Updated: 2026-09-18
 
 ## Related Resources
 
-- [BIT360 Week 1 Student Pages](https://lms.neumont.edu/courses/3644702/pages) — InfoSec Fundamentals, SysInternals Tools, Lab Setup
-- [Training Assignment Playbook SKILL](./.claude/skills/training-assignment-playbook.md) — Template for future training assignments
-- [BIT360 Week 1 Lean Training Approach](./BIT360-WEEK1-TRAINING-LEAN.md) — Context on video selection and workload balance
+- [BIT360 Week 1 Student Pages](https://lms.neumont.edu/courses/3644702/pages) - InfoSec Fundamentals, SysInternals Tools, Lab Setup
+- [Training Assignment Playbook SKILL](../../.claude/skills/training-assignment-playbook/SKILL.md) - Template for future training assignments
+- [BIT360 Week 1 Lean Training Approach](./WEEK1-TRAINING-LEAN.md) - Context on video selection and workload balance
 
 ---
 

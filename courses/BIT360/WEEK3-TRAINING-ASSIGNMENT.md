@@ -68,12 +68,12 @@ After completing this training, students will:
 
 Submissions are evaluated on:
 
-1. **Training Completion (20 pts)** — Module is fully completed (100% progress in LinkedIn Learning)
-2. **Course Identification (15 pts)** — Screenshot clearly shows course title "Backup and Recovery with Veeam"
-3. **Completion Evidence (15 pts)** — Screenshot displays completion indicator (100% progress, checkmark, or badge)
-4. **Image Quality (15 pts)** — Screenshot is clear and readable with minimum 800x600 resolution
-5. **Account Verification (10 pts)** — Screenshot includes identifying information linking to student's LinkedIn account
-6. **Timeliness (5 pts)** — Submission completed and uploaded before assignment due date
+1. **Training Completion (20 pts)** - Module is fully completed (100% progress in LinkedIn Learning)
+2. **Course Identification (15 pts)** - Screenshot clearly shows course title "Backup and Recovery with Veeam"
+3. **Completion Evidence (15 pts)** - Screenshot displays completion indicator (100% progress, checkmark, or badge)
+4. **Image Quality (15 pts)** - Screenshot is clear and readable with minimum 800x600 resolution
+5. **Account Verification (10 pts)** - Screenshot includes identifying information linking to student's LinkedIn account
+6. **Timeliness (5 pts)** - Submission completed and uploaded before assignment due date
 
 **Total: 80 points**
 
@@ -82,10 +82,10 @@ Submissions are evaluated on:
 ## Alignment to Course Content
 
 **Module 3 Objectives Addressed:**
-- ✅ Contingency Strategies for IR/DR/BC — Backup and replication implementation
-- ✅ Safeguarding Information — Backup types, retention policies, cloud integration
-- ✅ Data and Application Resumption — VM and file recovery procedures
-- ✅ Backups/Replication/Recovery — Veeam-based data protection architecture
+- ✅ Contingency Strategies for IR/DR/BC - Backup and replication implementation
+- ✅ Safeguarding Information - Backup types, retention policies, cloud integration
+- ✅ Data and Application Resumption - VM and file recovery procedures
+- ✅ Backups/Replication/Recovery - Veeam-based data protection architecture
 
 **Week 3 Assignment Context:**
 - **3A (Hyper-V Migration and Replication):** Hands-on implementation of backup and replication using Veeam concepts from this training

@@ -1,0 +1,7 @@
+{
+  "services": [
+    "W32Time",
+    "Spooler",
+    "NoSuchServiceXYZ"
+  ]
+}

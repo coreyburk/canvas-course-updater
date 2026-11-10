@@ -26,7 +26,7 @@ These pages were created before we developed the comprehensive Format 2 Weeks 1-
 
 1. **Thin Coverage vs. Comprehensive:** Old pages average 1-2 pages of content. New comprehensive pages are 2-3 pages, 2600-3500 words each.
 2. **Outdated Format:** Old pages use simple reference format; new pages use Format 2 Modern Minimal (header card, learning objectives grid, green section headers, code blocks, best practices callouts).
-3. **Lack of Verification Commands & Real Output:** Old notes omit show command output, debug traces, and sample configurations—critical for labs.
+3. **Lack of Verification Commands & Real Output:** Old notes omit show command output, debug traces, and sample configurations - critical for labs.
 4. **No Troubleshooting Procedures:** Old pages lack systematic Layer 1-3 troubleshooting approach that new pages provide.
 5. **Real-World Context Missing:** New pages include enterprise scenarios, scalability considerations, real deployments (ISP BGP, multi-site networks, IPv6 adoption trends).
 6. **Duplicated Effort:** Maintaining both old and new creates confusion (which should students use?) and wastes maintenance effort.
@@ -45,16 +45,16 @@ These pages were created before we developed the comprehensive Format 2 Weeks 1-
 
 | Week | Page 1 | Page 2 | Page 3 | Canvas IDs | Status |
 |------|--------|--------|--------|------------|--------|
-| **Week 1** | Foundational Concepts (Router/Switch Basics, CLI, Interfaces) | Routing Fundamentals | — | (Not yet created) | **GAP** |
+| **Week 1** | Foundational Concepts (Router/Switch Basics, CLI, Interfaces) | Routing Fundamentals | - | (Not yet created) | **GAP** |
 | **Week 2** | IOS Fundamentals and Device Management | Security: Console/VTY/Enable Auth | IOS Backup/Restore | (Not yet created) | **GAP** |
-| **Week 3** | VLAN Fundamentals and Configuration | Spanning Tree Protocol | — | (Not yet created) | **GAP** |
+| **Week 3** | VLAN Fundamentals and Configuration | Spanning Tree Protocol | - | (Not yet created) | **GAP** |
 | **Week 4** | EtherChannel Link Aggregation | GRE Tunnels | VPN: SSL vs. IPSec | (Not yet created) | **GAP** |
-| **Week 5** | WAN Serial: HDLC and PPP | PPP Config & Management | — | (Not yet created) | **GAP** |
-| **Week 6** | EIGRP Fundamentals | EIGRP Advanced Topics | — | **28706855, 28706856** | ✅ Published |
-| **Week 7** | OSPF Fundamentals | OSPF Advanced Multi-Area | — | **28706857, 28706858** | ✅ Published |
-| **Week 8** | Wireless: Cisco 1242 AP Setup | Wireless Multi-AP & Optimization | — | **28706870, 28706871** | ✅ Published |
-| **Week 9** | IPv6 Fundamentals & Static Routing | IPv6 EIGRP Dynamic Routing | — | **40329310, 40329311** | ✅ Published |
-| **Week 10** | BGP Fundamentals | BGP Advanced Topics | — | **40329289, 40329288** | ✅ Published |
+| **Week 5** | WAN Serial: HDLC and PPP | PPP Config & Management | - | (Not yet created) | **GAP** |
+| **Week 6** | EIGRP Fundamentals | EIGRP Advanced Topics | - | **28706855, 28706856** | ✅ Published |
+| **Week 7** | OSPF Fundamentals | OSPF Advanced Multi-Area | - | **28706857, 28706858** | ✅ Published |
+| **Week 8** | Wireless: Cisco 1242 AP Setup | Wireless Multi-AP & Optimization | - | **28706870, 28706871** | ✅ Published |
+| **Week 9** | IPv6 Fundamentals & Static Routing | IPv6 EIGRP Dynamic Routing | - | **40329310, 40329311** | ✅ Published |
+| **Week 10** | BGP Fundamentals | BGP Advanced Topics | - | **40329289, 40329288** | ✅ Published |
 
 ### COVERAGE GAPS IDENTIFIED
 
@@ -63,10 +63,10 @@ These pages were created before we developed the comprehensive Format 2 Weeks 1-
 According to ITH216.md, Weeks 1-5 comprehensive pages exist but Canvas IDs are not listed. Verify actual publication status:
 
 - **Week 1:** Pages created? (Foundational concepts, routing intro)
-- **Week 2:** 3 pages mentioned (IOS Fundamentals, Security, IOS Backup) — Canvas IDs needed
-- **Week 3:** 2 pages mentioned (VLAN Fundamentals, STP) — Canvas IDs needed
-- **Week 4:** 3 pages mentioned (EtherChannel, GRE, VPN) — Canvas IDs needed
-- **Week 5:** 2 pages mentioned (WAN Serial/HDLC/PPP, PPP Config) — Canvas IDs needed
+- **Week 2:** 3 pages mentioned (IOS Fundamentals, Security, IOS Backup) - Canvas IDs needed
+- **Week 3:** 2 pages mentioned (VLAN Fundamentals, STP) - Canvas IDs needed
+- **Week 4:** 3 pages mentioned (EtherChannel, GRE, VPN) - Canvas IDs needed
+- **Week 5:** 2 pages mentioned (WAN Serial/HDLC/PPP, PPP Config) - Canvas IDs needed
 
 **Action Required:** Verify Weeks 1-5 pages are in Canvas and update documentation with Canvas IDs. If not published, publish them immediately.
 
@@ -161,8 +161,8 @@ According to ITH216.md, Weeks 1-5 comprehensive pages exist but Canvas IDs are n
 
 ### **KEEP:**
 1. ✅ All 16 new comprehensive Weeks 1-10 student resource pages (published)
-2. ✅ Home (Front Page) — navigation
-3. ✅ Remote Learning — general course info (if current)
+2. ✅ Home (Front Page) - navigation
+3. ✅ Remote Learning - general course info (if current)
 
 ### **RETIRE:**
 1. ❌ Definitions: Cisco IOS (superseded by Week 2 comprehensive pages)
@@ -173,14 +173,14 @@ According to ITH216.md, Weeks 1-5 comprehensive pages exist but Canvas IDs are n
 6. ❌ Guides: 3 Cisco Configuration Guides (superseded by Weeks 2-10 Pages)
 
 ### **VERIFY & PUBLISH:**
-1. ⚠️ Weeks 1-5 Canvas page IDs — document in ITH216.md if not already done
+1. ⚠️ Weeks 1-5 Canvas page IDs - document in ITH216.md if not already done
 2. ⚠️ Confirm all 16 comprehensive pages are linked in week modules (students can access them)
 
 ### **OPTIONAL ENHANCEMENTS (Lower Priority):**
-1. 💡 Access Control Lists (ACL) reference page — useful for BGP filtering, WAN security
-2. 💡 Network Troubleshooting Methodology — OSI Layer approach for beginners
-3. 💡 Subnetting Reference — publish if students new to CIDR math
-4. 💡 IPv6 Addressing Design (Enterprise Planning) — useful for advanced scenarios
+1. 💡 Access Control Lists (ACL) reference page - useful for BGP filtering, WAN security
+2. 💡 Network Troubleshooting Methodology - OSI Layer approach for beginners
+3. 💡 Subnetting Reference - publish if students new to CIDR math
+4. 💡 IPv6 Addressing Design (Enterprise Planning) - useful for advanced scenarios
 
 ### **OVERALL ASSESSMENT:**
 
@@ -190,7 +190,7 @@ According to ITH216.md, Weeks 1-5 comprehensive pages exist but Canvas IDs are n
 
 **Gaps:** 🟡 **MINIMAL** (Only optional enhancements like ACLs reference, troubleshooting methodology)
 
-**Redundancy:** 🔴 **HIGH WITH OLD PAGES** — 9 older pages are now obsolete and should be retired to prevent student confusion.
+**Redundancy:** 🔴 **HIGH WITH OLD PAGES** - 9 older pages are now obsolete and should be retired to prevent student confusion.
 
 ---
 
