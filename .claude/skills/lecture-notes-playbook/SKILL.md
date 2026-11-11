@@ -22,13 +22,14 @@ This document defines the canonical format for **instructor lecture notes** acro
 - **Comprehensive coverage is the goal.** Ample content ensures instructors have materials to teach thoroughly and students have depth to learn from.
 
 ---
-## Step 0 - Universal Gotchas
-- Resolve the course to its numeric Canvas ID before any API call
+## Step 0 - Universal Gotchas & Low-Context Workflow
+- Resolve the course to its numeric Canvas ID or code (`BIT221`, `BIT360`, etc.)
 - Canvas strips `<style>` tags and raw `<svg>` - all styling inline via `style=` attributes
-- Pages created unpublished until approved
+- **Pages created unpublished until approved**
 - No em dashes (use space-hyphen-space instead)
-- Never reconstruct content from memory - pull actual source/verify external facts via WebSearch
+- Never reconstruct content from memory - pull actual source/verify external facts
 - Every lecture note is **independent and self-contained**. No references to other lecture notes or "Looking Ahead" sections.
+- **Avoid generating raw inline HTML in context or passing 30 KB bodies through MCP:** Author in Markdown (`template: lecture`), compile via `python tools/canvas_build.py <note.md> -o scratchpad/<note>.html`, and push via `python tools/canvas_sync.py create-page` or `push-page`. When authoring multiple lecture notes for a week, delegate each page to a separate subagent so HTML drafts do not accumulate in the main session context.
 
 ---
 ## Step 1 - Page Structure (CANONICAL FORMAT)

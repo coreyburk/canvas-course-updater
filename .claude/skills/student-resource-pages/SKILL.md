@@ -1,211 +1,150 @@
 ---
 name: student-resource-pages
-description: Use when building Canvas pages for student-facing lecture, reference, or concept documentation (published pages in weekly course modules). Distinct from instructor teaching notes.
+description: Use when building or updating Canvas student resource pages (student-facing lecture, reference, or concept documentation in weekly course modules). Distinct from instructor lecture notes and lab notes.
 ---
 
 # Canvas Student Resource Pages Playbook
 
-**Version:** 1.0  
-**Last Updated:** 2026-07-27
+**Version:** 2.0  
+**Last Updated:** 2026-11-11  
+**Canonical Examples:**
+- **Format 1 (BIT221 Standard):** `Week 1 | Student Page 1 - Log File Fundamentals` (BIT320) / `Week 2 | Page 1 - Active Directory Domain Structure` (BIT221)
+- **Format 2 (Modern Minimal):** `Week 6 | Page 1 - IP Routing Fundamentals and Static Routing` (ITH216) / `Week 1.1: InfoSec Fundamentals & Risk Assessment` (BIT360)
 
 ---
 
 ## Overview
 
-Student resource pages are **published, student-facing** pages that support learning objectives and assignments. They differ fundamentally from instructor teaching notes in scope, audience, and content depth.
+Student resource pages are **student-facing** pages placed in weekly course modules that enable independent learning and support weekly assignments. They answer **"Why does this matter?"** and **"How do I do this?"** rather than "Here's what the instructor will teach."
 
 ---
 
-## Step 0 - Gotchas
+## Step 0 - Universal Gotchas & Low-Context Workflow
 
-- Resolve course to numeric Canvas ID first
-- Always publish (unless explicitly marked instructor-only)
-- Place in course module by week (positions 2+), never in instructor-only module
-- No time estimates in headers
-- No em dashes (space-hyphen-space only)
-- Canvas strips `<style>` tags and inline SVG - all styling inline via `style=` attributes
-- No point values, rubric references, or grading criteria in content
-
----
-
-## Step 1 - Student-Focused Scope
-
-Student pages are **1500–2000 words per topic**, optimized for student comprehension and assignment support, NOT instructor preparation.
-
-**CRITICAL SCOPE NOTE (Updated 2026-09-17):**
-- **DO NOT limit student resource pages to one page per week.** Create multiple pages per week by topic as needed.
-- Pages should be organized by **topic granularity**, not by week alone.
-- A single week may warrant **2-4+ comprehensive resource pages** depending on topic complexity and assignment scope.
-- **Example:** Week 1 of BIT360 could span: InfoSec Overview (1 page), Process Explorer Guide (1 page), Network Monitoring with TCPView (1 page), Sysmon Event Logging (1 page), Virtualization Setup Guide (1 page).
-- **Comprehensive coverage is the goal.** Each topic deserves depth sufficient for students to master it independently before attempting assignments.
-- Pages within the same week should cross-reference each other naturally but remain independently readable.
-
-**Content must include:**
-- Learning objectives (what students will do, not why instructors need to teach it)
-- "Why This Matters" section (motivation, relevance to career/assignments)
-- Core concepts grounded in student examples (not instructor troubleshooting)
-- Practical procedures students can execute themselves (step-by-step numbered tables)
-- Real-world narratives with specific details (timestamps, process names, event IDs, incident timelines)
-- Worked examples showing correct approach (before/after comparisons, code snippets, screenshots)
-- Comparison tables (trade-offs between options: VirtualBox vs. Hyper-V, risk levels, approaches)
-- Common mistakes section (3-5+ detailed mistakes with "Why It's Wrong" and "How to Fix" guidance)
-- Troubleshooting tables for labs/procedures (Problem/Cause/Solution format)
-- Security framed as "understand this risk" or "recognize this pattern," not "how to exploit this"
-
-**Content must NOT include:**
-- Why students struggle / instructor pedagogical notes
-- Expected output values for grading purposes (only for learning context)
-- Teaching Agenda or instructor facilitation guides
-- Grading rubrics or success criteria (those belong in assignments)
-- Facilitation guides or discussion answers
+- **Keep new pages UNPUBLISHED until reviewed by Corey** (`CLAUDE.md` standing rule). Once approved, publish and verify module placement.
+- **Never generate or pass 30 KB of raw inline HTML through MCP tool calls (`create_page` / `edit_page_content`).** Doing so puts 3-4 copies of the HTML into conversation history (~100k tokens per page).
+- **Use the low-context build + sync pipeline:**
+  1. Author the page in structured Markdown (`scratchpad/weekN_pageM.md`) with frontmatter `template: page-f1` (BIT221 style) or `template: page-f2` (Modern Minimal style).
+  2. Compile to inline-styled HTML and run automatic lint checks:
+     ```bash
+     python tools/canvas_build.py scratchpad/weekN_pageM.md -o scratchpad/weekN_pageM.html
+     ```
+  3. Push to Canvas (runs `canvas_lint` automatically before writing and prints a 3-line summary):
+     ```bash
+     python tools/canvas_sync.py create-page --course <CODE> --title "Week N | Page M - Topic" -i scratchpad/weekN_pageM.html --unpublish
+     # Or to update an existing page:
+     python tools/canvas_sync.py push-page --course <CODE> --page <slug> -i scratchpad/weekN_pageM.html
+     ```
+- **When building multiple pages in one week, delegate each page to a separate subagent** (or split sessions between pages) so raw page drafts never accumulate in a single conversation context.
+- **No em dashes** (space-hyphen-space ` - ` only), no `<style>` tags, no inline `<svg>`, no grading rubrics or point values.
 
 ---
 
-## Step 2 - Page Naming & Placement
+## Step 1 - Scope & Granularity
 
-**Naming convention:**
-`Week [N] | Page [#] - [Topic]`
-
-**Module placement:**
-- Published in course module (positions 2 onward)
-- Never in instructor-only module
-- Grouped by week in course structure
-
----
-
-## Step 3 - Per-Page Structure
-
-Use the same canonical format as teaching notes (Header, Learning Objectives, Content Sections, Discussion Questions, References), but:
-
-**Reduce scope by 40-50%:**
-- Learning Objectives: Same (100–150 words, 4-8 objectives)
-- Core Concepts: 400–600 words (vs. 600–900 for teaching notes)
-- Applied/Technical: 600–900 words (vs. 800–1200 for teaching notes)
-- Optional sections: Brief or omitted
-
-**Reframe all content for students:**
-- Examples: From student assignments, not grading scenarios
-- Procedures: Steps students execute, not instructor scaffolding
-- Security: "Understand why this matters" not "how to troubleshoot this"
-- Tone: Clear, accessible, encouraging - not directive
-
-**Skip these entirely:**
-- Teaching Agenda (instructor-only)
-- Why Students Struggle (instructor prep)
-- Expected output walkthroughs with real data (grading reference)
-- Troubleshooting decision trees
-- Lab success criteria (belongs in assignment, not page)
+- **Organize by topic granularity, not calendar week alone.** A single week typically warrants **2–4 resource pages** depending on assignment scope and technical depth.
+- **Word count scales with topic complexity:**
+  - Focused single-tool or single-concept pages (e.g., BIT320): **2,000–3,000 words**
+  - Multi-step architecture, protocol, or lab-foundation pages (e.g., ITH216, BIT360): **2,800–4,500 words**
+- **Must include:**
+  - Learning Objectives (4–6 action-oriented student objectives)
+  - "Why This Matters" motivation section tied to real-world operations and the week's assignment
+  - Core concepts with worked examples, real command syntax, and realistic outputs
+  - Step-by-step procedural tables and comparison tables (trade-offs between options)
+  - Common Mistakes / Pitfalls (3–5+ specific mistakes with **"Why It's Wrong"** and **"How to Fix"**)
+  - Troubleshooting table (`Problem | Cause | Solution`) where applicable
+  - Curated external Reference Links / Resources (3–5 authoritative links)
+- **Must NOT include:**
+  - `"Instructor Use Only"` badges, Teaching Agendas, facilitation guides, or why-students-struggle notes
+  - Direct copy-paste solutions or actual answers to graded assignment questions (teach the pattern/technique on different or generalized data, never spoil the lab answer)
+  - Grading rubrics or point values
 
 ---
 
-## Step 4 - Content Standards
+## Step 2 - Choosing Format 1 vs. Format 2
 
-**Word count:** 2500–4500+ total (matches assignment complexity - simple tools: 2500-3000, complex labs: 3500-4500+)
+Check `courses/{CODE}.md` or inspect an existing page in the course before authoring:
 
-**Breakdown (for complex assignments):**
-- Learning Objectives: 150–200 words (5-6 objectives)
-- Why This Matters: 200–300 words (motivation/relevance)
-- Core Concepts with procedures: 1500–2500 words (includes step-by-step tables, comparison tables, examples)
-- Common Mistakes table: 500–800 words (3-5+ detailed mistakes with fixes)
-- References: 200–300 words
+| Aspect | Format 1 (`--template page-f1`) | Format 2 (`--template page-f2`) |
+|---|---|---|
+| **Courses using it** | BIT221, BIT281, BIT320, BIT351, PRO221, PRO352 | ITH216, BIT360 |
+| **Wrapper** | `max-width: 860px`, `color: #2C2C2A` | `max-width: 900px`, `color: #1a1a1a` |
+| **Header** | Beige card (`#f1efe8`, border `#b4b2a9`) | Minimal bottom border (`#e5e7eb`), blue week label (`#2563eb`) |
+| **Learning Objectives** | Purple box (`#eeedfe` / `#534ab7`), 2-col grid of white checkmark cards | Light gray box (`#f9f9f9`), `4px solid #2563eb` left border, checkmark list |
+| **Why This Matters** | Green box (`#e1f5ee` / `#0F6E56`, header `#c8ddd5`) | Clean H2 section |
+| **Content Sections** | Tan boxes (`#f5f0e8` / `#d4a76a`, header `#e5dcc8`) | Clean H2 (`1.5rem`, `#1a1a1a`) with open whitespace |
+| **Applied / Mistakes** | Dark charcoal box (`#2c2c2a`, border `#5DCAA5`, header `#1a1a1a`) | Clean H2 + dark code blocks (`#1e293b`) / tables |
+| **Callouts** | Amber (`#FAEEDA` / `#854F0B`) or Blue (`#E6F1FB` / `#185FA5`) | Left-border Amber (`#fef3c7` / `#d97706`) or Blue (`#eff6ff` / `#2563eb`) |
+| **Tables** | Dark header `#444441`, zebra rows `#ffffff` / `#F1EFE8` | Light gray header `#f3f4f6`, zebra rows `#ffffff` / `#f9f9f9` |
 
-**Writing principles:**
-- Every concept grounded in student-executable example
-- Real data, never fabricated outputs
-- Real command syntax students actually use (not placeholders)
-- Direct, clear language (no instructor jargon unexplained)
-- Encourage questions; frame as reference, not directive
-
-**Visual standards:**
-- Same header/objectives/content boxes as teaching notes
-- Same color scheme (no modifications)
-- All tables with solid 1px black borders on all cells
-- No em dashes, no `<style>` tags, no inline SVG
+Never mix Format 1 and Format 2 within the same week.
 
 ---
 
-## Step 5 - Optional Sections for Student Pages
+## Step 3 - Markdown Authoring Template (`tools/canvas_build.py`)
 
-**Discussion Questions** (rare, only if used in class):
-- 2–3 questions students can discuss in pairs/groups
-- Answerable from the page + prior knowledge
-- No "correct" answer - open-ended
+Write the page in Markdown using this structure and compile with `python tools/canvas_build.py`:
 
-**What's Current** (if version-specific):
-- Flag what technology/version this covers
-- Example: "As of Windows Server 2025, the WindowsFeature resource..."
+```markdown
+---
+template: page-f1
+title: Topic Title Without Week Prefix
+week: Week N - Topic Area
+---
 
-**Looking Ahead** (if connecting to next topic):
-- Brief preview of how this connects to next week
-- Do NOT assign homework here - that's the assignment's job
+## Learning Objectives
+- Configure and verify ...
+- Analyze and troubleshoot ...
+- Compare trade-offs between ...
+- Apply ...
 
-**Reference Links** (curated only):
-- 3–5 links maximum
-- Only resources that genuinely deepen understanding
-- Prefer official docs, Microsoft Learn, or primary sources
+## Why This Matters
+1-2 paragraphs explaining why this skill matters in production and how it connects to this week's lab work.
+
+## Core Concept Section 1
+### Subsection Heading
+Explanation grounded in concrete commands and real-world parameters.
+
+| Option | Mechanism | When to Use |
+|---|---|---|
+| Option A | Description | Best for X |
+| Option B | Description | Best for Y |
+
+> **Pro tip:** Practical advice for students working through this concept.
+
+```bash
+# Multi-line commands automatically get <pre style="... white-space: pre-wrap;">
+command --flag value
+```
+
+## Applied: Hands-On Walkthrough
+Step-by-step worked example using non-graded sample data.
+
+## Common Mistakes to Avoid
+| Mistake | Why It's Wrong | How to Fix |
+|---|---|---|
+| Mistake 1 | Consequence | Specific corrective action |
+| Mistake 2 | Consequence | Specific corrective action |
+| Mistake 3 | Consequence | Specific corrective action |
+
+## Resources
+- [Official Documentation Title](https://example.com) - Brief description of what students will find here
+```
 
 ---
 
-## Step 6 - Authoring Workflow
+## Step 4 - Module Wiring & Verification
 
-1. **Extract learning objectives** from assignment and course outcomes
-2. **Draft core concepts** with student-level examples (NOT instructor depth)
-3. **Build applied/technical** section from actual CLI/UI outputs (run yourself, never fabricated)
-4. **Add optional sections** only if they serve student learning (not instructor prep)
-5. **Apply canonical styling** (same as teaching notes, Step 3)
-6. **Publish** (place in course module, not instructor-only)
-
----
-
-## Critical Rules (DO NOT VIOLATE)
-
-### Must Have
-- ✓ Header box (week/topic, title, no publication status needed)
-- ✓ Learning Objectives (purple box with darker header background, 5-6 objectives)
-- ✓ Why This Matters section (green header, student-focused motivation)
-- ✓ Core Concepts section(s) with step-by-step procedures (tan boxes, 1500-2500 words)
-- ✓ Real-world examples with specific details (timestamps, event IDs, process names)
-- ✓ Common Mistakes section (3-5+ entries with fixes, table or narrative format)
-- ✓ Troubleshooting section for labs/procedures (Problem/Cause/Solution table)
-- ✓ References (curated, 3-5 links maximum)
-
-### Must NOT Do
-- ✗ Include "Instructor Use Only" indicator (pages are published, student-facing)
-- ✗ Include Teaching Agenda (instructor-only)
-- ✗ Include grading rubrics or success criteria (belongs in assignment)
-- ✗ Include fabricated data or example outputs (use real tool output, real incident details)
-- ✗ Use vague "students learn from mistakes" pedagogy (be specific about what/why/how)
-- ✗ Assume instructor audience in writing tone
-- ✗ Limit to 2000 words when assignment complexity warrants depth (see word count guidance above)
-
-### Publishing
-- ✓ Always publish (don't leave unpublished by default)
-- ✓ Place in course module, position 2+
-- ✓ Not in instructor-only module
-
----
-
-## Distinction from Teaching Notes
-
-| Aspect | Teaching Notes | Student Pages |
-|--------|---|---|
-| Audience | Instructors only | Students (primary) |
-| Published | No | Yes |
-| Module | Instructor-only | Course module by week |
-| Length | 2500–4000 words | 2500–4500+ words (matched to complexity) |
-| Scope | Comprehensive, deep | Depth matched to assignment requirements |
-| Procedures | Teaching approach | Step-by-step tables students execute |
-| Examples | Industry case studies | Real-world narratives with specific details |
-| Common mistakes | For instructor awareness | 3-5+ entries with "Why/How to Fix" |
-| Troubleshooting | Decision trees (instructor) | Problem/Cause/Solution tables (student) |
-| Expected outputs | Real grading data | Real tool/system outputs (learning context) |
-| Tone | Preparatory, diagnostic | Encouraging, practical, accessible |
+1. Wire the created page into the weekly module under the `Resources` subheader (use the tail-rebuild technique documented in `CLAUDE.md` if reordering module items).
+2. Keep the page **unpublished** until Corey reviews and approves it.
+3. Update `courses/{CODE}.md` with the page ID, slug, and status.
 
 ---
 
 ## Changelog
 
 | Version | Date | Changes |
-|---------|------|---------|
-| 1.1 | 2026-09-17 | **MAJOR UPDATE based on BIT360 Week 1 creation.** Revised word count to 2500-4500+ (previously 1500-2000). Added required sections: "Why This Matters" (motivation), step-by-step procedure tables, comparison tables, real-world incident narratives with timestamps/event IDs, detailed common mistakes (3-5+ entries), troubleshooting tables (Problem/Cause/Solution). Shifted from prescriptive length limits to complexity-matched depth. Updated comparison table vs. Teaching Notes to reflect new depth parity. These changes reflect learnings from creating three 3500-4500 word pages that provide sufficient detail for independent student learning. |
-| 1.0 | 2026-07-27 | Initial specification - student resource pages distinct from instructor teaching notes. Focus on student learning, not instructor prep. Scope 1500–2000 words. No Teaching Agenda, no expected outputs for grading, no troubleshooting guides. |
+|---|---|---|
+| 2.0 | 2026-11-11 | Consolidated `SKILL.md` and `playbook.md` into a single source of truth. Fixed publishing contradiction (new pages stay **unpublished** until reviewed per `CLAUDE.md`). Unified word-count guidance (2,000–4,500 words scaled by complexity) and Format 1 vs. Format 2 specs. Integrated low-context Markdown compilation (`tools/canvas_build.py`) and REST sync (`tools/canvas_sync.py`). |
+| 1.1 | 2026-09-17 | Updated word count and required sections (Why This Matters, step-by-step tables, Common Mistakes, Troubleshooting) based on BIT360 Week 1. |
+| 1.0 | 2026-07-27 | Initial specification distinguishing student resource pages from instructor lecture notes. |

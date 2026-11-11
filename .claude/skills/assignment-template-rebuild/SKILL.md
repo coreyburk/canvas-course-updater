@@ -14,11 +14,21 @@ need backfilling to this standard; treat any assignment missing the styled
 Task box, or using a div instead of a table for Criteria, as out of date,
 not as an acceptable alternate style.
 
-## Step 0  -  Gotchas
-Resolve the numeric course ID first. Read the assignment's actual current
-HTML with `get_assignment_details` before touching it  -  never rewrite from
-memory or from what the assignment "probably" says. `update_assignment` is a
-full replacement: the entire HTML body must be reconstructed, not patched.
+## Step 0  -  Gotchas & Low-Context Workflow
+Resolve the numeric course ID or code first. **Never rewrite from memory, and avoid pulling/pushing 15-30 KB HTML blobs through MCP tool calls.** Use the local CLI sync and build tools instead:
+1. Pull the live assignment HTML to disk (prints metadata, headings, and lint report without flooding context):
+   ```bash
+   python tools/canvas_sync.py pull-assignment --course <CODE> --assignment <id> -o scratchpad/asn_current.html
+   ```
+2. Inspect `scratchpad/asn_current.html` with `read_file`.
+3. Either edit the HTML locally or author the rebuilt assignment in Markdown (`scratchpad/asn_rebuilt.md` with `template: assignment`) and compile deterministically:
+   ```bash
+   python tools/canvas_build.py scratchpad/asn_rebuilt.md -o scratchpad/asn_rebuilt.html --template assignment
+   ```
+4. Push back to Canvas (automatically runs `canvas_lint` to verify element order, Criteria `<p>` before `<ul>`, no points in Criteria, no em dashes, and `<pre>` integrity):
+   ```bash
+   python tools/canvas_sync.py push-assignment --course <CODE> --assignment <id> -i scratchpad/asn_rebuilt.html
+   ```
 
 ## Step 1  -  Diagnose before rebuilding
 Compare the current assignment against the template below and list what's
