@@ -29,3 +29,7 @@ notes_current.html
 *.working.html
 *_current.html
 *_new.html
+
+# Python bytecode
+__pycache__/
+*.py[cod]

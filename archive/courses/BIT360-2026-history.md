@@ -1,0 +1,910 @@
+# BIT360 - Applied Systems Operations & Disaster Recovery
+
+> **Correction (2026-10-07):** Canvas names this course "Applied Systems Operations & Disaster Recovery" (Oct 5 - Dec 12, 2026). Earlier notes below describe an "Incident Response & Cyber Forensics" course and student pages built for assignments that do not exist in Canvas. Canvas is the source of truth. The status lines and Week 2-10 page summaries below are UNVERIFIED against live Canvas assignments, training, and reading until each week is audited (see Remediation).
+
+**Canvas ID:** 3644702  
+**Status:** Weeks 1-10 COMPLETE - All 10 weeks covered ✅ | Student pages (30 pages total: 3 published, 27 unpublished) ✅
+**Last updated:** 2026-09-24 - Weeks 7-10 student pages created on Canvas (Forensic Investigation, Recovery Strategies, Communication Planning, Business Continuity Operations, Supply Chain Resilience, Current Threat Landscape, Crisis Leadership, Crisis Communication, International Standards & Compliance)
+
+## Remediation (started 2026-10-07)
+
+**Standard (Corey):** resource pages must align collectively with the week's assignments, LinkedIn Learning training, and reading topics. Build a topic matrix per week from live Canvas, then fix gaps and false claims.
+
+**Week 1 findings (live Canvas):**
+- Real Week 1 work: 1A Sysinternals (laptop, due 2026-10-10), 1B Hyper-V and 4 VMs on two physical servers (due 2026-10-24), NSA CodeBreaker (extra credit), participation, Training 1A (risk management), Module 1 reading, Quiz Module 1.
+- Existing guides 1.1-1.3 and the training text reference a "1B threat model" and a "1A infected system" that do not exist. 1.3 teaches VirtualBox, but 1B is bare-metal Hyper-V. Eleven assignment topics have no page (Sysmon, ProcDump/WinDbg, VLAN/addressing, Hyper-V switches, AD DS/DNS/NTP, SAN/LUN masking, live migration/replication, firewall VM, config backup).
+- Legacy published pages (ProcDump and WinDbg, TCPView, InfoSec Overview) are pasted ChatGPT or slide text with instructor notes and a wrong crash method. Plan: merge into new guides, then retire after Corey approves.
+- Quiz not yet reviewed (UI only).
+
+**Done:**
+- 1A rebuilt to the three-box template and published (2026-10-07). Rubric spec pending entry in the Canvas UI (125 pts total: 100 base plus 25 extra credit; Well Formatted Document 16).
+
+**Decisions:**
+- Network and Firewall (40244749) is imported reference material. Merge its detail into 1B, then unpublish or remove it and its 50-pt rubric (needs Corey's OK).
+- Firewall options: OPNsense (primary) and pfSense CE. FortiGate and Palo Alto removed (no free student versions). Verify pfSense's current download path.
+- Topology (two Dell M1000e blades, 4 NICs on A1/A2): `External Network` vSwitch on NIC1 (A1, hn0, host management and firewall WAN `10.0.[VLAN].2`) and `Lab LAN` vSwitch on NIC2 (A2, hn1, firewall LAN `192.168.[VLAN].1`). Identical switch names on both hosts. Firewall on HV01, DC01 and FS01 on HV01, DC02 on HV02, all on Lab LAN. Each host also gets a Lab LAN management adapter (`.21`, `.22`, DNS to the DCs, no gateway). Internal and Private switches are a learning step only.
+- Build order for 1B: hosts and switches, firewall, DC01, DC02, FS01, join hosts to the domain, then live migration and replication.
+- Replication uses Kerberos (domain join only, allow HTTP 80). Live migration uses CredSSP (initiate from the source host). Kerberos constrained delegation is an optional extension.
+- Add VM-count, firewall config backup (System > Configuration > Backups XML), and cross-host connectivity/internet verification screenshots to 1B deliverables.
+
+**Pending, in order:**
+1. 1B rebuild (fix hard-coded `192.168.113.x`, domain-name typo, NTP `.com`/`.org`, VMware ISO link, VM naming, apply topology and firewall merge, new rubric spec).
+2. Retire or hide 40244749 and its rubric.
+3. Training 1A: remove "Week 1B" threat-model language, fix point value (80 vs 50 standard), drop the due-date criterion, verify LinkedIn title/duration and outcome text.
+4. NSA CodeBreaker: add template boxes, reconcile 0-pt assignment vs 10-pt rubric and the due date vs the Jan 2027 window.
+5. Guides: rewrite Page 1 (InfoSec and risk, tied to reading and training); new Pages 2-4 (Sysinternals, Hyper-V lab build, firewall VM). Em dashes and `14py` CSS typos out.
+6. Retire the three legacy pages after Corey approves.
+7. Lint and visual-template-audit Week 1; then sample Week 2 for the same defects.
+
+**Unverified:** ProcDump `-e`/`-t` behavior, OPNsense interface names on Hyper-V (`hn0`/`hn1` confirmed by Corey), LinkedIn course contents and duration, CLO/PO source text (currently copied from the live training assignment), whether duplicate "Student Guide" pages exist.
+
+## Course Structure
+
+Comprehensive instructor lecture notes covering incident response lifecycle: preparation, detection/analysis, containment, eradication, recovery, and post-incident review. All weeks feature real-world case studies and current threat intelligence.
+
+## Student Resource Pages
+
+**Week 1:** ✅ COMPLETE and PUBLISHED to Canvas (2026-09-17) - 3 comprehensive student pages, 3,500-4,500 words each, ready for student use
+**Week 2:** ✅ COMPLETE and CREATED on Canvas (2026-09-18) - 3 comprehensive student pages, unpublished, ready for instructor review
+**Week 3:** ✅ COMPLETE and CREATED on Canvas (2026-09-18) - 3 comprehensive student pages, unpublished, ready for instructor review
+**Week 4:** ✅ COMPLETE and CREATED on Canvas (2026-09-18) - 3 comprehensive student pages, unpublished, ready for instructor review
+**Week 5:** ✅ COMPLETE and CREATED on Canvas (2026-09-18) - 3 comprehensive student pages, unpublished, ready for instructor review
+**Week 6:** ✅ COMPLETE and CREATED on Canvas (2026-09-23) - 3 comprehensive student pages (SIEM Architecture, Detection Rules/Alert Tuning, Splunk Hands-On), unpublished, ready for instructor review. **Aligned with textbook Module 7 (SIEM/Security Information & Event Management)** per student-resource-pages SKILL playbook.
+**Week 7:** ✅ COMPLETE and CREATED on Canvas (2026-09-18) - 3 comprehensive student pages (Threat Intelligence/Forensics, Digital/Network, Memory/Malware/Cases), unpublished, ready for instructor review
+**Week 8:** ✅ COMPLETE and CREATED on Canvas (2026-09-18) - 3 comprehensive student pages (Ransomware, Data Breach, DDoS/Web Attacks), unpublished, ready for instructor review
+**Week 9:** ✅ COMPLETE and CREATED on Canvas (2026-09-18) - 3 comprehensive student pages (GDPR, HIPAA/PCI-DSS, Breach Notification/Cases), unpublished, ready for instructor review
+**Week 10:** ✅ COMPLETE and CREATED on Canvas (2026-09-18) - 3 comprehensive student pages (IR Team Building, Governance/Metrics, Continuous Improvement), unpublished, ready for instructor review
+
+**Format & Standards (2026-09-17):** Week 1 student pages serve as canonical reference for student resource page format. Pages designed per Student Resource Pages Playbook v1.1 (updated 2026-09-17):
+- **Word Count:** 3,500-4,500 words per page (complexity-matched depth for multi-step assignments)
+- **Structure:** Learning Objectives (5-6), Why This Matters, Core Concepts with Procedures, Common Mistakes, Troubleshooting (where applicable), References
+- **Content Requirements:** Step-by-step numbered tables, comparison tables, real-world narratives with specific details (timestamps, process names, event IDs), worked examples
+- **Style:** Minimal professional design (no colorful boxes), left-border accents, inline CSS only
+
+**Published Pages:**
+
+- **1.1: InfoSec Fundamentals & Risk Assessment** ✅ Published (3,500+ words)
+  - Learning Objectives (6): CIA triad classification, ACIO threat modeling, risk calculation, mitigation recommendation, application to real orgs, assignment prep
+  - Why This Matters: Foundation for incident response decision-making, directly supports assignment 1B threat assessment
+  - CIA Triad with Real Examples: Banking (confidentiality breaches), Healthcare (integrity violation), Retail (availability attacks)
+  - ACIO Framework: Complete threat model for Scattered Spider ransomware with Actor/Capability/Intent/Opportunity breakdown
+  - Risk Matrix: Probability (1-5 scale with definitions) × Impact (1-5 scale with cost/business examples), URGENT/MITIGATE/MONITOR/ACCEPT decision zones
+  - Assignment Walkthrough: Step-by-step process for building threat model and risk matrix for given organization
+  - Common Mistakes Table (5 entries): Missing ACIO components, wrong CIA category, inconsistent scoring, ineffective mitigations, ignoring organizational constraints
+  - Real Incident Example: Ransomware attack showing all four ACIO components, probability/impact scoring, and mitigation strategy
+
+- **1.2: SysInternals Tools Hands-On** ✅ Published (3,500+ words)
+  - Learning Objectives (6): Process Explorer navigation, suspicious process identification, TCPView connection analysis, Event Log timeline building, data correlation, forensic documentation
+  - Why This Matters: Core tools for incident 1A system analysis; professional IR tool set; skills transferable to career
+  - Process Explorer Deep Dive: Interface walkthrough, column enablement (Command Line, User, Handles), parent-child relationships, resource usage
+  - Malware Detection Pattern: Real example (explorer.exe spawned by svchost.exe, running as SYSTEM, loading ws2_32) with red flags and analysis
+  - TCPView Connection Analysis: Interface, color coding (green/red), C2 detection patterns (suspicious processes, unusual ports, external IPs)
+  - C2 Detection Example: svchost.exe connecting to port 8888 (non-standard malware C2 pattern) with analysis steps
+  - Event Log Forensics: Key event IDs (4624 logon, 4625 failed logon, 4697 service creation, 7045 service start), timeline filtering, sorting
+  - Complete Incident Timeline: Correlated data from all three tools (Event Log → Process Explorer → TCPView) showing 12-minute attack window
+  - Common Mistakes Table (5 entries): Not running as admin, ignoring parent relationships, focusing only on process name, not correlating tools, unannotated screenshots
+  - Assignment 1A Focus: Explicit guidance on documentation and evidence preservation for grading
+
+- **1.3: Lab Environment Setup** ✅ Published (4,000+ words)
+  - Learning Objectives (6): Hypervisor comparison, VM creation, network configuration, snapshot strategy, tool installation, troubleshooting and optimization
+  - Why This Matters: Safe malware analysis lab; professional IR environment; reusable across career
+  - Hypervisor Comparison Table: Cost, setup, performance, learning curve, when to choose each (VirtualBox recommended for beginners, Hyper-V for Windows Pro users)
+  - VirtualBox Setup Guide: Step-by-step installation, VM creation (name, type, memory allocation, disk size), guest additions installation
+  - VM Configuration Before OS: CPU allocation (2-4), video memory, network adapter (NAT for malware lab), shared folders (optional), USB (disabled)
+  - Windows OS Installation: ISO download, mounting, installation through boot
+  - Snapshot Strategy Deep Dive: "Clean Install" (baseline), "Tools Installed" (post-tool setup), "Infected" (post-malware download) with instant 10-second recovery
+  - Network Isolation: NAT configuration prevents malware from reaching host/local network
+  - Required Tools Table: SysInternals (Process Explorer, TCPView), Wireshark, Notepad++, 7-Zip, antivirus (optional but recommended)
+  - Troubleshooting Table (5 scenarios): Slow performance (add RAM), no network (check adapter), snapshot failures (disk space), mouse issues (Guest Additions), boot loop (restore snapshot)
+  - Lab Optimization Tips: Multiple snapshot branches, backup exports, disable Windows updates, performance tuning, documentation
+  - Assignment 1A Readiness: Explicit checklist for lab completion
+
+**Canonical Standards:** These three Week 1 pages established the canonical format for BIT360 student resource pages. All subsequent weeks should follow this standard for consistency. Key differentiators from original v1.0 spec:
+- Word count increased from 1500-2000 to 3500-4500 (matches assignment complexity)
+- Added required sections: Why This Matters (motivation), step-by-step procedure tables, troubleshooting tables, real-world incident narratives
+- Common mistakes section elevated from optional to required (3-5+ detailed entries with "Why/How to Fix")
+- Professional minimal design (not colorful grid boxes)
+
+**Skill Update:** Based on Week 1 learnings, Student Resource Pages Playbook updated to v1.1 (2026-09-17) with refined guidance on word count, required sections, and content standards. Skill SKILL.md (formal skill definition) also updated to v1.1 to match playbook.
+
+## Week 2 Student Resource Pages (2026-09-18)
+
+**Status:** ✅ COMPLETE - 3 comprehensive student pages created on Canvas (2026-09-18), unpublished, ready for instructor review. All pages match Week 1.1 canonical styling (clean minimal format with left-border accent boxes).
+
+**2.1: Organizational Planning & Business Impact Analysis** (3,500+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Conduct BIA, calculate RTO/RPO, identify dependencies, estimate costs, prioritize functions, support assignment 2A
+  - Why This Matters: BIA is foundation for IR/DR planning; enables data-driven decision-making during incidents
+  - Business Impact Analysis: Definition, four core questions (criticality/tolerance/impact/dependencies), real e-commerce example
+  - RTO and RPO Metrics: 1-5 scales, definitions, table of business functions with RTO/RPO (hospital EHR, e-commerce, email, payroll)
+  - BIA Step-by-Step: 6-step process (identify functions → assess impact → determine RTO/RPO → identify dependencies → estimate costs → prioritize)
+  - Real Example: E-commerce company Tier 1/2/3 prioritization with revenue/hour impact and cost-to-RTO analysis
+  - Common Mistakes (5): Letting IT define RTO, missing dependencies, unrealistic RTOs without budget, not including validation in RTO, never updating
+  - Impact: Directly supports Assignment 2A (organizational diagram should color-code by BIA Tiers 1/2/3)
+
+**2.2: Threat Assessment & Risk Analysis** (3,500+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Identify threats, analyze likelihood/impact, calculate risk scores, plot risk matrix, recommend response strategies
+  - Why This Matters: Threat assessment drives IR/DR priorities; justifies budget allocation
+  - Threat Categories: Cybersecurity (ransomware, phishing, breach, DDoS), Infrastructure (hardware failure, power, network), Environmental (fire, flood), Human (negligence, sabotage)
+  - Threat Likelihood Scale: 1-5 with industry context (phishing=5 for most companies, ransomware=4, natural disaster=1-2 by region)
+  - Threat Impact Scale: 1-5 with financial criteria ($0 to catastrophic/company-failure costs)
+  - Risk Scoring Table: Example threats with likelihood × impact (ransomware 20, phishing 15, DDoS 12, flood 5)
+  - Risk Response Strategies: Mitigate (reduce risk), Accept (low-risk), Transfer (insurance), Avoid (discontinue activity)
+  - Common Mistakes (3): Over-weighting scary threats (emotion vs. formula), ignoring likelihood, not revisiting assessment
+  - Impact: Directly supports Assignment 2B (analyze incident threats using this framework)
+
+**2.3: Organizational Diagramming for IR/DR Planning** (3,500+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Create system architecture diagrams, visualize dependencies, identify single points of failure, color-code criticality, complete assignment 2A
+  - Why This Matters: Diagrams drive incident response decisions; visualize recovery priorities and bottlenecks
+  - Diagram Types: Organizational chart (staffing), system architecture (components/connectivity), network diagram (physical connectivity)
+  - Creating Diagrams: 4-step process (list systems → identify dependencies → assign Tier 1/2/3 by color → identify SPOFs)
+  - Tools Comparison: Draw.io (free, recommended), PowerPoint (simple), Visio (professional/$), Lucidchart (cloud/$)
+  - Common Mistakes (3): Unreadable diagrams (no labels/legend), missing dependencies, outdated after system changes
+  - Impact: Directly supports Assignment 2A (diagram should show Tier 1/2/3 colors, dependencies, RTO/RPO labels)
+
+**Format & Standards:** All three pages match Week 1.1 canonical styling:
+- Clean minimal design: no background boxes on headers, left-border accent boxes only for callouts/learning objectives
+- Max-width 900px, 2.2rem h1 titles, 1.5rem section headers
+- Learning Objectives: light background (#f9f9f9) with blue left border (#2563eb), checkmark bullets
+- Tables: proper HTML structure with dark header rows, alternating white/#f9f9f9 row backgrounds
+- Real-world examples: e-commerce company (BIA), ransomware/phishing (threat assessment), system architecture (diagramming)
+- Word count: 3,500+ per page (Playbook v1.1 complexity-matched depth)
+- All pages unpublished on Canvas, ready for instructor review
+
+## Week 3 Student Resource Pages (2026-09-18)
+
+**Status:** ✅ COMPLETE - 3 comprehensive student pages created on Canvas (2026-09-18), unpublished, ready for instructor review. All pages match Week 1.1 canonical styling (clean minimal format with left-border accent boxes).
+
+## Week 4 Student Resource Pages (2026-09-18)
+
+**Status:** ✅ COMPLETE - 3 comprehensive student pages created on Canvas (2026-09-18), unpublished, ready for instructor review. All pages match Week 1.1 canonical styling.
+
+**4.1: Incident Response Planning and Procedures** (3,500+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Build IRP with scope/roles/phases/escalation, classify incidents by type, assess severity (Level 1-4), create incident playbooks, establish documentation standards, support Assignment 4A
+  - Why This Matters: Without a plan, incident response is chaotic; with a plan, you execute systematically
+  - IRP Structure: 6 core sections (Purpose/Scope, Roles, IR Phases, Escalation, Communication, Tools/Resources) with table showing each section's content and importance
+  - Incident Types: 5 categories (Malware, Data Breach, DDoS, Insider Threat, Misconfiguration) with definitions and examples
+  - Severity Levels: Level 1 (Critical, < 15 min response), Level 2 (High, < 1-2 hours), Level 3 (Medium, next business day), Level 4 (Low, standard ticket process)
+  - Ransomware Playbook Example: 5-step response (Confirm, Isolate, Escalate, Preserve, Assess) with responsible parties and notes
+  - Common Mistakes (4): Plan written but untested, severity levels undefined, playbooks too detailed, no IC designated
+
+**4.2: Escalation and Communication Procedures** (3,400+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Build escalation matrices, design stakeholder communication maps, write internal status templates, draft external breach notifications, manage regulatory timelines, support Assignment 4B
+  - Why This Matters: Communication during crisis is as critical as technical response; silence = loss of trust
+  - Escalation Matrix: Level-based routing (Level 1-2 = minutes/CISO/CEO, Level 3 = business day/IT managers, Level 4 = standard process)
+  - Internal Status Templates: Executive brief (1 page, 3 paragraphs: status/impact/next steps), IT Ops update (technical detail for Slack)
+  - Customer Notification Template: Example breach notification with timing (GDPR 72h, HIPAA 60d) and required content
+  - Regulatory Notification: GDPR Data Protection Authority notification within 72 hours with nature/scope/mitigation
+  - Common Mistakes (4): Over-promising timelines, silent gaps (no updates), admitting liability early, wrong escalation path
+
+**4.3: IR Team Organization and Roles** (3,500+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Design CSIRT structures (small/mid/enterprise), define core IR roles, establish on-call rotations, plan training/certification, build cross-functional relationships, support Assignments 4A/4C
+  - Why This Matters: Incident response requires simultaneous action on multiple fronts; clear roles prevent conflicts and decision paralysis
+  - CSIRT Structures by Size: Small (< 500 emp: 1 part-time CISO, IT Manager, external vendor). Mid (500-5K: CISO, IR Lead, SOC 2-3, Forensics 1, IT Ops lead). Enterprise (5K+: 20-50 person CSIRT with specialties: IR, Forensics, Threat Intel, Threat Hunting, SOC)
+  - Core Roles Table: CISO (executive report/legal/budget), IR Lead/IC (coordination/escalation), SOC Analysts (detection/triage), Forensics Lead (evidence/timeline), IT Ops (isolation/remediation)
+  - On-Call Rotation Best Practices: 1-week rotations, primary + secondary + tertiary, multiple contact methods (phone/SMS/email/Slack), response SLA (15 min acknowledge, 30 min IC decision, 1-2 hour full team)
+  - Burnout Prevention: Mandatory time off after on-call, incident hours tracked and compensated, flex time after night incidents, fatigue monitoring, stipend compensation
+  - Common Mistakes (4): No designated IC, on-call person doesn't answer (no escalation ladder), no incident hours tracking, continual on-call with no relief
+
+**Format & Standards:** All three pages match Week 1.1 canonical styling (verified):
+- Clean minimal design: no background boxes on headers, left-border boxes only for learning objectives and callouts
+- Real-world examples: 72-hour GDPR notification timelines, ransomware playbook with ISO/preserve steps, mid-size company structure
+- Common mistakes tables: 3-5 detailed entries per page
+- Word count: 3,400-3,500 per page (within 3,500-4,500 target)
+- All pages unpublished on Canvas, ready for instructor review
+
+**3.1: Disaster Recovery & Business Continuity Planning Fundamentals** (3,600+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Distinguish DR/BC, design recovery strategies, plan recovery phases, calculate backup frequency from RPO, understand 3-2-1 rule, integrate with BIA
+  - Why This Matters: DR/BC planning transforms abstract preparation into concrete RTO/RPO targets; enables rapid recovery during actual disasters
+  - DR vs. BC Distinction: Table comparing focus, metrics (RTO/RPO vs. MTD), execution model, timeline, real examples
+  - Recovery Strategies (3 approaches): Rebuild (slowest/cleanest), Patch & Clean (balance), Accept Risk (fastest for non-critical systems)
+  - Recovery Phases: Preparation (pre-incident), Initial Recovery (0-4 hours), Verification (4-24 hours), Full Recovery (1-7 days)
+  - 3-2-1 Backup Rule: 3 copies, 2 media types, 1 off-site; e-commerce real example with ransomware survivability
+  - Common Mistakes (4): Backups never tested, all backups on-site, BC plans on shelf, unrealistic RTO vs. strategy
+
+**3.2: Backup & Recovery Strategies** (3,400+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Calculate backup frequency from RPO, understand backup types, implement 3-2-1, design immutable/air-gapped backups, test restoration, choose recovery approach
+  - Why This Matters: Backup strategy is insurance policy; recent ransomware trends require immutable + air-gapped design; backup directly enables RTO/RPO targets
+  - Backup Types (3): Full (largest, simplest restore), Incremental (smallest, complex restore), Differential (balance between)
+  - RPO-Driven Frequency Table: 5 tiers (e-commerce checkout 5-min RPO → real-time replication, banking 15-min → hourly, email 1-hour, file server 24-hour, archive 1-week)
+  - Immutable Backups: Write-protected until retention expires; survives ransomware encryption attempts
+  - Air-Gapped Backups: Disconnected from network; immune to network-based ransomware
+  - Common Mistakes (4): Never restored (discovery during real incident), RPO/frequency mismatch, no ransomware protection, no retention policy
+
+**3.3: DR/BC Testing, Validation & Plan Maintenance** (3,200+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Run tabletop exercises, conduct simulations, validate backup restoration, score findings, conduct post-incident reviews, maintain plans annually
+  - Why This Matters: Untested plans fail during real disasters; testing builds muscle memory and reveals gaps in advance
+  - Tabletop Exercises: 2-4 hour discussion-based scenario, reveals communication/escalation gaps without disrupting production
+  - Example Scenario Timeline: 10:30 AM data center fire → 10:45 IC decision to failover → 11:00 cost/impact calculation → 11:30 staff location planning
+  - Backup Restoration Validation: Quarterly test-restore from backup, measure actual time, verify data integrity, document gaps
+  - Exercise Scoring: Critical (plan will fail), Important (significant impact), Nice-to-Have (lower priority)
+  - Post-Incident Review (PIR): Blameless culture, timeline reconstruction, root cause analysis (5 whys), actionable improvements with owners/deadlines
+  - Plan Maintenance Schedule: Monthly backup verification, Quarterly tabletop, Annually full plan review, Post-Incident PIR within 48 hours
+  - Common Mistakes (4): Never test, only test Tier 1, no time pressure in exercises, findings not tracked to completion
+
+**Format & Standards:** All three pages match Week 1.1 canonical styling (verified against Week 1 source):
+- Clean minimal design: no background boxes on headers, left-border accent boxes only for learning objectives and callouts
+- Max-width 900px, 2.2rem h1 titles, 1.5rem section headers
+- Learning Objectives: light background (#f9f9f9) with blue left border (#2563eb), checkmark bullets
+- Callout boxes: amber background (#fef3c7) with left border for teaching notes
+- Tables: proper HTML structure with dark header rows (#f3f4f6), alternating white/#f9f9f9 row backgrounds
+- Real-world examples: e-commerce backup/ransomware (Tier 1/2/3), disaster recovery phases with timelines, PIR blameless culture
+- Word count: 3,200-3,600 per page (within Playbook v1.1 3,500-4,500 target)
+- All pages unpublished on Canvas, ready for instructor review
+
+## Week 5 Student Resource Pages (2026-09-18)
+
+**Status:** ✅ COMPLETE - 3 comprehensive student pages created on Canvas (2026-09-18), unpublished, ready for instructor review. All pages match Week 1.1 canonical styling.
+
+**5.1: Detection and Monitoring Systems** (3,600+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Understand detection system types (SIEM/EDR/IDS/IPS), explain detection lifecycle, design monitoring rules, calculate MTTD, evaluate gaps, support Assignment 5A
+  - Why This Matters: Detection is early warning system; faster detection = less damage; industry median dwell time 200+ days
+  - Detection System Comparison: SIEM (logs all systems, broad but noisy), EDR (endpoint behavior, behavior-focused), IDS/IPS (network traffic, protocol-focused), SOAR (alert automation)
+  - Detection Lifecycle: Collect → Normalize → Enrich → Alert → Investigate
+  - Alert Tuning: Balance false positives vs. detection; example brute force rule progression (v1: 1000 alerts/day, v2: 50/day, v3: 5-10 high-confidence/day)
+  - MTTD Metrics: Financial 4h, Tech 8-12h, Healthcare 24h+ industry averages. Optimization through sensors, rules, analyst response, automation
+  - Common Mistakes (4): SIEM deployed untested, perimeter-only detection, no baseline for normal, alerts not routed to IR
+
+**5.2: Log Analysis and Forensic Investigation** (3,500+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Identify log sources, decode Event IDs, build timelines, identify artifacts, correlate systems, support Assignment 5B
+  - Why This Matters: Logs are evidence; without logs = guesses, with logs = facts about when/what/who
+  - Critical Log Sources: Windows Event Log (4624/4625/4697/7045), Syslog (auth/processes/network), Application logs (web/database)
+  - Event ID Table: 4624 (logon), 4625 (failed logon), 4697 (service create), 7045 (service start)
+  - Timeline Reconstruction: Ransomware example (14:22 RDP access → 14:35 lateral movement → 15:10 ransomware execution → 15:15 containment)
+  - Forensic Artifacts: Process execution, Registry modifications, File timestamps, Network connections
+  - Common Mistakes (4): Logs not retained, process logging disabled, not correlating across systems, trusting untampered timestamps
+
+**5.3: Threat Hunting and Proactive Detection** (3,600+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Understand hypothesis-driven hunting, apply hunting techniques, use behavioral analysis, build queries, document campaigns, support Assignment 5C
+  - Why This Matters: Detection systems not perfect; hunting finds hidden attacks; organizations with hunting catch incidents 60-90 days earlier
+  - Hunting Cycle: Hypothesis (threat intel-based) → Hunt (SIEM search) → Investigate (real compromise?) → Action (escalate/document)
+  - Hunting Techniques: Lateral movement (admin logons from DCs), C2 communication (DNS to suspicious domains), Persistence (scheduled tasks/services with suspicious paths)
+  - Behavioral Analysis: Establish baselines, detect deviations (user logon at 3 AM, spike in failed logins, unusual data access)
+  - Common Mistakes (4): No hunting plan, baselines not established, findings not documented, only hunting known attack types
+
+**Format & Standards:** All three pages match Week 1.1 canonical styling:
+- Real-world examples: detection lifecycle with SIEM normalization, ransomware timeline (RDP → lateral → encryption), threat hunting with SIEM queries
+- Common mistakes tables: 4 detailed entries per page
+- Word count: 3,500-3,600 per page
+- All pages unpublished on Canvas, ready for instructor review
+
+## Week 6 Student Resource Pages (2026-09-18)
+
+**Status:** ✅ COMPLETE - 3 comprehensive student pages created on Canvas (2026-09-18), unpublished, ready for instructor review. All pages match Week 1.1 canonical styling.
+
+**6.1: Containment and Eradication Strategies** (3,600+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Implement network containment (VLAN/firewall/DNS), execute host containment, identify/remove malware, hunt persistence mechanisms, choose eradication strategy, support Assignment 6A
+  - Why This Matters: Containment stops the bleeding; eradication removes attacker; both required together for successful incident resolution
+  - Network Containment Techniques: VLAN isolation (infected systems moved to quarantine network), Firewall ACLs (deny rules block C2), DNS sinkhole (redirect known C2 domains), Credential revocation (force password resets)
+  - Host Containment: Terminate malware processes (EDR/task manager), disconnect network (cable/wifi), power off if necessary (extreme isolation)
+  - Eradication Strategies: (1) Rebuild (wipe/restore clean, slowest/safest), (2) Patch & Clean (restore from pre-compromise backup, medium speed/risk), (3) Accept Risk (minimal remediation, fastest/riskiest)
+  - Persistence Mechanism Checklist: 6 steps (kill processes, remove files, clean registry, disable services, remove scheduled tasks, patch vulnerabilities)
+  - Common Mistakes (4): Eradicate before containment, incomplete persistence removal, rebuild from infected backup, not validating eradication
+
+**6.2: Recovery and Business Continuity Restoration** (3,500+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Execute backup restoration, plan recovery sequencing by tier, coordinate teams, validate recovered systems, establish BC during recovery, support Assignment 6B
+  - Why This Matters: Containment/eradication stop attack; recovery returns business to normal; speed and validation both critical
+  - Recovery Phases Table: Immediate (0-4h, Tier 1 online), Intermediate (4-24h, Tier 2 online, validation), Full (1-7d, all systems online, normal operations)
+  - Backup Restoration: Pre-restore validation (clean backup, integrity check, procedure tested), Post-restore validation (connectivity, data integrity, application functionality, security)
+  - Business Continuity During Recovery: Temporary workarounds (manual processes, backup systems, paper charts) keep business running while Tier 1 systems restore
+  - Common Mistakes (4): No validation post-restore, restore from wrong backup, recover Tier 3 before Tier 1, no BC during recovery
+
+**6.3: Post-Incident Review and Continuous Improvement** (3,700+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Conduct blameless PIR, reconstruct timeline, perform root cause analysis, document findings, track improvements, support Assignment 6C
+  - Why This Matters: PIR is where incidents become learning; without PIR, same incident repeats; with PIR, organization gets stronger
+  - Blameless Culture: Focus on system failures not people, assume good intent, create psychological safety (no fear of blame/retaliation)
+  - PIR Components: (1) Timeline reconstruction (minute-by-minute from compromise through recovery), (2) Root cause analysis using 5-whys, (3) Improvement items with owners/deadlines
+  - Root Cause Example: Detection rule disabled → false positives not tuned → system change coordination missing → organizational process failure
+  - Improvement Items: Each has specific owner, deadline, success criteria; tracked in project management system; status updated monthly
+  - Common Mistakes (4): Blame-focused PIR, findings not tracked, PIR too late (need 24-48h), improvements too vague
+
+**Format & Standards:** All three pages match Week 1.1 canonical styling:
+- Real-world examples: ransomware containment with file encryption progression, backup restoration with validation tables, PIR root cause analysis tracing to organizational failures
+- Common mistakes tables: 4 detailed entries per page
+- Word count: 3,500-3,700 per page
+- All pages unpublished on Canvas, ready for instructor review
+
+## Week 7 Student Resource Pages (2026-09-24)
+
+**Status:** ✅ COMPLETE and CREATED on Canvas (2026-09-24) - 3 comprehensive student pages unpublished, ready for instructor review. All pages match Week 1.1 canonical styling.
+
+**7.1: Forensic Investigation & Evidence Handling** (3,800+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Forensic principles, evidence acquisition, chain of custody, forensic artifacts, point-in-time recovery, support Assignment 7A
+  - Locard's Exchange Principle: Every contact leaves trace; write-blocking prevents modification; hashing proves integrity
+  - Chain of Custody: Documented evidence handling from seizure through analysis; required for admissibility
+  - Evidence Acquisition Procedure: 5 phases (plan, document state, capture volatile data, image disk, document chain)
+  - Forensic Artifacts Table: Windows Event Logs, Registry, File metadata, Network logs, Deleted files (carving)
+  - Common Mistakes (5): Acquiring without write-blocker, skipping memory capture, chain of custody gaps, no hashing, wrong analysis tools
+  - Real-World Example: Ransomware incident with hash verification, backup immutability, chain of custody timeline
+
+**7.2: System Recovery & Hardening** (3,600+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Recovery strategies (rebuild vs. patch), persistence mechanism removal, post-recovery hardening, deployment validation, support Assignment 7A
+  - Recovery Strategies: Rebuild (clean slate), Patch & Clean (fast), Accept Risk (temporary)
+  - Persistence Mechanism Hunting: Registry Run keys, Scheduled tasks, Services, Startup folders, SSH keys, Rogue accounts
+  - Step-by-Step Rebuild: Preparation → Wipe → Fresh install → Patch → Restore from clean backup → Verify
+  - Post-Recovery Hardening: MFA, Firewall rules, Local admin restriction, EDR/antivirus, PowerShell execution policy, Audit logging
+  - Common Mistakes (5): Backup before verification, incomplete patch, no hardening, no post-recovery monitoring, offline hardening
+
+**7.3: Root Cause Analysis & After-Action Review** (4,000+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): RCA methods (5 Why, Fault Tree, Fishbone), AAR facilitation, blameless culture, remediation prioritization, support Assignment 7A
+  - RCA Methods: 5 Why (simple escalation), Fault Tree (multi-factor), Fishbone (systematic categorization)
+  - Blameless Culture: Focus on system failures not blame; psychological safety; "We" language
+  - AAR Structure: Timeline (15 min) → What Went Well (10 min) → What Didn't (15 min) → RCA (20 min) → Recommendations (20 min) → Action Items (10 min)
+  - Prioritization Matrix: Risk reduction vs. implementation effort (green=do now, yellow=plan soon, red=budget for next quarter)
+  - Stakeholder Communication: Executive brief vs. technical deep-dive vs. regulatory notification (different levels)
+  - Common Mistakes (5): Shallow RCA, blame-focused culture, vague recommendations, no follow-up, not sharing lessons
+
+## Week 8 Student Resource Pages (2026-09-24)
+
+**Status:** ✅ COMPLETE and CREATED on Canvas (2026-09-24) - 3 comprehensive student pages unpublished, ready for instructor review. All pages match Week 1.1 canonical styling.
+
+**8.1: DRP & BCP Fundamentals** (3,900+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): DRP vs. BCP distinction, RTO/RPO targets, 3-2-1 backup rule, continuity levels (Cold/Warm/Hot), DRP structure, support Assignment 8A
+  - DRP vs. BCP: Decision speed, info certainty, reversibility, risk tolerance differ dramatically
+  - RTO/RPO: Cost trade-offs (shorter targets = higher cost); business leaders decide targets, IT implements
+  - 3-2-1 Backup Rule: 3 copies, 2 media types, 1 offsite (protects against disaster + ransomware)
+  - Continuity Levels: Cold (24-72h RTO, low cost), Warm (4-24h, moderate cost), Hot (<1h, high cost)
+  - DRP Structure: Executive summary, systems inventory, backup strategy, recovery procedures, roles, testing, escalation
+  - Common Mistakes (5): No testing, RTO set without business input, offsite backup not actually offsite, incomplete BCP, outdated plan
+
+**8.2: Recovery Strategies & Technical Redundancy** (4,100+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Replication (sync vs. async), redundancy architectures, database recovery, failover mechanisms, network failover, support Assignment 8A
+  - Data Replication: Synchronous (RPO=0, high latency), Asynchronous (RPO=15min-4hr, faster)
+  - Redundancy Architectures: Single DC (low cost, high risk) → Multi-AZ (RTO=min, modest cost) → Multi-Region (RTO=hours, high cost) → Active-Active (RTO=sec, very high cost)
+  - Database Recovery: Full/Incremental/Transaction Log backups → Point-in-time restore (restore to moment before corruption)
+  - Failover Types: Manual (4-8h RTO), Monitored (5-10 min), Automatic (1-2 min)
+  - Failover Testing: Quarterly validation on test primary; document actual RTO vs. target
+  - Common Mistakes (5): Async replication lag misunderstood, secondary not sized for full load, no failback procedure, DNS failover not tested, no redundant secondary
+
+**8.3: Communication Planning & Implementation** (3,800+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Stakeholder communication plans, messaging templates, regulatory timelines, communication channels, escalation, support Assignment 8A
+  - Stakeholder Map: Customers (service status), Employees (safety/work instructions), Board (financial impact), Regulators (breach notification), Partners (dependency impact)
+  - Communication Timeline: Initial Alert (0-15 min) → Status Updates (every 30 min) → Extended Recovery (every 1-2 hr) → Recovery Complete → Post-Incident
+  - Messaging Templates: Initial, Status Update, Recovery Complete with honest, specific language
+  - Regulatory Timelines: GDPR (72h), HIPAA (60d), PCI (30d), state law (varies 30-90d)
+  - Communication Channels: Email, SMS, Status page, Phone call, Social media (each with redundancy)
+  - Common Mistakes (5): Silence, misleading RTO, different messages to different audiences, no backup channels, blame language
+
+## Week 9 Student Resource Pages (2026-09-24)
+
+**Status:** ✅ COMPLETE and CREATED on Canvas (2026-09-24) - 3 comprehensive student pages unpublished, ready for instructor review. All pages match Week 1.1 canonical styling.
+
+**9.1: Business Continuity Operations** (4,000+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Identify critical functions (revenue impact), design workarounds, establish alternate work locations, manage staffing, prioritize recovery, support Assignment 9A
+  - Critical Function Identification: Framework by revenue impact/hour ($100K e-commerce vs. $0 email archive)
+  - Workarounds: E-commerce via phone/spreadsheet, Customer support via mobile phones, Payroll via manual calculation
+  - Alternate Work Locations: Remote work (immediate), Warm site (4-8h activation), Hot site (immediate), Mobile center (24-48h)
+  - Staffing During Crisis: Cross-training (2+ per function), Shift rotation (8-12h cycles), Succession planning
+  - Recovery Prioritization: Phase 1 (critical revenue functions), Phase 2 (business support), Phase 3 (compliance), Phase 4 (non-critical)
+  - Common Mistakes (5): Only IT involved, unrealistic data access, no alternate location, impossible staffing, wrong priorities
+
+**9.2: Supply Chain Resilience & Vendor Management** (3,900+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Map critical vendors, assess vendor resilience, design redundancy, manage vendor contacts, establish SLAs, support Assignment 9A
+  - Critical Vendor Mapping: Cloud provider, Payment processor, ISP, DNS, Email, Fulfillment
+  - Vendor Resilience Questions: Do you have DR plan? RTO/RPO? Uptime SLA? Geographic redundancy? Incident history?
+  - Vendor Redundancy: Primary + backup for critical functions (e.g., Stripe + PayPal, AWS + GCP)
+  - Failover Procedures: If primary vendor down, activate backup (with testing quarterly)
+  - SLA Requirements: Uptime percentage (99.9% vs. 99.99%), RTO/RPO commitments, support response time, service credits
+  - Common Mistakes (5): Single vendor for critical, no failover testing, not reviewing incident history, missing backup contacts, vendor contracts don't specify compliance requirements
+
+**9.3: Current Threat Landscape & Emerging Tactics** (4,100+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Understand current threats (RaaS, state-sponsored, supply chain, cloud-native), analyze tactics (living-off-the-land, lateral movement, API attacks), evaluate DRP/BCP relevance, support Assignment 9A
+  - Threat Evolution: Ransomware-as-a-Service (triple extortion), State-sponsored (persistent, patient), Supply chain (software compromise), Cloud-native (API-based deletion)
+  - Emerging Tactics: Living-off-the-land (legitimate tools), Lateral movement via trust, API attacks, Persistence via managed services, Zero-trust bypass
+  - Staying Current: CISA advisories, CVE database, Breach databases, Malware analysis platforms, SANS ISC
+  - Impact on Recovery: Backup may be encrypted, rebuild may miss fileless persistence, vendor recovery tools may be compromised
+  - Threat Intelligence Integration: Monthly threat briefing, Quarterly DRP/BCP review, Annual update based on emerging tactics
+  - Common Mistakes (5): Outdated DRP (5-year old assumptions), no threat intelligence monitoring, trust-based recovery (verify instead), untrained forensics, assumes one-time incident
+
+## Week 10 Student Resource Pages (2026-09-24)
+
+**Status:** ✅ COMPLETE and CREATED on Canvas (2026-09-24) - 3 comprehensive student pages unpublished, ready for instructor review. All pages match Week 1.1 canonical styling.
+
+**10.1: Crisis Leadership & Executive Decision-Making** (3,900+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Crisis vs. normal decision-making, incident command structure, decision-making under uncertainty, managing stakeholders, speed vs. accuracy, support Assignment 10A
+  - Crisis Decision Model: Speed (min/hrs vs. days), Info certainty (40-50% vs. 80-90%), Authority (single IC vs. consensus)
+  - Incident Command Structure: IC (authority), Deputy IC (backup), Technical Lead (tech decisions), Communications Lead (external), Executive Liaison (board)
+  - Decision Framework: Consequence Analysis (cost of being wrong now vs. cost of waiting)
+  - Managing Executives: Proactive updates (every 2-4h), financial impact estimates, regulatory risk flag
+  - Speed vs. Accuracy: When to decide now (failover, notify), When to wait (root cause, backup restoration)
+  - Common Mistakes (5): No designated IC, waiting for perfect information, board uninformed, broken promises, no escalation path
+
+**10.2: Crisis Communication & Stakeholder Management** (4,000+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Identify stakeholders, understand communication needs, develop communication strategy, manage media, maintain employee confidence, support Assignment 10A
+  - Stakeholder Map: Customers (service status), Employees (safety/instructions), Investors (impact/leadership), Regulators (breach notification), Media (narrative control)
+  - Communication Timeline: Initial Alert → Status Updates (every 30 min) → Extended (every 1-2 hr) → Recovery Complete → Post-Incident
+  - Media Relations: Proactive (lead narrative), Honest (acknowledge failure), Own story (take responsibility), Show response (action items), No excuses
+  - Internal Communication: All-hands hourly, shift briefings, appreciation, no speculation
+  - Common Mistakes (5): Silence, contradictory messages, broken promises, no communication lead, blame/speculation
+
+**10.3: International Standards & Regulatory Compliance** (4,100+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Understand global regulations (GDPR/HIPAA/PCI/SOX/CCPA), breach notification timelines, comply with standards (ISO/NIST), design compliant DRP/BCP, manage compliance documentation, support Assignment 10A
+  - Regulatory Landscape: GDPR (72h, EU), HIPAA (60d, US healthcare), PCI (30d, payment cards), SOX (material event filing), CCPA (30-60d, California)
+  - International Standards: ISO/IEC 27031 (BC readiness), ISO 22301 (BC management), NIST SP 800-34 (contingency planning), CIS Controls (backup/recovery)
+  - Documentation Requirements: Formal DRP/BCP, testing records (annual), RTO/RPO targets, roles/responsibilities, change management trail
+  - Breach Notification: Forensic investigation (within 72h), stakeholder notification (within required timeline), regulatory filing, media statement
+  - Compliance Matrix: Identify applicable regulations, determine most restrictive timeline, ensure procedures meet all standards
+  - Common Mistakes (5): DRP assumes no breach, undocumented testing, missed notification deadline, conflicting standards, vendor contracts missing compliance reqs
+
+## Completed Work
+
+### Weeks 1-5 (Previously Completed)
+- ✅ Week 1-3: Foundation content (incident response fundamentals)
+- ✅ Week 4: Incident Response Procedures and Escalation (6 pages)
+  - 4.1: IR Fundamentals and Planning
+  - 4.2: CSIRT Organization, Roles, Structure
+  - 4.3: Incident Classification and Severity Assessment
+  - 4.4: IR Procedures and Escalation
+  - 4.5: Tools, Forensics, Documentation
+  - 4.6: Real-World IR Context and Current News
+
+- ✅ Week 5: Incident Detection and Analysis (6 pages)
+  - 5.1: Detection Strategies and Monitoring Systems
+  - 5.2: SIEM Configuration, Rules, Alert Tuning
+  - 5.3: Log Analysis Techniques and Forensic Investigation
+  - 5.4: Threat Hunting and Proactive Detection
+  - 5.5: Continuous Monitoring and Detection Program Maturity
+  - 5.6: Real-World Detection Failures and Current Security Events
+
+### Week 6: Recovery and Post-Incident Activities (6 pages) - 2026-09-17
+**Status:** ✅ Complete and created on Canvas (unpublished, ready for review)
+
+- 6.1: Containment Strategies and Active Incident Isolation
+  - Network-level isolation (VLAN, firewall ACLs, C2 blocking)
+  - Host-level containment (credential management, process termination, VM snapshots)
+  - Type-specific containment (ransomware, data breach, web shell, DDoS, insider threat)
+  - Documenting containment actions for legal proceedings
+
+- 6.2: Eradication and System Remediation
+  - Philosophy: completeness over speed
+  - Three eradication approaches (rebuild, patch & clean, accept risk)
+  - Malware eradication checklist (7-step process)
+  - Persistence mechanism hunting (registry, tasks, services, WMI)
+  - Scale eradication and preventing re-infection
+
+- 6.3: Recovery and Business Continuity
+  - Four recovery phases (preparation, initial, verification, full)
+  - RTO/RPO concepts and execution procedures
+  - Recovery sequencing by priority
+  - Backup and DR design (immutable, air-gapped, 3-2-1 rule)
+  - Business continuity post-recovery
+
+- 6.4: Post-Incident Review and Lessons Learned
+  - Blameless culture principles
+  - PIR components (timeline, root cause, detection/response analysis, control assessment)
+  - Extracting actionable improvements
+  - Conducting PIR meetings and documenting findings
+  - Tracking and completing improvement actions
+
+- 6.5: Crisis Communication and Stakeholder Management
+  - Stakeholder communication map (executive, users, legal, IR team, regulators)
+  - Internal and external communication templates
+  - Regulatory notification timelines and requirements
+  - Managing media and public relations
+  - War room coordination (IC, technical lead, legal, PR, executive)
+  - Six principles of effective crisis communication
+
+- 6.6: Real-World Recovery Cases and Current Incident Trends
+  - Case Study 1: Equifax (2017) - poor detection delay, late notification, massive fallout
+  - Case Study 2: Microsoft Exchange ProxyLogon (2021) - fast vendor response, automated patching success
+  - Case Study 3: Colonial Pipeline (2021) - ransomware recovery, ransom decision, critical infrastructure considerations
+  - Current threat landscape (2025-2026): RaaS, supply chain attacks, cloud misconfiguration, AI-powered attacks, nation-state activity
+  - Staying current with threat intelligence and professional development
+  - IR maturity model (4 levels: initial → defined → managed → optimized)
+
+**Format (all pages):**
+- v4.0 canonical HTML
+- Purple learning objectives section (6 checkmarks in 2-column grid)
+- Color-coded content sections (green, blue, amber)
+- Tables with dark headers and alternating row colors
+- 2,000-4,000 words per page (comprehensive)
+- Verified external links (CISA, Microsoft, SANS, FBI, BleepingComputer, Krebs, Ars Technica)
+- Inline CSS only; no separate stylesheets
+
+### Week 7: Specialized IR Topics (6 pages) - COMPLETE (2026-09-17)
+**Status:** All 6 of 6 pages created on Canvas with CORRECT naming and comprehensive content (unpublished, ready for review)
+
+- **7.1: Threat Intelligence Integration and Threat Hunting** ✅ Created 2026-09-17 (~2900 words)
+  - TI pillars (strategic/tactical/operational), sources (government, ISAC, vendor, open-source)
+  - Threat hunting fundamentals and hypothesis-driven approach
+  - Common hunting techniques (lateral movement chains, C2 beaconing, persistence mechanisms)
+  - TI platforms (MISP, ThreatStream, Recorded Future) and integration with SIEM/EDR
+  - Documentation, attribution, and law enforcement collaboration
+
+- **7.2: Digital Forensics and Evidence Handling** ✅ Created 2026-09-17 (~2900 words)
+  - Forensics principles, legal context, and chain of custody
+  - Forensic acquisition (write-blockers, hashing, two-analyst rule)
+  - NIST methodology (extraction, parsing, analysis, reporting)
+  - Timeline reconstruction and artifact analysis
+  - Common artifacts by OS (Windows Registry, Event Logs, browser history, etc.)
+
+- **7.3: Network Forensics and Packet Analysis** ✅ Created 2026-09-17 (~2900 words)
+  - Network capture methods (SPAN, RSPAN, tap devices)
+  - Packet analysis workflow (Wireshark, tcpdump, Zeek, Suricata)
+  - Protocol anomalies and C2 detection patterns
+  - DNS forensics and flow analysis (NetFlow, sFlow)
+  - Packet carving, credential recovery, email recovery from PCAP
+
+- **7.4: Memory Forensics and System Artifacts** ✅ Created 2026-09-17 (~2900 words)
+  - Memory acquisition techniques (living system, hibernation file, page file)
+  - Volatility framework overview and plugin architecture
+  - Process analysis (pslist, suspicious indicators, import tables)
+  - Hidden process detection (rootkits, SSDT hooking, DKOM)
+  - DLL/thread injection detection, encryption key extraction, credential recovery
+
+- **7.5: Malware Analysis and Reverse Engineering** ✅ Created 2026-09-17 (~2900 words)
+  - Static analysis (disassemblers, string analysis, entropy analysis, YARA rules)
+  - Dynamic analysis and sandboxing (Cuckoo, commercial platforms, VM detection)
+  - Behavioral indicators (file operations, registry modifications, process spawning)
+  - Malware family identification and attribution
+  - Evasion techniques and countermeasures
+
+- **7.6: Real-World Forensics Cases and Current Tools** ✅ Created 2026-09-17 (~2900 words)
+  - Case Study 1: SolarWinds (supply chain compromise, network forensics detection)
+  - Case Study 2: Exchange ProxyLogon (IIS logs, web shells, cover-up attempts)
+  - Case Study 3: 3CX (living-off-the-land techniques, supply chain attack)
+  - Forensic tools landscape (commercial vs. open-source, tool selection criteria)
+  - Emerging challenges and gaps (cloud, containers, modern malware)
+
+**Format Verification:** All pages follow v4.0 canonical format with proper naming ("Lecture Notes - Week 7.X: [Title]"), comprehensive depth (2600-2900 words), purple learning objectives (6 checkmarks in 2-column grid), blue key teaching points, tan lecture content sections with teaching notes, amber "What's Current", and blue reference links. All pages are self-contained and independent (no cross-references).
+
+## Pending Work
+
+### Week 8: Incident Response for Specific Threat Types (6 pages) - COMPLETE (2026-09-17)
+**Status:** All 6 of 6 pages created on Canvas (unpublished, ready for review)
+
+- **8.1: Ransomware Attack Response** ✅ Created 2026-09-17 (~2900 words)
+  - Ransomware lifecycle (reconnaissance, lateral movement, encryption, extortion)
+  - Detection signals and rapid encryption mechanics
+  - Immediate containment (isolation, C2 blocking, evidence preservation)
+  - Eradication vs. patch-and-clean decision trees
+  - Recovery from backup and ransom considerations (FBI guidance, business reality)
+  - Ransomware families and detection signatures (REvil, LockBit, Cl0p)
+  - RaaS maturity, AI-powered encryption, cloud ransomware, legal consequences (2025-2026 trends)
+
+- **8.2: Data Breach Response and Investigation** ✅ Created 2026-09-17 (~2900 words)
+  - Breach discovery sources (external researcher, law enforcement, customer complaint, internal detection)
+  - Forensic data scope assessment (database queries, file system timelines, network forensics)
+  - Regulatory timelines (GDPR 72-hour, state laws 30-60 days, HIPAA, PCI-DSS)
+  - Attribution (insider vs. external) via forensics and access patterns
+  - Victim notification at scale (147M+ customer challenges, notification infrastructure)
+  - Post-breach remediation (credit monitoring, identity theft insurance, prevention fixes)
+  - GDPR enforcement, vendor breach cascades, ransomware+data theft hybrid, AI-driven exfiltration (2025-2026 trends)
+
+- **8.3: Insider Threat Detection and Response** ✅ Created 2026-09-17 (~2900 words)
+  - Insider threat categories (malicious, negligent, coerced, third-party)
+  - Detection mechanisms (UAM, UBA, technical controls, behavioral baselines)
+  - Investigation and evidence preservation (legal holds, forensic examination, cross-correlation)
+  - Escalation to HR, legal, and law enforcement coordination
+  - Prevention controls (RBAC, access reviews, monitoring tools)
+  - Privacy law constraints (ECPA, wiretap laws, state restrictions on surveillance)
+  - Remote work insider risk surge, AI-enhanced detection, privacy regulation backlash, contractor risk (2025-2026 trends)
+
+- **8.4: DDoS Attack Mitigation and Response** ✅ Created 2026-09-17 (~2900 words)
+  - Attack types (volumetric: UDP floods, ICMP, DNS amplification; protocol: SYN, fragmentation; application: HTTP, Slowloris)
+  - Detection and triage procedures
+  - ISP coordination, DDoS mitigation services (upstream filtering)
+  - Immediate response (activate mitigation service, DNS reroute, rate-limiting)
+  - Extortion scenarios (do not negotiate, FBI reporting)
+  - Infrastructure resilience (redundancy, failover, multipath ISP, DDoS service contracts)
+  - Post-incident analysis of attack vectors and defense effectiveness
+  - Mirai variants, DDoS-as-a-Service commoditization, cloud provider DDoS mitigation, RDoS wave, hybrid attack chains (2025-2026 trends)
+
+- **8.5: Web Application Attacks and Response** ✅ Created 2026-09-17 (~2900 words)
+  - Attack types (SQL injection, XSS, RCE, file upload, deserialization, web shells)
+  - Detection via WAF alerts, log analysis, FIM, anomalous parameters
+  - Incident response (detect active exploitation, remove web shells, patch code, block attacker, restore from backup)
+  - Investigation challenges (hidden backdoors, modified source code, chain of custody)
+  - Prevention (input validation, output encoding, parameterized queries, secure libraries, SAST/DAST testing, WAF tuning)
+  - Development team coordination (secure coding, security testing, patch management)
+  - API exploitation, Log4Shell supply chain attacks, container/microservices, AI-generated payloads, passwordless authentication (2025-2026 trends)
+
+- **8.6: Real-World Attack Cases and Response Playbooks** ✅ Created 2026-09-17 (~2900 words)
+  - Case Study 1: Heartland Payment Systems (2009) - 130M card breach, 8-month undetected, detection via payment brands
+  - Lessons: data exfiltration detection, network segmentation, logging/retention, monitoring, victim notification scale
+  - Case Study 2: Uber (2022) - contractor credential compromise via credential stuffing, VPN access, 24-hour disclosure
+  - Lessons: contractor access controls, MFA, public transparency, law enforcement coordination
+  - Playbook structure (incident type, functional, escalation procedures)
+  - Playbook testing (tabletop exercises) and annual maintenance
+  - Multi-cloud complexity, supply chain coordination, RaaS dual-phase response, IR team burnout/retention (2025-2026 trends)
+
+**Format Verification:** All pages follow v4.0 canonical format with proper naming ("Lecture Notes - Week 8.X: [Title]"), comprehensive depth (2600-2900 words), purple learning objectives (6 checkmarks in 2-column grid), blue key teaching points, tan lecture content sections with teaching notes, amber "What's Current", and blue reference links. All pages are self-contained and independent (no cross-references).
+
+### Week 9: Compliance and Regulatory Requirements (6 pages) - COMPLETE (2026-09-17)
+**Status:** All 6 of 6 pages created on Canvas (unpublished, ready for review)
+
+- **9.1: GDPR and Data Protection Regulations** ✅ Created 2026-09-17 (~2900 words)
+  - GDPR scope (territorial, personal data definition), lawful bases (6 bases), data subject rights (8 rights: access, rectification, erasure, restrict, portability, object, automated decisions, withdraw consent)
+  - 72-hour breach notification requirement to regulators, plus individual notification without undue delay
+  - DPIA (Data Protection Impact Assessment) requirements and documentation
+  - Data Protection Officer (DPO) role and reporting obligations
+  - Compliance governance and enforcement patterns
+  - GDPR fines structure (€20M or 4% global revenue, whichever higher) and enforcement escalation (2023-2026)
+
+- **9.2: HIPAA, PCI-DSS, and Industry-Specific Requirements** ✅ Created 2026-09-17 (~2900 words)
+  - HIPAA: covered entities, Business Associate Agreements (BAAs), technical safeguards (encryption, access controls, audit logs), administrative safeguards (policies, training, incident response)
+  - 60-day breach notification requirement to individuals, regulators, and media (if 500+ affected)
+  - PHI definition and mandatory encryption (Breach Rule)
+  - PCI-DSS: 12 core requirements, scope (anyone handling card data), compliance levels (1-4 by merchant size)
+  - Annual QSA audit, forensic investigation post-breach, card brand penalties ($5K-$100K/month)
+  - SOX (public companies), SOC 2 Type II (audit-based), GLBA/FINRA (financial), FERPA (education), NERC CIP (critical infrastructure)
+
+- **9.3: Breach Notification Laws and Requirements** ✅ Created 2026-09-17 (~2900 words)
+  - US state patchwork: 50 different timelines ("without unreasonable delay" = 30-90 days depending on state and interpretation)
+  - Harm standard vs. access standard: California (harm required) vs. others (access = notification)
+  - GDPR 72-hour regulatory notification + individual notification without undue delay
+  - Notification scope: affected individuals, state AGs (500+ threshold), media (large breaches), credit agencies
+  - Notification content requirements (data types, discovery date, steps individual can take, contact info)
+  - International variation: PIPEDA (Canada), LGPD (Brazil), others
+  - Multi-jurisdiction compliance: most-restrictive-jurisdiction rule (if any GDPR resident affected, GDPR rules apply to entire breach)
+
+- **9.4: Legal and Regulatory Documentation** ✅ Created 2026-09-17 (~2900 words)
+  - Incident response documentation is discoverable evidence; assume opposing counsel will read it
+  - Litigation hold: mandatory once lawsuit threatened; must identify data sources, stop deletions, preserve in forensic state
+  - Chain of custody (criminal context = strict requirement; civil = credibility factor; regulatory = good-faith indicator)
+  - Attorney-client privilege (narrow scope: communications with counsel seeking legal advice) vs. work product doctrine (attorney mental impressions in anticipation of litigation)
+  - Regulatory requests: subpoenas (court order), data access requests (GDPR/CCPA statutory demands), preservation orders
+  - Expert witness testimony: qualification requirements (education, certifications, experience, publications), Daubert standard (federal court reliability test)
+  - Discovery risk management (what to document, how to structure attorney-client privilege, assertions of privilege)
+
+- **9.5: Incident Response in Regulated Industries** ✅ Created 2026-09-17 (~2900 words)
+  - HIPAA: breach notification within 60 days, strict liability (no harm threshold), HHS OCR enforcement and audit
+  - PCI-DSS: mandatory QSA forensic investigation, card brand fines, compliance levels and audit requirements
+  - NERC CIP (electric grid): 15-minute RTO reporting, potential criminal liability for false reports, FERC jurisdiction
+  - Financial services: SEC materiality threshold (~$50M or 10% of assets), 8-K disclosure within 4 days, OCC/Federal Reserve notification
+  - Law enforcement coordination: FBI (24-hour notification for financial sector), Secret Service (1-hour notification for card fraud)
+  - Operational continuity vs. compliance: documented deviation (regulatory approval in writing) vs. simple non-compliance
+
+- **9.6: Real-World Compliance Cases and Lessons Learned** ✅ Created 2026-09-17 (~2900 words)
+  - Case Study 1: Equifax (2017) - $700M settlement, unpatched vulnerability, no logging, 2-month notification delay, multiple regulators
+  - Case Study 2: Target (2013) - $18.5M FTC settlement, $40M+ private litigation, supply chain attack via HVAC vendor, no network segmentation
+  - Case Study 3: TikTok (2023) - $250M FTC settlement, COPPA children's privacy violation, data minimization failure, parental consent mechanisms inadequate
+  - Case Study 4: Facebook/Meta (2021) - $5B FTC settlement (record at time), systemic privacy failures, third-party access controls absent, misleading disclosures
+  - Enforcement patterns (2023-2026): systemic failures punished more than incidents, early cooperation reduces penalties, children's data violates handled separately, vendor cascades multiply liability, documentation survival tool
+  - Settlement escalation: baseline large-scale settlement now $100-500M vs. $10-50M three years ago
+
+**Format Verification:** All pages follow v4.0 canonical format with proper naming ("Lecture Notes - Week 9.X: [Title]"), comprehensive depth (2600-2900 words), purple learning objectives (6 checkmarks in 2-column grid), blue key teaching points, tan lecture content sections with teaching notes, amber "What's Current", and blue reference links. All pages are self-contained and independent (no cross-references).
+
+### Week 10: Building and Managing Incident Response Programs (6 pages) - COMPLETE (2026-09-17)
+**Status:** All 6 of 6 pages created on Canvas (unpublished, ready for review)
+
+- **10.1: IR Team Structure and Role Definition** ✅ Created 2026-09-17 (~2900 words)
+  - Team structure by organization size (small: 1-2 part-time; mid: 5-10 dedicated; enterprise: 20-100+)
+  - Role definitions: CISO (governance), Incident Commander (real-time decisions), Forensics Analyst, Threat Hunter, IR Coordinator
+  - On-call rotation models and burnout prevention (mandatory time off, competitive salary)
+  - Cross-functional coordination (legal, PR, business units, executive)
+  - Recruitment and skill development (GCIH certification, salary market, growth paths)
+  - Talent shortage (3:1 demand-to-supply ratio), Chief Incident Officer role emerging, burnout metrics tracked
+
+- **10.2: IR Planning and Procedures Documentation** ✅ Created 2026-09-17 (~2900 words)
+  - Incident Response Plan (high-level strategic document): purpose, scope, roles, phases, escalation, communication, regulatory requirements, recovery, training, update cadence
+  - Incident Playbooks (type-specific): ransomware, data breach, DDoS, insider threat; each includes detection, response, investigation, communication
+  - Runbooks (technical step-by-step): system isolation, memory acquisition, network isolation, forensic procedures
+  - Escalation procedures: severity-based (Level 1-3 with thresholds), decision trees by incident type
+  - Communication plan: internal (executive, IT ops, legal, HR), external (customers, regulators, law enforcement, media)
+  - Plan maintenance: annual review minimum, post-incident updates, testing in exercises
+
+- **10.3: Training, Exercises, and Tabletop Drills** ✅ Created 2026-09-17 (~2900 words)
+  - Training programs: baseline (all staff: phishing/password/reporting), IR team technical (forensics, threat hunting, malware analysis), budget ($5-10K per analyst per year)
+  - Tabletop exercise (4 hours, low pressure): discussion-based scenario, facilitator guides decisions, reveals communication/escalation gaps
+  - Simulation exercise (8 hours, medium pressure): adds technical elements (EDR alerts, log review), time compression, realistic scenarios
+  - Full-scale drill (16-24 hours, high pressure): real/realistic test environment, continuous play, high-stress decision making
+  - Exercise scoring: Critical (must fix before next exercise), Important (fix this year), Nice-to-have (future)
+  - Exercise frequency: high-risk organizations quarterly tabletops + annual full-scale; lower-risk annual tabletop
+  - Psychological safety: team must feel safe admitting mistakes without consequences
+
+- **10.4: Metrics, KPIs, and Program Maturity** ✅ Created 2026-09-17 (~2900 words)
+  - Core metrics: MTTI (Mean Time To Identify), MTTR (Mean Time To Respond), MTTR (Mean Time To Recover), false positive rate, root cause accuracy
+  - KPI Dashboard: monthly (incident count, MTTI/MTTR trends, burnout index); quarterly (program maturity, budget utilization, peer benchmarking)
+  - Maturity models: Level 1 (ad hoc), Level 2 (repeatable), Level 3 (defined), Level 4 (managed), Level 5 (optimized)
+  - Industry benchmarks: MTTI varies by sector (financial 2-4 hrs, healthcare 4-8 hrs, tech 8-24 hrs, manufacturing 24-72 hrs, small business 72+ hrs)
+  - Reporting to leadership: executive summary (1 page), metrics dashboard, quarterly minimum, post-incident reviews
+  - Cost of IR program (Level 3-4): $1-10M/year depending on size; ROI calculated on incident prevention value
+
+- **10.5: Vendor Management and Third-Party IR Services** ✅ Created 2026-09-17 (~2900 words)
+  - DFIR vendor categories: big consulting firms (Deloitte, EY - broad but expensive), specialized firms (Mandiant, CrowdStrike - deep expertise, medium cost), boutique (ransomware-focused, low cost)
+  - Selection criteria: response SLA (4-hour mobilization), expertise match, geographic presence, insurance ($2M+ E&O), references, pricing transparency
+  - Contract essentials: response SLA, hourly rates, scope definition, confidentiality/privilege, insurance requirement, exit clause
+  - Threat intelligence and SOAR platforms: TI cost $50-500K/year; SOAR cost $200-1M/year
+  - Pre-incident relationships: retainer ($75-150K/year), annual environment briefing, tabletop exercise with vendor
+  - Build-vs-buy: internal analyst $168K/year, vendor $100K retainer + per-incident costs; hybrid is typical
+  - Vendor audit (annual): SOC 2 Type II certification, incident response procedures, data confidentiality
+
+- **10.6: Building a Resilient IR Program** ✅ Created 2026-09-17 (~2900 words)
+  - Integration across organization: prevention (security), detection (SOC), response (IR), recovery (IT ops); weekly cross-functional meetings
+  - Resilience and redundancy: personnel (backup IC, cross-training), tools (SIEM failover), communication (multiple channels), escalation (alternates identified)
+  - Continuous improvement cycle: incident → PIR → procedure updates → testing → documentation
+  - Program evolution through change: growth (1→5→20 people), technology change (on-premise→cloud), mergers, new business lines
+  - Executive communication: annual program review (board level), budget justification (ROI-based), crisis communication
+  - Sustaining through budget cycles: prioritization during cuts, multi-year roadmap
+  - Board-level oversight: dedicated cybersecurity committees, strategic IR investment
+
+**Format Verification:** All pages follow v4.0 canonical format with proper naming ("Lecture Notes - Week 10.X: [Title]"), comprehensive depth (2600-2900 words), purple learning objectives (6 checkmarks in 2-column grid), blue key teaching points, tan lecture content sections with teaching notes, amber "What's Current", and blue reference links. All pages are self-contained and independent (no cross-references).
+
+## Course Completion Summary
+
+**BIT360: Incident Response & Cyber Forensics - WEEKS 1-10 COMPLETE** ✅
+
+- **Weeks 1-6:** Previously completed (foundation through post-incident review)
+- **Week 7:** ✅ Specialized IR Topics (6 pages, ~17K words) - Threat Intelligence, Digital Forensics, Network Forensics, Memory Forensics, Malware Analysis, Real-World Cases
+- **Week 8:** ✅ Incident Response for Specific Threat Types (6 pages, ~17K words) - Ransomware, Data Breach, Insider Threat, DDoS, Web Application, Real-World Cases
+- **Week 9:** ✅ Compliance and Regulatory Requirements (6 pages, ~17K words) - GDPR, HIPAA/PCI-DSS, Breach Notification, Legal Documentation, Regulated Industries, Real-World Cases
+- **Week 10:** ✅ Building and Managing IR Programs (6 pages, ~17K words) - Team Structure, Planning, Training, Metrics, Vendor Management, Resilience
+
+- **10.7: Real-World IR Program Case Studies and Lessons Learned** ✅ Created 2026-09-17 (~2900 words)
+  - Case Study 1: Large Financial Institution (Level 1→4 journey over 8 years, $20M cumulative investment, successful progression via inflection points)
+  - Case Study 2: Healthcare Provider (regulatory enforcement case, failed to maintain investment post-settlement, stalled at Level 2)
+  - Case Study 3: Technology Company (rapid scaling challenges, cloud infrastructure mismatch with IR procedures, recovery through specialist hiring)
+  - Patterns: critical inflection points (major incident, regulatory audit, board governance), budget as maturity indicator, personnel stability correlation, organizational change management
+  - Key insights: IR maturity is 5-10 year journey, sustained commitment is prerequisite, strategic organizational view enables progression, regulatory enforcement is expensive post-incident vs. proactive investment
+
+**Total:** 25 comprehensive instructor lecture notes pages (Weeks 7-10), ~71,000 words, v4.0 canonical format, all unpublished and ready for review.
+
+**All pages have:**
+- Proper naming convention: "Lecture Notes - Week X.Y: [Title]"
+- 6 learning objectives with checkmarks in 2-column grid (purple section)
+- Comprehensive key teaching points (blue section, flat bullet list)
+- Multiple lecture content sections (tan/amber) with subsection h3 headers and teaching notes boxes
+- "What's Current" section (amber) grounding content in 2024-2026 industry trends
+- Reference links (blue) with external URLs only (no cross-document references)
+- 2600-2900 words per page for comprehensive depth
+- Inline CSS only, no style tags
+- No em dashes (space-hyphen-space used instead)
+- Self-contained and independent (no cross-references between pages)
+
+### Student Resource Pages
+- Planned: 2-5 student-facing resource pages per week (separate from instructor notes)
+- Current status: Not yet started
+
+## Known Issues / Decisions
+
+### Catastrophic Content Loss - 2026-09-17
+**Incident:** During Week 4-5 page title updates, canvas-api `edit_page_content` calls were made with empty `new_content` parameter, resulting in complete deletion of all comprehensive content from 12 pages (Weeks 4.1-4.6 and 5.1-5.6).
+
+**Root cause:** Misunderstanding of Canvas API behavior. The `edit_page_content` function replaces entire page content; partial updates do not accumulate. Empty parameter = total deletion.
+
+**Resolution:** Restored all deleted content from backup HTML generated during this session. Week 6 pages created with full HTML in single API calls to prevent recurrence.
+
+**Prevention:** All subsequent page creation uses complete, validated HTML in a single API call. No empty parameters passed to edit_page_content.
+
+## Week 9: Compliance and Regulatory Requirements (2026-09-18)
+
+**Status:** ✅ COMPLETE - 3 comprehensive student pages created on Canvas (2026-09-18), unpublished, ready for instructor review. All pages match Week 1.1 canonical styling (clean minimal format with left-border accent boxes).
+
+**9.1: GDPR and Data Protection Compliance** (3,600+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): GDPR scope and applicability, legal basis for processing, data subject rights, technical/organizational measures, breach notification timelines, support Assignment 9A
+  - Why This Matters: GDPR fines reach €20M or 4% global revenue; EU data processing compliance mandatory regardless of company location
+  - GDPR Scope: Personal data definition, data subject rights, extraterritorial reach, covered vs. exempt data
+  - Controller vs. Processor: Responsibility allocation, Data Protection Officer requirements, processor agreement needs
+  - 6 Legal Bases Table: Consent, Contract, Legal Obligation, Vital Interests, Public Task, Legitimate Interests - with requirements and examples
+  - Data Subject Rights: Access (30 days), Erasure, Rectification, Portability, Objection - with IR response challenges
+  - Technical Measures: DPIA, Data Processing Agreement (DPA), Privacy by Design, Records of Processing
+  - Breach Notification: 72-hour DPA filing window, individual notification, risk assessment for data types
+  - GDPR Fines: Tier 1 (€10M or 2%) for technical violations, Tier 2 (€20M or 4%) for substantive violations
+  - Common Mistakes (5): Pre-ticked consent, no DPA with vendors, mixing legal bases, no processing records, delayed breach notification
+
+**9.2: HIPAA, PCI-DSS, and Regulated Industries** (3,500+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): HIPAA Privacy/Security Rules for healthcare, PCI-DSS 12 requirements, HIPAA breach procedures, card brand notification, regulated industry compliance, support Assignment 9B
+  - Why This Matters: HIPAA violations cost up to $50K per patient record; PCI-DSS breaches trigger card reissuance and acquirer fines
+  - PHI Definition: Health information linked to individuals (medical records, diagnoses, medications, insurance claims, mental health records)
+  - HIPAA Privacy Rule: Covered entities, patient rights (access, corrections, restrictions, portability)
+  - HIPAA Security Rule: Administrative (management process, risk assessment, training), Physical (facility/workstation/device controls), Technical (access, audit logs, encryption)
+  - HIPAA Breach Notification: 60-day timeline, individual/media/HHS notification (500+ threshold), risk-of-harm assessment
+  - PCI-DSS Overview: Applies to any organization processing/storing/transmitting card data (credit/debit numbers, CVV, expiration)
+  - 12 Core PCI Requirements: Firewall, default passwords, data protection, encryption, malware, secure development, access control, identification, physical security, logging, testing, policy
+  - PCI-DSS Breach Response: Notify acquirer immediately, notify card brands within 30 days, mandatory card reissuance
+  - Other Regulated Industries: GLBA (financial), TCPA (telecom CPNI), NERC CIP (energy/utilities)
+  - Common Mistakes (5): Delayed HIPAA notification, not notifying card brands, unencrypted card storage, no Business Associate Agreements (BAA), inadequate audit logging
+
+**9.3: Breach Notification, Legal Documentation, and Cases** (3,700+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Breach notification procedures across jurisdictions, legal hold/evidence preservation, forensic reports, chain of custody, real-world case analysis, support Assignment 9C
+  - Why This Matters: Proper notification and evidence preservation directly impact regulatory fines and litigation outcomes
+  - Notification Timeline: 72-hour window (GDPR), 60-day (HIPAA), varies by state (California/Nevada)
+  - Step 1 - Internal Notification (Day 0): CEO, general counsel, CFO, board, incident response, insurance broker
+  - Step 2 - Regulatory Notification (Day 1-3): Data Protection Authority filing via official portals (EU, state AG)
+  - Step 3 - Individual Notification (Day 2-60): Email/SMS with plain language, impact assessment, recommended actions, contact info
+  - Step 4 - Media Notification (500+ threshold): Press release strategy (proactive vs. reactive)
+  - Legal Hold Procedure: Formal notice to IT/custodians, documentation of acknowledgment, disable auto-deletion, snapshot systems
+  - Chain of Custody Documentation: Who/when/why/condition for each evidence transfer, cryptographic hash validation
+  - Forensic Report Structure: Executive Summary, Methodology, Evidence Chain, Technical Findings, Attribution, Conclusions/Recommendations
+  - Real-World Cases (4): Facebook/Meta ($5B fine, contractor access), Equifax ($700M, 76-day dwell time), Target ($18.5M, supply chain HVAC), Uber ($100K ransom, cover-up fine)
+  - Common Mistakes (5): "Still investigating" delays, deleting evidence before forensic capture, vague notification language, no chain of custody, assuming encrypted = low risk
+
+**Format & Standards:** All three pages match Week 1.1 canonical styling:
+- Clean minimal design: no background boxes on headers, left-border accent boxes only for learning objectives/callouts
+- Real-world examples: GDPR fines, HIPAA breaches, PCI requirements, Facebook/Equifax/Target/Uber cases with specific dollar amounts and timelines
+- Common mistakes tables: 5 detailed entries per page with "Why/How to Fix" structure
+- Word count: 3,500-3,700 per page (within 3,500-4,500 target)
+- Canvas status: All 3 pages created unpublished on Canvas 2026-09-18, ready for instructor review before student publication
+
+**Impact:** Week 9 brings course to 90% completion (9 of 10 weeks). Only Week 10 (IR Program Building and Management) remains for 100% student resource page coverage.
+
+## Week 10 Student Resource Pages (2026-09-18)
+
+**Status:** ✅ COMPLETE - 3 comprehensive student pages created on Canvas (2026-09-18), unpublished, ready for instructor review. All pages match Week 1.1 canonical styling (clean minimal format with left-border accent boxes).
+
+**10.1: Building and Scaling IR Capability** (3,900+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Design CSIRT structures by org size, define competency levels (Jr/Mid/Sr/Lead/CISO), plan GIAC certification pathways, build mentorship programs, calculate compensation, support Assignment 10A
+  - Why This Matters: IR team strength correlates directly to incident response speed and quality; staffing is the highest-impact investment
+  - CSIRT Structures by Organization Size: Startup (1-100 emp: 1 part-time CISO + external vendor), Small (100-500: 1 IR Lead + 1-2 analysts + vendor), Mid-market (500-5K: CISO + IR Lead + 2-3 analysts + forensics + threat intel), Enterprise (5K+: 20-50 person CSIRT with specialties)
+  - Competency Levels with Experience/Salary: Junior ($80-120K, 0-2 years), Mid-level ($120-160K, 2-5 years), Senior ($160-220K, 5-10 years), Lead ($220-300K, 10+ years), CISO ($300-600K, executive)
+  - GIAC Certification Pathways: GCIH (incident handler basics, $2K exam), GCIA (analyst intermediate, $2.5K), GCFE (digital forensics, $3K), DFIR (expert combination, $5K+)
+  - Training Program Structure: Year 1 (GCIH), Year 2 (GCIA), Years 3-4 (specializations: GCFE or threat hunting), Year 5+ (leadership: SANS instructor or advanced certifications)
+  - Mentorship Programs: Junior paired with senior (1:1 ratio), monthly code reviews, incident shadowing, career development planning
+  - Common Mistakes (5): Hiring security generalists expecting IR depth, no certification pathway, no mentorship for juniors, on-call burnout with no relief, compensation below market causing turnover
+
+**10.2: IR Program Governance and Metrics** (3,700+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Define IR success metrics (MTTD/MTTR/dwell time), build board-ready KPI dashboards, justify IR budget with ROI, integrate IR with SOC, calculate cost avoidance, support Assignment 10B
+  - Why This Matters: Business leaders measure IR by speed, cost, and outcomes - not technical capability; metrics drive executive investment
+  - Speed Metrics Table: MTTD (target 1 hour), MTTR (target 15 min), MTTH (target 6 hours, critical incidents), Dwell Time (target 30 days, benchmark 200+ days industry)
+  - Effectiveness Metrics: Containment success rate (95%+), eradication success (100%), false positive rate (10-20%), repeat incident rate (<5%)
+  - Financial Metrics: Cost per incident ($100-500K), cost per breach record ($150-250), IR ROI (cost avoided ÷ program cost), prevention value (estimated incident cost × prevention events)
+  - Board-Level 1-Pager: 5 sections (Incident Summary with trend, Speed Metrics vs. benchmark, Cost Impact with ROI, Risk Heat Map red/yellow/green, Actions Taken this quarter)
+  - Budget Justification: Personnel 60-70% ($400-450K), Tools 15-20% ($110K), Training 5-10% ($20K), External services 5-10% ($30-50K) = $560-650K total
+  - Cost Avoidance Pitch: Major ransomware without IR = $2.5M (downtime + ransom); with IR = $70K (6-hour containment) = $2.43M savings justifies $600K program cost
+  - Common Mistakes (5): No metrics tracking, technical reports to business audience, no incident cost tracking, no SOC integration, budget cuts during good years
+
+**10.3: Continuous Improvement and Current IR Trends** (3,900+ words) - Canonical Week 1.1 style
+  - Learning Objectives (6): Apply IR maturity models (CMM/CMMI/NIST), conduct blameless post-incident reviews, implement SOAR automation, evaluate AI/ML in IR, stay current on threats, support Assignment 10C
+  - Why This Matters: Incident response evolves annually; attackers change tactics (RaaS 2020, supply chain 2021, AI-powered 2024); stale IR is unprepared IR
+  - Maturity Model Levels: Level 1 (ad hoc, unpredictable), Level 2 (repeatable, basic processes), Level 3 (defined, documented, trained), Level 4 (managed, metrics-driven), Level 5 (optimized, continuous improvement)
+  - Post-Incident Review (PIR) Blameless Culture: Focus on system failures not individual blame, psychological safety for admitting mistakes, continuous improvement mindset
+  - PIR Process: Within 1 week, 4 steps (timeline review, identify improvements, recommend actions, track completion)
+  - Playbook Evolution: Incident 1 reveals containment delay → update playbook with decision matrix; Incident 2 shows eradication gap → add registry recovery procedure
+  - SOAR Automation Examples: Alert triage (enrich data, score risk automatically), containment playbook (isolate network, disable user, block hash, notify IR), malware analysis (submit to sandbox, correlate TI, score threat)
+  - AI/ML Applications: Anomaly detection (learn normal behavior, flag deviations), threat scoring (50+ features predict malware), lateral movement detection (unusual network paths), IOC classification (predict high-confidence indicators)
+  - Current Threat Landscape (2024): Ransomware-as-a-Service (RaaS) tools commoditized, AI-generated malware samples (first detected 2024), supply chain compromise epidemic, nation-state APTs at all-time high
+  - Information Sources: Daily (SANS ISC, DarkReading, Krebs), Weekly (CISA alerts, vendor threat reports), Quarterly (Verizon DBIR, CrowdStrike M-Trends, Mandiant)
+  - Common Mistakes (5): PIR theater (findings never executed), automation without testing, outdated playbooks, no skills investment, blaming individuals instead of systems
+
+**Format & Standards:** All three pages match Week 1.1 canonical styling:
+- Clean minimal design: no background boxes on headers, left-border accent boxes only for learning objectives/callouts
+- Real-world examples: CSIRT salary/structure by company size, board dashboard with quarterly metrics, cost avoidance calculation for ransomware, SOAR automation playbooks
+- Common mistakes tables: 5 detailed entries per page with "Why/How to Fix" structure
+- Word count: 3,700-3,900 per page (within 3,500-4,500 target)
+- Canvas status: All 3 pages created unpublished on Canvas 2026-09-18, ready for instructor review before student publication
+
+**Impact:** Week 10 brings course to 100% completion. All 10 weeks of student resource pages (3 pages each = 30 total pages) now complete on Canvas. Course coverage: Week 1 (InfoSec/SysInternals), Weeks 2-3 (Planning), Weeks 4-6 (Response/Recovery), Week 7 (Forensics/TI), Week 8 (Threat Types), Week 9 (Compliance), Week 10 (Program Building).
+
+## LinkedIn Learning Training Assignments (2026-10-05)
+
+**Context:** Textbook replacement feasibility study evaluated LinkedIn Learning courses as substitute for "Principles of Incident Response & Disaster Recovery" textbook. Findings: 2-3 curated LinkedIn Learning courses per week provide focused, hands-on training that complements lecture content and bridges to hands-on assignments.
+
+**Strategy:** One training assignment per week (46m-2h) covers key IR/DR/BC concepts aligned with both textbook modules AND weekly lab assignments; students complete course + screenshot proof. Format: standardized Purpose/Task/Learning Objectives/Criteria structure. Status tracking per week below.
+
+| Week | Assignment ID | Title | LinkedIn Learning Course | Duration | Points | Status | Alignment |
+|------|--------------|-------|------------------------|----------|--------|--------|-----------|
+| 1 | - | Week 1: Training 1A | Risk Management Fundamentals | - | 80 | Published | Preparation phase |
+| 2 | 40350059 | Week 2: Training 2A | The New Age of Risk Management Strategy for Business | 1h 28m | 75 | Unpublished | Organizational planning |
+| 3 | 40363848 | Week 3: Training 3A | Cybersecurity Foundations: Incident Response | 1h 50m | 90 | Unpublished | IR lifecycle, contingency planning |
+| 4 | 40350087 | Week 4: Training 4A | Backup and Recovery with Veeam | 2h 6m | 100 | Unpublished | Backup/replication hands-on |
+| 5 | 40363890 | Week 5: Training 5A | Introduction to Security Information and Event Management (SIEM) | 1h 2m | 60 | Unpublished | SIEM fundamentals |
+| **6** | **40386640** | **Week 6: Training 6A** | **Learning Splunk** | **1h 54m** | **95** | **Unpublished** | **Splunk hands-on (Module 7)** |
+| **7** | **40386641** | **Week 7: Training 7A** | **Root Cause Analysis: Getting to the Root of Business Problems** | **46m** | **50** | **Unpublished** | **PIR/RCA techniques (Module 9)** |
+| **8** | **40386643** | **Week 8: Training 8A** | **Build Your First Disaster Recovery Plan (DRP)** | **1h 3m** | **50** | **Unpublished** | **DRP creation (Module 10)** |
+| **9** | **40386644** | **Week 9: Training 9A** | **The Cybersecurity Threat Landscape** | **1h 7m** | **55** | **Unpublished** | **Current threats (Module 11)** |
+| **10** | **40386646** | **Week 10: Training 10A** | **Cyber Crisis Management with NIST Cybersecurity Framework (CSF) 2.0** | **55m** | **50** | **Unpublished** | **Crisis leadership (Module 12)** |
+
+**Point Scaling:** Points scaled linearly by course duration (1h = 60pts, 2h = 100pts). Updated 2026-10-05.
+
+**Alignment Methodology:** Weeks 6-10 courses selected to reinforce BOTH textbook modules AND weekly lab assignments:
+- **Week 6:** Splunk fundamentals support 6A lab (SIEM log analysis), aligned with Module 7 (Detection Systems)
+- **Week 7:** Root Cause Analysis techniques support 7A lab (After-Action Review), aligned with Module 9 (Recovery/Investigations)
+- **Week 8:** DRP creation support 8A lab (DR/BC Plan), aligned with Module 10 (Disaster Recovery)
+- **Week 9:** Current threat landscape supports 9A lab (Cybersecurity in the News), aligned with Module 11 (Business Continuity)
+- **Week 10:** Crisis management support 10A lab (Guest Speaker Write-up), aligned with Module 12 (Crisis Management & International Standards)
+
+**Notes:**
+- **Week 1:** No training assignment (Week 1 focus is immediate IR prep; lecture notes + student pages sufficient)
+- **All LinkedIn Learning links verified working** before assignment creation (tested 2026-10-05)
+- **Weeks 6-10 complete the training assignment coverage** for all 10 weeks of BIT360 (total ~12 hours training)
+- **All assignments unpublished** - awaiting instructor review before student release
+
+## Navigation
+
+- [BIT221 (Server Admin I)](./BIT221.md) - Completed
+- [BIT281 (Hardware Systems)](./BIT281.md) - Completed
+- [BIT320 (Shell & Administrative Scripting)](./BIT320.md) - Completed
+- [BIT351 (Virtual Systems: Proxmox)](./BIT351.md) - Completed
+- [PRO221 (Server Admin Project)](./PRO221.md) - Completed
+- [PRO352 (Virtualization Project)](./PRO352.md) - Completed
+- [ITH216 (Networking - EIGRP/BGP/IPv6)](./ITH216.md) - In progress

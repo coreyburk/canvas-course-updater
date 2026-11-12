@@ -20,15 +20,15 @@ Lab Notes are **published, student-facing** pages that scaffold learning for han
 
 ---
 
-## Step 0 - Gotchas
+## Step 0 - Gotchas & Low-Context Workflow
 
-- Lab Notes are **published and student-facing** (unlike instructor lecture notes)
-- Place in the course module at the appropriate week, **not in instructor-only module**
+- Lab Notes are **student-facing** (unlike instructor lecture notes), placed in the weekly course module (**not** in the instructor-only module). Keep newly created pages unpublished until Corey reviews them.
 - No em dashes - use space-hyphen-space instead
 - Use left-border boxes (BIT281 style), not full-border boxes
 - Code examples must be **generalizable** (show the pattern, not the answer)
 - Never show expected output from actual student data
 - Canvas strips `<style>` tags and inline SVG - all styling via `style=""` attributes
+- **Low-context authoring:** Draft Lab Notes in Markdown with `template: lab-notes` (5 H2 sections in order: Why This Matters, Core Concept, HOW-TO, Key Challenge, Workflow), compile with `python tools/canvas_build.py <file.md> -o scratchpad/<file.html>`, and push with `python tools/canvas_sync.py`.
 
 ---
 

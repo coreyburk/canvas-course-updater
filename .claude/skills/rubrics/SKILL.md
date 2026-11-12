@@ -431,13 +431,19 @@ Criterion 4: Critical Analysis & Insight (15 points)
 
 ---
 
-## Creating Rubrics in Canvas
+## Creating and Updating Rubrics in Canvas
 
-**⚠️ LIMITATION:** The Canvas API `create_rubric` endpoint is disabled (known bug returning 500 errors). Rubrics must be created via the Canvas web UI.
+**API Behavior (Verified 2026-11-09):**
+- **Rubrics ARE writable via the Canvas REST API.** Title, points, criterion descriptions, `long_description`, and rating levels can all be created or updated via `POST /api/v1/courses/:course_id/rubrics` or `PUT /api/v1/courses/:course_id/rubrics/:rubric_id` using form-encoded `rubric[criteria][N][...]` parameters.
+- **Safety rules for API rubric updates:**
+  1. **Check for existing student submissions first** - a rubric that already has assessments recorded against it may refuse edits or corrupt grading mid-term.
+  2. **Renaming a rubric alone is safe:** A `PUT` that sends only `rubric[title]` does **not** destroy existing criteria or point totals (verified 2026-11-09).
+  3. **When editing any criterion, resend ALL criteria with their full rating scales:** Partial criterion updates are not safe; always fetch the existing rubric JSON first, modify the target criterion, and resend every criterion and rating level in full.
+  4. **HTML encoding note:** Canvas stores `long_description` as HTML, so apostrophes return as `&#39;`. That is normal and renders properly.
 
-### Required Format for Manual Creation
+### Format for Review / Manual UI Entry
 
-When delegating rubric creation to the user, provide specifications in this exact format:
+When presenting a rubric specification to Corey for approval (or for manual Canvas UI entry), use this format:
 
 ```
 RUBRIC NAME: [Assignment Name] ([Total Points] pts)

@@ -118,54 +118,136 @@ across browsers and Canvas versions:
 - Page titles: topic-only, no "Week N |" prefix duplicated in the title bar
   (the breadcrumb subtitle carries that).
 
-## Workflow
+## Workflow & Low-Context HTML Authoring
 - Confirm major structural decisions before executing (new page structures,
   deleting/merging content, rubric point changes).
 - Keep new content unpublished until reviewed.
-- Verify current Canvas state (`list_pages`, `list_assignments`,
-  `get_course_structure`) before authoring in a session - don't assume prior
-  session state still holds.
-- Use `canvas-api` MCP tools for all direct edits, not HTML for manual pasting.
+- Verify current Canvas state (`python tools/canvas_sync.py list-pages --course <CODE>`,
+  `list-assignments`, or `get_course_structure`) before authoring in a session -
+  don't assume prior session state still holds.
+- **Never pass 20-35 KB HTML bodies through MCP tool arguments (`get_page_content`,
+  `edit_page_content`, `create_page`, `update_assignment`).** Doing so puts 3-4
+  copies of the raw inline-styled HTML into conversation scrollback (~100k
+  tokens per page). Instead:
+  1. **Pull to disk:** `python tools/canvas_sync.py pull-page` (or `pull-assignment`)
+     writes the HTML to `scratchpad/` and prints a 4-line summary to stdout.
+  2. **Author in Markdown, compile deterministically:** For new or rebuilt pages
+     and assignments, write structured Markdown (`template: page-f1 | page-f2 | lecture | lab-notes | assignment`)
+     and compile via `python tools/canvas_build.py <in.md> -o scratchpad/<out.html>`.
+     This cuts LLM output tokens by ~65% and guarantees compliant inline CSS.
+  3. **Push from disk:** `python tools/canvas_sync.py push-page` / `create-page` /
+     `push-assignment` runs `tools/canvas_lint.py` automatically before writing
+     to Canvas and verifies `<pre>` integrity afterward.
+  4. **Isolate multi-page builds across subagents:** When building multiple pages
+     for a week, spawn one subagent per page so HTML drafts die with the
+     subagent's context rather than accumulating in the main session.
+- Keep `courses/{CODE}.md` concise (~5-10 KB of live state, IDs, decisions, and
+  pending work); archive completed multi-page build logs in `archive/courses/`.
 - At the end of any session touching `CLAUDE.md`, `courses/`, or repo content,
   remind Corey to commit and suggest a commit message.
 - **The GitHub repo is public** (https://github.com/coreyburk/canvas-course-updater).
   Never commit credentials, student data, or copyrighted course material.
   Textbooks live in `textbooks/`, which is gitignored.
 
+## Session cost & context hygiene
+Measured 2026-11-10 from the Claude Code session transcripts in
+`~/.claude/projects/D--GitHub-Repos-Canvas-Course-Updater/`. Durable, not a
+one-off: Canvas work is unusually expensive per request and the cause is
+structural.
+
+- **Cache reads are ~95% of the bill.** Every API call re-reads the whole
+  conversation from cache and that read is billed. Cost therefore scales with
+  *context size per request*, not with how many requests you make. Nov 10 used
+  201 requests and cost ~$69; Sep 17 used 485 requests and cost ~$12.
+- **Split sessions by task.** Average context per request was ~125k in
+  September and ~580k on Nov 9-10, a 4.6x swing on the same kind of work. A
+  session carrying 500k+ tokens is paying rent on scrollback it no longer
+  needs. Start a fresh session (or `/clear`) between separable units - between
+  two week pages, between a course audit and the rewrite it produced.
+- **Why Canvas work bloats fast:** `edit_page_content` requires the complete
+  page HTML in one call (see Known Canvas API limitations), `get_page_content`
+  pulls full bodies, and the ~100 `canvas-api` tool definitions plus skills and
+  memory files add roughly 45k of fixed overhead to every single request.
+- **Rank models by cache-read price, not headline price.** Cache reads are
+  70-85% of the bill on this workload, so the usual "$ per MTok input/output"
+  comparison ranks models wrongly. Repriced today's actual token mix
+  (118.6M cache read / 0.73M write / 0.31M output) against live pricing
+  fetched 2026-11-10:
+
+  | Model | Cache read $/MTok | Cost for that day |
+  |---|---|---|
+  | Opus 5 | $0.50 | $71.67 |
+  | Fable 5.2 | $0.20 | $43.49 |
+  | Opus 5.5 | $0.20 | $33.61 |
+  | Sonnet 5 | $0.20 | $28.67 |
+  | Sonnet 5.5 | $0.10 | $16.80 |
+  | Haiku 5.5 (>100k prompt) | $0.05 | $7.17 |
+
+  **Never Opus 5** - Opus 5.5 beats it on every axis. Default to **Sonnet 5.5**
+  for template-driven production work (page builds, HTML rewrites, em dash
+  sweeps). Reach for **Opus 5.5** when the judgment matters more than the
+  volume: course structure decisions, audits, resolving competing page styles.
+  Opus 5.5 effort defaults to `medium` where Opus 5 ran `high`.
+- **Re-check the ranking when a new model ships, not on a calendar.** The
+  cache-read *multiplier* has been improving per generation (0.1x of base input
+  on Opus 5 and earlier, 0.05x on Opus 5.5 / Sonnet 5.5, 0.025x on Fable), so
+  each release can reshuffle the order for this workload even when headline
+  prices look similar. Live source:
+  `https://platform.claude.com/docs/en/about-claude/pricing.md`. The pricing
+  table bundled in the `claude-api` skill is a cached snapshot - fetch the page
+  rather than trusting it. Haiku 5.5 is priced by prompt length and these
+  sessions always exceed 100k, so it always bills at the higher row.
+- **The usage chart is dated in UTC**, so a billing day runs 5:00 PM MST to
+  5:00 PM MST. Today's bar is mostly last night's work - check the hours before
+  concluding a given day was expensive.
+
 ## Repo layout
 | Path | Holds |
 |---|---|
-| `CLAUDE.md` | Standing rules. Durable findings belong here, not in the changelog. |
+| `CLAUDE.md` / `AGENTS.md` | Standing rules (shared across Claude Code and Antigravity). |
 | `CHANGELOG.md` | Session history, newest first. |
-| `courses/{CODE}.md` | Per-course status, decisions, pending work. Authoritative. |
-| `courses/{CODE}/` | Per-course reference material (lab briefs, audits, training docs). |
-| `tools/` | Reusable scripts, safe against any course. |
+| `.claude/skills/` & `.agents/skills.json` | Reusable playbooks (11 skills, discovered by both Claude Code and Antigravity). |
+| `courses/{CODE}.md` | Concise per-course live status, IDs, decisions, pending work (~5-10 KB). Authoritative. |
+| `courses/{CODE}/` | Per-course reference material (lab briefs, audits, reference code, rubric specs). |
+| `archive/courses/` | Archived historical build logs from `courses/{CODE}.md`. |
+| `tools/` | Reusable low-context CLI tools, safe against any course. |
 | `archive/scripts/` | Spent one-off scripts. Course IDs hardcoded, read before reuse. |
 | `quizzes/{CODE}/` | Quiz XML for manual Canvas import. |
 | `textbooks/` | Gitignored. Copyrighted, local only. |
 
 ### Tools
+- `tools/canvas_build.py <input.md> -o <output.html> [--template page-f1|page-f2|lecture|lab-notes|assignment]` -
+  compiles structured Markdown into Canvas-compliant inline-styled HTML and runs
+  `canvas_lint.py` automatically. Eliminates hand-generating verbose inline CSS.
+- `tools/canvas_sync.py <cmd> --course <CODE_OR_ID> ...` - low-context REST CLI
+  for `list-pages`, `list-assignments`, `pull-page`, `push-page`, `create-page`,
+  `pull-assignment`, `push-assignment`, and `lint-course`. Moves HTML bodies via
+  local files (`scratchpad/`), runs `canvas_lint` before every write, checks
+  `<pre>` block preservation after every write, and prints only a 3-4 line
+  summary to stdout.
+- `tools/canvas_lint.py [--fix] <file.html> [--type auto|page|assignment]` -
+  mechanical and structural HTML linter checking em dashes (prose vs `<pre>`),
+  `<style>`, `<svg>`, inline `font-weight`, `<pre>` `white-space: pre-wrap` and
+  tag balance, CSS unit typos (`14py`), and assignment Criteria box rules
+  (`<table>` container, intro `<p>` before `<ul>`, no point values, no trailing
+  content after Criteria).
 - `tools/emdash_sweep.py --course <id>` - finds and fixes literal em dashes in
   assignment names/descriptions and page bodies. Dry run by default, `--apply`
   writes. Hits are handled **individually**: prose is fixed even when the same
   item has another em dash inside a `<pre>` block, and the one inside `<pre>`
   is reported and left. After each write it re-fetches and compares the item's
-  `<pre>` blocks against the originals, so damage to a code sample is reported
-  as `PRE CHANGED` rather than discovered later.
-  `--include-pre` also rewrites em dashes inside code blocks. Only use it after
-  reading the `[CODE]` context lines from a dry run and confirming none is part
-  of an actual command; it disables the `<pre>` integrity check by design, so
-  verify separately. Page titles are never renamed, since a slug change breaks
-  links - though note that a slug only moves if the NEW title normalizes
-  differently. Canvas strips an em dash from a slug exactly as it does a
-  hyphen, so swapping one for the other leaves the slug untouched; verified on
-  BIT320's `quiz-specifications-to-be-created` (2026-11-09). Check the slug
-  before assuming a rename is unsafe. On Windows prefix with
-  `PYTHONIOENCODING=utf-8` - but note that
-  `python -I` silently ignores that, because isolated mode implies `-E`. Reads
-  credentials from the canvas-mcp `.env`.
-- `tools/audit_canvas_pages.py` - page coverage audit. Course ID is hardcoded;
-  edit before reuse.
+  `<pre>` blocks against the originals (`PRE CHANGED` on drift). `--include-pre`
+  also rewrites em dashes inside code blocks (only after verifying `[CODE]`
+  context lines). Page titles are never auto-renamed, though note that a slug
+  only moves if the NEW title normalizes differently (Canvas strips `—` and `-`
+  identically).
+- `tools/audit_canvas_pages.py --course <CODE_OR_ID> [--weeks 10]` - weekly page
+  coverage audit across student, instructor, navigation, and legacy pages. Reads
+  credentials from `canvas-mcp` `.env`.
+- `tools/model_cost_check.py [--day YYYY-MM-DD] [--days N] [--billed X]` -
+  reprices the tokens Claude Code actually used (read from local transcripts,
+  subagents included) on every current model, with pricing fetched live from
+  Anthropic's pricing page. Read-only, no Canvas calls.
 
 ## Known Canvas API limitations
 - `course_identifier` needs the numeric ID, not the course code string.
@@ -234,22 +316,13 @@ across browsers and Canvas versions:
   - **Solution:** Delete `uv.lock` and regenerate with `uv sync` to respect the <3 constraint, OR manually reinstall with `pip install --force-reinstall 'fastmcp<3'`
 
 - **⚠️ CRITICAL: Event loop closure during server startup (2026-09-23 discovery, FIX COMMITTED)**
-  - **Symptom:** "Event loop is closed" error on ALL Canvas API requests (even simple list_courses)
-  - **Root cause:** `src/canvas_mcp/server.py` called `asyncio.run(_validate_token())` during startup to validate Canvas credentials early. This creates a NEW event loop, runs the validation function, and IMMEDIATELY closes the loop when the function exits. When `mcp.run()` starts afterward, it tries to create/use the already-closed event loop, causing all requests to fail with "Event loop is closed."
-  - **Why it appeared:** Validating credentials at startup seemed like a good safety check, but `asyncio.run()` by design creates and closes an event loop for that one function. FastMCP's `mcp.run()` creates and manages its OWN event loop - the early `asyncio.run()` closure corrupted this lifecycle.
-  - **Fix (committed 2026-09-23 b7905af):** Removed early token validation from `server.py` lines 276-290. Let the server validate credentials on **first request** instead. This allows `mcp.run()` to initialize a fresh event loop without prior closure corruption. Trade-off: credential errors now surface on first API call (not startup), but this is acceptable - better a working server than one that fails on all requests.
-  - **Prevention:** **Never call `asyncio.run()` before `mcp.run()` in the same startup process.** If startup validation is needed in future, do it WITHIN the event loop that `mcp.run()` creates, not before. FastMCP manages the event loop; external `asyncio.run()` calls will corrupt it.
-  - **Debugging reference:** Symptom appears on the SECOND tool call (first one may succeed if it's simple enough), because the error propagates inconsistently depending on timing.
+  - **Symptom:** "Event loop is closed" error on Canvas API requests (often starting on the second tool call).
+  - **Root cause:** `src/canvas_mcp/server.py` called `asyncio.run(_validate_token())` during startup, which created and immediately closed an event loop before FastMCP's `mcp.run()` initialized its own loop.
+  - **Fix (committed 2026-09-23 b7905af):** Removed early token validation from `server.py` lines 276-290 so credentials validate on first request inside `mcp.run()`'s loop. **Never call `asyncio.run()` before `mcp.run()` in the same startup process.**
 
 - **⚠️ ARCHITECTURAL LIMITATION: Concurrent Canvas API connections (2026-09-16 discovery)**
-  - **Problem:** stdio MCP is designed for 1:1 client-to-process connections (NOT multiplexing). Running two Claude Code windows simultaneously causes both to spawn separate `canvas-mcp` processes that fight over the same Canvas API credentials.
-  - **Symptom:** `CONNECTION_CLOSED` errors when multiple contexts are active
-  - **Root cause:** Each context spawns its own subprocess; both attempt Canvas API calls using the same token; race conditions and credential conflicts result
-  - **Why HTTP was "unreliable":** The HTTP server mode had the same problem - multiple simultaneous clients connecting to one server caused concurrency conflicts (race conditions, dropped connections, incomplete responses). When switched to stdio, the problem appeared "fixed" because single-context workflows eliminated the conflict scenario.
-  - **Workaround:** Keep only ONE active Claude Code window using Canvas API at a time. Close extra windows before Canvas operations. Sequential (not concurrent) usage is the intended pattern.
-  - **Do NOT attempt:** Running HTTP server mode to "fix" this - it's deprecated precisely because it had the same underlying issue.
-  - **Future improvement:** Would require a proper connection pooling layer or API proxy with request serialization, but not worth the complexity for single-developer use.
-  - **Prevention:** Keep `uv.lock` out of the repo if it can't be auto-enforced, or ensure any dependency updates respect the pyproject.toml constraint
+  - **Problem:** stdio MCP is 1:1 client-to-process. Running multiple Claude Code windows simultaneously spawns separate `canvas-mcp` subprocesses that conflict over the same token, causing `CONNECTION_CLOSED` errors (the same concurrency conflict that made deprecated HTTP mode unreliable).
+  - **Workaround:** Keep only ONE active Claude Code window using `canvas-mcp` at a time, or use `tools/canvas_sync.py` for stateless CLI requests. Do NOT re-enable HTTP server mode. Keep `uv.lock` out of the repo if it violates `pyproject.toml` constraints.
 
 ## Working style
 Corey doesn't want timeline estimates, sycophancy, or hedging. Be direct,

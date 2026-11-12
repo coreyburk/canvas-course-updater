@@ -1,8 +1,3 @@
----
-name: code-quality-checklist
-description: One-page reference checklist for all BIT320 scripts. Required for Week 1-5 assignments to enforce production-ready code standards progressively.
----
-
 # BIT320 Code Quality Checklist
 
 **Use this checklist before submitting any script.** Your rubric includes scoring on these elements.

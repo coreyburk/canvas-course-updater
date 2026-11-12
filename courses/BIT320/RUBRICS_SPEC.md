@@ -1,9 +1,6 @@
----
-name: bit320-rubrics-complete
-description: Complete rubric specifications for all 8 BIT320 labs (1.1-5.1). Includes criterion names, descriptions, and all rating levels. Ready for Canvas UI entry - no cross-referencing needed.
----
-
 # BIT320 Complete Rubric Specifications
+
+> **Note (2026-11-11):** Relocated from `.claude/skills/bit320-rubrics-complete/` to `courses/BIT320/` because this is course-specific reference material, not a cross-course procedural skill. **Live Canvas rubrics are authoritative** - note that on 2026-11-09 Lab 1.2 was renamed (`Functions, Loops, and Error Handling`), Lab 4.1 became comparative analysis, Labs 4.2/4.3/5.2 were retired, and Lab 5.1 became `Final Project - System Health Report`. See `courses/BIT320.md` for live rubric IDs and status.
 
 **How to use this document:**
 Copy the criterion information directly into Canvas UI:
