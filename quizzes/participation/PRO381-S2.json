@@ -1,0 +1,38 @@
+{
+  "course_code": "PRO381-S2",
+  "course_id": "3644906",
+  "weeks": 5,
+  "module_name": "Week {week}",
+  "weeks_data": [
+    {
+      "week": 1,
+      "topic": "Amazon RDS databases; migrating a database to RDS; creating a VPC",
+      "question": "Which Week 1 task do you expect to be hardest?",
+      "options": ["Creating an Amazon RDS database", "Migrating a database to Amazon RDS", "Creating a Virtual Private Cloud", "Not sure yet"]
+    },
+    {
+      "week": 2,
+      "topic": "VPC networking; VPC peering; Amazon Cognito; encrypting data at rest",
+      "question": "Which Week 2 topic do you feel least confident about?",
+      "options": ["VPC networking", "VPC peering", "Amazon Cognito authentication", "Encrypting data at rest"]
+    },
+    {
+      "week": 3,
+      "topic": "Highly available environments; scalable architectures; infrastructure automation with CloudFormation",
+      "question": "Which of these do you think matters most for keeping an application available?",
+      "options": ["Multiple Availability Zones", "Auto Scaling", "Load balancing", "Infrastructure as code with CloudFormation"]
+    },
+    {
+      "week": 4,
+      "topic": "Automating infrastructure deployment; building decoupled applications",
+      "question": "Which approach do you expect to use most when decoupling an application?",
+      "options": ["Message queues", "Publish-subscribe notifications", "Direct service-to-service calls", "Not sure yet"]
+    },
+    {
+      "week": 5,
+      "topic": "Serverless architectures; hybrid storage and data migration; breaking a monolith into services; capstone",
+      "question": "Which architecture topic do you think will be most useful in your career?",
+      "options": ["Serverless architecture", "Hybrid storage and data migration", "Breaking a monolith into services", "Not sure yet"]
+    }
+  ]
+}

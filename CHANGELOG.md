@@ -15,6 +15,12 @@ over anything in this log.
 
 ---
 
+## PRO381-S2 (3644906) - Participation Quizzes (2026-11-12)
+
+Set up the Participation Quizzes for this 5-week course with `tools/create_participation_quizzes.py`. 25 ungraded surveys (Weeks 1-5 x Mon-Fri), all unpublished, each with its own topic-keyword access code. Each quiz is appended to its week module, which places it in the course's Participation section after `Participation- Week N`. The instructor-only code page was created and is unpublished. Config is `quizzes/participation/PRO381-S2.json`; codes are in the gitignored `PRO381-S2.codes.json`. Course notes: [`courses/PRO381-S2.md`](courses/PRO381-S2.md).
+
+---
+
 ## ITH216 (3646987) - Participation Quizzes, pilot course (2026-11-12)
 
 New Neumont attendance requirement: one Participation Quiz per class day. Built a reusable generator, `tools/create_participation_quizzes.py`, driven by a per-course config (`quizzes/participation/{CODE}.json`). Created 50 quizzes for ITH216 (Weeks 1-10, Monday-Friday): ungraded surveys (`quiz_type=survey`), one multiple-choice question per week, anonymous submissions off, one attempt, all **unpublished**. Corey publishes each one by hand on class days.
