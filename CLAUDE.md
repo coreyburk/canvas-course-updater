@@ -170,9 +170,23 @@ structural.
   memory files add roughly 45k of fixed overhead to every single request.
 - **Rank models by cache-read price, not headline price.** Cache reads are
   70-85% of the bill on this workload, so the usual "$ per MTok input/output"
-  comparison ranks models wrongly. Repriced today's actual token mix
-  (118.6M cache read / 0.73M write / 0.31M output) against live pricing
-  fetched 2026-11-10:
+  comparison ranks models wrongly.
+- **Pricing is only valid at the moment it is fetched.** Never rank models
+  from a stored table, including the one below. Run
+  `python tools/model_cost_check.py` for a current ranking; it fetches live
+  prices from Anthropic, OpenAI, and Google every run. Stored figures are a
+  historical usage record only.
+- **How each coding agent is billed matters (2026-11-12):**
+  - **Claude Code:** Metered API (`~/.claude/projects/`). Dollars are real out-of-pocket spend. Optimize for dollar cost per finished task.
+  - **Codex:** ChatGPT Plus subscription (`~/.codex/sessions/`). Dollars are API-equivalent; the real constraint is subscription rate-limit headroom (5h primary and 7d secondary windows, reported directly by `model_cost_check.py`).
+  - **Antigravity (AGY):** Google subscription/quota (`~/.gemini/antigravity-cli/conversations/*.db`). Dollars are API-equivalent; usage is decoded from `gen_metadata` protobuf records. Optimize for quota headroom while matching model capability to task complexity.
+- **Transcripts are per machine and per repo.** Corey works across several
+  computers and repositories. `model_cost_check.py` reads local logs for all
+  three tools (`--source claude|codex|agy|all`, default `all`), and
+  `--all-projects` widens to every repo on *this* machine, not other machines.
+  A run on one machine is a partial picture; say so when reporting.
+- **Historical snapshot (2026-11-10, one machine, `D:` repo path, not current
+  pricing):** token mix 118.6M cache read / 0.73M write / 0.31M output:
 
   | Model | Cache read $/MTok | Cost for that day |
   |---|---|---|
@@ -183,11 +197,10 @@ structural.
   | Sonnet 5.5 | $0.10 | $16.80 |
   | Haiku 5.5 (>100k prompt) | $0.05 | $7.17 |
 
-  **Never Opus 5** - Opus 5.5 beats it on every axis. Default to **Sonnet 5.5**
-  for template-driven production work (page builds, HTML rewrites, em dash
-  sweeps). Reach for **Opus 5.5** when the judgment matters more than the
-  volume: course structure decisions, audits, resolving competing page styles.
-  Opus 5.5 effort defaults to `medium` where Opus 5 ran `high`.
+  **Cross-tool model recommendations (re-confirmed 2026-11-12 against live Anthropic, OpenAI, and Google pricing):**
+  - **Claude Code (metered API):** **Never Opus 5** (or 4.x Opus) - Opus 5.5 is half the cost and better on every axis, and Fable 5.2's high cache-write/output rates make it more expensive than Opus 5.5 on this workload. Default to **Claude Sonnet 5.5** (`$0.10/MTok` cache read) for template-driven production work (page builds, HTML rewrites, em dash sweeps) and **Claude Haiku 5.5** (`$0.01/$0.05` cache read) for mechanical subagent scans. Reach for **Claude Opus 5.5** (`$0.20/MTok` cache read, ~2x Sonnet 5.5, `medium` effort) only when judgment matters more than volume (course structure decisions, multi-option pedagogical audits).
+  - **Antigravity (subscription/quota):** Running Claude Opus 5.5 inside AGY consumes ~2x the API-equivalent weight of **Gemini 4 Argon / Gemini 4 Carbon** or **Claude Sonnet 5.5** (`$0.10/MTok` cache read, identical cost tier), and ~4.3x **Gemini 3.6 / 3.8 Flash** (`$0.075/MTok` cache read). Default to **Gemini 4 Argon (Medium)** or **Claude Sonnet 5.5** for general engineering and repo tasks, drop to **Gemini 3.8 Flash** for routine edits/git ops, and reserve **Claude Opus 5.5** or **Gemini 4 Carbon** for complex architectural or pedagogical design.
+  - **Codex (ChatGPT Plus subscription):** Historical usage was dominated by `gpt-5.5` (`$0.50/MTok` cache read, 67% of API-equivalent spend, driving 5h window peak to 79%). Current generation **gpt-6.1-sol** (`$0.10/MTok` cache read) and **gpt-6.1-terra** (`$0.05/MTok` cache read) or **gpt-5.4-mini** (`$0.075/MTok`) are 3.5x-7x lighter than `gpt-5.5`. Default to **gpt-6.1-terra** / **gpt-5.4-mini** for routine coding and **gpt-6.1-sol** / **gpt-5.4** for heavier multi-file work; avoid `gpt-5.5` and `gpt-6-astra` (`$1.00/MTok` cache read) to preserve 5h/7d Plus window headroom.
 - **Re-check the ranking when a new model ships, not on a calendar.** The
   cache-read *multiplier* has been improving per generation (0.1x of base input
   on Opus 5 and earlier, 0.05x on Opus 5.5 / Sonnet 5.5, 0.025x on Fable), so
@@ -195,8 +208,9 @@ structural.
   prices look similar. Live source:
   `https://platform.claude.com/docs/en/about-claude/pricing.md`. The pricing
   table bundled in the `claude-api` skill is a cached snapshot - fetch the page
-  rather than trusting it. Haiku 5.5 is priced by prompt length and these
-  sessions always exceed 100k, so it always bills at the higher row.
+  rather than trusting it. Haiku 5.5 is priced per request by prompt length;
+  these sessions average ~120k, so most (not all) requests bill at the
+  higher row.
 - **The usage chart is dated in UTC**, so a billing day runs 5:00 PM MST to
   5:00 PM MST. Today's bar is mostly last night's work - check the hours before
   concluding a given day was expensive.
@@ -244,10 +258,12 @@ structural.
 - `tools/audit_canvas_pages.py --course <CODE_OR_ID> [--weeks 10]` - weekly page
   coverage audit across student, instructor, navigation, and legacy pages. Reads
   credentials from `canvas-mcp` `.env`.
-- `tools/model_cost_check.py [--day YYYY-MM-DD] [--days N] [--billed X]` -
-  reprices the tokens Claude Code actually used (read from local transcripts,
-  subagents included) on every current model, with pricing fetched live from
-  Anthropic's pricing page. Read-only, no Canvas calls.
+- `tools/model_cost_check.py [--source all|claude|codex|agy] [--day YYYY-MM-DD] [--days N] [--all-projects] [--billed X]` -
+  reprices the tokens actually used across Claude Code (`~/.claude/projects`),
+  Codex (`~/.codex/sessions`, including Plus subscription rate-limit headroom),
+  and Antigravity (`~/.gemini/antigravity-cli/conversations/*.db`) on every
+  current model, with pricing fetched live from Anthropic, OpenAI, and Google.
+  Read-only, no Canvas calls.
 
 ## Known Canvas API limitations
 - `course_identifier` needs the numeric ID, not the course code string.
