@@ -15,6 +15,14 @@ over anything in this log.
 
 ---
 
+## ITH216 (3646987) - Participation Quizzes, pilot course (2026-11-12)
+
+New Neumont attendance requirement: one Participation Quiz per class day. Built a reusable generator, `tools/create_participation_quizzes.py`, driven by a per-course config (`quizzes/participation/{CODE}.json`). Created 50 quizzes for ITH216 (Weeks 1-10, Monday-Friday): ungraded surveys (`quiz_type=survey`), one multiple-choice question per week, anonymous submissions off, one attempt, all **unpublished**. Corey publishes each one by hand on class days.
+
+Each quiz has its own access code, a course keyword for that day (e.g. CONSOLE, VLAN, OSPF). The instructor gives the day's code in person during class. Codes live in `quizzes/participation/{CODE}.codes.json`, which is **gitignored** because the repo is public. The instructor-only page "Instructor Notes - Participation Quiz Codes" (page 28826726) lists every quiz title, ID and code. Quiz IDs 9372456-9372507. All 50 are added to their Week 1-10 modules (5 each, appended at the end of each module). Generator consolidated into one course-agnostic command (quizzes, module links and instructor page, all idempotent); the ITH216 run re-confirmed 50 skipped quizzes, 50 module links already present, and the page updated in place. Limits: no unlock/lock dates (class times not yet given); Canvas marks the first answer on each question as correct (it requires one), but the quiz is ungraded and the question is an opinion poll.
+
+---
+
 ## BIT300 (3664301) - Course evaluation (2026-11-12)
 
 Read-only evaluation of the course: structure, pacing, PLO coverage, and hygiene. No Canvas writes. Findings and proposed plan in [`courses/BIT300.md`](courses/BIT300.md). Key points: Phoenix Project is a standalone ~8-week module (breaks 1-week pacing); no security, governance/compliance, or business-decision content (PLO3, PLO4, PLO5 gaps); orphan duplicate `[L] Systems Setup` (40498720); placeholder `Participation ??/??`; four stray published `[GIT]` pages; em dash and `<pre>` lint failures across 33 items. Structural changes await Corey's approval.
