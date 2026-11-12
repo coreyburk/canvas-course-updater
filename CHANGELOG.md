@@ -15,6 +15,12 @@ over anything in this log.
 
 ---
 
+## BIT360 (3644702) - Participation Quizzes (2026-11-12)
+
+Set up the Participation Quizzes for the 10-week course with `tools/create_participation_quizzes.py`: 50 ungraded surveys (Weeks 1-10 x Mon-Fri), all unpublished, each with its own topic-keyword code, appended to each Week module, plus an unpublished instructor code page (28828115). Config `quizzes/participation/BIT360.json`; codes are gitignored. Quizzes sit after the Resources pages in each module; no Quiz-section placement was attempted.
+
+---
+
 ## PRO381-S2 (3644906) - Participation Quizzes (2026-11-12)
 
 Set up the Participation Quizzes for this 5-week course with `tools/create_participation_quizzes.py`. 25 ungraded surveys (Weeks 1-5 x Mon-Fri), all unpublished, each with its own topic-keyword access code. Each quiz is appended to its week module, which places it in the course's Participation section after `Participation- Week N`. The instructor-only code page was created and is unpublished. Config is `quizzes/participation/PRO381-S2.json`; codes are in the gitignored `PRO381-S2.codes.json`. Course notes: [`courses/PRO381-S2.md`](courses/PRO381-S2.md).
