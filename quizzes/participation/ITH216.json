@@ -1,0 +1,67 @@
+{
+  "course_code": "ITH216",
+  "course_id": "3646987",
+  "weeks": 10,
+  "weeks_data": [
+    {
+      "week": 1,
+      "topic": "Network cabling and physical connectivity; Cisco CLI modes and console access",
+      "question": "Which Cisco CLI mode do you feel most comfortable working in after this week?",
+      "options": ["User EXEC (Router>)", "Privileged EXEC (Router#)", "Global configuration (Router(config)#)", "Not sure yet"]
+    },
+    {
+      "week": 2,
+      "topic": "Router and switch basic configuration; password and SSH authentication; IOS management and recovery",
+      "question": "Which device hardening step do you think matters most on a Cisco router?",
+      "options": ["Enable secret password", "Console and VTY passwords", "SSH instead of Telnet", "Backing up the IOS image and configuration"]
+    },
+    {
+      "week": 3,
+      "topic": "VLAN fundamentals and 802.1Q trunking; Spanning Tree Protocol (STP, RSTP, PVST+)",
+      "question": "Which VLAN or Spanning Tree concept do you expect to cause the most trouble in practice?",
+      "options": ["Access ports versus trunk ports", "Native VLAN mismatches", "Choosing the root bridge", "Port states and convergence time"]
+    },
+    {
+      "week": 4,
+      "topic": "EtherChannel (PAgP and LACP); GRE tunnels; IPsec and SSL VPNs",
+      "question": "Which technology do you expect to use most often in real networks?",
+      "options": ["EtherChannel (PAgP or LACP)", "GRE tunnel", "IPsec VPN", "SSL VPN"]
+    },
+    {
+      "week": 5,
+      "topic": "WAN serial links (HDLC and PPP); PPP authentication (PAP and CHAP) and multilink",
+      "question": "Which WAN encapsulation do you think is more practical for a link between two different vendors?",
+      "options": ["HDLC", "PPP", "Frame Relay", "Not sure yet"]
+    },
+    {
+      "week": 6,
+      "topic": "IP routing fundamentals and static routing; routing algorithms; EIGRP",
+      "question": "Which routing approach do you find easiest to troubleshoot so far?",
+      "options": ["Static routes", "EIGRP", "Routing protocols in general", "Not sure yet"]
+    },
+    {
+      "week": 7,
+      "topic": "OSPF fundamentals (single-area); OSPF advanced topics and multi-area design",
+      "question": "Which OSPF concept do you feel least confident about right now?",
+      "options": ["DR and BDR election", "Neighbor adjacency states", "LSA types", "Multi-area design"]
+    },
+    {
+      "week": 8,
+      "topic": "Wireless fundamentals and the Cisco Aironet access point; wireless security and enterprise WLANs",
+      "question": "Which wireless security option do you think a small business should use?",
+      "options": ["WEP", "WPA2 with a pre-shared key", "WPA3", "Open network with no password"]
+    },
+    {
+      "week": 9,
+      "topic": "IPv6 fundamentals and static routing; IPv6 EIGRP dynamic routing",
+      "question": "Which IPv6 feature do you find most different from IPv4?",
+      "options": ["128-bit addresses", "No broadcast traffic", "Stateless autoconfiguration", "Link-local addresses"]
+    },
+    {
+      "week": 10,
+      "topic": "BGP fundamentals and configuration; BGP advanced topics and route manipulation",
+      "question": "Which BGP topic do you expect to find hardest?",
+      "options": ["Autonomous systems and peering", "Path attributes", "Route filtering and manipulation", "Route selection order"]
+    }
+  ]
+}

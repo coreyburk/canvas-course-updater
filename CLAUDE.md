@@ -258,6 +258,12 @@ structural.
 - `tools/audit_canvas_pages.py --course <CODE_OR_ID> [--weeks 10]` - weekly page
   coverage audit across student, instructor, navigation, and legacy pages. Reads
   credentials from `canvas-mcp` `.env`.
+- `tools/create_participation_quizzes.py --config quizzes/participation/<CODE>.json [--apply]` -
+  one command for any course's daily Participation Quizzes: creates the ungraded survey
+  quizzes (M-F per week, unpublished, one topic-keyword access code each), adds them to the
+  week modules, and writes the unpublished instructor code page. Idempotent. Dry run by
+  default. Codes come from the gitignored `<CODE>.codes.json`. See
+  [`quizzes/participation/README.md`](quizzes/participation/README.md).
 - `tools/model_cost_check.py [--source all|claude|codex|agy] [--day YYYY-MM-DD] [--days N] [--all-projects] [--billed X]` -
   reprices the tokens actually used across Claude Code (`~/.claude/projects`),
   Codex (`~/.codex/sessions`, including Plus subscription rate-limit headroom),
@@ -279,6 +285,13 @@ structural.
 - `points_possible` on quiz-backed assignments is derived from question
   totals - cannot be changed via API, must edit in the Canvas UI.
 - Quiz titles/points/content: read-only via API, all edits manual.
+- **Quiz survey creation and access codes (2026-11-12, ITH216):** `POST /courses/:id/quizzes`
+  with `quiz_type: "survey"`, `anonymous_submissions: false` creates an ungraded survey;
+  `access_code` is settable on create and via `PUT`. Canvas requires one correct answer
+  on each multiple-choice question, so the first option is forced to weight 100 even on a
+  survey. Quiz **module items** are added with `POST /courses/:id/modules/:mid/items`
+  (`type: "Quiz"`, `content_id: <quiz id>`). Quiz titles, due dates and access codes are
+  writable; questions on existing quizzes are not covered by this note.
 - **Rubrics ARE writable via the API** (verified 2026-11-09 on a throwaway rubric, created, updated and deleted). Title, points, criterion descriptions, long descriptions and rating
   levels can all be changed with `PUT /courses/:id/rubrics/:rubric_id` using form-encoded
   `rubric[criteria][N][...]` parameters. The read-only rule above applies to quizzes, not

@@ -21,6 +21,9 @@ scratchpad/
 # Local config backups (transport migration revert aids)
 *.stdio.bak
 
+# Participation quiz access codes - student-facing secrets, the repo is public
+quizzes/participation/*.codes.json
+
 # Copyrighted course textbooks - kept locally, never published
 textbooks/
 

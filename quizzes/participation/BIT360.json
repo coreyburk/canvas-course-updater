@@ -1,0 +1,68 @@
+{
+  "course_code": "BIT360",
+  "course_id": "3644702",
+  "weeks": 10,
+  "module_name": "Week {week}",
+  "weeks_data": [
+    {
+      "week": 1,
+      "topic": "Information security fundamentals and risk management; SysInternals tools; Hyper-V lab environment; network and firewall setup",
+      "question": "Which Week 1 area do you feel least prepared for right now?",
+      "options": ["Risk management fundamentals", "Monitoring with SysInternals tools", "Network and firewall configuration", "Virtualization with Hyper-V"]
+    },
+    {
+      "week": 2,
+      "topic": "Organizational readiness and planning; business impact analysis; threat assessment; diagramming for IR and DR planning",
+      "question": "Which step do you think matters most in organizational readiness planning?",
+      "options": ["Business impact analysis", "Threat and risk assessment", "Diagramming the organization", "Not sure yet"]
+    },
+    {
+      "week": 3,
+      "topic": "Disaster recovery and business continuity planning; RAID and storage; backup and recovery; replication and failover; testing the plan",
+      "question": "Which recovery element do you think is most often overlooked?",
+      "options": ["Testing backups", "Replication and failover", "Keeping the plan up to date", "RAID and storage design"]
+    },
+    {
+      "week": 4,
+      "topic": "Incident response planning; escalation and communication; CSIRT organization and roles; Veeam backup and recovery",
+      "question": "Which incident response team role do you expect to be hardest to fill?",
+      "options": ["Incident commander", "Forensics analyst", "Communications lead", "Technical responder"]
+    },
+    {
+      "week": 5,
+      "topic": "Incident detection strategies; SIEM; log analysis and forensic investigation; threat hunting",
+      "question": "Which detection approach do you expect to rely on most in practice?",
+      "options": ["SIEM log correlation", "Log analysis", "Threat hunting", "Continuous monitoring"]
+    },
+    {
+      "week": 6,
+      "topic": "Splunk log collection and analysis; detection rules and alert tuning; containment, eradication and response strategies",
+      "question": "Which containment step would you take first during a live incident?",
+      "options": ["Isolate the affected host", "Disable compromised accounts", "Block malicious traffic", "Capture evidence first"]
+    },
+    {
+      "week": 7,
+      "topic": "Recovery, maintenance and investigation; forensic evidence handling; root cause analysis; after-action review",
+      "question": "Which part of an after-action review do you think is most valuable?",
+      "options": ["Root cause analysis", "Lessons learned", "Evidence handling", "Verifying recovery"]
+    },
+    {
+      "week": 8,
+      "topic": "Disaster recovery plan and business continuity plan; recovery strategies and technical redundancy; communication planning",
+      "question": "Which part of a DR or BC plan do you think is the biggest risk to get wrong?",
+      "options": ["Recovery priorities", "Communication plan", "Technical redundancy", "Testing schedule"]
+    },
+    {
+      "week": 9,
+      "topic": "Business continuity operations; supply chain resilience and vendor management; current threat landscape",
+      "question": "Which continuity risk do you think organizations underestimate most?",
+      "options": ["Third-party vendor dependencies", "Loss of facilities or power", "Staff availability", "Not sure yet"]
+    },
+    {
+      "week": 10,
+      "topic": "Crisis management; executive decision-making; stakeholder communication; international standards and regulation; building a resilient IR program",
+      "question": "Which crisis management area do you expect to be most challenging?",
+      "options": ["Executive decision-making", "Stakeholder communication", "International standards and compliance", "Building a resilient program"]
+    }
+  ]
+}
