@@ -7,62 +7,262 @@
     {
       "week": 1,
       "topic": "Information security fundamentals and risk management; SysInternals tools; Hyper-V lab environment; network and firewall setup",
-      "question": "Which Week 1 area do you feel least prepared for right now?",
-      "options": ["Risk management fundamentals", "Monitoring with SysInternals tools", "Network and firewall configuration", "Virtualization with Hyper-V"]
+      "days": {
+        "Monday": {
+          "question": "Which Week 1 area do you feel least prepared for right now?",
+          "options": ["Risk management fundamentals", "Monitoring with SysInternals tools", "Network and firewall configuration", "Virtualization with Hyper-V"]
+        },
+        "Tuesday": {
+          "question": "When inspecting a live Windows system with the Sysinternals Suite, which utility gives you the fastest insight into suspicious activity?",
+          "options": ["Process Explorer for parent-child process trees and loaded DLLs", "Autoruns for persistence mechanisms across registry keys and scheduled tasks", "TCPView for active network sockets and remote endpoints", "Process Monitor (ProcMon) for real-time file, registry, and thread activity"]
+        },
+        "Wednesday": {
+          "question": "When building a multi-VM lab in Hyper-V across physical hosts, which virtual switch or storage choice matters most?",
+          "options": ["External versus Internal versus Private virtual switch isolation", "Static MAC and VLAN tagging on virtual network adapters", "Fixed-size versus dynamically expanding VHDX performance and disk space", "Checkpoints before making risky configuration changes"]
+        },
+        "Thursday": {
+          "question": "When hardening host and perimeter firewall rules in Week 1, which mistake is most likely to break legitimate lab traffic?",
+          "options": ["Blocking required Active Directory, DNS, or SMB management ports", "Confusing inbound versus outbound rule direction", "Applying rules to the wrong Windows Firewall profile (Domain, Private, Public)", "Leaving overly broad Any-to-Any allow rules active during testing"]
+        },
+        "Friday": {
+          "question": "In foundational risk management, how do you decide whether to mitigate, transfer, avoid, or accept an identified operational risk?",
+          "options": ["Comparing mitigation cost against annualized loss expectancy and asset criticality", "Mitigating high-likelihood, high-impact technical vulnerabilities first", "Transferring catastrophic financial exposure through cyber insurance or SLAs", "Requiring formal executive sign-off whenever residual risk is accepted"]
+        }
+      }
     },
     {
       "week": 2,
       "topic": "Organizational readiness and planning; business impact analysis; threat assessment; diagramming for IR and DR planning",
-      "question": "Which step do you think matters most in organizational readiness planning?",
-      "options": ["Business impact analysis", "Threat and risk assessment", "Diagramming the organization", "Not sure yet"]
+      "days": {
+        "Monday": {
+          "question": "Which step do you think matters most in organizational readiness planning?",
+          "options": ["Business impact analysis", "Threat and risk assessment", "Diagramming the organization", "Not sure yet"]
+        },
+        "Tuesday": {
+          "question": "When conducting a Business Impact Analysis (BIA), what is the key difference between Recovery Time Objective (RTO) and Recovery Point Objective (RPO)?",
+          "options": ["RTO measures maximum tolerable downtime while RPO measures maximum tolerable data loss in time", "RPO dictates backup and replication frequency", "RTO dictates how quickly failover and system restoration must complete", "Maximum Tolerable Downtime (MTD) sets the hard ceiling that RTO cannot exceed"]
+        },
+        "Wednesday": {
+          "question": "During a threat and risk assessment for IR/DR readiness, which threat category is hardest to quantify accurately?",
+          "options": ["Targeted ransomware or supply-chain compromise", "Insider threats and accidental administrative misconfiguration", "Regional power, ISP, or cloud provider outages", "Hardware failure on aging single-point-of-failure systems"]
+        },
+        "Thursday": {
+          "question": "Why are accurate network and data-flow diagrams essential before an incident or outage occurs?",
+          "options": ["Responders cannot isolate or recover dependencies they do not know exist", "Shows upstream and downstream blast radius when a core server or VLAN goes down", "Identifies trust boundaries, firewall enforcement points, and external connections", "Speeds up onboarding of external IR retainers or backup administrators during a crisis"]
+        },
+        "Friday": {
+          "question": "When mapping critical business processes to underlying IT assets in Week 2, which hidden dependency is most often missed?",
+          "options": ["Core identity and DNS services (Active Directory, MFA, certificate authorities)", "Third-party SaaS APIs and external authentication providers", "Service accounts and scheduled batch jobs running on legacy servers", "Physical facility dependencies like HVAC, generator fuel, and badge access"]
+        }
+      }
     },
     {
       "week": 3,
       "topic": "Disaster recovery and business continuity planning; RAID and storage; backup and recovery; replication and failover; testing the plan",
-      "question": "Which recovery element do you think is most often overlooked?",
-      "options": ["Testing backups", "Replication and failover", "Keeping the plan up to date", "RAID and storage design"]
+      "days": {
+        "Monday": {
+          "question": "Which recovery element do you think is most often overlooked?",
+          "options": ["Testing backups", "Replication and failover", "Keeping the plan up to date", "RAID and storage design"]
+        },
+        "Tuesday": {
+          "question": "Why is RAID (such as RAID 1, RAID 5, RAID 6, or RAID 10) never a substitute for offline or immutable backups?",
+          "options": ["RAID immediately replicates ransomware encryption, file deletion, and logical corruption across drives", "RAID only protects against physical disk failure within the same chassis or array", "RAID 5 rebuilds on large drives risk a second drive failure during reconstruction", "A site-level fire, flood, or power surge destroys the entire RAID array at once"]
+        },
+        "Wednesday": {
+          "question": "When comparing full, incremental, and differential backup schedules, what is the main trade-off between backup speed and restore speed?",
+          "options": ["Incremental backups are fastest to write and use the least storage but require chaining the last full plus every incremental to restore", "Differential backups require only the last full plus the latest differential to restore", "Full backups are fastest to restore standalone but take the longest time and storage window", "The 3-2-1-1-0 backup rule adds an air-gapped or immutable copy and zero unverified restore errors"]
+        },
+        "Thursday": {
+          "question": "When choosing between cold site, warm site, and hot site recovery models, what drives the decision for each tier of applications?",
+          "options": ["Aligning site cost with the application's BIA Recovery Time Objective (RTO) and Recovery Point Objective (RPO)", "Synchronous replication achieves near-zero RPO over short distances", "Asynchronous replication balances WAN bandwidth cost with a small RPO window", "Automated failover requires careful split-brain prevention and DNS/BGP cutover testing"]
+        },
+        "Friday": {
+          "question": "When testing a Disaster Recovery plan, how does a tabletop walkthrough compare to a full parallel or failover test?",
+          "options": ["Tabletop exercises validate decision logic and roles safely, while failover tests prove actual technical recovery times", "Simulation tests uncover missing credentials, expired certificates, and undocumented firewall rules", "Untested backups frequently fail during a real disaster due to broken restore dependencies", "Every DR test should produce a prioritized remediation list with owners and deadlines"]
+        }
+      }
     },
     {
       "week": 4,
       "topic": "Incident response planning; escalation and communication; CSIRT organization and roles; Veeam backup and recovery",
-      "question": "Which incident response team role do you expect to be hardest to fill?",
-      "options": ["Incident commander", "Forensics analyst", "Communications lead", "Technical responder"]
+      "days": {
+        "Monday": {
+          "question": "Which incident response team role do you expect to be hardest to fill?",
+          "options": ["Incident commander", "Forensics analyst", "Communications lead", "Technical responder"]
+        },
+        "Tuesday": {
+          "question": "In an Incident Response Plan aligned with NIST SP 800-61, why must severity classification and escalation thresholds be defined in advance?",
+          "options": ["Prevents on-call analysts from hesitating or under-escalating during the critical first hour", "Clarifies when executive leadership, legal counsel, and external retainers must be paged", "Matches response staffing and containment authority to business impact", "Prevents alert fatigue from treating minor events as full-scale crises"]
+        },
+        "Wednesday": {
+          "question": "During a live security incident, why is out-of-band communication critical for the CSIRT?",
+          "options": ["An attacker who compromised Active Directory or corporate email can monitor in-band Slack, Teams, and email channels", "If primary infrastructure goes down during containment, corporate communication tools may be unreachable", "Pre-established contact trees and encrypted out-of-band channels prevent confusion during an outage", "Single-voice communication through the Communications Lead prevents conflicting updates to stakeholders"]
+        },
+        "Thursday": {
+          "question": "When configuring Veeam Backup & Replication in the lab, which capability is most valuable for rapid service restoration?",
+          "options": ["Instant VM Recovery mounting a backup image directly to the hypervisor while storage migrates in the background", "Application-aware processing (VSS) ensuring consistent Active Directory and SQL database state", "SureBackup automated verification booting backups in an isolated virtual lab", "Hardened immutable Linux repositories protecting backup chains from ransomware deletion"]
+        },
+        "Friday": {
+          "question": "When restoring a domain controller or production server from a Veeam backup after an incident, what risk must you check before reconnecting it to the network?",
+          "options": ["Restoring a backup taken after the attacker established persistence re-introduces the backdoor", "Active Directory non-authoritative versus authoritative restore and USN rollback prevention", "Scanning restored images in an isolated quarantine VLAN before production cutover", "Verifying post-restore service health, DNS registration, and trust relationships"]
+        }
+      }
     },
     {
       "week": 5,
       "topic": "Incident detection strategies; SIEM; log analysis and forensic investigation; threat hunting",
-      "question": "Which detection approach do you expect to rely on most in practice?",
-      "options": ["SIEM log correlation", "Log analysis", "Threat hunting", "Continuous monitoring"]
+      "days": {
+        "Monday": {
+          "question": "Which detection approach do you expect to rely on most in practice?",
+          "options": ["SIEM log correlation", "Log analysis", "Threat hunting", "Continuous monitoring"]
+        },
+        "Tuesday": {
+          "question": "Why is NTP time synchronization across all servers, firewalls, and endpoints a mandatory prerequisite for SIEM log correlation?",
+          "options": ["Skewed timestamps make it impossible to reconstruct an accurate timeline of lateral movement across hosts", "Correlation rules rely on matching events within tight time windows", "Forensic timelines lose evidentiary credibility if system clocks drift without documented offsets", "Standardizing logs on UTC avoids daylight saving time and multi-timezone confusion"]
+        },
+        "Wednesday": {
+          "question": "When analyzing Windows Security Event Logs during an investigation, which Event ID group gives you the clearest signal of credential abuse or persistence?",
+          "options": ["4624 and 4625 (successful and failed logons, especially Logon Type 3 network and Type 10 RDP)", "4688 and Sysmon Event ID 1 (process creation with full command-line arguments)", "4697 / 7045 (new service installation) and 4698 (scheduled task creation)", "1102 (audit log cleared by an administrator or attacker)"]
+        },
+        "Thursday": {
+          "question": "How does hypothesis-driven threat hunting differ from waiting for automated SIEM or EDR alerts?",
+          "options": ["Threat hunters proactively search telemetry for adversary tradecraft (TTPs) that bypassed existing detection rules", "Uses MITRE ATT&CK techniques to form testable hypotheses against historical logs", "Successful hunts are converted into new automated SIEM detection rules", "Reduces attacker dwell time before an adversary triggers noisy ransomware deployment"]
+        },
+        "Friday": {
+          "question": "In comparing signature/indicator-based detection (IOCs) with behavioral detection (TTPs) on the Pyramid of Pain, why are behavioral detections more durable?",
+          "options": ["Attackers trivially change file hashes, IP addresses, and domains, but changing core TTPs is costly", "Behavioral rules catch living-off-the-land binaries (LOLBins) like PowerShell and WMI abuse", "IOC feeds remain useful for fast retrospective sweeps of known campaigns", "Combining baseline anomaly detection with high-fidelity TTP rules balances false positives"]
+        }
+      }
     },
     {
       "week": 6,
       "topic": "Splunk log collection and analysis; detection rules and alert tuning; containment, eradication and response strategies",
-      "question": "Which containment step would you take first during a live incident?",
-      "options": ["Isolate the affected host", "Disable compromised accounts", "Block malicious traffic", "Capture evidence first"]
+      "days": {
+        "Monday": {
+          "question": "Which containment step would you take first during a live incident?",
+          "options": ["Isolate the affected host", "Disable compromised accounts", "Block malicious traffic", "Capture evidence first"]
+        },
+        "Tuesday": {
+          "question": "When writing Splunk Search Processing Language (SPL) queries during an investigation, which command pattern do you find most useful?",
+          "options": ["stats count values() by ... to aggregate activity across users, hosts, and source IPs", "timechart and bin to spot brute-force spikes or beaconing intervals over time", "eval and rex to extract custom fields and classify suspicious command strings", "lookup and subsearches to enrich events with asset criticality or threat intel"]
+        },
+        "Wednesday": {
+          "question": "Why is alert tuning (reducing false positives while preserving true positives) one of the most important jobs in a SOC?",
+          "options": ["High false-positive rates cause analyst alert fatigue and lead to real intrusions being ignored", "Suppressing noisy benign service accounts or vulnerability scanners sharpens signal quality", "Adding contextual enrichment (asset owner, privilege level, geo-IP) speeds up triage", "Testing detection rules against atomic attack simulations verifies true-positive coverage"]
+        },
+        "Thursday": {
+          "question": "Why is it dangerous to immediately wipe and reimage a compromised server before completing scoping and containment?",
+          "options": ["Destroys volatile memory and disk evidence needed to determine how the attacker got in", "Tips off the adversary while they still control other unmonitored hosts in the environment", "Leaves the root vulnerability or stolen credentials active so the rebuilt server gets compromised again", "Short-term network isolation (EDR host containment or VLAN quarantine) stops spread while preserving evidence"]
+        },
+        "Friday": {
+          "question": "During the eradication phase, what must happen alongside removing malware and backdoors before systems return to production?",
+          "options": ["Rotating compromised credentials, Kerberos tickets (krbtgt), API keys, and certificates", "Patching the initial-access vulnerability or closing the exposed management service", "Auditing Active Directory for unauthorized domain admin accounts, GPO changes, or scheduled tasks", "Heightened SIEM monitoring on recovered segments to confirm the adversary does not regain access"]
+        }
+      }
     },
     {
       "week": 7,
       "topic": "Recovery, maintenance and investigation; forensic evidence handling; root cause analysis; after-action review",
-      "question": "Which part of an after-action review do you think is most valuable?",
-      "options": ["Root cause analysis", "Lessons learned", "Evidence handling", "Verifying recovery"]
+      "days": {
+        "Monday": {
+          "question": "Which part of an after-action review do you think is most valuable?",
+          "options": ["Root cause analysis", "Lessons learned", "Evidence handling", "Verifying recovery"]
+        },
+        "Tuesday": {
+          "question": "When collecting digital forensic evidence from a compromised host, why must you follow the Order of Volatility (RFC 3227)?",
+          "options": ["RAM, active network connections, and running processes vanish as soon as power is pulled", "Disk images and remote SIEM logs persist longer than volatile memory", "Calculating SHA-256 cryptographic hashes proves acquired evidence was not altered", "Maintaining a signed Chain of Custody log is required if evidence is used in legal or regulatory proceedings"]
+        },
+        "Wednesday": {
+          "question": "When performing a Root Cause Analysis (such as the 5 Whys or Fishbone diagram) after an outage or breach, what is the biggest trap to avoid?",
+          "options": ["Stopping at human error instead of fixing the process or control gap that allowed the error", "Confusing the triggering symptom with the underlying systemic vulnerability", "Blaming individuals instead of running a blameless post-mortem that encourages honest reporting", "Failing to trace why existing detection controls did not catch the issue earlier"]
+        },
+        "Thursday": {
+          "question": "When bringing recovered systems back into production during Week 7, what validation step confirms the recovery is genuinely complete?",
+          "options": ["Verifying business application functionality, data integrity, and end-user workflows", "Confirming backup agents, EDR sensors, and SIEM log forwarders are reporting cleanly", "Running vulnerability and configuration compliance scans on the restored hosts", "Monitoring performance metrics and security alerts closely through a post-recovery watch period"]
+        },
+        "Friday": {
+          "question": "What separates an effective After-Action Review (AAR) from a report that sits on a shelf and changes nothing?",
+          "options": ["Turning each lesson learned into a specific engineering task with an assigned owner and due date", "Updating the Incident Response Plan, runbooks, and SIEM rules based on what actually happened", "Tracking metrics like Mean Time to Detect (MTTD) and Mean Time to Respond (MTTR)", "Sharing an executive summary with leadership to justify security and resilience investments"]
+        }
+      }
     },
     {
       "week": 8,
       "topic": "Disaster recovery plan and business continuity plan; recovery strategies and technical redundancy; communication planning",
-      "question": "Which part of a DR or BC plan do you think is the biggest risk to get wrong?",
-      "options": ["Recovery priorities", "Communication plan", "Technical redundancy", "Testing schedule"]
+      "days": {
+        "Monday": {
+          "question": "Which part of a DR or BC plan do you think is the biggest risk to get wrong?",
+          "options": ["Recovery priorities", "Communication plan", "Technical redundancy", "Testing schedule"]
+        },
+        "Tuesday": {
+          "question": "How do a Business Continuity Plan (BCP) and a Disaster Recovery Plan (DRP) complement each other during a major disruption?",
+          "options": ["BCP keeps essential business operations and people functioning while DRP restores IT infrastructure and data", "BCP covers alternate workspaces, manual workarounds, and customer operations", "DRP focuses on technical runbooks for servers, networks, storage, and applications", "Both rely on the same Business Impact Analysis (BIA) recovery tiering"]
+        },
+        "Wednesday": {
+          "question": "When designing technical redundancy, why does eliminating Single Points of Failure (SPOFs) require looking beyond just server hardware?",
+          "options": ["Redundant servers still fail together if they share one power feed, top-of-rack switch, storage array, or ISP", "Geographic diversity protects against regional natural disasters and grid failures", "Active-active load balancing requires database state synchronization across sites", "DNS TTLs and BGP routing policies determine how fast external users fail over"]
+        },
+        "Thursday": {
+          "question": "Why should a DRP order system restoration in strict dependency tiers (Tier 0 infrastructure before Tier 1 applications)?",
+          "options": ["Applications cannot start if core networking, DNS, Active Directory, and storage are not online first", "Prevents recovery teams from competing for bandwidth and hypervisor resources simultaneously", "Gives leadership predictable milestone checkpoints during a multi-hour restoration", "Ensures security controls and logging are online before customer-facing services open"]
+        },
+        "Friday": {
+          "question": "In a crisis communication plan, why do internal teams, customers, regulators, and media require separate communication templates?",
+          "options": ["Each audience needs a different level of technical detail, action items, and legal review", "Internal staff need clear operational instructions and status updates", "Customers need transparent impact scope, workarounds, and estimated resolution windows", "Regulators and legal counsel require verified facts within statutory reporting deadlines"]
+        }
+      }
     },
     {
       "week": 9,
       "topic": "Business continuity operations; supply chain resilience and vendor management; current threat landscape",
-      "question": "Which continuity risk do you think organizations underestimate most?",
-      "options": ["Third-party vendor dependencies", "Loss of facilities or power", "Staff availability", "Not sure yet"]
+      "days": {
+        "Monday": {
+          "question": "Which continuity risk do you think organizations underestimate most?",
+          "options": ["Third-party vendor dependencies", "Loss of facilities or power", "Staff availability", "Not sure yet"]
+        },
+        "Tuesday": {
+          "question": "When evaluating third-party SaaS and supply-chain vendors for operational resilience, which question is most revealing?",
+          "options": ["What are the vendor's contractual SLA, RTO/RPO commitments, and breach notification timelines?", "Does the vendor have SOC 2 Type II or ISO 27001 attestation and tested DR results?", "How much privileged network or identity access does the vendor have into your environment?", "What is your exit strategy or manual fallback if that vendor goes offline for a week?"]
+        },
+        "Wednesday": {
+          "question": "Why have modern ransomware groups shifted from simple encryption to double and triple extortion?",
+          "options": ["Well-prepared organizations can restore from immutable backups without paying for a decryptor", "Exfiltrating sensitive data before encryption adds regulatory and reputational pressure", "Targeting MSPs, software supply chains, and hypervisors maximizes downstream impact", "Zero-day exploitation of edge VPNs and firewalls bypasses traditional perimeter defenses"]
+        },
+        "Thursday": {
+          "question": "During a prolonged outage or cyber incident, how do you protect against human-factor failure and key-person dependency?",
+          "options": ["Cross-training engineers and writing runbooks that any qualified responder can follow", "Enforcing shift rotations during multi-day incidents to prevent burnout mistakes", "Maintaining offline break-glass credentials so recovery does not depend on one unavailable admin", "Running periodic exercises where the primary architect must observe without touching the keyboard"]
+        },
+        "Friday": {
+          "question": "How does threat intelligence about the current threat landscape feed directly into Week 9 continuity operations?",
+          "options": ["Prioritizes patching and virtual shielding for vulnerabilities actively exploited in your sector", "Updates tabletop scenarios to reflect real adversary playbooks (for example identity and backup targeting)", "Identifies fourth-party concentration risks shared across critical suppliers", "Guides network segmentation between vendor access zones and crown-jewel assets"]
+        }
+      }
     },
     {
       "week": 10,
       "topic": "Crisis management; executive decision-making; stakeholder communication; international standards and regulation; building a resilient IR program",
-      "question": "Which crisis management area do you expect to be most challenging?",
-      "options": ["Executive decision-making", "Stakeholder communication", "International standards and compliance", "Building a resilient program"]
+      "days": {
+        "Monday": {
+          "question": "Which crisis management area do you expect to be most challenging?",
+          "options": ["Executive decision-making", "Stakeholder communication", "International standards and compliance", "Building a resilient program"]
+        },
+        "Tuesday": {
+          "question": "When briefing executive leadership during a high-stakes crisis, what do decision-makers need most from technical responders?",
+          "options": ["Clear business impact, verified facts versus assumptions, and concrete options with trade-offs", "Translating technical indicators into operational, financial, and legal risk", "Honest confidence levels and a committed time for the next status update", "Guidance on critical trade-offs such as taking revenue systems offline to stop data exfiltration"]
+        },
+        "Wednesday": {
+          "question": "How do frameworks and regulations like NIST CSF 2.0, ISO 27001/22301, GDPR, HIPAA, and SEC disclosure rules shape incident response?",
+          "options": ["Mandate strict breach notification timelines (such as 72 hours under GDPR or 4 business days for SEC material incidents)", "NIST CSF 2.0 adds Govern alongside Identify, Protect, Detect, Respond, and Recover", "Require documented evidence of due care, risk assessments, and incident logs", "Align technical security operations with board-level governance and audit accountability"]
+        },
+        "Thursday": {
+          "question": "When measuring the maturity of an organization's Incident Response and Disaster Recovery program over time, which indicator shows real progress?",
+          "options": ["Declining Mean Time to Detect (MTTD) and Mean Time to Recover (MTTR) across drills and real incidents", "100% of Tier 1 systems meeting their target RTO and RPO during unannounced recovery tests", "Proactive closure of post-incident action items before the next quarterly review", "Strong collaboration between IT ops, security, legal, and business unit owners"]
+        },
+        "Friday": {
+          "question": "Looking back across all 10 weeks of BIT360, which capability do you feel most confident applying in a real operations or security role?",
+          "options": ["Monitoring, log analysis, and incident detection (Sysinternals, Windows Logs, SIEM/Splunk)", "Designing and testing backups, replication, and Veeam recovery to meet RTO/RPO", "Writing and executing structured Incident Response and Disaster Recovery plans", "Leading root cause analysis, forensic evidence handling, and crisis communication"]
+        }
+      }
     }
   ]
 }

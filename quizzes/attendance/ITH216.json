@@ -6,62 +6,262 @@
     {
       "week": 1,
       "topic": "Network cabling and physical connectivity; Cisco CLI modes and console access",
-      "question": "Which Cisco CLI mode do you feel most comfortable working in after this week?",
-      "options": ["User EXEC (Router>)", "Privileged EXEC (Router#)", "Global configuration (Router(config)#)", "Not sure yet"]
+      "days": {
+        "Monday": {
+          "question": "Which Cisco CLI mode do you feel most comfortable working in after this week?",
+          "options": ["User EXEC (Router>)", "Privileged EXEC (Router#)", "Global configuration (Router(config)#)", "Not sure yet"]
+        },
+        "Tuesday": {
+          "question": "When connecting a laptop to a Cisco router or switch for initial setup, which physical connection detail is easiest to mix up?",
+          "options": ["Rollover console cable versus straight-through Ethernet cable", "COM port number in Device Manager", "Terminal settings (9600 baud, 8 data bits, no parity, 1 stop bit)", "RJ-45 console port versus USB mini-B console port"]
+        },
+        "Wednesday": {
+          "question": "When choosing copper Ethernet cabling in the lab, which pairing scenario do you have to think twice about?",
+          "options": ["Straight-through cable between unlike devices (switch to router)", "Crossover cable between like devices (switch to switch or router to router)", "When Auto-MDIX handles pinout automatically versus when it is disabled", "Cat5e versus Cat6 cabling and RJ-45 termination standards (T568A/T568B)"]
+        },
+        "Thursday": {
+          "question": "Which Cisco IOS CLI navigation shortcut or help feature saves you the most time while typing commands?",
+          "options": ["Context-sensitive help with the question mark (?)", "Tab completion for partial command keywords", "Up/Down arrow command history buffer", "Ctrl+A, Ctrl+E, and Ctrl+Z mode navigation shortcuts"]
+        },
+        "Friday": {
+          "question": "When verifying Layer 1 physical connectivity on a Cisco device, which indicator do you check first?",
+          "options": ["Physical port LED status on the chassis", "Output of show ip interface brief (Status versus Protocol)", "Cable tester pinout continuity results", "Output of show interfaces for CRC errors and input drops"]
+        }
+      }
     },
     {
       "week": 2,
       "topic": "Router and switch basic configuration; password and SSH authentication; IOS management and recovery",
-      "question": "Which device hardening step do you think matters most on a Cisco router?",
-      "options": ["Enable secret password", "Console and VTY passwords", "SSH instead of Telnet", "Backing up the IOS image and configuration"]
+      "days": {
+        "Monday": {
+          "question": "Which device hardening step do you think matters most on a Cisco router?",
+          "options": ["Enable secret password", "Console and VTY passwords", "SSH instead of Telnet", "Backing up the IOS image and configuration"]
+        },
+        "Tuesday": {
+          "question": "Between running-config (RAM) and startup-config (NVRAM), which mistake is most painful to make during a lab?",
+          "options": ["Reloading the device before running copy running-config startup-config", "Locking yourself out and saving the broken config to NVRAM", "Forgetting no shutdown on a newly configured router interface", "Overwriting startup-config instead of backing it up to TFTP"]
+        },
+        "Wednesday": {
+          "question": "When configuring SSH on a Cisco router or switch, which prerequisite step is easiest to forget?",
+          "options": ["Setting a hostname and ip domain-name before generating RSA keys", "Configuring a local username and secret password", "Setting login local and transport input ssh on the VTY lines", "Generating an RSA key modulus of at least 1024 or 2048 bits"]
+        },
+        "Thursday": {
+          "question": "Why is enable secret preferred over enable password and service password-encryption on Cisco IOS?",
+          "options": ["enable secret uses strong hashing while type 7 passwords are trivially reversible", "service password-encryption only obscures plaintext passwords from shoulder surfing", "enable secret overrides enable password when both are configured", "Auditors flag type 7 Vigenere-encoded strings immediately"]
+        },
+        "Friday": {
+          "question": "During a Cisco router password recovery or IOS image recovery in ROMMON, which step requires the most care?",
+          "options": ["Sending the break sequence during the first 60 seconds of boot", "Setting configuration register 0x2142 to bypass startup-config", "Copying startup-config to running-config after booting instead of overwriting it", "Resetting config-register back to 0x2102 before saving"]
+        }
+      }
     },
     {
       "week": 3,
       "topic": "VLAN fundamentals and 802.1Q trunking; Spanning Tree Protocol (STP, RSTP, PVST+)",
-      "question": "Which VLAN or Spanning Tree concept do you expect to cause the most trouble in practice?",
-      "options": ["Access ports versus trunk ports", "Native VLAN mismatches", "Choosing the root bridge", "Port states and convergence time"]
+      "days": {
+        "Monday": {
+          "question": "Which VLAN or Spanning Tree concept do you expect to cause the most trouble in practice?",
+          "options": ["Access ports versus trunk ports", "Native VLAN mismatches", "Choosing the root bridge", "Port states and convergence time"]
+        },
+        "Tuesday": {
+          "question": "When configuring 802.1Q trunking between two switches, why is changing the default native VLAN away from VLAN 1 recommended?",
+          "options": ["Mitigates VLAN hopping and double-tagging attacks", "Prevents untagged control traffic from mixing with default user ports", "Eliminates CDP native VLAN mismatch warnings when standardized", "Forces explicit planning of which VLANs are allowed on the trunk"]
+        },
+        "Wednesday": {
+          "question": "In Spanning Tree Protocol (802.1D / PVST+), how does a switch determine which device becomes the root bridge if priorities are left at default?",
+          "options": ["Lowest MAC address wins when all bridge priorities are tied at 32768", "Oldest switch in the closet often has the lowest MAC and becomes root unintentionally", "Setting spanning-tree vlan X root primary lowers priority deterministically", "Extended system ID adds the VLAN number to the base priority"]
+        },
+        "Thursday": {
+          "question": "When tracing STP port roles across a redundant switch topology, which distinction takes the most practice to spot quickly?",
+          "options": ["Root port (one per non-root switch, lowest root path cost)", "Designated port (one per segment, forwarding traffic onto that link)", "Alternate/Blocked port (preventing Layer 2 bridging loops)", "How link speed changes default STP port cost (19 for 100M, 4 for 1G)"]
+        },
+        "Friday": {
+          "question": "Which STP enhancement provides the biggest practical improvement on access switches connected to end hosts?",
+          "options": ["PortFast transitioning edge ports immediately to Forwarding", "BPDU Guard shutting down a PortFast port if a switch is plugged in", "Rapid PVST+ (802.1w) cutting convergence from 30-50 seconds to sub-second", "Per-VLAN load balancing with different root bridges per VLAN"]
+        }
+      }
     },
     {
       "week": 4,
       "topic": "EtherChannel (PAgP and LACP); GRE tunnels; IPsec and SSL VPNs",
-      "question": "Which technology do you expect to use most often in real networks?",
-      "options": ["EtherChannel (PAgP or LACP)", "GRE tunnel", "IPsec VPN", "SSL VPN"]
+      "days": {
+        "Monday": {
+          "question": "Which technology do you expect to use most often in real networks?",
+          "options": ["EtherChannel (PAgP or LACP)", "GRE tunnel", "IPsec VPN", "SSL VPN"]
+        },
+        "Tuesday": {
+          "question": "When bundling physical switch ports into an EtherChannel, which configuration mismatch will prevent the port-channel from forming?",
+          "options": ["Incompatible channel-group modes (for example LACP passive on both sides)", "Speed or duplex mismatch across member interfaces", "Trunk encapsulation or allowed VLAN mismatch on member ports", "Mixing Cisco-proprietary PAgP on one end with IEEE 802.3ad LACP on the other"]
+        },
+        "Wednesday": {
+          "question": "What is the primary reason network engineers pair a GRE tunnel with IPsec (GRE over IPsec) instead of using either one alone?",
+          "options": ["GRE encapsulates multicast routing protocols (OSPF/EIGRP) while IPsec encrypts the payload", "Pure GRE provides zero confidentiality or integrity on its own", "Traditional tunnel-mode IPsec crypto maps do not carry multicast hellos natively", "GRE adds a 24-byte header that requires careful MTU and TCP MSS adjustment"]
+        },
+        "Thursday": {
+          "question": "In a site-to-site IPsec VPN using IKE, which Phase 1 versus Phase 2 parameter mismatch is hardest to diagnose from logs?",
+          "options": ["IKE Phase 1 ISAKMP policy mismatch (encryption, hash, DH group, lifetime, or PSK)", "IKE Phase 2 IPsec transform-set mismatch between peers", "Non-mirror-image crypto ACLs defining interesting traffic", "NAT exemption missing before traffic hits the outbound crypto map"]
+        },
+        "Friday": {
+          "question": "When comparing site-to-site IPsec VPNs with client-based SSL/TLS VPNs, which use-case boundary is clearest?",
+          "options": ["IPsec connects fixed branch offices transparently at Layer 3", "SSL/TLS VPNs support remote users over any HTTPS-capable network", "Full-tunnel versus split-tunnel routing decisions for remote clients", "Certificate-based authentication versus pre-shared keys and MFA"]
+        }
+      }
     },
     {
       "week": 5,
       "topic": "WAN serial links (HDLC and PPP); PPP authentication (PAP and CHAP) and multilink",
-      "question": "Which WAN encapsulation do you think is more practical for a link between two different vendors?",
-      "options": ["HDLC", "PPP", "Frame Relay", "Not sure yet"]
+      "days": {
+        "Monday": {
+          "question": "Which WAN encapsulation do you think is more practical for a link between two different vendors?",
+          "options": ["HDLC", "PPP", "Frame Relay", "Not sure yet"]
+        },
+        "Tuesday": {
+          "question": "On a back-to-back lab serial link (DCE to DTE), why does the link stay up/down or down/down before encapsulation is even checked?",
+          "options": ["DCE side is missing the clock rate command", "Encapsulation mismatch (HDLC on one router, PPP on the other)", "Serial cable DCE and DTE ends swapped between routers", "Interface still administratively shut down"]
+        },
+        "Wednesday": {
+          "question": "Why is CHAP strongly preferred over PAP for authenticating a PPP serial link?",
+          "options": ["CHAP uses a 3-way MD5 challenge-response so the plaintext secret never crosses the wire", "PAP transmits the username and password in cleartext during link establishment", "CHAP can re-challenge periodically during an active session", "Both still require matching hostnames and shared secrets on each router"]
+        },
+        "Thursday": {
+          "question": "When troubleshooting a failed PPP CHAP authentication using debug ppp authentication, which error do you check for first?",
+          "options": ["Username not configured to match the remote router's hostname", "Mismatched shared secret password between the two routers", "ppp authentication chap missing on one or both serial interfaces", "LCP state stuck before reaching the authentication phase"]
+        },
+        "Friday": {
+          "question": "What does Multilink PPP (MLP) provide when bonding two or more serial T1 links between routers?",
+          "options": ["Packet fragmentation and load balancing across member serial links", "Single logical Multilink interface for IP addressing and routing", "Continued connectivity at reduced bandwidth if one physical serial line fails", "Lower serialization delay for small voice or real-time packets"]
+        }
+      }
     },
     {
       "week": 6,
       "topic": "IP routing fundamentals and static routing; routing algorithms; EIGRP",
-      "question": "Which routing approach do you find easiest to troubleshoot so far?",
-      "options": ["Static routes", "EIGRP", "Routing protocols in general", "Not sure yet"]
+      "days": {
+        "Monday": {
+          "question": "Which routing approach do you find easiest to troubleshoot so far?",
+          "options": ["Static routes", "EIGRP", "Routing protocols in general", "Not sure yet"]
+        },
+        "Tuesday": {
+          "question": "When a router has both a /26 static route (AD 1) and a /24 EIGRP route (AD 90) matching a destination IP, how does it choose the forwarding path?",
+          "options": ["Longest prefix match (/26) always wins before administrative distance is compared", "Administrative distance is only used when prefix lengths are identical", "Metric is only compared among routes from the same routing protocol and prefix length", "Default route 0.0.0.0/0 is used only as a last resort when no longer prefix matches"]
+        },
+        "Wednesday": {
+          "question": "When configuring a floating static backup route on a Cisco router, what makes it stay out of the routing table until the primary dynamic route fails?",
+          "options": ["Setting an administrative distance higher than the primary protocol (for example AD 100 vs EIGRP 90)", "Specifying both exit interface and next-hop IP (fully specified static route)", "Verifying fallback behavior by shutting down the primary link", "Removing auto-summary so classless masks are preserved"]
+        },
+        "Thursday": {
+          "question": "When comparing distance-vector, link-state, and EIGRP's DUAL algorithm, what makes EIGRP converge so quickly?",
+          "options": ["Maintaining a Feasible Successor in the topology table that satisfies the Feasibility Condition (RD < FD)", "Sending partial, bounded updates only when a link state or metric changes", "Using Hello keepalives to detect neighbor loss rapidly", "Querying neighbors with DUAL only when no Feasible Successor exists"]
+        },
+        "Friday": {
+          "question": "When two EIGRP routers are directly connected and ping works, what is the most common reason they fail to form an EIGRP neighbor adjacency?",
+          "options": ["Mismatched Autonomous System (AS) number in router eigrp", "Mismatched K-values (metric weights) between the two routers", "Used a subnet mask instead of a wildcard mask in the network statement", "Interface marked passive-interface under router eigrp"]
+        }
+      }
     },
     {
       "week": 7,
       "topic": "OSPF fundamentals (single-area); OSPF advanced topics and multi-area design",
-      "question": "Which OSPF concept do you feel least confident about right now?",
-      "options": ["DR and BDR election", "Neighbor adjacency states", "LSA types", "Multi-area design"]
+      "days": {
+        "Monday": {
+          "question": "Which OSPF concept do you feel least confident about right now?",
+          "options": ["DR and BDR election", "Neighbor adjacency states", "LSA types", "Multi-area design"]
+        },
+        "Tuesday": {
+          "question": "When configuring single-area OSPF, which detail do you think is easiest to misconfigure?",
+          "options": ["Router ID selection order", "Hello and Dead interval matching", "Wildcard mask calculation in network statements", "Passive-interface behavior"]
+        },
+        "Wednesday": {
+          "question": "On a multi-access Ethernet segment running OSPF, why doesn't a router with a higher Router ID immediately take over as DR when it boots up later?",
+          "options": ["OSPF DR/BDR election is non-preemptive once a DR is active", "ip ospf priority 0 prevents a router from participating in DR/BDR election", "clear ip ospf process is required to force a new election in the lab", "Point-to-point serial links skip DR/BDR election entirely"]
+        },
+        "Thursday": {
+          "question": "Why should auto-cost reference-bandwidth be increased (for example to 10000 or 100000) on modern OSPF networks?",
+          "options": ["Default 100 Mbps reference bandwidth assigns cost 1 to FastEthernet, 1G, and 10G links alike", "Every router in the OSPF domain must use the same reference bandwidth for consistent SPF calculation", "Per-interface ip ospf cost can also override calculated cost directly", "OSPF accumulates cost across every outgoing interface along the path"]
+        },
+        "Friday": {
+          "question": "In a multi-area OSPF design, why must all non-backbone areas connect to Area 0 through an Area Border Router (ABR)?",
+          "options": ["Inter-area routing (Type 3 Summary LSAs) must pass through Area 0 to prevent routing loops", "Full SPF recalculation (Type 1 and Type 2 LSAs) stays contained within each area", "ABRs can summarize contiguous subnets between areas with area range", "ASBRs inject external routes (Type 5 LSAs) from redistribution or default-information originate"]
+        }
+      }
     },
     {
       "week": 8,
       "topic": "Wireless fundamentals and the Cisco Aironet access point; wireless security and enterprise WLANs",
-      "question": "Which wireless security option do you think a small business should use?",
-      "options": ["WEP", "WPA2 with a pre-shared key", "WPA3", "Open network with no password"]
+      "days": {
+        "Monday": {
+          "question": "Which wireless security option do you think a small business should use?",
+          "options": ["WEP", "WPA2 with a pre-shared key", "WPA3", "Open network with no password"]
+        },
+        "Tuesday": {
+          "question": "When planning RF channel assignments for a multi-AP deployment, how do 2.4 GHz and 5 GHz bands differ most?",
+          "options": ["2.4 GHz has only 3 non-overlapping channels (1, 6, 11) while 5 GHz offers many non-overlapping channels", "2.4 GHz penetrates walls farther but suffers more co-channel interference", "5 GHz supports wider 40/80 MHz channels for higher throughput at shorter range", "CSMA/CA half-duplex airtime contention affects all clients sharing a channel"]
+        },
+        "Wednesday": {
+          "question": "When configuring a Cisco autonomous access point with multiple SSIDs mapped to separate VLANs, how does the switch port connected to the AP need to be configured?",
+          "options": ["802.1Q trunk port allowing all wireless VLANs and matching the AP's native management VLAN", "Subinterfaces on both the AP radio (Dot11Radio) and Ethernet (GigabitEthernet) interfaces", "Bridge-groups linking each radio subinterface to its corresponding Ethernet subinterface", "Separate DHCP scopes and default gateways for each wireless VLAN"]
+        },
+        "Thursday": {
+          "question": "What is the biggest security advantage of WPA2/WPA3-Enterprise (802.1X with RADIUS) over WPA2/WPA3-Personal (PSK)?",
+          "options": ["Each user authenticates with individual credentials instead of a single shared password", "Revoking one departing employee's access does not require rekeying every device on the WLAN", "Per-user dynamic encryption keys prevent other authenticated users from decrypting your traffic", "RADIUS can dynamically assign a user to a specific VLAN based on group membership"]
+        },
+        "Friday": {
+          "question": "In a large campus network, why do organizations deploy lightweight APs with a Wireless LAN Controller (WLC) using CAPWAP instead of standalone autonomous APs?",
+          "options": ["Centralized configuration, firmware management, and security policy enforcement", "Automated RF channel and transmit power tuning (RRM)", "Seamless Layer 2 and Layer 3 client roaming across access points", "Rogue AP detection and wireless intrusion prevention"]
+        }
+      }
     },
     {
       "week": 9,
       "topic": "IPv6 fundamentals and static routing; IPv6 EIGRP dynamic routing",
-      "question": "Which IPv6 feature do you find most different from IPv4?",
-      "options": ["128-bit addresses", "No broadcast traffic", "Stateless autoconfiguration", "Link-local addresses"]
+      "days": {
+        "Monday": {
+          "question": "Which IPv6 feature do you find most different from IPv4?",
+          "options": ["128-bit addresses", "No broadcast traffic", "Stateless autoconfiguration", "Link-local addresses"]
+        },
+        "Tuesday": {
+          "question": "When shortening a 128-bit IPv6 address in hexadecimal notation, which rule prevents ambiguity?",
+          "options": ["Double colon (::) can replace a contiguous block of all-zero hextets only once per address", "Leading zeros within any 16-bit hextet can always be omitted", "Trailing zeros within a hextet cannot be dropped", "RFC 5952 recommends lowercase hexadecimal digits"]
+        },
+        "Wednesday": {
+          "question": "How does IPv6 Neighbor Discovery Protocol (NDP) replace IPv4 ARP and router discovery without using broadcasts?",
+          "options": ["Neighbor Solicitation and Neighbor Advertisement ICMPv6 messages over solicited-node multicast", "Router Solicitation and Router Advertisement (RA) messages for SLAAC prefix discovery", "Duplicate Address Detection (DAD) before assigning a unicast address to an interface", "Every IPv6-enabled interface automatically generates an fe80::/10 link-local address"]
+        },
+        "Thursday": {
+          "question": "When configuring IPv6 static routing on a Cisco router, what happens if you forget the global command ipv6 unicast-routing?",
+          "options": ["Interfaces accept IPv6 addresses and respond to ping, but the router will not forward IPv6 packets between subnets", "Link-local next-hop static routes require specifying both the outgoing interface and the fe80:: address", "Global unicast next-hop static routes can resolve recursively", "show ipv6 route displays connected (C) and local (L /128) entries"]
+        },
+        "Friday": {
+          "question": "When configuring EIGRP for IPv6, which requirement trips up engineers who are used to IPv4 EIGRP?",
+          "options": ["An explicit 32-bit dotted-decimal eigrp router-id is required when no IPv4 addresses exist on the router", "EIGRP for IPv6 is enabled directly on each interface rather than using network statements", "The ipv6 router eigrp process starts in a shutdown state on many IOS versions until no shutdown is issued", "EIGRP for IPv6 forms neighbor adjacencies using fe80:: link-local addresses"]
+        }
+      }
     },
     {
       "week": 10,
       "topic": "BGP fundamentals and configuration; BGP advanced topics and route manipulation",
-      "question": "Which BGP topic do you expect to find hardest?",
-      "options": ["Autonomous systems and peering", "Path attributes", "Route filtering and manipulation", "Route selection order"]
+      "days": {
+        "Monday": {
+          "question": "Which BGP topic do you expect to find hardest?",
+          "options": ["Autonomous systems and peering", "Path attributes", "Route filtering and manipulation", "Route selection order"]
+        },
+        "Tuesday": {
+          "question": "Why does the global Internet use BGP (a path-vector EGP) between Autonomous Systems instead of an IGP like OSPF or EIGRP?",
+          "options": ["BGP enforces business policy and administrative control rather than shortest link metric", "BGP scales to hundreds of thousands of prefixes without flooding link-state databases globally", "AS_PATH loop prevention tracks every Autonomous System a prefix has traversed", "eBGP (AD 20) and iBGP (AD 200) separate inter-domain from intra-domain routing"]
+        },
+        "Wednesday": {
+          "question": "When a BGP session is stuck in Idle or Active state instead of reaching Established, what is the first thing you verify?",
+          "options": ["TCP port 179 reachability and matching neighbor IP addresses on both routers", "Correct remote-as number in the neighbor statement", "update-source loopback and ebgp-multihop when peering between loopback interfaces", "Whether the prefix in the network statement exists in the local IP routing table with an exact mask match"]
+        },
+        "Thursday": {
+          "question": "In the BGP best-path selection algorithm, how do Weight, LOCAL_PREF, AS_PATH, and MED differ in direction and scope?",
+          "options": ["Weight (Cisco-local) and LOCAL_PREF (AS-wide) influence outbound traffic leaving your AS", "AS_PATH prepending and MED influence inbound traffic entering your AS from neighbors", "Weight is checked before LOCAL_PREF, which is checked before shortest AS_PATH", "Next-hop reachability in the IGP is required before any BGP path is considered valid"]
+        },
+        "Friday": {
+          "question": "Which BGP operational task do you want the most practice with before finishing the course?",
+          "options": ["BGP path selection order", "Route filtering with prefix lists", "LOCAL_PREF and MED tuning", "BGP neighbor states"]
+        }
+      }
     }
   ]
 }

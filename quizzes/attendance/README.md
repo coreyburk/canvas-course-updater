@@ -12,7 +12,7 @@ python tools/create_attendance_quizzes.py --config quizzes/attendance/<CODE>.jso
 
 A run does three things, in order. Each step is idempotent, so re-running after a partial failure is safe.
 
-1. **Quizzes.** Creates `Attendance Quiz - Week N Day` for every week and day (Mon-Fri). Existing titles are skipped (and any legacy `Participation Quiz - Week N Day` quizzes are renamed in place).
+1. **Quizzes.** Creates `Attendance Quiz - Week N Day` for every week and day (Mon-Fri). Existing quizzes whose question and options already match the config are skipped; if a question or option list changed, the quiz question is updated in place (and any legacy `Participation Quiz - Week N Day` quizzes are renamed in place).
 2. **Modules.** Adds each quiz to its week's Canvas module. The module is found by name (default `Week {week}`). Quizzes already in the module are skipped.
 3. **Instructor page.** Creates or updates an unpublished page, `Instructor Notes - Attendance Quiz Codes`, listing every quiz title, quiz ID and access code.
 
@@ -31,7 +31,7 @@ If a module named `Week N` does not exist, the run stops before writing anything
 ## What each quiz is
 
 - An **ungraded survey** (`quiz_type=survey`). No points, no correct answer.
-- **One multiple-choice question** tied to that week's topics. The same question is used for all five days of the week.
+- **One unique multiple-choice question per day** tied to that specific week's topics. Every day (`Monday`–`Friday`) across the entire course has a distinct question and option set.
 - **Anonymous submissions off** and **one attempt**, so attendance is tied to the student.
 - Its **own access code**, a topic keyword the instructor gives out in person during class.
 - **Unpublished.** The instructor publishes each quiz by hand on its class day.
@@ -44,7 +44,7 @@ Quizzes for past weeks are not graded. The requirement started partway through t
 | File | In git? | Purpose |
 |---|---|---|
 | `tools/create_attendance_quizzes.py` | yes | The generator. Works for any course. |
-| `quizzes/attendance/<CODE>.json` | yes | Course ID, week count, week topics, weekly question and options. |
+| `quizzes/attendance/<CODE>.json` | yes | Course ID, week count, week topics, and 5 unique daily questions/options per week. |
 | `quizzes/attendance/<CODE>.codes.json` | **no (gitignored)** | One access code per quiz, keyed by quiz title. |
 
 The codes file is gitignored on purpose. The repo is public and the codes are student-facing. Keep it only on the machine that runs the script.
@@ -58,14 +58,25 @@ The codes file is gitignored on purpose. The repo is public and the codes are st
   "weeks": 10,
   "module_name": "Week {week}",
   "weeks_data": [
-    {"week": 1, "topic": "...", "question": "...", "options": ["...", "...", "..."]}
+    {
+      "week": 1,
+      "topic": "...",
+      "days": {
+        "Monday":    {"question": "...", "options": ["...", "...", "..."]},
+        "Tuesday":   {"question": "...", "options": ["...", "...", "..."]},
+        "Wednesday": {"question": "...", "options": ["...", "...", "..."]},
+        "Thursday":  {"question": "...", "options": ["...", "...", "..."]},
+        "Friday":    {"question": "...", "options": ["...", "...", "..."]}
+      }
+    }
   ]
 }
 ```
 
 - `course_id` is the numeric Canvas ID.
 - `weeks` must be 5 or 10. `weeks_data` must have exactly that many entries, covering weeks 1 to N.
-- Each entry needs 2 to 6 options.
+- Each week entry must include `"days"` with all five days (`Monday` through `Friday`), each with 2 to 6 unique options.
+- Every day's `"question"` must be unique across the entire course (validated before any Canvas call).
 - No em dashes in question or option text.
 - `module_name` is optional. Default is `Week {week}`.
 

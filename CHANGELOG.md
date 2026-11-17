@@ -15,6 +15,14 @@ over anything in this log.
 
 ---
 
+## Unique Daily Attendance Quiz Questions across ITH216, PRO381-S2, and BIT360 (2026-11-17)
+
+Replaced the single per-week repeated question with 5 distinct daily questions (`Monday`-`Friday`) per week across all three courses (125 unique questions total: 50 in ITH216 `3646987`, 25 in PRO381-S2 `3644906`, 50 in BIT360 `3644702`), each tailored to that specific week's course topics:
+- **Config schema & validation (`tools/create_attendance_quizzes.py`, `quizzes/attendance/*.json`):** Each week entry in `weeks_data` now defines `"days": {"Monday": ..., "Tuesday": ..., "Wednesday": ..., "Thursday": ..., "Friday": ...}`. `validate_config()` enforces that all 5 days are present per week, every question has 2-6 non-duplicate options with no em dashes, and every question is unique across the entire course.
+- **In-place question sync & published quiz save (`unpublished_changes?`):** `tools/create_attendance_quizzes.py` now compares existing Canvas quiz questions against the config and updates `question_name`, `question_text`, and `answers` in place via `PUT /courses/:id/quizzes/:qid/questions/:question_id`. In Canvas LMS (`app/models/quizzes/quiz.rb`), editing a question sets `last_edited_at = Time.now.utc`, which shows the *"You have made changes to the questions in this quiz..."* banner on published quizzes whenever `last_edited_at > published_at`; the REST API only updates `published_at` and regenerates `quiz_data` when `workflow_state` transitions from `published: false` to `published: true`. `sync_quiz()` now automatically toggles `published: false` -> `published: true` (`notify_of_update: false`) on any published quiz without submissions (`unpublishable: true`), clearing the banner on all 14 future published quizzes across the three courses (while the 106 unpublished quizzes generate fresh `published_at` when published on class days; only the 5 already-submitted Monday/Tuesday quizzes with `unpublishable: false` require clicking "Save It Now" in the UI if you wish to dismiss the banner on past days).
+
+---
+
 ## Rename Participation Quizzes to Attendance Quizzes across ITH216, PRO381-S2, and BIT360 (2026-11-17)
 
 Renamed the daily survey quizzes from "Participation" to "Attendance" across all three configured courses and the repo tooling:

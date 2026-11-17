@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 """Set up the Attendance Quizzes for any course, in one command.
 
-For a course config (quizzes/attendance/<CODE>.json) this creates, per week and
-per class day (Mon-Fri):
+For a course config (quizzes/attendance/<CODE>.json) this creates or updates,
+per week and per class day (Mon-Fri):
 
-  1. Quizzes     "Attendance Quiz - Week N Day": ungraded survey, one question,
-                 anonymous submissions off, one attempt, its own access code,
-                 UNPUBLISHED.
+  1. Quizzes     "Attendance Quiz - Week N Day": ungraded survey, one unique
+                 question for that specific day/week, anonymous submissions off,
+                 one attempt, its own access code, UNPUBLISHED.
   2. Modules     each quiz appended to its week's Canvas module.
   3. Instructor  an UNPUBLISHED page "Instructor Notes - Attendance Quiz Codes"
                  listing every quiz title, quiz ID and access code.
 
-Every step is idempotent: existing quizzes are skipped (or re-coded with
---update-codes; legacy "Participation Quiz - Week N Day" quizzes are renamed in
-place), quizzes already in a module are not re-added, and the instructor page is
-updated in place. Re-running after a partial failure is safe.
+Every step is idempotent: existing quizzes whose question and options already
+match the config are skipped (or updated in place when the question changes,
+re-coded with --update-codes, or renamed in place from legacy "Participation
+Quiz - Week N Day" titles), quizzes already in a module are not re-added, and
+the instructor page is updated in place. Re-running after a partial failure is
+safe.
 
 Dry run by default. Nothing is written to Canvas without --apply.
 
@@ -29,12 +31,23 @@ Config (<CODE>.json):
       "weeks": 10,
       "module_name": "Week {week}",            (optional; default shown)
       "weeks_data": [
-        {"week": 1, "topic": "...", "question": "...", "options": ["a", "b", "c"]},
+        {
+          "week": 1,
+          "topic": "...",
+          "days": {
+            "Monday":    {"question": "...", "options": ["a", "b", "c", "d"]},
+            "Tuesday":   {"question": "...", "options": ["a", "b", "c", "d"]},
+            "Wednesday": {"question": "...", "options": ["a", "b", "c", "d"]},
+            "Thursday":  {"question": "...", "options": ["a", "b", "c", "d"]},
+            "Friday":    {"question": "...", "options": ["a", "b", "c", "d"]}
+          }
+        },
         ...
       ]
     }
-  "weeks" must be 5 or 10 and weeks_data must cover weeks 1..N. Each entry needs
-  2-6 options. Question and option text must not contain em dashes.
+  "weeks" must be 5 or 10 and weeks_data must cover weeks 1..N. Every week must
+  define all 5 days (Monday-Friday) with a unique question across the course and
+  2-6 options per day. Question and option text must not contain em dashes.
 
 Usage:
   python tools/create_attendance_quizzes.py --config quizzes/attendance/<CODE>.json
@@ -72,12 +85,16 @@ def quiz_title(week, day, prefix=TITLE_PREFIX):
     return f"{prefix} - Week {week} {day}"
 
 
-def quiz_description(week):
+def quiz_description(week, day):
     return (
-        f"<p>Attendance check for Week {week}. Answer the question below to "
+        f"<p>Attendance check for Week {week} ({day}). Answer the question below to "
         "record your attendance for today. This is an ungraded survey, so there is no "
         "correct answer.</p>"
     )
+
+
+def question_name_for(week, day):
+    return f"Week {week} {day} attendance question"
 
 
 def validate_config(cfg):
@@ -93,29 +110,57 @@ def validate_config(cfg):
         errors.append(f"'weeks' must be 5 or 10, got {weeks!r}")
     if len(data) != weeks:
         errors.append(f"'weeks' is {weeks} but weeks_data has {len(data)} entries")
-    seen = set()
+    seen_weeks = set()
+    by_question = {}
     for entry in data:
         w = entry.get("week")
-        if w in seen:
+        if w in seen_weeks:
             errors.append(f"duplicate week {w}")
-        seen.add(w)
-        opts = entry.get("options", [])
-        if not 2 <= len(opts) <= 6:
-            errors.append(f"week {w}: needs 2-6 options, has {len(opts)}")
-        for text in [entry.get("question", "")] + opts:
-            if "\u2014" in text or "&mdash;" in text:
-                errors.append(f"week {w}: em dash found in question or option text")
+        seen_weeks.add(w)
+        days_map = entry.get("days")
+        if not isinstance(days_map, dict):
+            errors.append(f"week {w}: missing 'days' mapping (Monday-Friday required)")
+            continue
+        for day in DAYS:
+            d_entry = days_map.get(day)
+            if not isinstance(d_entry, dict):
+                errors.append(f"week {w} {day}: missing day entry")
+                continue
+            q_text = (d_entry.get("question") or "").strip()
+            opts = d_entry.get("options", [])
+            if not q_text:
+                errors.append(f"week {w} {day}: missing 'question'")
+            if not 2 <= len(opts) <= 6:
+                errors.append(f"week {w} {day}: needs 2-6 options, has {len(opts)}")
+            if len({o.strip().casefold() for o in opts}) != len(opts):
+                errors.append(f"week {w} {day}: duplicate options within question")
+            for text in [q_text] + opts:
+                if "\u2014" in text or "&mdash;" in text:
+                    errors.append(f"week {w} {day}: em dash found in question or option text")
+            if q_text:
+                by_question.setdefault(q_text.casefold(), []).append(f"Week {w} {day}")
+    for q_norm, locs in by_question.items():
+        if len(locs) > 1:
+            errors.append(f"duplicate question across {', '.join(locs)}: {q_norm[:60]!r}")
     expected = set(range(1, weeks + 1)) if isinstance(weeks, int) else set()
-    if seen != expected:
-        errors.append(f"weeks_data must cover weeks {sorted(expected)}, has {sorted(seen)}")
+    if seen_weeks != expected:
+        errors.append(f"weeks_data must cover weeks {sorted(expected)}, has {sorted(seen_weeks)}")
     return errors
 
 
 def plan(cfg):
-    """(week, day, title, week_entry) for every quiz in calendar order."""
+    """(week, day, title, day_entry) for every quiz in calendar order."""
     by_week = {e["week"]: e for e in cfg["weeks_data"]}
-    return [(w, day, quiz_title(w, day), by_week[w])
-            for w in range(1, cfg["weeks"] + 1) for day in DAYS]
+    rows = []
+    for w in range(1, cfg["weeks"] + 1):
+        w_entry = by_week[w]
+        for day in DAYS:
+            d_entry = dict(w_entry["days"][day])
+            d_entry["week"] = w
+            d_entry["day"] = day
+            d_entry["topic"] = w_entry.get("topic", "")
+            rows.append((w, day, quiz_title(w, day), d_entry))
+    return rows
 
 
 def validate_codes(codes, rows):
@@ -148,32 +193,78 @@ def existing_quizzes(cv, cid):
     }
 
 
-def set_access_code(cv, cid, quiz_id, code):
-    cv.call(f"/courses/{cid}/quizzes/{quiz_id}", method="PUT",
-            payload={"quiz": {"access_code": code}})
+def question_payload(day_entry):
+    return {
+        "question": {
+            "question_name": question_name_for(day_entry["week"], day_entry["day"]),
+            "question_text": f"<p>{day_entry['question']}</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0,
+            # Canvas forces one answer to weight 100 on multiple choice even in a survey.
+            "answers": [{"answer_text": opt, "answer_weight": 0} for opt in day_entry["options"]],
+        }
+    }
 
 
-def rename_quiz(cv, cid, quiz_id, new_title, week_entry, code=None):
-    q_payload = {
+def question_matches(questions, day_entry):
+    if len(questions) != 1:
+        return False
+    q = questions[0]
+    expected_text = f"<p>{day_entry['question']}</p>"
+    actual_opts = [a.get("text", "") for a in q.get("answers", [])]
+    return (
+        q.get("question_text") == expected_text
+        and actual_opts == day_entry["options"]
+    )
+
+
+def sync_quiz(cv, cid, quiz_obj, new_title, day_entry, code=None):
+    """Update question(s) and quiz metadata so published quizzes regenerate quiz_data."""
+    quiz_id = quiz_obj["id"]
+    questions = cv.paged(f"/courses/{cid}/quizzes/{quiz_id}/questions?per_page=100")
+    q_pl = question_payload(day_entry)
+    if questions:
+        cv.call(f"/courses/{cid}/quizzes/{quiz_id}/questions/{questions[0]['id']}",
+                method="PUT", payload=q_pl)
+        for extra in questions[1:]:
+            cv.call(f"/courses/{cid}/quizzes/{quiz_id}/questions/{extra['id']}", method="DELETE")
+    else:
+        cv.call(f"/courses/{cid}/quizzes/{quiz_id}/questions", method="POST", payload=q_pl)
+
+    target_desc = quiz_description(day_entry["week"], day_entry["day"])
+    was_published = bool(quiz_obj.get("published"))
+    can_unpublish = bool(quiz_obj.get("unpublishable", True))
+
+    q_update = {
         "title": new_title,
-        "description": quiz_description(week_entry["week"]),
+        "description": target_desc,
+        "notify_of_update": False,
     }
     if code is not None:
-        q_payload["access_code"] = code
-    cv.call(f"/courses/{cid}/quizzes/{quiz_id}", method="PUT", payload={"quiz": q_payload})
-    questions = cv.paged(f"/courses/{cid}/quizzes/{quiz_id}/questions?per_page=100")
-    target_qname = f"Week {week_entry['week']} attendance question"
-    for q in questions:
-        if q.get("question_name") != target_qname:
-            cv.call(
-                f"/courses/{cid}/quizzes/{quiz_id}/questions/{q['id']}",
-                method="PUT",
-                payload={"question": {"question_name": target_qname}},
-            )
+        q_update["access_code"] = code
+
+    # In Canvas Classic Quizzes (app/models/quizzes/quiz.rb), editing a question sets
+    # quiz.last_edited_at = Time.now. The UI shows "You have made changes to the questions
+    # in this quiz..." whenever quiz.unpublished_changes? (last_edited_at > published_at)
+    # is true, and the REST API only updates published_at and regenerates quiz_data in
+    # before_save :generate_quiz_data_on_publish, if: :workflow_state_changed? (i.e., when
+    # transitioning from published=false to published=true).
+    if was_published and can_unpublish:
+        q_update["published"] = False
+        cv.call(f"/courses/{cid}/quizzes/{quiz_id}", method="PUT", payload={"quiz": q_update})
+        cv.call(f"/courses/{cid}/quizzes/{quiz_id}", method="PUT",
+                payload={"quiz": {"published": True, "notify_of_update": False}})
+    else:
+        cv.call(f"/courses/{cid}/quizzes/{quiz_id}", method="PUT", payload={"quiz": q_update})
 
 
-def create_quiz(cv, cid, title, week_entry, code):
-    description = quiz_description(week_entry["week"])
+def set_access_code(cv, cid, quiz_id, code):
+    cv.call(f"/courses/{cid}/quizzes/{quiz_id}", method="PUT",
+            payload={"quiz": {"access_code": code, "notify_of_update": False}})
+
+
+def create_quiz(cv, cid, title, day_entry, code):
+    description = quiz_description(day_entry["week"], day_entry["day"])
     payload = {
         "quiz": {
             "title": title,
@@ -191,17 +282,8 @@ def create_quiz(cv, cid, title, week_entry, code):
     quiz, _ = cv.call(f"/courses/{cid}/quizzes", method="POST", payload=payload)
     quiz_id = quiz["id"]
     try:
-        q_payload = {
-            "question": {
-                "question_name": f"Week {week_entry['week']} attendance question",
-                "question_text": f"<p>{week_entry['question']}</p>",
-                "question_type": "multiple_choice_question",
-                "points_possible": 0,
-                # Canvas forces one answer to weight 100 on multiple choice even in a survey.
-                "answers": [{"answer_text": opt, "answer_weight": 0} for opt in week_entry["options"]],
-            }
-        }
-        cv.call(f"/courses/{cid}/quizzes/{quiz_id}/questions", method="POST", payload=q_payload)
+        cv.call(f"/courses/{cid}/quizzes/{quiz_id}/questions",
+                method="POST", payload=question_payload(day_entry))
     except Exception:
         # Do not leave a half-built quiz behind; a re-run can then create it cleanly.
         cv.call(f"/courses/{cid}/quizzes/{quiz_id}", method="DELETE")
@@ -331,7 +413,22 @@ def main():
     for w, day, title, entry in rows:
         legacy_title = quiz_title(w, day, LEGACY_TITLE_PREFIX)
         if title in existing:
-            qid = existing[title]["id"]
+            q_obj = existing[title]
+            qid = q_obj["id"]
+            questions = cv.paged(f"/courses/{cid}/quizzes/{qid}/questions?per_page=100")
+            q_ok = question_matches(questions, entry)
+            if not q_ok:
+                if not args.apply:
+                    print(f"  PLAN    update question on {title} (id {qid})")
+                    continue
+                try:
+                    sync_quiz(cv, cid, q_obj, title, entry, code=codes[title] if args.update_codes else None)
+                    print(f"  UPDATE  {title} (id {qid}, question updated)")
+                    updated += 1
+                except Exception as e:  # noqa: BLE001
+                    print(f"  FAIL    {title}: {e}")
+                    failed += 1
+                continue
             if args.update_codes:
                 if args.apply:
                     try:
@@ -344,16 +441,17 @@ def main():
                 else:
                     print(f"  PLAN    set code on {title} (id {qid})")
             else:
-                print(f"  SKIP    {title} (exists, id {qid})")
+                print(f"  SKIP    {title} (up to date, id {qid})")
                 skipped += 1
             continue
         if legacy_title in existing:
-            qid = existing[legacy_title]["id"]
+            q_obj = existing[legacy_title]
+            qid = q_obj["id"]
             if not args.apply:
-                print(f"  PLAN    rename {legacy_title} -> {title} (id {qid})")
+                print(f"  PLAN    rename & sync {legacy_title} -> {title} (id {qid})")
                 continue
             try:
-                rename_quiz(cv, cid, qid, title, entry, code=codes[title] if args.update_codes else None)
+                sync_quiz(cv, cid, q_obj, title, entry, code=codes[title] if args.update_codes else None)
                 print(f"  RENAME  {legacy_title} -> {title} (id {qid})")
                 renamed += 1
             except Exception as e:  # noqa: BLE001
@@ -374,7 +472,7 @@ def main():
             print(f"  FAIL    {title}: {e}")
             failed += 1
     if args.apply:
-        print(f"  => {created} created, {renamed} renamed, {updated} re-coded, {skipped} skipped, {failed} failed")
+        print(f"  => {created} created, {renamed} renamed, {updated} updated, {skipped} skipped, {failed} failed")
         existing = existing_quizzes(cv, cid)  # pick up new/renamed IDs for later steps
 
     # Step 2: modules

@@ -7,32 +7,132 @@
     {
       "week": 1,
       "topic": "Amazon RDS databases; migrating a database to RDS; creating a VPC",
-      "question": "Which Week 1 task do you expect to be hardest?",
-      "options": ["Creating an Amazon RDS database", "Migrating a database to Amazon RDS", "Creating a Virtual Private Cloud", "Not sure yet"]
+      "days": {
+        "Monday": {
+          "question": "Which Week 1 task do you expect to be hardest?",
+          "options": ["Creating an Amazon RDS database", "Migrating a database to Amazon RDS", "Creating a Virtual Private Cloud", "Not sure yet"]
+        },
+        "Tuesday": {
+          "question": "When provisioning an Amazon RDS instance, which setting do you think requires the most upfront planning?",
+          "options": ["Database engine and version", "Instance class and storage autoscaling", "Multi-AZ deployment and standby placement", "VPC subnet group and security group rules"]
+        },
+        "Wednesday": {
+          "question": "During a database migration to Amazon RDS, which risk would you prioritize mitigating first?",
+          "options": ["Application downtime during cutover", "Schema or data type incompatibility", "Network throughput between source and target", "Verifying row counts and data integrity after migration"]
+        },
+        "Thursday": {
+          "question": "When designing a custom VPC from scratch, which CIDR and subnet decision is hardest to change later?",
+          "options": ["Primary VPC CIDR block size", "Public versus private subnet split", "Availability Zone distribution", "Route table associations"]
+        },
+        "Friday": {
+          "question": "After completing Week 1, which component connecting a VPC to an RDS instance feels clearest to you?",
+          "options": ["DB subnet groups across multiple AZs", "Inbound security group rules on the database port", "Internet gateway and NAT gateway routing", "Parameter groups and option groups"]
+        }
+      }
     },
     {
       "week": 2,
       "topic": "VPC networking; VPC peering; Amazon Cognito; encrypting data at rest",
-      "question": "Which Week 2 topic do you feel least confident about?",
-      "options": ["VPC networking", "VPC peering", "Amazon Cognito authentication", "Encrypting data at rest"]
+      "days": {
+        "Monday": {
+          "question": "Which Week 2 topic do you feel least confident about?",
+          "options": ["VPC networking", "VPC peering", "Amazon Cognito authentication", "Encrypting data at rest"]
+        },
+        "Tuesday": {
+          "question": "When troubleshooting a VPC peering connection that cannot pass traffic, what would you check first?",
+          "options": ["Overlapping CIDR blocks between the two VPCs", "Route tables in both VPCs for the peer CIDR", "Security group and NACL rules on both sides", "Whether the peering request was accepted"]
+        },
+        "Wednesday": {
+          "question": "Between security groups and Network ACLs in a VPC, which difference matters most in your day-to-day design?",
+          "options": ["Stateful versus stateless return traffic handling", "Instance-level versus subnet-level attachment", "Allow-only rules versus explicit deny rules", "Order of rule evaluation"]
+        },
+        "Thursday": {
+          "question": "In Amazon Cognito, which distinction is most important to keep straight when building an application?",
+          "options": ["User Pools (authentication) versus Identity Pools (AWS credentials)", "Hosted UI sign-in versus custom authentication flows", "JWT ID tokens versus access and refresh tokens", "MFA and password policy enforcement"]
+        },
+        "Friday": {
+          "question": "When encrypting data at rest in AWS with KMS, which operational consideration do you think is most critical?",
+          "options": ["Choosing AWS-managed keys versus customer-managed keys (CMKs)", "Key rotation schedule and IAM key policies", "Encrypting existing unencrypted EBS volumes or RDS snapshots", "Performance and API quota impact of KMS calls"]
+        }
+      }
     },
     {
       "week": 3,
       "topic": "Highly available environments; scalable architectures; infrastructure automation with CloudFormation",
-      "question": "Which of these do you think matters most for keeping an application available?",
-      "options": ["Multiple Availability Zones", "Auto Scaling", "Load balancing", "Infrastructure as code with CloudFormation"]
+      "days": {
+        "Monday": {
+          "question": "Which of these do you think matters most for keeping an application available?",
+          "options": ["Multiple Availability Zones", "Auto Scaling", "Load balancing", "Infrastructure as code with CloudFormation"]
+        },
+        "Tuesday": {
+          "question": "When configuring an Application Load Balancer across multiple Availability Zones, which setting is easiest to overlook?",
+          "options": ["Target group health check path and thresholds", "Cross-zone load balancing behavior", "Security group chaining from ALB to backend instances", "Connection draining (deregistration delay) timeout"]
+        },
+        "Wednesday": {
+          "question": "For an EC2 Auto Scaling group, which scaling policy type makes the most sense for predictable versus spiky traffic?",
+          "options": ["Target tracking scaling on average CPU or request count", "Scheduled scaling before known traffic peaks", "Step scaling with CloudWatch alarms", "Predictive scaling based on historical load"]
+        },
+        "Thursday": {
+          "question": "When writing an AWS CloudFormation template, which section or feature do you find trickiest to work with?",
+          "options": ["Intrinsic functions like !Ref, !GetAtt, and !Sub", "Parameters and Mappings for reusable templates", "Outputs and cross-stack exports", "Handling stack rollback when a resource fails to create"]
+        },
+        "Friday": {
+          "question": "Looking at Week 3 as a whole, what is the biggest benefit of defining high-availability infrastructure in CloudFormation?",
+          "options": ["Repeatable deployments across dev, staging, and production", "Version-controlling infrastructure changes in Git", "Detecting manual configuration drift", "Tearing down and rebuilding test environments cleanly"]
+        }
+      }
     },
     {
       "week": 4,
       "topic": "Automating infrastructure deployment; building decoupled applications",
-      "question": "Which approach do you expect to use most when decoupling an application?",
-      "options": ["Message queues", "Publish-subscribe notifications", "Direct service-to-service calls", "Not sure yet"]
+      "days": {
+        "Monday": {
+          "question": "Which approach do you expect to use most when decoupling an application?",
+          "options": ["Message queues", "Publish-subscribe notifications", "Direct service-to-service calls", "Not sure yet"]
+        },
+        "Tuesday": {
+          "question": "When choosing between Amazon SQS Standard and FIFO queues, which factor drives the decision most?",
+          "options": ["Whether strict message ordering is required", "Exactly-once processing versus at-least-once delivery", "Maximum throughput requirements", "Dead-letter queue handling for failed messages"]
+        },
+        "Wednesday": {
+          "question": "In a fan-out architecture combining Amazon SNS and Amazon SQS, what is the main advantage over polling a single queue?",
+          "options": ["Multiple independent services can process the same event in parallel", "Each subscriber queue buffers messages at its own pace", "New subscribers can be added without changing the publisher", "Failed consumers do not block other downstream services"]
+        },
+        "Thursday": {
+          "question": "When automating infrastructure deployment in a CI/CD pipeline, which stage catches the costliest mistakes earliest?",
+          "options": ["Template linting and cfn-nag security checks before deploy", "Change sets reviewed before applying stack updates", "Automated integration tests in a staging environment", "Automated rollback alarms during production rollout"]
+        },
+        "Friday": {
+          "question": "When a worker crashes halfway through processing an SQS message, which mechanism prevents the message from being lost?",
+          "options": ["Visibility timeout returning the message to the queue", "Dead-letter queue capturing repeated failures", "Long polling reducing empty receives", "Idempotent consumer logic handling duplicate delivery"]
+        }
+      }
     },
     {
       "week": 5,
       "topic": "Serverless architectures; hybrid storage and data migration; breaking a monolith into services; capstone",
-      "question": "Which architecture topic do you think will be most useful in your career?",
-      "options": ["Serverless architecture", "Hybrid storage and data migration", "Breaking a monolith into services", "Not sure yet"]
+      "days": {
+        "Monday": {
+          "question": "Which architecture topic do you think will be most useful in your career?",
+          "options": ["Serverless architecture", "Hybrid storage and data migration", "Breaking a monolith into services", "Not sure yet"]
+        },
+        "Tuesday": {
+          "question": "When building a serverless API with Amazon API Gateway and AWS Lambda, which constraint matters most to design around?",
+          "options": ["Lambda cold start latency and execution timeout limits", "Stateless execution and managing database connection pools", "Least-privilege IAM execution roles per function", "Payload size limits and asynchronous invocation retries"]
+        },
+        "Wednesday": {
+          "question": "For hybrid storage between an on-premises data center and AWS, which service selection question comes first?",
+          "options": ["Whether workloads need low-latency local caching (Storage Gateway)", "Bulk offline transfer (Snowball) versus online sync (DataSync)", "File protocols (NFS/SMB) versus block (iSCSI) or object (S3) access", "Bandwidth and Direct Connect / VPN capacity"]
+        },
+        "Thursday": {
+          "question": "When breaking a monolithic application into microservices, which first step reduces risk the most?",
+          "options": ["Using the strangler fig pattern to extract one bounded context at a time", "Untangling shared database tables before splitting code", "Defining clear API contracts between services", "Setting up distributed tracing and centralized logging first"]
+        },
+        "Friday": {
+          "question": "Reflecting on the PRO381 capstone, which AWS design pillar took the most effort to balance in your architecture?",
+          "options": ["Security and least-privilege access", "Reliability and multi-AZ fault tolerance", "Performance efficiency and scaling", "Cost optimization and right-sizing resources"]
+        }
+      }
     }
   ]
 }

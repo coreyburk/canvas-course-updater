@@ -285,16 +285,26 @@ structural.
 - `points_possible` on quiz-backed assignments is derived from question
   totals - cannot be changed via API, must edit in the Canvas UI.
 - Quiz titles/points/content: read-only via API, all edits manual.
-- **Quiz survey creation and access codes (2026-11-12, ITH216):** `POST /courses/:id/quizzes`
+- **Quiz survey creation, access codes, and question updates (2026-11-12 / 2026-11-17, ITH216):** `POST /courses/:id/quizzes`
   with `quiz_type: "survey"`, `anonymous_submissions: false` creates an ungraded survey;
   `access_code` is settable on create and via `PUT`. Canvas requires one correct answer
   on each multiple-choice question, so the first option is forced to weight 100 even on a
   survey. Quiz **module items** are added with `POST /courses/:id/modules/:mid/items`
   (`type: "Quiz"`, `content_id: <quiz id>`). Quiz titles, descriptions, due dates and access
   codes are writable (and renaming a quiz via `PUT` automatically updates its module item
-  title); `question_name` on existing quiz questions is also writable via
-  `PUT /courses/:id/quizzes/:qid/questions/:question_id` without disturbing `question_text`
-  or `answers`.
+  title). Existing quiz questions (`question_name`, `question_text`, and `answers`) are also
+  writable via `PUT /courses/:id/quizzes/:qid/questions/:question_id`. **Published Classic
+  Quiz "unsaved changes" banner (`unpublished_changes?`):** in Canvas LMS (`app/models/quizzes/quiz.rb`),
+  editing a question sets `quiz.last_edited_at = Time.now.utc`, causing a published quiz to
+  display *"You have made changes to the questions in this quiz. These changes will not appear
+  for students until you save the quiz."* whenever `last_edited_at > published_at`. In the REST
+  API (`PUT /api/v1/courses/:id/quizzes/:qid`), `generate_quiz_data_on_publish` (which refreshes
+  `quiz_data` and sets `published_at = Time.zone.now`) only runs `if: :workflow_state_changed?`
+  (transitioning `published: false` -> `published: true`). Therefore, after editing questions on
+  a published quiz with no submissions (`unpublishable: true`), send `published: false` followed
+  by `published: true` (`notify_of_update: false`) to clear the banner. If the quiz already has
+  submissions (`unpublishable: false`), the API cannot unpublish it; click **"Save It Now"** in
+  the Canvas UI (or avoid editing questions on quizzes students have already submitted).
 - **Rubrics ARE writable via the API** (verified 2026-11-09 on a throwaway rubric, created, updated and deleted). Title, points, criterion descriptions, long descriptions and rating
   levels can all be changed with `PUT /courses/:id/rubrics/:rubric_id` using form-encoded
   `rubric[criteria][N][...]` parameters. The read-only rule above applies to quizzes, not
