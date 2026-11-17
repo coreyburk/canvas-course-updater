@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-"""Set up the Participation Quizzes for any course, in one command.
+"""Set up the Attendance Quizzes for any course, in one command.
 
-For a course config (quizzes/participation/<CODE>.json) this creates, per week and
+For a course config (quizzes/attendance/<CODE>.json) this creates, per week and
 per class day (Mon-Fri):
 
-  1. Quizzes     "Participation Quiz - Week N Day": ungraded survey, one question,
+  1. Quizzes     "Attendance Quiz - Week N Day": ungraded survey, one question,
                  anonymous submissions off, one attempt, its own access code,
                  UNPUBLISHED.
   2. Modules     each quiz appended to its week's Canvas module.
-  3. Instructor  an UNPUBLISHED page "Instructor - Participation Quiz Codes" listing
-                 every quiz title, quiz ID and access code.
+  3. Instructor  an UNPUBLISHED page "Instructor Notes - Attendance Quiz Codes"
+                 listing every quiz title, quiz ID and access code.
 
 Every step is idempotent: existing quizzes are skipped (or re-coded with
---update-codes), quizzes already in a module are not re-added, and the instructor
-page is updated in place. Re-running after a partial failure is safe.
+--update-codes; legacy "Participation Quiz - Week N Day" quizzes are renamed in
+place), quizzes already in a module are not re-added, and the instructor page is
+updated in place. Re-running after a partial failure is safe.
 
 Dry run by default. Nothing is written to Canvas without --apply.
 
@@ -36,10 +37,10 @@ Config (<CODE>.json):
   2-6 options. Question and option text must not contain em dashes.
 
 Usage:
-  python tools/create_participation_quizzes.py --config quizzes/participation/<CODE>.json
-  python tools/create_participation_quizzes.py --config quizzes/participation/<CODE>.json --apply
-  python tools/create_participation_quizzes.py --config quizzes/participation/<CODE>.json --apply --only-week 1
-  python tools/create_participation_quizzes.py --config quizzes/participation/<CODE>.json --apply --update-codes
+  python tools/create_attendance_quizzes.py --config quizzes/attendance/<CODE>.json
+  python tools/create_attendance_quizzes.py --config quizzes/attendance/<CODE>.json --apply
+  python tools/create_attendance_quizzes.py --config quizzes/attendance/<CODE>.json --apply --only-week 1
+  python tools/create_attendance_quizzes.py --config quizzes/attendance/<CODE>.json --apply --update-codes
 
 --only-week limits quiz and module steps to one week and skips the instructor page
 (which always lists the whole course). --skip-modules and --skip-page turn off those steps.
@@ -57,17 +58,26 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from canvas_sync import CanvasClient, load_env, DEFAULT_ENV  # noqa: E402
 
 DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-TITLE_PREFIX = "Participation Quiz"
-PAGE_TITLE = "Instructor Notes - Participation Quiz Codes"  # matches the course's "Instructor Notes - ..." convention
-PAGE_TITLE_RE = re.compile(r"^Instructor( Notes)? - Participation Quiz Codes$")
+TITLE_PREFIX = "Attendance Quiz"
+LEGACY_TITLE_PREFIX = "Participation Quiz"
+PAGE_TITLE = "Instructor Notes - Attendance Quiz Codes"  # matches the course's "Instructor Notes - ..." convention
+PAGE_TITLE_RE = re.compile(r"^Instructor( Notes)? - (Attendance|Participation) Quiz Codes$")
 CODE_RE = re.compile(r"^[A-Za-z0-9]{3,30}$")
 DEFAULT_MODULE_NAME = "Week {week}"
 
 
 # --------------------------------------------------------------------------- config
 
-def quiz_title(week, day):
-    return f"{TITLE_PREFIX} - Week {week} {day}"
+def quiz_title(week, day, prefix=TITLE_PREFIX):
+    return f"{prefix} - Week {week} {day}"
+
+
+def quiz_description(week):
+    return (
+        f"<p>Attendance check for Week {week}. Answer the question below to "
+        "record your attendance for today. This is an ungraded survey, so there is no "
+        "correct answer.</p>"
+    )
 
 
 def validate_config(cfg):
@@ -129,9 +139,13 @@ def validate_codes(codes, rows):
 # --------------------------------------------------------------------------- Canvas
 
 def existing_quizzes(cv, cid):
-    """title -> quiz dict, for participation quizzes already in the course."""
+    """title -> quiz dict, for attendance (or legacy participation) quizzes already in the course."""
     quizzes = cv.paged(f"/courses/{cid}/quizzes?per_page=100")
-    return {q["title"]: q for q in quizzes if q["title"].startswith(TITLE_PREFIX)}
+    return {
+        q["title"]: q
+        for q in quizzes
+        if q["title"].startswith((TITLE_PREFIX, LEGACY_TITLE_PREFIX))
+    }
 
 
 def set_access_code(cv, cid, quiz_id, code):
@@ -139,12 +153,27 @@ def set_access_code(cv, cid, quiz_id, code):
             payload={"quiz": {"access_code": code}})
 
 
+def rename_quiz(cv, cid, quiz_id, new_title, week_entry, code=None):
+    q_payload = {
+        "title": new_title,
+        "description": quiz_description(week_entry["week"]),
+    }
+    if code is not None:
+        q_payload["access_code"] = code
+    cv.call(f"/courses/{cid}/quizzes/{quiz_id}", method="PUT", payload={"quiz": q_payload})
+    questions = cv.paged(f"/courses/{cid}/quizzes/{quiz_id}/questions?per_page=100")
+    target_qname = f"Week {week_entry['week']} attendance question"
+    for q in questions:
+        if q.get("question_name") != target_qname:
+            cv.call(
+                f"/courses/{cid}/quizzes/{quiz_id}/questions/{q['id']}",
+                method="PUT",
+                payload={"question": {"question_name": target_qname}},
+            )
+
+
 def create_quiz(cv, cid, title, week_entry, code):
-    description = (
-        f"<p>Participation check for Week {week_entry['week']}. Answer the question below to "
-        "record your attendance for today. This is an ungraded survey, so there is no "
-        "correct answer.</p>"
-    )
+    description = quiz_description(week_entry["week"])
     payload = {
         "quiz": {
             "title": title,
@@ -164,7 +193,7 @@ def create_quiz(cv, cid, title, week_entry, code):
     try:
         q_payload = {
             "question": {
-                "question_name": f"Week {week_entry['week']} participation question",
+                "question_name": f"Week {week_entry['week']} attendance question",
                 "question_text": f"<p>{week_entry['question']}</p>",
                 "question_type": "multiple_choice_question",
                 "points_possible": 0,
@@ -198,7 +227,7 @@ def add_quiz_to_module(cv, cid, module_id, quiz_id, title):
 
 def find_page_slug(cv, cid):
     """Slug of the existing instructor code page, matched by title (any Instructor/Instructor Notes prefix)."""
-    pages = cv.paged(f"/courses/{cid}/pages?search_term={urllib.parse.quote('Participation Quiz Codes')}&per_page=100")
+    pages = cv.paged(f"/courses/{cid}/pages?search_term={urllib.parse.quote('Quiz Codes')}&per_page=100")
     for p in pages:
         if PAGE_TITLE_RE.match(p.get("title", "")):
             return p.get("url")
@@ -217,8 +246,8 @@ def build_code_page(cfg, rows, quiz_ids, codes):
             f'<td style="padding: 6px 8px; background-color: {bg};"><code style="font-size: 15px;">{codes[title]}</code></td></tr>'
         )
     n_quizzes = len(rows)
-    return f'''<h2 style="color: #2C2C2A;">Participation Quiz Access Codes (Instructor Only)</h2>
-<p style="color: #2C2C2A;">Each Participation Quiz has its own access code, a course keyword for that day. Give students the code for the day in person during class. Do not post these codes anywhere students can see them.</p>
+    return f'''<h2 style="color: #2C2C2A;">Attendance Quiz Access Codes (Instructor Only)</h2>
+<p style="color: #2C2C2A;">Each Attendance Quiz has its own access code, a course keyword for that day. Give students the code for the day in person during class. Do not post these codes anywhere students can see them.</p>
 <p style="color: #2C2C2A;">All {n_quizzes} quizzes are ungraded surveys (no correct answer, no points), created unpublished. Publish each quiz manually on the day class is held, and share that day's code only then.</p>
 <table style="width: 100%; border-collapse: collapse; border: 1px solid #B4B2A9;">
 <thead>
@@ -242,7 +271,7 @@ def main():
         sys.stdout.reconfigure(encoding="utf-8")
 
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("--config", required=True, help="Course participation JSON config")
+    ap.add_argument("--config", required=True, help="Course attendance JSON config")
     ap.add_argument("--codes", help="Access code map (default: <config> with .codes.json suffix)")
     ap.add_argument("--apply", action="store_true", help="Write to Canvas (default: dry run)")
     ap.add_argument("--only-week", type=int, help="Limit quiz and module steps to one week")
@@ -297,9 +326,10 @@ def main():
 
     # Step 1: quizzes
     existing = existing_quizzes(cv, cid)
-    print(f"\n[1] Quizzes: {len(rows)} planned, {len(existing)} participation quizzes already in Canvas")
-    created = updated = skipped = 0
+    print(f"\n[1] Quizzes: {len(rows)} planned, {len(existing)} attendance/participation quizzes already in Canvas")
+    created = renamed = updated = skipped = 0
     for w, day, title, entry in rows:
+        legacy_title = quiz_title(w, day, LEGACY_TITLE_PREFIX)
         if title in existing:
             qid = existing[title]["id"]
             if args.update_codes:
@@ -317,6 +347,19 @@ def main():
                 print(f"  SKIP    {title} (exists, id {qid})")
                 skipped += 1
             continue
+        if legacy_title in existing:
+            qid = existing[legacy_title]["id"]
+            if not args.apply:
+                print(f"  PLAN    rename {legacy_title} -> {title} (id {qid})")
+                continue
+            try:
+                rename_quiz(cv, cid, qid, title, entry, code=codes[title] if args.update_codes else None)
+                print(f"  RENAME  {legacy_title} -> {title} (id {qid})")
+                renamed += 1
+            except Exception as e:  # noqa: BLE001
+                print(f"  FAIL    {legacy_title}: {e}")
+                failed += 1
+            continue
         if not args.apply:
             print(f"  PLAN    create {title}")
             continue
@@ -331,8 +374,8 @@ def main():
             print(f"  FAIL    {title}: {e}")
             failed += 1
     if args.apply:
-        print(f"  => {created} created, {updated} re-coded, {skipped} skipped, {failed} failed")
-        existing = existing_quizzes(cv, cid)  # pick up new IDs for later steps
+        print(f"  => {created} created, {renamed} renamed, {updated} re-coded, {skipped} skipped, {failed} failed")
+        existing = existing_quizzes(cv, cid)  # pick up new/renamed IDs for later steps
 
     # Step 2: modules
     if args.skip_modules:
@@ -343,13 +386,15 @@ def main():
         for w, day, title, entry in rows:
             name = module_name_fmt.format(week=w)
             mid = modules[name.strip().casefold()]
-            if title not in existing:
+            legacy_title = quiz_title(w, day, LEGACY_TITLE_PREFIX)
+            q_obj = existing.get(title) or existing.get(legacy_title)
+            if not q_obj:
                 print(f"  PLAN    {title} -> '{name}' (quiz not created yet)" if not args.apply
                       else f"  MISS    {title}: quiz not in Canvas, not added")
                 if args.apply:
                     failed += 1
                 continue
-            qid = existing[title]["id"]
+            qid = q_obj["id"]
             if not args.apply:
                 print(f"  PLAN    {title} -> '{name}'")
                 continue
@@ -375,7 +420,7 @@ def main():
         print("\n[3] Instructor page")
         missing = [t for _, _, t, _ in all_rows if t not in existing]
         if missing:
-            print(f"  PLAN    {len(missing)} quizzes not created yet; page is written after creation" if not args.apply
+            print(f"  PLAN    {len(missing)} quizzes not created/renamed yet; page is written after quiz step" if not args.apply
                   else f"  SKIP    page: {len(missing)} quizzes missing from Canvas")
             if args.apply:
                 failed += 1
@@ -388,7 +433,8 @@ def main():
             else:
                 try:
                     if slug:
-                        cv.call(f"/courses/{cid}/pages/{slug}", method="PUT", payload={"wiki_page": {"body": html}})
+                        cv.call(f"/courses/{cid}/pages/{slug}", method="PUT",
+                                payload={"wiki_page": {"title": PAGE_TITLE, "body": html}})
                         print(f"  UPDATE  page '{PAGE_TITLE}' ({len(all_rows)} rows, unpublished)")
                     else:
                         cv.call(f"/courses/{cid}/pages", method="POST",

@@ -15,6 +15,15 @@ over anything in this log.
 
 ---
 
+## Rename Participation Quizzes to Attendance Quizzes across ITH216, PRO381-S2, and BIT360 (2026-11-17)
+
+Renamed the daily survey quizzes from "Participation" to "Attendance" across all three configured courses and the repo tooling:
+- **Canvas quizzes (125 total: 50 in ITH216 `3646987`, 25 in PRO381-S2 `3644906`, 50 in BIT360 `3644702`):** Renamed in place from `Participation Quiz - Week N Day` to `Attendance Quiz - Week N Day`, updated quiz descriptions (`Attendance check for Week N...`) and question names (`Week N attendance question`), preserving quiz IDs, published state, access codes, and module placements (Canvas automatically updated all 125 module item titles on quiz `PUT`).
+- **Instructor code pages (`28826726` in ITH216, `28828105` in PRO381-S2, `28828115` in BIT360):** Updated in place from `Instructor Notes - Participation Quiz Codes` to `Instructor Notes - Attendance Quiz Codes` with the renamed quiz titles.
+- **Tooling & docs:** Renamed `tools/create_participation_quizzes.py` -> `tools/create_attendance_quizzes.py` (with automatic in-place rename support for any legacy `Participation Quiz - Week N Day` quizzes) and `quizzes/participation/` -> `quizzes/attendance/`. Updated [`quizzes/attendance/README.md`](quizzes/attendance/README.md), [`CLAUDE.md`](CLAUDE.md), [`courses/ITH216.md`](courses/ITH216.md), [`courses/PRO381-S2.md`](courses/PRO381-S2.md), [`courses/BIT360-2026.md`](courses/BIT360-2026.md), and `.gitignore`.
+
+---
+
 ## BIT360 (3644702) - Participation Quizzes (2026-11-12)
 
 Set up the Participation Quizzes for the 10-week course with `tools/create_participation_quizzes.py`: 50 ungraded surveys (Weeks 1-10 x Mon-Fri), all unpublished, each with its own topic-keyword code, appended to each Week module, plus an unpublished instructor code page (28828115). Config `quizzes/participation/BIT360.json`; codes are gitignored. Quizzes sit after the Resources pages in each module; no Quiz-section placement was attempted.

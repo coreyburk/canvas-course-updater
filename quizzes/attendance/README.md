@@ -1,20 +1,20 @@
-# Participation Quizzes
+# Attendance Quizzes
 
-Attendance tracking required for all classes: one Participation Quiz per class day.
+Attendance tracking required for all classes: one Attendance Quiz per class day.
 This folder holds the per-course configs for the generator. The generator works for any course.
 
 ## One command
 
 ```bash
-python tools/create_participation_quizzes.py --config quizzes/participation/<CODE>.json          # dry run
-python tools/create_participation_quizzes.py --config quizzes/participation/<CODE>.json --apply  # write
+python tools/create_attendance_quizzes.py --config quizzes/attendance/<CODE>.json          # dry run
+python tools/create_attendance_quizzes.py --config quizzes/attendance/<CODE>.json --apply  # write
 ```
 
 A run does three things, in order. Each step is idempotent, so re-running after a partial failure is safe.
 
-1. **Quizzes.** Creates `Participation Quiz - Week N Day` for every week and day (Mon-Fri). Existing titles are skipped.
+1. **Quizzes.** Creates `Attendance Quiz - Week N Day` for every week and day (Mon-Fri). Existing titles are skipped (and any legacy `Participation Quiz - Week N Day` quizzes are renamed in place).
 2. **Modules.** Adds each quiz to its week's Canvas module. The module is found by name (default `Week {week}`). Quizzes already in the module are skipped.
-3. **Instructor page.** Creates or updates an unpublished page, `Instructor Notes - Participation Quiz Codes`, listing every quiz title, quiz ID and access code.
+3. **Instructor page.** Creates or updates an unpublished page, `Instructor Notes - Attendance Quiz Codes`, listing every quiz title, quiz ID and access code.
 
 Flags:
 
@@ -43,9 +43,9 @@ Quizzes for past weeks are not graded. The requirement started partway through t
 
 | File | In git? | Purpose |
 |---|---|---|
-| `tools/create_participation_quizzes.py` | yes | The generator. Works for any course. |
-| `quizzes/participation/<CODE>.json` | yes | Course ID, week count, week topics, weekly question and options. |
-| `quizzes/participation/<CODE>.codes.json` | **no (gitignored)** | One access code per quiz, keyed by quiz title. |
+| `tools/create_attendance_quizzes.py` | yes | The generator. Works for any course. |
+| `quizzes/attendance/<CODE>.json` | yes | Course ID, week count, week topics, weekly question and options. |
+| `quizzes/attendance/<CODE>.codes.json` | **no (gitignored)** | One access code per quiz, keyed by quiz title. |
 
 The codes file is gitignored on purpose. The repo is public and the codes are student-facing. Keep it only on the machine that runs the script.
 
@@ -71,7 +71,7 @@ The codes file is gitignored on purpose. The repo is public and the codes are st
 
 ## Codes file (`<CODE>.codes.json`)
 
-Keys are the exact quiz titles, for example `"Participation Quiz - Week 1 Monday": "EXAMPLE1"`. Values are one word, 3 to 30 letters or digits, no spaces. Use course or weekly topic keywords. Every code must be unique within the course. The script refuses to run if a quiz has no code or two quizzes share one.
+Keys are the exact quiz titles, for example `"Attendance Quiz - Week 1 Monday": "EXAMPLE1"`. Values are one word, 3 to 30 letters or digits, no spaces. Use course or weekly topic keywords. Every code must be unique within the course. The script refuses to run if a quiz has no code or two quizzes share one.
 
 The file must contain one entry per quiz: `weeks x 5` entries.
 
